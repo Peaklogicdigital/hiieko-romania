@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hiieko Romania — Industrial Solar &amp; Energy Storage</title>
+<!--
+  DESIGN SYSTEM v2 — notes for Claude Code
+  =========================================
+  Direction change from v1: dark "monitoring dashboard" theme instead of light
+  "spec sheet" theme. Rationale: Hiieko doesn't just sell and walk away — it
+  guarantees the install and maintains the system afterward. A dark dashboard
+  with a live pulse reads as "we're still watching this system," which is the
+  actual differentiator, not decoration.
+
+  COLOR TOKENS
+    --bg       : #0A0F0D  near-black, slight green undertone (not pure #000)
+    --bg-2     : #101613  card / alternate section surface
+    --neon     : #46F79C  signature accent — emerald-neon, used for CTAs,
+                           active states, glow accents. Spend it deliberately.
+    --neon-dim : rgba(70,247,156,0.14)  borders / hover glows only
+    --volt     : #5B8DEF  secondary accent for data viz contrast (keeps the
+                           page from being monotone neon-on-black)
+    --text     : #EAF2ED  headline white, faint green tint
+    --muted     : #8FA79B  body/secondary text on dark
+    --line     : rgba(234,242,237,0.09)
+
+  TYPE — unchanged from v1: Archivo (display) / IBM Plex Sans (body) /
+  IBM Plex Mono (all numbers, data, calculator output). The mono face does
+  double duty here — it's also what makes the dashboard feel real.
+
+  LANGUAGE: English is primary (this file). Romanian is a planned secondary
+  locale — the RO toggle in nav is a placeholder; real implementation should
+  use Astro's i18n routing (/ro/ prefix) with mirrored content collections,
+  not a client-side string swap.
+
+  NOT BUILT YET (by request — to be done directly in Claude Code):
+  Team section / tab. Every placeholder needing real content is marked [[ ]].
+  PLACEHOLDER project cards are visually flagged — do not ship without
+  replacing them with real projects.
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+  :root{
+    --bg:#141B18; --bg-2:#1B2420; --bg-3:#222D28;
+    --neon:#46F79C; --neon-dim:rgba(70,247,156,0.14);
+    --volt:#5B8DEF;
+    --text:#EAF2ED; --muted:#8FA79B;
+    --line:rgba(234,242,237,0.09);
+  }
+  *{box-sizing:border-box;}
+
+  /* subtle drifting circuit-grid background, fixed behind all content */
+  .bg-layer{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;}
+  .bg-grid{
+    position:absolute; inset:-20%;
+    background-image:
+      linear-gradient(rgba(70,247,156,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(70,247,156,0.05) 1px, transparent 1px);
+    background-size:52px 52px;
+    transition:transform .05s linear;
+  }
+  .bg-trace-svg{position:absolute; inset:-20%; width:140%; height:140%; transition:transform .05s linear;}
+  .bg-trace{stroke:rgba(70,247,156,0.10); stroke-width:1; fill:none;}
+  /* keep real content above the fixed grid regardless of paint order */
+  nav, header.hero, section, footer{position:relative; z-index:1;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'IBM Plex Sans', system-ui, sans-serif; font-size:16px; line-height:1.55;
+  }
+  h1,h2,h3{font-family:'Archivo','IBM Plex Sans',sans-serif; font-weight:800; letter-spacing:-0.01em; margin:0;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--neon); font-weight:600;
+    display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--neon);
+    box-shadow:0 0 8px var(--neon); animation:blink 2.2s ease-in-out infinite;}
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+  a{color:inherit;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  button,.btn{
+    font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:0.03em;
+    text-transform:uppercase; font-weight:600; cursor:pointer; border-radius:3px;
+    transition:transform .15s ease, box-shadow .2s ease, background .15s ease, color .15s ease;
+  }
+  .btn:focus-visible, a:focus-visible, button:focus-visible{outline:2px solid var(--neon); outline-offset:3px;}
+  .btn-primary{background:var(--neon); color:#06120B; border:none; padding:14px 24px;}
+  .btn-primary:hover{transform:translateY(-1px); box-shadow:0 0 22px rgba(70,247,156,0.35);}
+  .btn-ghost{background:transparent; color:var(--text); border:1px solid var(--line); padding:13px 24px;}
+  .btn-ghost:hover{border-color:var(--neon); color:var(--neon);}
+
+  /* scroll reveal */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    .eyebrow .dot{animation:none;}
+  }
+
+  /* ---------- NAV ---------- */
+  nav{position:sticky; top:0; z-index:50; background:rgba(10,15,13,0.9); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:72px;}
+  .logo{font-family:'Archivo',sans-serif; font-weight:800; font-size:19px; display:flex; gap:8px;}
+  .logo span{color:var(--neon);}
+  .navlinks{display:flex; align-items:center; gap:30px;}
+  .navlinks a{color:var(--muted); text-decoration:none; font-size:14px; font-weight:500;}
+  .navlinks a:hover{color:var(--text);}
+  .navlang{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); display:flex; gap:6px;}
+  .navlang b{color:var(--neon);}
+  @media (max-width:900px){ .navlinks{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:80px 0 0; overflow:hidden; position:relative;}
+  .hero::before{
+    content:""; position:absolute; inset:0; z-index:0;
+    background:radial-gradient(600px 400px at 80% 10%, rgba(70,247,156,0.08), transparent 70%);
+  }
+  .hero .wrap{position:relative; z-index:1; display:grid; grid-template-columns:1.05fr 0.95fr; gap:40px; align-items:center;}
+  .hero h1{font-size:clamp(34px,4.4vw,54px); line-height:1.05; margin:18px 0 22px;}
+  .hero p.lede{font-size:17px; color:var(--muted); max-width:48ch; margin:0 0 32px;}
+  .hero .ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:56px;}
+  @media (max-width:900px){ .hero .wrap{grid-template-columns:1fr;} }
+
+  .dash{background:var(--bg-2); border:1px solid var(--line); border-radius:6px; padding:22px;}
+  .dash-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;}
+  .dash-title{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:0.06em; text-transform:uppercase;}
+  .schematic{width:100%; height:auto;}
+  .schem-line{fill:none; stroke:var(--volt); stroke-width:1.6; stroke-dasharray:5 5; opacity:0.55;}
+  .schem-node{fill:none; stroke:var(--muted); stroke-width:1.2;}
+  .schem-label{font-family:'IBM Plex Mono',monospace; font-size:10px; fill:var(--muted); letter-spacing:0.04em; text-transform:uppercase;}
+  .pulse{fill:var(--neon); filter:drop-shadow(0 0 5px var(--neon));}
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust{background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .trust .wrap{display:grid; grid-template-columns:repeat(4,1fr); padding:26px 28px;}
+  .trust .stat{padding:0 22px; border-left:1px solid var(--line);}
+  .trust .stat:first-child{border-left:none; padding-left:0;}
+  .trust .stat .num{font-family:'IBM Plex Mono',monospace; color:var(--neon); font-size:22px; font-weight:600;}
+  .trust .stat .lbl{color:var(--muted); font-size:12.5px; margin-top:4px;}
+  @media (max-width:860px){ .trust .wrap{grid-template-columns:repeat(2,1fr); row-gap:22px;} }
+
+  section{padding:100px 0;}
+  .section-head{max-width:640px; margin-bottom:52px;}
+  .section-head h2{font-size:clamp(26px,3vw,36px); margin:10px 0 14px;}
+  .section-head p{color:var(--muted); font-size:15.5px;}
+
+  /* ---------- DIFFERENTIATION ---------- */
+  .diff-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--line);}
+  .diff-step{padding:30px 26px 0 0; border-right:1px solid var(--line);}
+  .diff-step:last-child{border-right:none;}
+  .diff-step .n{font-family:'IBM Plex Mono',monospace; color:var(--volt); font-size:12.5px; font-weight:600; margin-bottom:12px; display:block;}
+  .diff-step h3{font-size:16.5px; margin-bottom:8px;}
+  .diff-step p{font-size:13.5px; color:var(--muted); max-width:30ch;}
+  .diff-callout{
+    margin-top:46px; padding:24px 28px; background:var(--bg-2); border:1px solid var(--neon-dim);
+    border-left:3px solid var(--neon); font-size:15.5px; color:var(--text); border-radius:2px;
+  }
+  @media (max-width:860px){
+    .diff-grid{grid-template-columns:1fr 1fr; row-gap:26px;}
+    .diff-step:nth-child(2){border-right:none;}
+    .diff-step:nth-child(4){border-right:none;}
+  }
+
+  /* ---------- SOLUTIONS ---------- */
+  .solutions{background:var(--bg-2);}
+  .sol-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line);}
+  .sol-card{background:var(--bg-2); padding:34px 28px; min-height:220px; display:flex; flex-direction:column; justify-content:space-between; transition:background .2s ease;}
+  .sol-card:hover{background:var(--bg-3);}
+  .sol-card .tag{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--neon); letter-spacing:0.08em; text-transform:uppercase;}
+  .sol-card h3{font-size:19px; margin:14px 0 10px;}
+  .sol-card p{font-size:14px; color:var(--muted); margin:0;}
+  @media (max-width:860px){ .sol-grid{grid-template-columns:1fr;} }
+
+  /* ---------- CALCULATOR ---------- */
+  .calc{background:var(--bg);}
+  .calc-box{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:0; border:1px solid var(--line); border-radius:6px; overflow:hidden;
+  }
+  .calc-input{background:var(--bg-2); padding:40px;}
+  .calc-input label{display:block; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; margin-bottom:10px;}
+  .calc-input input[type=number]{
+    width:100%; background:var(--bg); border:1px solid var(--line); color:var(--text);
+    padding:14px 16px; font-family:'IBM Plex Mono',monospace; font-size:22px; border-radius:3px; margin-bottom:22px;
+  }
+  .calc-input input:focus{outline:2px solid var(--neon); outline-offset:1px; border-color:var(--neon);}
+  .calc-results{padding:40px; display:grid; grid-template-columns:repeat(3,1fr); gap:26px; align-content:start;}
+  .calc-stat .num{font-family:'IBM Plex Mono',monospace; font-size:30px; font-weight:600; color:var(--neon);}
+  .calc-stat .lbl{font-size:13px; color:var(--muted); margin-top:4px;}
+  .calc-note{grid-column:1 / -1; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted); border-top:1px solid var(--line); padding-top:18px; margin-top:6px; line-height:1.6;}
+  @media (max-width:860px){ .calc-box{grid-template-columns:1fr;} .calc-results{grid-template-columns:1fr 1fr;} }
+
+  /* ---------- PROJECTS ---------- */
+  .proj-filters{display:flex; gap:10px; margin-bottom:36px; flex-wrap:wrap;}
+  .filter-btn{
+    background:transparent; border:1px solid var(--line); color:var(--muted);
+    padding:9px 16px; font-size:12px;
+  }
+  .filter-btn.active{border-color:var(--neon); color:var(--neon);}
+  .proj-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .proj-card{
+    border:1px solid var(--line); border-radius:6px; overflow:hidden; background:var(--bg-2);
+    transition:transform .2s ease, border-color .2s ease; display:block;
+  }
+  .proj-card:hover{transform:translateY(-3px); border-color:var(--neon-dim);}
+  .proj-card.placeholder{border-style:dashed;}
+  .proj-photo{
+    height:160px; position:relative;
+    background:repeating-linear-gradient(135deg, rgba(234,242,237,0.05) 0 2px, transparent 2px 14px), var(--bg-3);
+  }
+  .ph-flag{
+    position:absolute; top:10px; left:10px; font-family:'IBM Plex Mono',monospace; font-size:9.5px;
+    background:rgba(70,247,156,0.14); color:var(--neon); padding:4px 8px; border-radius:2px; letter-spacing:0.05em;
+  }
+  .proj-body{padding:18px 20px;}
+  .proj-tag{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--volt); text-transform:uppercase; letter-spacing:0.06em;}
+  .proj-body h3{font-size:16px; margin:8px 0 4px;}
+  .proj-body .loc{font-size:13px; color:var(--muted); margin-bottom:12px;}
+  .proj-spec{display:flex; justify-content:space-between; font-size:12.5px; border-top:1px solid var(--line); padding-top:10px;}
+  .proj-spec .v{font-family:'IBM Plex Mono',monospace; color:var(--text); font-weight:600;}
+  @media (max-width:860px){ .proj-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:600px){ .proj-grid{grid-template-columns:1fr;} }
+
+  /* ---------- WHY ---------- */
+  .why{background:var(--bg-2);}
+  .why .wrap{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;}
+  .why h2{font-size:clamp(24px,2.8vw,32px); margin-bottom:18px;}
+  .why p{color:var(--muted); font-size:15.5px; margin-bottom:16px;}
+  .iso-row{display:flex; gap:14px; margin-top:26px;}
+  .iso-badge{border:1px solid var(--line); border-radius:2px; padding:10px 14px; font-family:'IBM Plex Mono',monospace; font-size:12px; display:flex; align-items:center; gap:8px;}
+  .iso-badge .dt{width:7px; height:7px; border-radius:50%; background:var(--neon); box-shadow:0 0 6px var(--neon);}
+  .why-figs{background:var(--bg); border:1px solid var(--line); border-radius:6px;}
+  .why-fig{padding:20px 22px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:baseline;}
+  .why-fig:last-child{border-bottom:none;}
+  .why-fig .k{font-size:13.5px; color:var(--muted);}
+  .why-fig .v{font-family:'IBM Plex Mono',monospace; font-weight:600; color:var(--volt);}
+  @media (max-width:860px){ .why .wrap{grid-template-columns:1fr;} }
+
+  /* ---------- CTA ---------- */
+  .cta{background:var(--bg);}
+  .cta .wrap{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px;}
+  .cta h2{font-size:clamp(26px,3vw,34px); margin:10px 0 16px;}
+  .cta p{color:var(--muted); font-size:15px; max-width:38ch;}
+  .cta-contact{margin-top:28px; font-size:14px; color:var(--muted);}
+  .cta-contact div{margin-bottom:8px;}
+  .cta-contact b{color:var(--text);}
+  form{display:grid; gap:14px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  label{display:block; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; margin-bottom:6px;}
+  input,select,textarea{width:100%; background:var(--bg-2); border:1px solid var(--line); color:var(--text); padding:12px 13px; font-family:'IBM Plex Sans',sans-serif; font-size:14px; border-radius:3px;}
+  input:focus, select:focus, textarea:focus{outline:2px solid var(--neon); outline-offset:1px; border-color:var(--neon);}
+  textarea{min-height:90px; resize:vertical;}
+  @media (max-width:700px){ .cta .wrap{grid-template-columns:1fr;} .form-row{grid-template-columns:1fr;} }
+
+  footer{background:var(--bg-2); color:var(--muted); padding:48px 0 30px; border-top:1px solid var(--line);}
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px; border-bottom:1px solid var(--line); padding-bottom:34px; margin-bottom:22px;}
+  .foot-col h4{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:12px;}
+  .foot-col div{font-size:13.5px; margin-bottom:6px;}
+  .foot-bottom{display:flex; justify-content:space-between; font-size:12.5px; flex-wrap:wrap; gap:10px;}
+</style>
+</head>
+<body>
+
+<div class="bg-layer" aria-hidden="true">
+  <div class="bg-grid" id="bgGrid"></div>
+  <svg class="bg-trace-svg" id="bgTrace" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 2000" preserveAspectRatio="none">
+    <path class="bg-trace" d="M0,180 L280,180 L320,220 L640,220"/>
+    <path class="bg-trace" d="M980,60 L980,340 L1200,380"/>
+    <path class="bg-trace" d="M120,1100 L420,1100 L460,1060 L860,1060"/>
+    <path class="bg-trace" d="M1050,1500 L1050,1750 L780,1790"/>
+  </svg>
+</div>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">HIIEKO<span>·</span>RO</div>
+    <div class="navlinks">
+      <a href="#solutions">Solutions</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div style="display:flex; align-items:center; gap:22px;">
+      <div class="navlang"><b>EN</b><span>/</span><span>RO</span></div>
+      <button class="btn btn-ghost" style="padding:10px 18px;">Get a site assessment</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Hiieko Romania — Industrial Solar &amp; Storage</div>
+      <h1>We don't sell panels. We deliver a system and stand behind it.</h1>
+      <p class="lede">
+        Design, installation, and long-term maintenance of rooftop and ground-mount
+        solar plus battery storage for Romanian industrial and commercial sites —
+        one contractor, one guarantee, backed by Estonian engineering since 1994.
+      </p>
+      <div class="ctas">
+        <button class="btn btn-primary">Get a site assessment →</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})">Estimate your system ↓</button>
+      </div>
+    </div>
+
+    <div class="dash reveal">
+      <div class="dash-top">
+        <span class="dash-title">System overview</span>
+        <span class="eyebrow" style="font-size:10px;"><span class="dot"></span>Live</span>
+      </div>
+      <svg class="schematic" viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Energy flow diagram: sun, solar panel, inverter, battery, facility and grid">
+        <path class="schem-line" d="M70,70 L150,70 L150,130"/>
+        <path class="schem-line" d="M150,150 L230,150"/>
+        <path class="schem-line" d="M270,150 L340,150"/>
+        <path class="schem-line" d="M380,150 L380,110 L440,80"/>
+        <path class="schem-line" d="M380,150 L380,200 L440,230"/>
+        <circle cx="70" cy="70" r="22" class="schem-node"/>
+        <circle cx="70" cy="70" r="6" fill="var(--neon)" filter="drop-shadow(0 0 5px var(--neon))"/>
+        <text x="70" y="112" text-anchor="middle" class="schem-label">Sun</text>
+        <rect x="128" y="128" width="44" height="30" rx="2" class="schem-node"/>
+        <text x="150" y="176" text-anchor="middle" class="schem-label">PV Panel</text>
+        <rect x="230" y="132" width="40" height="36" rx="2" class="schem-node"/>
+        <text x="250" y="188" text-anchor="middle" class="schem-label">Inverter</text>
+        <rect x="340" y="130" width="40" height="40" rx="2" class="schem-node"/>
+        <line x1="352" y1="138" x2="352" y2="162" stroke="var(--muted)" stroke-width="1.2"/>
+        <line x1="368" y1="138" x2="368" y2="162" stroke="var(--muted)" stroke-width="1.2"/>
+        <text x="360" y="188" text-anchor="middle" class="schem-label">Battery</text>
+        <rect x="438" y="58" width="46" height="34" rx="2" class="schem-node"/>
+        <text x="461" y="46" text-anchor="middle" class="schem-label">Facility</text>
+        <circle cx="461" cy="230" r="20" class="schem-node"/>
+        <text x="461" y="266" text-anchor="middle" class="schem-label">Grid</text>
+        <circle r="3.2" class="pulse"><animateMotion dur="3.2s" repeatCount="indefinite" path="M70,70 L150,70 L150,130 L150,150 L230,150 L270,150 L340,150"/></circle>
+        <circle r="3.2" class="pulse"><animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite" path="M380,150 L380,110 L440,80"/></circle>
+        <circle r="3.2" class="pulse"><animateMotion dur="3.2s" begin="2.4s" repeatCount="indefinite" path="M380,150 L380,200 L440,230"/></circle>
+      </svg>
+    </div>
+  </div>
+
+  <div class="trust">
+    <div class="wrap">
+      <div class="stat"><div class="num mono">1994</div><div class="lbl">Hiieko Group founded, Estonia</div></div>
+      <div class="stat"><div class="num mono">[[X]] MWp</div><div class="lbl">Installed capacity — to confirm</div></div>
+      <div class="stat"><div class="num mono" data-count="21">0</div><div class="lbl">Specialists at Hiieko Romania</div></div>
+      <div class="stat"><div class="num mono">ISO 9001·14001</div><div class="lbl">Certified management systems</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="diff reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>How we work</span>
+      <h2>We're the contractor who stays after commissioning.</h2>
+      <p>Most solar installers in Romania sell equipment and move on. Hiieko Romania designs, builds, and maintains every system under one contract — with a workmanship guarantee and a maintenance plan that starts the day the system goes live.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-step"><span class="n mono">01 / DESIGN</span><h3>Site assessment &amp; sizing</h3><p>We size the system to your real consumption and structure, not a generic package.</p></div>
+      <div class="diff-step"><span class="n mono">02 / INSTALL</span><h3>Installation &amp; commissioning</h3><p>Our own crews, not subcontracted labor — installed to ANRE grid-connection requirements.</p></div>
+      <div class="diff-step"><span class="n mono">03 / GUARANTEE</span><h3>Workmanship guarantee</h3><p>[[ guarantee terms — years / scope, confirm with team ]] on every installation we complete.</p></div>
+      <div class="diff-step"><span class="n mono">04 / MAINTAIN</span><h3>Ongoing maintenance</h3><p>Scheduled service and monitoring after handover — the system stays our responsibility.</p></div>
+    </div>
+    <div class="diff-callout">We don't resell panels and batteries — we deliver the full engineering-to-maintenance lifecycle, under one contract, with one team accountable for the result.</div>
+  </div>
+</section>
+
+<section class="solutions" id="solutions">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>What we build</span>
+      <h2>Three systems. One team.</h2>
+      <p>For industrial platforms, logistics halls, production facilities, and unused land.</p>
+    </div>
+    <div class="sol-grid">
+      <div class="sol-card"><div><span class="tag">01</span><h3>Rooftop Solar</h3><p>Photovoltaic systems on industrial and commercial buildings, sized for self-consumption.</p></div></div>
+      <div class="sol-card"><div><span class="tag">02</span><h3>Ground-Mount Solar Parks</h3><p>Ground-mount projects on unproductive land, from feasibility study to grid connection.</p></div></div>
+      <div class="sol-card"><div><span class="tag">03</span><h3>Battery Storage (BESS)</h3><p>Industrial battery systems for peak shaving, backup power, and stored-energy value.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="calc" id="calculator">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Estimate your system</span>
+      <h2>See what your roof or land could generate.</h2>
+      <p>A rough sizing estimate — not a quote. A real number needs a site assessment.</p>
+    </div>
+    <div class="calc-box">
+      <div class="calc-input">
+        <label for="consumption">Current monthly consumption (kWh)</label>
+        <input type="number" id="consumption" value="8000" min="0" step="100">
+        <label for="area">Available area (m²)</label>
+        <input type="number" id="area" value="1000" min="50" step="50">
+        <button class="btn btn-primary" onclick="runCalc()" style="width:100%;">Calculate →</button>
+      </div>
+      <div class="calc-results">
+        <div class="calc-stat"><div class="num mono" id="out-panels">—</div><div class="lbl">Panels needed</div></div>
+        <div class="calc-stat"><div class="num mono" id="out-capacity">—</div><div class="lbl">System capacity (kWp)</div></div>
+        <div class="calc-stat"><div class="num mono" id="out-gen">—</div><div class="lbl">Est. annual generation (MWh/yr)</div></div>
+        <div class="calc-stat"><div class="num mono" id="out-savings">—</div><div class="lbl">Est. monthly bill savings (€)</div></div>
+        <div class="calc-stat"><div class="num mono" id="out-payback">—</div><div class="lbl">Est. payback period (years)</div></div>
+        <div class="calc-note mono">
+          ILLUSTRATIVE ASSUMPTIONS — replace with real coefficients from the engineering team before this goes live:
+          5 m²/kWp · 450 Wp/panel · 1150 kWh/kWp/yr regional yield · €700/kWp install cost · €0.18/kWh commercial price.
+          Savings assume solar output offsets consumption first; any surplus generation is treated as exported, not paid out.
+          Output is a rough estimate, not a quote.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap reveal">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Projects</span>
+      <h2>What we've built.</h2>
+      <p>A sample of completed work. Replace placeholder cards with real projects before launch.</p>
+    </div>
+    <div class="proj-filters">
+      <button class="filter-btn active" data-f="all">All</button>
+      <button class="filter-btn" data-f="roof">Rooftop</button>
+      <button class="filter-btn" data-f="ground">Ground-mount</button>
+      <button class="filter-btn" data-f="bess">BESS</button>
+    </div>
+    <div class="proj-grid" id="proj-grid">
+      <div class="proj-card" data-cat="ground">
+        <div class="proj-photo"></div>
+        <div class="proj-body">
+          <div class="proj-tag">Ground-mount</div>
+          <h3>Solar Park — Arad</h3>
+          <div class="loc">Arad, Romania</div>
+          <div class="proj-spec"><span>Capacity</span><span class="v mono">400 kWp</span></div>
+        </div>
+      </div>
+      <div class="proj-card placeholder" data-cat="roof">
+        <div class="proj-photo"><span class="ph-flag">PLACEHOLDER</span></div>
+        <div class="proj-body">
+          <div class="proj-tag">Rooftop</div>
+          <h3>[[ Project name ]]</h3>
+          <div class="loc">[[ City, Romania ]]</div>
+          <div class="proj-spec"><span>Capacity</span><span class="v mono">[[ X ]] kWp</span></div>
+        </div>
+      </div>
+      <div class="proj-card placeholder" data-cat="bess">
+        <div class="proj-photo"><span class="ph-flag">PLACEHOLDER</span></div>
+        <div class="proj-body">
+          <div class="proj-tag">BESS</div>
+          <h3>[[ Project name ]]</h3>
+          <div class="loc">[[ City, Romania ]]</div>
+          <div class="proj-spec"><span>Storage</span><span class="v mono">[[ X ]] kWh</span></div>
+        </div>
+      </div>
+      <div class="proj-card placeholder" data-cat="roof">
+        <div class="proj-photo"><span class="ph-flag">PLACEHOLDER</span></div>
+        <div class="proj-body">
+          <div class="proj-tag">Rooftop</div>
+          <h3>[[ Project name ]]</h3>
+          <div class="loc">[[ City, Romania ]]</div>
+          <div class="proj-spec"><span>Capacity</span><span class="v mono">[[ X ]] kWp</span></div>
+        </div>
+      </div>
+      <div class="proj-card placeholder" data-cat="ground">
+        <div class="proj-photo"><span class="ph-flag">PLACEHOLDER</span></div>
+        <div class="proj-body">
+          <div class="proj-tag">Ground-mount</div>
+          <h3>[[ Project name ]]</h3>
+          <div class="loc">[[ City, Romania ]]</div>
+          <div class="proj-spec"><span>Capacity</span><span class="v mono">[[ X ]] kWp</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="about">
+  <div class="wrap reveal">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>Why Hiieko</span>
+      <h2>Estonian engineering, delivered locally.</h2>
+      <p>Hiieko Romania SRL is part of the Estonian Hiieko group, which has designed, installed, and maintained construction technical systems since 1994. In Romania, that same engineering discipline was applied to a purpose-built subsidiary, established in 2020 specifically to develop industrial solar parks and storage facilities.</p>
+      <p>We're not a panel installer that appeared last year. We're part of a group with three decades of execution on complex sites — and a Romanian team that stays accountable after handover.</p>
+      <div class="iso-row">
+        <div class="iso-badge"><span class="dt"></span>ISO 9001:2015</div>
+        <div class="iso-badge"><span class="dt"></span>ISO 14001:2015</div>
+      </div>
+    </div>
+    <div class="why-figs">
+      <div class="why-fig"><span class="k">Group founded</span><span class="v mono">1994, Tallinn</span></div>
+      <div class="why-fig"><span class="k">Romania subsidiary established</span><span class="v mono">2020</span></div>
+      <div class="why-fig"><span class="k">Purpose</span><span class="v mono">Solar parks + storage</span></div>
+      <div class="why-fig"><span class="k">Local team</span><span class="v mono">21 specialists</span></div>
+      <div class="why-fig"><span class="k">Certification</span><span class="v mono">ISO 9001 / 14001</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap reveal">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>Next step</span>
+      <h2>Request a site assessment.</h2>
+      <p>Send a few details about the site and consumption. You'll get a sizing estimate back — not a sales pitch.</p>
+      <div class="cta-contact">
+        <div><b>Hiieko Romania SRL</b></div>
+        <div>Bd. Theodor Pallady 51N, Sector 3, Bucharest</div>
+        <div>[[ RO contact email ]] · [[ RO phone ]]</div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault();">
+      <div class="form-row">
+        <div><label for="nume">Name</label><input id="nume" type="text" required></div>
+        <div><label for="companie">Company</label><input id="companie" type="text" required></div>
+      </div>
+      <div class="form-row">
+        <div><label for="email">Email</label><input id="email" type="email" required></div>
+        <div><label for="tel">Phone</label><input id="tel" type="tel"></div>
+      </div>
+      <div>
+        <label for="tip">Project type</label>
+        <select id="tip">
+          <option>Rooftop solar</option>
+          <option>Ground-mount solar park</option>
+          <option>Battery storage (BESS)</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div>
+        <label for="mesaj">Site details (area, approximate monthly consumption)</label>
+        <textarea id="mesaj"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="justify-self:start;">Send request →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-col">
+      <h4>Hiieko Romania</h4>
+      <div>Bd. Theodor Pallady 51N</div>
+      <div>Sector 3, Bucharest</div>
+      <div>[[ email ]] · [[ phone ]]</div>
+    </div>
+    <div class="foot-col">
+      <h4>Group</h4>
+      <div>AS Hiieko — Tallinn, Estonia</div>
+      <div>hiieko.ee</div>
+    </div>
+    <div class="foot-col">
+      <h4>Legal</h4>
+      <div>CIF 42849908</div>
+      <div>Privacy Policy</div>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 Hiieko Romania SRL</span>
+    <span>Part of the AS Hiieko group, founded 1994</span>
+  </div>
+</footer>
+
+<script>
+  // background grid parallax — very subtle drift, skipped if reduced motion
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const bgGrid = document.getElementById('bgGrid');
+    const bgTrace = document.getElementById('bgTrace');
+    window.addEventListener('scroll', ()=>{
+      const y = window.scrollY;
+      if(bgGrid) bgGrid.style.transform = `translateY(${y*0.04}px)`;
+      if(bgTrace) bgTrace.style.transform = `translateY(${y*0.08}px)`;
+    }, {passive:true});
+  }
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  // count-up for data-count elements
+  function countUp(el, target, duration=900){
+    const start = performance.now();
+    function tick(now){
+      const p = Math.min((now-start)/duration, 1);
+      el.textContent = Math.round(p*target);
+      if(p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const target = parseInt(el.dataset.count,10);
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ countUp(el,target); obs.unobserve(el); }
+      });
+    }, {threshold:0.6});
+    obs.observe(el);
+  });
+
+  // ROI calculator — illustrative coefficients, see on-page note
+  function runCalc(){
+    const consumption = parseFloat(document.getElementById('consumption').value) || 0; // kWh/month
+    const area = parseFloat(document.getElementById('area').value) || 0;               // m²
+    const capacity = area/5;              // 5 m² per kWp incl. spacing
+    const panelWp = 450;
+    const panels = Math.round(capacity*1000/panelWp);
+    const yieldPerKwp = 1150;             // kWh/kWp/yr, illustrative RO average
+    const genMwh = capacity*yieldPerKwp/1000;
+    const monthlyGenKwh = (capacity*yieldPerKwp)/12;
+    const monthlySelfConsumed = Math.min(monthlyGenKwh, consumption); // surplus above consumption isn't paid back here
+    const price = 0.18;                   // EUR/kWh, illustrative
+    const monthlySavings = monthlySelfConsumed*price;
+    const costPerKwp = 700;               // EUR/kWp, illustrative
+    const totalCost = capacity*costPerKwp;
+    const annualSavings = monthlySavings*12;
+    const payback = annualSavings>0 ? totalCost/annualSavings : 0;
+
+    countUp(document.getElementById('out-panels'), panels, 700);
+    countUp(document.getElementById('out-capacity'), Math.round(capacity), 700);
+    countUp(document.getElementById('out-gen'), Math.round(genMwh), 700);
+    countUp(document.getElementById('out-savings'), Math.round(monthlySavings), 700);
+    document.getElementById('out-payback').textContent = payback.toFixed(1);
+  }
+  runCalc();
+
+  // project filters
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projCards = document.querySelectorAll('.proj-card');
+  filterBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      filterBtns.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.f;
+      projCards.forEach(card=>{
+        const show = f==='all' || card.dataset.cat===f;
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
