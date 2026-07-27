@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+
+interface Props {
+  filterable?: boolean;
+  limit?: number;
+}
+const { filterable = false, limit } = Astro.props;
+
+let projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+if (limit) projects = projects.slice(0, limit);
+
+const filters = [
+  { f: 'all', label: 'All' },
+  { f: 'rooftop', label: 'Rooftop' },
+  { f: 'ground-mount', label: 'Ground-mount' },
+  { f: 'bess', label: 'BESS' },
+];
+---
+
+<div>
+  {
+    filterable && (
+      <div class="flex gap-2.5 mb-9 flex-wrap">
+        {filters.map((item, i) => (
+          <button
+            type="button"
+            class:list={[
+              'filter-btn bg-transparent border border-line text-muted px-4 py-[9px] text-xs font-mono uppercase',
+              i === 0 && 'active border-neon! text-neon!',
+            ]}
+            data-f={item.f}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+    )
+  }
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[22px]" id="proj-grid">
+    {
+      projects.map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          category={project.data.category}
+          location={project.data.location}
+          specLabel={project.data.specLabel}
+          specValue={project.data.specValue}
+          isPlaceholder={project.data.isPlaceholder}
+        />
+      ))
+    }
+  </div>
+</div>
+
+{
+  filterable && (
+    <script>
+      const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+      const projCards = document.querySelectorAll<HTMLElement>('#proj-grid [data-cat]');
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach((b) => {
+            b.classList.remove('active', 'border-neon!', 'text-neon!');
+          });
+          btn.classList.add('active', 'border-neon!', 'text-neon!');
+          const f = btn.dataset.f;
+          projCards.forEach((card) => {
+            const show = f === 'all' || card.dataset.cat === f;
+            card.style.display = show ? '' : 'none';
+          });
+        });
+      });
+    </script>
+  )
+}

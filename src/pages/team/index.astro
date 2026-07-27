@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Eyebrow from '../../components/Eyebrow.astro';
+import TeamCard from '../../components/TeamCard.astro';
+
+const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Team — Hiieko Romania"
+  description="The Romanian team behind Hiieko's industrial solar and storage installations."
+>
+  <section class="py-[100px]">
+    <div class="wrap reveal">
+      <div class="max-w-[640px] mb-[52px]">
+        <Eyebrow text="Our team" />
+        <h1 class="text-[clamp(30px,3.6vw,44px)] mt-2.5 mb-3.5">
+          21 specialists, one accountable team.
+        </h1>
+        <p class="text-muted text-[15.5px]">
+          The people who design, install, and maintain every system after handover. Entries marked
+          PLACEHOLDER are examples pending real profiles.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[22px]">
+        {
+          team.map((member) => (
+            <TeamCard
+              name={member.data.name}
+              role={member.data.role}
+              bio={member.data.bio}
+              isPlaceholder={member.data.isPlaceholder}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

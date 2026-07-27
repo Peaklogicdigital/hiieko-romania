@@ -1,0 +1,17 @@
+---
+import StatBlock from './StatBlock.astro';
+---
+
+<div class="bg-bg-2 border-t border-b border-line">
+  <div class="wrap grid grid-cols-2 md:grid-cols-4 gap-y-[22px] py-[26px] px-[28px]">
+    <StatBlock value="1994" label="Hiieko Group founded, Estonia" />
+    <StatBlock value="[[X]] MWp" label="Installed capacity — to confirm" />
+    <StatBlock value="0" countTo={21} label="Specialists at Hiieko Romania" />
+    <StatBlock value="ISO 9001·14001" label="Certified management systems" />
+  </div>
+</div>
+
+<script>
+  import { initCountUpStats } from '../scripts/countUp';
+  initCountUpStats();
+</script>

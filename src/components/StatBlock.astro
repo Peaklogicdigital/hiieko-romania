@@ -1,0 +1,15 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  countTo?: number;
+}
+const { value, label, countTo } = Astro.props;
+---
+
+<div class="px-[22px] first:pl-0 first:border-l-0 border-l border-line">
+  <div class="font-mono text-neon text-[22px] font-semibold" data-count={countTo}>
+    {countTo !== undefined ? '0' : value}
+  </div>
+  <div class="text-muted text-[12.5px] mt-1">{label}</div>
+</div>

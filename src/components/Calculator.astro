@@ -1,0 +1,119 @@
+---
+import Eyebrow from './Eyebrow.astro';
+---
+
+<section id="calculator" class="py-[100px] reveal">
+  <div class="wrap">
+    <div class="max-w-[640px] mb-[52px]">
+      <Eyebrow text="Estimate your system" />
+      <h2 class="text-[clamp(26px,3vw,36px)] mt-2.5 mb-3.5">
+        See what your roof or land could generate.
+      </h2>
+      <p class="text-muted text-[15.5px]">
+        A rough sizing estimate — not a quote. A real number needs a site assessment.
+      </p>
+    </div>
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-[0.85fr_1.15fr] border border-line rounded-md overflow-hidden"
+    >
+      <div class="bg-bg-2 p-10">
+        <label
+          for="consumption"
+          class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-2.5"
+        >
+          Current monthly consumption (kWh)
+        </label>
+        <input
+          type="number"
+          id="consumption"
+          value="8000"
+          min="0"
+          step="100"
+          class="w-full bg-bg border border-line text-text px-4 py-3.5 font-mono text-[22px] rounded-[3px] mb-[22px] focus:outline-2 focus:outline-neon focus:border-neon"
+        />
+        <label
+          for="area"
+          class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-2.5"
+        >
+          Available area (m²)
+        </label>
+        <input
+          type="number"
+          id="area"
+          value="1000"
+          min="50"
+          step="50"
+          class="w-full bg-bg border border-line text-text px-4 py-3.5 font-mono text-[22px] rounded-[3px] mb-[22px] focus:outline-2 focus:outline-neon focus:border-neon"
+        />
+        <button id="calc-run" type="button" class="btn btn-primary w-full">Calculate →</button>
+      </div>
+
+      <div class="p-10 grid grid-cols-2 md:grid-cols-3 gap-[26px] content-start">
+        <div>
+          <div class="font-mono text-[30px] font-semibold text-neon" id="out-panels">—</div>
+          <div class="text-[13px] text-muted mt-1">Panels needed</div>
+        </div>
+        <div>
+          <div class="font-mono text-[30px] font-semibold text-neon" id="out-capacity">—</div>
+          <div class="text-[13px] text-muted mt-1">System capacity (kWp)</div>
+        </div>
+        <div>
+          <div class="font-mono text-[30px] font-semibold text-neon" id="out-gen">—</div>
+          <div class="text-[13px] text-muted mt-1">Est. annual generation (MWh/yr)</div>
+        </div>
+        <div>
+          <div class="font-mono text-[30px] font-semibold text-neon" id="out-savings">—</div>
+          <div class="text-[13px] text-muted mt-1">Est. monthly bill savings (€)</div>
+        </div>
+        <div>
+          <div class="font-mono text-[30px] font-semibold text-neon" id="out-payback">—</div>
+          <div class="text-[13px] text-muted mt-1">Est. payback period (years)</div>
+        </div>
+        <div
+          class="col-span-2 md:col-span-3 font-mono text-[11.5px] text-muted border-t border-line pt-[18px] mt-1.5 leading-[1.6]"
+        >
+          ILLUSTRATIVE ASSUMPTIONS — replace with real coefficients from the engineering team
+          before this goes live: 5 m²/kWp · 450 Wp/panel · 1150 kWh/kWp/yr regional yield · €700/kWp
+          install cost · €0.18/kWh commercial price. Savings assume solar output offsets
+          consumption first; any surplus generation is treated as exported, not paid out. Output is
+          a rough estimate, not a quote.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { countUp } from '../scripts/countUp';
+
+  function runCalc(): void {
+    const consumptionEl = document.getElementById('consumption') as HTMLInputElement;
+    const areaEl = document.getElementById('area') as HTMLInputElement;
+    const consumption = parseFloat(consumptionEl.value) || 0; // kWh/month
+    const area = parseFloat(areaEl.value) || 0; // m²
+
+    const capacity = area / 5; // 5 m² per kWp incl. spacing
+    const panelWp = 450;
+    const panels = Math.round((capacity * 1000) / panelWp);
+    const yieldPerKwp = 1150; // kWh/kWp/yr, illustrative RO average
+    const genMwh = (capacity * yieldPerKwp) / 1000;
+    const monthlyGenKwh = (capacity * yieldPerKwp) / 12;
+    const monthlySelfConsumed = Math.min(monthlyGenKwh, consumption); // surplus above consumption isn't paid back here
+    const price = 0.18; // EUR/kWh, illustrative
+    const monthlySavings = monthlySelfConsumed * price;
+    const costPerKwp = 700; // EUR/kWp, illustrative
+    const totalCost = capacity * costPerKwp;
+    const annualSavings = monthlySavings * 12;
+    const payback = annualSavings > 0 ? totalCost / annualSavings : 0;
+
+    countUp(document.getElementById('out-panels')!, panels, 700);
+    countUp(document.getElementById('out-capacity')!, Math.round(capacity), 700);
+    countUp(document.getElementById('out-gen')!, Math.round(genMwh), 700);
+    countUp(document.getElementById('out-savings')!, Math.round(monthlySavings), 700);
+    document.getElementById('out-payback')!.textContent = payback.toFixed(1);
+  }
+
+  document.getElementById('calc-run')?.addEventListener('click', runCalc);
+  runCalc();
+</script>

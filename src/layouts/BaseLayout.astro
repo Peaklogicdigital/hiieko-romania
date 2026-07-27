@@ -1,0 +1,41 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import BackgroundLayer from '../components/BackgroundLayer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const {
+  title,
+  description = 'Hiieko Romania — industrial rooftop and ground-mount solar plus battery storage, designed, installed, and maintained under one contract.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="m-0 relative">
+    <BackgroundLayer />
+    <Nav />
+    <main class="relative z-10">
+      <slot />
+    </main>
+    <div class="relative z-10">
+      <Footer />
+    </div>
+
+    <script>
+      import { initReveal } from '../scripts/reveal';
+      initReveal();
+    </script>
+  </body>
+</html>
