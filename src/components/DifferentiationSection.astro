@@ -1,0 +1,70 @@
+---
+import Eyebrow from './Eyebrow.astro';
+
+const steps = [
+  {
+    n: '01 / DESIGN',
+    title: 'Site assessment & sizing',
+    body: 'We size the system to your real consumption and structure, not a generic package.',
+  },
+  {
+    n: '02 / INSTALL',
+    title: 'Installation & commissioning',
+    body: 'Our own crews, not subcontracted labor — installed to ANRE grid-connection requirements.',
+  },
+  {
+    n: '03 / GUARANTEE',
+    title: 'Workmanship guarantee',
+    body: '[[ guarantee terms — years / scope, confirm with team ]] on every installation we complete.',
+  },
+  {
+    n: '04 / MAINTAIN',
+    title: 'Ongoing maintenance',
+    body: 'Scheduled service and monitoring after handover — the system stays our responsibility.',
+  },
+];
+---
+
+<section class="py-[100px] reveal">
+  <div class="wrap">
+    <div class="max-w-[640px] mb-[52px]">
+      <Eyebrow text="How we work" />
+      <h2 class="text-[clamp(26px,3vw,36px)] mt-2.5 mb-3.5">
+        We're the contractor who stays after commissioning.
+      </h2>
+      <p class="text-muted text-[15.5px]">
+        Most solar installers in Romania sell equipment and move on. Hiieko Romania designs,
+        builds, and maintains every system under one contract — with a workmanship guarantee and
+        a maintenance plan that starts the day the system goes live.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-y-[26px] md:gap-y-0 border-t border-line">
+      {
+        // desktop: border-right on all but the last; mobile (2 cols): border-right
+        // dropped on the last item of each row (index 1 and 3)
+        steps.map((step, i) => {
+          const borderClasses = [0, 2].includes(i)
+            ? 'border-r border-line'
+            : i === 1
+              ? 'md:border-r md:border-line'
+              : '';
+          return (
+            <div class:list={['pt-[30px] pr-[26px] pb-0', borderClasses]}>
+              <span class="font-mono text-volt text-[12.5px] font-semibold mb-3 block">
+                {step.n}
+              </span>
+              <h3 class="text-[16.5px] mb-2">{step.title}</h3>
+              <p class="text-[13.5px] text-muted max-w-[30ch]">{step.body}</p>
+            </div>
+          );
+        })
+      }
+    </div>
+    <div
+      class="mt-[46px] py-6 px-7 bg-bg-2 border border-neon-dim border-l-[3px] border-l-neon text-[15.5px] text-text rounded-[2px]"
+    >
+      We don't resell panels and batteries — we deliver the full engineering-to-maintenance
+      lifecycle, under one contract, with one team accountable for the result.
+    </div>
+  </div>
+</section>

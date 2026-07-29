@@ -1,0 +1,21 @@
+---
+interface Props {
+  tagNumber: string;
+  title: string;
+  summary: string;
+  href?: string;
+}
+const { tagNumber, title, summary, href } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag
+  href={href}
+  class="bg-bg-2 hover:bg-bg-3 p-[34px_28px] px-7 py-[34px] min-h-[220px] flex flex-col justify-between transition-colors no-underline"
+>
+  <div>
+    <span class="font-mono text-[11px] text-neon tracking-[0.08em] uppercase">{tagNumber}</span>
+    <h3 class="text-[19px] my-3.5">{title}</h3>
+    <p class="text-sm text-muted m-0">{summary}</p>
+  </div>
+</Tag>

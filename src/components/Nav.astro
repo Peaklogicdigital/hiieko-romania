@@ -1,0 +1,40 @@
+---
+const links = [
+  { href: '/solutions/', label: 'Solutions' },
+  { href: '/#calculator', label: 'Calculator' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/about/', label: 'About' },
+  { href: '/team/', label: 'Team' },
+  { href: '/contact/', label: 'Contact' },
+];
+---
+
+<nav
+  class="sticky top-0 z-50 bg-bg/90 backdrop-blur-[8px] border-b border-line"
+>
+  <div class="wrap flex items-center justify-between h-[72px]">
+    <a href="/" class="font-display font-extrabold text-[19px] flex gap-2 no-underline">
+      HIIEKO<span class="text-neon">·</span>RO
+    </a>
+    <div class="hidden md:flex items-center gap-[30px]">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="text-muted no-underline text-sm font-medium hover:text-text"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+    <div class="flex items-center gap-[22px]">
+      <div class="font-mono text-xs text-muted flex gap-1.5">
+        <b class="text-neon">EN</b><span>/</span><span>RO</span>
+      </div>
+      <a href="/contact/" class="btn btn-ghost px-[18px] py-[10px] hidden sm:inline-block">
+        Get a site assessment
+      </a>
+    </div>
+  </div>
+</nav>

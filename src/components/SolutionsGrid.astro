@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import SolutionCard from './SolutionCard.astro';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-line">
+  {
+    services.map((service) => (
+      <SolutionCard
+        tagNumber={service.data.tagNumber}
+        title={service.data.title}
+        summary={service.data.summary}
+        href={`/solutions/${service.id}/`}
+      />
+    ))
+  }
+</div>
