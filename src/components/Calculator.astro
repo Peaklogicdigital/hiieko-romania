@@ -33,6 +33,20 @@ import Eyebrow from './Eyebrow.astro';
           step="100"
           class="w-full bg-bg border border-line text-text px-4 py-3.5 font-mono text-[22px] rounded-[3px] mb-[22px] focus:outline-2 focus:outline-neon focus:border-neon"
         />
+        <label
+          for="area"
+          class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-2.5"
+        >
+          Available area (m²)
+        </label>
+        <input
+          type="number"
+          id="area"
+          value="1000"
+          min="50"
+          step="50"
+          class="w-full bg-bg border border-line text-text px-4 py-3.5 font-mono text-[22px] rounded-[3px] mb-[22px] focus:outline-2 focus:outline-neon focus:border-neon"
+        />
         <button id="calc-run" type="button" class="btn btn-primary w-full">Calculate →</button>
       </div>
 
@@ -46,8 +60,8 @@ import Eyebrow from './Eyebrow.astro';
           <div class="text-[13px] text-muted mt-1">Est. annual generation (MWh/yr)</div>
         </div>
         <div>
-          <div class="font-mono text-[30px] font-semibold text-neon" id="out-space">—</div>
-          <div class="text-[13px] text-muted mt-1">Space required (m²)</div>
+          <div class="font-mono text-[30px] font-semibold text-neon" id="out-minarea">—</div>
+          <div class="text-[13px] text-muted mt-1">Min. area to cover your usage (m²)</div>
         </div>
         <div>
           <div class="font-mono text-[30px] font-semibold text-neon" id="out-payback">—</div>
@@ -57,47 +71,118 @@ import Eyebrow from './Eyebrow.astro';
           <div class="font-mono text-[30px] font-semibold text-neon" id="out-roi">—</div>
           <div class="text-[13px] text-muted mt-1">ROI (%)</div>
         </div>
+
+        <div
+          id="area-warning"
+          class="hidden col-span-2 md:col-span-3 bg-bg-2 border border-[rgba(91,141,239,0.3)] border-l-[3px] border-l-volt rounded-[2px] p-4 text-[13.5px] text-muted"
+        >
+        </div>
+
         <div
           class="col-span-2 md:col-span-3 font-mono text-[11.5px] text-muted border-t border-line pt-[18px] mt-1.5 leading-[1.6]"
         >
-          System sized to offset your annual consumption, assuming 1200 kWh/kWp/yr yield,
-          €410/kWp install cost, and €0.18/kWh electricity price. Space required assumes 4.3
-          m²/kWp. A rough estimate, not a quote — a real number needs a site assessment.
+          System sized to offset your annual consumption, assuming 1200 kWh/kWp/yr yield and 4.3
+          m²/kWp. Install cost is tiered by system size — €480/kWp under 20 kWp, €450/kWp from
+          20–50 kWp, €430/kWp from 50–100 kWp, €410/kWp from 100–250 kWp, €390/kWp above 250 kWp.
+          Savings assume 90% self-consumption at €0.18/kWh, capped at your annual consumption. A
+          rough estimate, not a quote — a real number needs a site assessment.
         </div>
       </div>
     </div>
+  </div>
+
+  <div
+    id="calc-toast"
+    role="status"
+    aria-live="polite"
+    class="hidden fixed bottom-4 right-4 left-4 sm:left-auto sm:w-[360px] z-50 bg-bg-2 border border-neon-dim border-l-[3px] border-l-neon rounded-[2px] p-4 shadow-lg opacity-0 translate-y-2 transition-all duration-300 ease-out motion-reduce:transition-none"
+  >
+    <div class="flex items-start justify-between gap-3">
+      <p class="text-sm text-text pr-2 m-0">Talk with sales for a site assessment and real values.</p>
+      <button
+        id="calc-toast-close"
+        type="button"
+        aria-label="Dismiss"
+        class="text-muted hover:text-text text-lg leading-none bg-transparent border-none cursor-pointer p-0"
+      >
+        ×
+      </button>
+    </div>
+    <a href="#contact" class="btn btn-primary px-4 py-2 mt-3 inline-block text-center w-full">
+      Contact sales →
+    </a>
   </div>
 </section>
 
 <script>
   import { countUp } from '../scripts/countUp';
 
+  function tieredCostPerKwp(capacity: number): number {
+    if (capacity < 20) return 480;
+    if (capacity < 50) return 450;
+    if (capacity < 100) return 430;
+    if (capacity <= 250) return 410;
+    return 390;
+  }
+
+  function showToast(): void {
+    const toast = document.getElementById('calc-toast') as HTMLElement;
+    toast.classList.remove('hidden');
+    toast.classList.add('opacity-0', 'translate-y-2');
+    // force a reflow so the entrance transition restarts on every click
+    void toast.offsetWidth;
+    requestAnimationFrame(() => {
+      toast.classList.remove('opacity-0', 'translate-y-2');
+    });
+  }
+
+  document.getElementById('calc-toast-close')?.addEventListener('click', () => {
+    document.getElementById('calc-toast')!.classList.add('hidden');
+  });
+
   function runCalc(): void {
     const consumptionEl = document.getElementById('consumption') as HTMLInputElement;
+    const areaEl = document.getElementById('area') as HTMLInputElement;
     const consumption = parseFloat(consumptionEl.value) || 0; // kWh/month
+    const area = parseFloat(areaEl.value) || 0; // m²
 
-    const yieldPerKwp = 1200; // kWh/kWp/yr
-    const annualConsumption = consumption * 12;
-    const capacity = annualConsumption / yieldPerKwp; // kWp, sized to ~fully offset consumption
-    const annualGeneration = capacity * yieldPerKwp; // kWh/yr
-    const spaceRequired = capacity * 4.3; // m², informational only
-    const costPerKwp = 410; // EUR/kWp
+    const capacity = area / 4.3; // 4.3 m² per kWp
+    const costPerKwp = tieredCostPerKwp(capacity);
     const investment = capacity * costPerKwp;
+    const yieldPerKwp = 1200; // kWh/kWp/yr
+    const annualGeneration = capacity * yieldPerKwp;
+    const annualConsumption = consumption * 12;
     const price = 0.18; // EUR/kWh
-    // Math.min is a defensive clamp: under this sizing model generation is
-    // set equal to consumption, so this always evaluates to annualConsumption —
-    // kept in case the sizing assumption changes later.
-    const annualSavings = Math.min(annualGeneration, annualConsumption) * price;
+    const usefulGeneration = Math.min(annualGeneration, annualConsumption);
+    const annualSavings = usefulGeneration * 0.9 * price;
     const payback = annualSavings > 0 ? investment / annualSavings : 0;
     const roi = investment > 0 ? (annualSavings / investment) * 100 : 0;
 
+    // Independent benchmark — how much area would be needed to fully cover
+    // consumption. Never feeds back into capacity/investment above; it's a
+    // sanity-check comparison against the user's actual area input only.
+    const capacityNeededForFullCoverage = annualConsumption / yieldPerKwp;
+    const minAreaNeeded = capacityNeededForFullCoverage * 4.3;
+
     countUp(document.getElementById('out-capacity')!, Math.round(capacity), 700);
     countUp(document.getElementById('out-gen')!, Math.round(annualGeneration / 1000), 700);
-    countUp(document.getElementById('out-space')!, Math.round(spaceRequired), 700);
+    countUp(document.getElementById('out-minarea')!, Math.round(minAreaNeeded), 700);
     document.getElementById('out-payback')!.textContent = payback.toFixed(1);
     document.getElementById('out-roi')!.textContent = roi.toFixed(1);
+
+    const warning = document.getElementById('area-warning') as HTMLElement;
+    if (area < minAreaNeeded && minAreaNeeded > 0) {
+      const coveragePct = Math.round((area / minAreaNeeded) * 100);
+      warning.textContent = `Your available space (${Math.round(area)} m²) covers only ${coveragePct}% of your usage. ${Math.round(minAreaNeeded)} m² would fully offset your consumption.`;
+      warning.classList.remove('hidden');
+    } else {
+      warning.classList.add('hidden');
+    }
   }
 
-  document.getElementById('calc-run')?.addEventListener('click', runCalc);
+  document.getElementById('calc-run')?.addEventListener('click', () => {
+    runCalc();
+    showToast();
+  });
   runCalc();
 </script>
