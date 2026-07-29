@@ -7,10 +7,11 @@ import Eyebrow from './Eyebrow.astro';
     <div class="max-w-[640px] mb-[52px]">
       <Eyebrow text="Estimate your system" />
       <h2 class="text-[clamp(26px,3vw,36px)] mt-2.5 mb-3.5">
-        See what your roof or land could generate.
+        See what your electricity bill could fund.
       </h2>
       <p class="text-muted text-[15.5px]">
-        A rough sizing estimate — not a quote. A real number needs a site assessment.
+        Enter your monthly usage — this estimates system size, payback, and ROI. Not a quote; a
+        real number needs a site assessment.
       </p>
     </div>
 
@@ -32,24 +33,10 @@ import Eyebrow from './Eyebrow.astro';
           step="100"
           class="w-full bg-bg border border-line text-text px-4 py-3.5 font-mono text-[22px] rounded-[3px] mb-[22px] focus:outline-2 focus:outline-neon focus:border-neon"
         />
-        <label
-          for="area"
-          class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-2.5"
-        >
-          Available area (m²)
-        </label>
-        <input
-          type="number"
-          id="area"
-          value="1000"
-          min="50"
-          step="50"
-          class="w-full bg-bg border border-line text-text px-4 py-3.5 font-mono text-[22px] rounded-[3px] mb-[22px] focus:outline-2 focus:outline-neon focus:border-neon"
-        />
         <button id="calc-run" type="button" class="btn btn-primary w-full">Calculate →</button>
       </div>
 
-      <div class="p-10 grid grid-cols-2 md:grid-cols-4 gap-[26px] content-start">
+      <div class="p-10 grid grid-cols-2 md:grid-cols-3 gap-[26px] content-start">
         <div>
           <div class="font-mono text-[30px] font-semibold text-neon" id="out-capacity">—</div>
           <div class="text-[13px] text-muted mt-1">System capacity (kWp)</div>
@@ -59,20 +46,23 @@ import Eyebrow from './Eyebrow.astro';
           <div class="text-[13px] text-muted mt-1">Est. annual generation (MWh/yr)</div>
         </div>
         <div>
-          <div class="font-mono text-[30px] font-semibold text-neon" id="out-savings">—</div>
-          <div class="text-[13px] text-muted mt-1">Est. monthly bill savings (€)</div>
+          <div class="font-mono text-[30px] font-semibold text-neon" id="out-space">—</div>
+          <div class="text-[13px] text-muted mt-1">Space required (m²)</div>
         </div>
         <div>
           <div class="font-mono text-[30px] font-semibold text-neon" id="out-payback">—</div>
           <div class="text-[13px] text-muted mt-1">Est. payback period (years)</div>
         </div>
+        <div>
+          <div class="font-mono text-[30px] font-semibold text-neon" id="out-roi">—</div>
+          <div class="text-[13px] text-muted mt-1">ROI (%)</div>
+        </div>
         <div
-          class="col-span-2 md:col-span-4 font-mono text-[11.5px] text-muted border-t border-line pt-[18px] mt-1.5 leading-[1.6]"
+          class="col-span-2 md:col-span-3 font-mono text-[11.5px] text-muted border-t border-line pt-[18px] mt-1.5 leading-[1.6]"
         >
-          Estimate based on typical project figures — a firm quote requires a site assessment.
-          Figures used: 4.3 m²/kWp · 1288 kWh/kWp/yr regional yield · €410/kWp install cost ·
-          €0.18/kWh commercial price. Savings assume solar output offsets consumption first; any
-          surplus generation is treated as exported, not paid out.
+          System sized to offset your annual consumption, assuming 1200 kWh/kWp/yr yield,
+          €410/kWp install cost, and €0.18/kWh electricity price. Space required assumes 4.3
+          m²/kWp. A rough estimate, not a quote — a real number needs a site assessment.
         </div>
       </div>
     </div>
@@ -84,26 +74,28 @@ import Eyebrow from './Eyebrow.astro';
 
   function runCalc(): void {
     const consumptionEl = document.getElementById('consumption') as HTMLInputElement;
-    const areaEl = document.getElementById('area') as HTMLInputElement;
     const consumption = parseFloat(consumptionEl.value) || 0; // kWh/month
-    const area = parseFloat(areaEl.value) || 0; // m²
 
-    const capacity = area / 4.3; // 4.3 m² per kWp incl. spacing
-    const yieldPerKwp = 1288; // kWh/kWp/yr, confirmed RO average
-    const genMwh = (capacity * yieldPerKwp) / 1000;
-    const monthlyGenKwh = (capacity * yieldPerKwp) / 12;
-    const monthlySelfConsumed = Math.min(monthlyGenKwh, consumption); // surplus above consumption isn't paid back here
+    const yieldPerKwp = 1200; // kWh/kWp/yr
+    const annualConsumption = consumption * 12;
+    const capacity = annualConsumption / yieldPerKwp; // kWp, sized to ~fully offset consumption
+    const annualGeneration = capacity * yieldPerKwp; // kWh/yr
+    const spaceRequired = capacity * 4.3; // m², informational only
+    const costPerKwp = 410; // EUR/kWp
+    const investment = capacity * costPerKwp;
     const price = 0.18; // EUR/kWh
-    const monthlySavings = monthlySelfConsumed * price;
-    const costPerKwp = 410; // EUR/kWp, confirmed install cost
-    const totalCost = capacity * costPerKwp;
-    const annualSavings = monthlySavings * 12;
-    const payback = annualSavings > 0 ? totalCost / annualSavings : 0;
+    // Math.min is a defensive clamp: under this sizing model generation is
+    // set equal to consumption, so this always evaluates to annualConsumption —
+    // kept in case the sizing assumption changes later.
+    const annualSavings = Math.min(annualGeneration, annualConsumption) * price;
+    const payback = annualSavings > 0 ? investment / annualSavings : 0;
+    const roi = investment > 0 ? (annualSavings / investment) * 100 : 0;
 
     countUp(document.getElementById('out-capacity')!, Math.round(capacity), 700);
-    countUp(document.getElementById('out-gen')!, Math.round(genMwh), 700);
-    countUp(document.getElementById('out-savings')!, Math.round(monthlySavings), 700);
+    countUp(document.getElementById('out-gen')!, Math.round(annualGeneration / 1000), 700);
+    countUp(document.getElementById('out-space')!, Math.round(spaceRequired), 700);
     document.getElementById('out-payback')!.textContent = payback.toFixed(1);
+    document.getElementById('out-roi')!.textContent = roi.toFixed(1);
   }
 
   document.getElementById('calc-run')?.addEventListener('click', runCalc);
