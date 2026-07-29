@@ -6,11 +6,17 @@ import BackgroundLayer from '../components/BackgroundLayer.astro';
 
 interface Props {
   title: string;
-  description?: string;
+  description: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogType?: 'website' | 'article' | 'profile';
 }
 const {
   title,
-  description = 'Hiieko Romania — industrial rooftop and ground-mount solar plus battery storage, designed, installed, and maintained under one contract.',
+  description,
+  ogTitle = title,
+  ogDescription = description,
+  ogType = 'website',
 } = Astro.props;
 ---
 
@@ -20,6 +26,9 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:type" content={ogType} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
