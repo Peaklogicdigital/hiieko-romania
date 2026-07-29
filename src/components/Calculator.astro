@@ -49,11 +49,7 @@ import Eyebrow from './Eyebrow.astro';
         <button id="calc-run" type="button" class="btn btn-primary w-full">Calculate →</button>
       </div>
 
-      <div class="p-10 grid grid-cols-2 md:grid-cols-3 gap-[26px] content-start">
-        <div>
-          <div class="font-mono text-[30px] font-semibold text-neon" id="out-panels">—</div>
-          <div class="text-[13px] text-muted mt-1">Panels needed</div>
-        </div>
+      <div class="p-10 grid grid-cols-2 md:grid-cols-4 gap-[26px] content-start">
         <div>
           <div class="font-mono text-[30px] font-semibold text-neon" id="out-capacity">—</div>
           <div class="text-[13px] text-muted mt-1">System capacity (kWp)</div>
@@ -71,13 +67,12 @@ import Eyebrow from './Eyebrow.astro';
           <div class="text-[13px] text-muted mt-1">Est. payback period (years)</div>
         </div>
         <div
-          class="col-span-2 md:col-span-3 font-mono text-[11.5px] text-muted border-t border-line pt-[18px] mt-1.5 leading-[1.6]"
+          class="col-span-2 md:col-span-4 font-mono text-[11.5px] text-muted border-t border-line pt-[18px] mt-1.5 leading-[1.6]"
         >
-          ILLUSTRATIVE ASSUMPTIONS — replace with real coefficients from the engineering team
-          before this goes live: 5 m²/kWp · 450 Wp/panel · 1150 kWh/kWp/yr regional yield · €700/kWp
-          install cost · €0.18/kWh commercial price. Savings assume solar output offsets
-          consumption first; any surplus generation is treated as exported, not paid out. Output is
-          a rough estimate, not a quote.
+          Estimate based on typical project figures — a firm quote requires a site assessment.
+          Figures used: 4.3 m²/kWp · 1288 kWh/kWp/yr regional yield · €410/kWp install cost ·
+          €0.18/kWh commercial price. Savings assume solar output offsets consumption first; any
+          surplus generation is treated as exported, not paid out.
         </div>
       </div>
     </div>
@@ -93,21 +88,18 @@ import Eyebrow from './Eyebrow.astro';
     const consumption = parseFloat(consumptionEl.value) || 0; // kWh/month
     const area = parseFloat(areaEl.value) || 0; // m²
 
-    const capacity = area / 5; // 5 m² per kWp incl. spacing
-    const panelWp = 450;
-    const panels = Math.round((capacity * 1000) / panelWp);
-    const yieldPerKwp = 1150; // kWh/kWp/yr, illustrative RO average
+    const capacity = area / 4.3; // 4.3 m² per kWp incl. spacing
+    const yieldPerKwp = 1288; // kWh/kWp/yr, confirmed RO average
     const genMwh = (capacity * yieldPerKwp) / 1000;
     const monthlyGenKwh = (capacity * yieldPerKwp) / 12;
     const monthlySelfConsumed = Math.min(monthlyGenKwh, consumption); // surplus above consumption isn't paid back here
-    const price = 0.18; // EUR/kWh, illustrative
+    const price = 0.18; // EUR/kWh
     const monthlySavings = monthlySelfConsumed * price;
-    const costPerKwp = 700; // EUR/kWp, illustrative
+    const costPerKwp = 410; // EUR/kWp, confirmed install cost
     const totalCost = capacity * costPerKwp;
     const annualSavings = monthlySavings * 12;
     const payback = annualSavings > 0 ? totalCost / annualSavings : 0;
 
-    countUp(document.getElementById('out-panels')!, panels, 700);
     countUp(document.getElementById('out-capacity')!, Math.round(capacity), 700);
     countUp(document.getElementById('out-gen')!, Math.round(genMwh), 700);
     countUp(document.getElementById('out-savings')!, Math.round(monthlySavings), 700);

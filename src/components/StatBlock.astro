@@ -7,7 +7,7 @@ interface Props {
 const { value, label, countTo } = Astro.props;
 ---
 
-<div class="px-[22px] first:pl-0 first:border-l-0 border-l border-line">
+<div class="md:px-[22px] md:border-l md:border-line md:first:pl-0 md:first:border-l-0">
   <div class="font-mono text-neon text-[22px] font-semibold" data-count={countTo}>
     {countTo !== undefined ? '0' : value}
   </div>
