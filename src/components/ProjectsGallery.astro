@@ -1,22 +1,32 @@
 ---
 import { getCollection } from 'astro:content';
 import ProjectCard from './ProjectCard.astro';
+import type { Lang } from '../i18n/ui';
+import { defaultLang, getTranslations } from '../i18n/ui';
 
 interface Props {
   filterable?: boolean;
   limit?: number;
+  lang?: Lang;
 }
-const { filterable = false, limit } = Astro.props;
+const { filterable = false, limit, lang = defaultLang } = Astro.props;
+const t = getTranslations(lang);
 
 let projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 if (limit) projects = projects.slice(0, limit);
 
 const filters = [
-  { f: 'all', label: 'All' },
-  { f: 'rooftop', label: 'Rooftop' },
-  { f: 'ground-mount', label: 'Ground-mount' },
-  { f: 'bess', label: 'BESS' },
+  { f: 'all', label: t.projectsFilters.all },
+  { f: 'rooftop', label: t.projectsFilters.rooftop },
+  { f: 'ground-mount', label: t.projectsFilters.groundMount },
+  { f: 'bess', label: t.projectsFilters.bess },
 ];
+
+const categoryLabels: Record<string, string> = {
+  rooftop: t.projectsFilters.rooftop,
+  'ground-mount': t.projectsFilters.groundMount,
+  bess: t.projectsFilters.bess,
+};
 ---
 
 <div>
@@ -44,10 +54,12 @@ const filters = [
         <ProjectCard
           title={project.data.title}
           category={project.data.category}
+          categoryLabel={categoryLabels[project.data.category]}
           location={project.data.location}
           specLabel={project.data.specLabel}
           specValue={project.data.specValue}
           isPlaceholder={project.data.isPlaceholder}
+          placeholderBadge={t.common.placeholderBadge}
         />
       ))
     }

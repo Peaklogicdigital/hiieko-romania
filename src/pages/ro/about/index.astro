@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Eyebrow from '../../components/Eyebrow.astro';
-import { getTranslations } from '../../i18n/ui';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Eyebrow from '../../../components/Eyebrow.astro';
+import { getTranslations } from '../../../i18n/ui';
 
-const lang = 'en' as const;
+const lang = 'ro' as const;
 const t = getTranslations(lang);
 ---
 
@@ -28,7 +28,7 @@ const t = getTranslations(lang);
         </p>
         <p class="text-muted text-[15.5px] mb-4">
           {t.about.para3Page}
-          <a href="/team/" class="text-neon underline">{t.about.readMoreTeamLink}</a>
+          <a href="/ro/team/" class="text-neon underline">{t.about.readMoreTeamLink}</a>
         </p>
         <div class="flex gap-3.5 mt-[26px]">
           <div class="border border-line rounded-[2px] px-3.5 py-2.5 font-mono text-xs flex items-center gap-2">

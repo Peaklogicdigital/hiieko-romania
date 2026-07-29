@@ -1,6 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import SolutionCard from './SolutionCard.astro';
+import type { Lang } from '../i18n/ui';
+import { defaultLang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = defaultLang } = Astro.props;
 
 const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
 ---
@@ -12,7 +20,7 @@ const services = (await getCollection('services')).sort((a, b) => a.data.order -
         tagNumber={service.data.tagNumber}
         title={service.data.title}
         summary={service.data.summary}
-        href={`/solutions/${service.id}/`}
+        href={getRelativeLocaleUrl(lang, `/solutions/${service.id}/`)}
       />
     ))
   }

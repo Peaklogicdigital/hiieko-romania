@@ -1,17 +1,28 @@
 ---
 import Eyebrow from './Eyebrow.astro';
+import type { Lang } from '../i18n/ui';
+import { defaultLang, getTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = defaultLang } = Astro.props;
+const t = getTranslations(lang);
 ---
 
-<section id="calculator" class="py-[100px] reveal">
+<section
+  id="calculator"
+  class="py-[100px] reveal"
+  data-warning-template={t.calculator.warningTemplate}
+>
   <div class="wrap">
     <div class="max-w-[640px] mb-[52px]">
-      <Eyebrow text="Estimate your system" />
+      <Eyebrow text={t.calculator.eyebrow} />
       <h2 class="text-[clamp(26px,3vw,36px)] mt-2.5 mb-3.5">
-        See what your electricity bill could fund.
+        {t.calculator.h2}
       </h2>
       <p class="text-muted text-[15.5px]">
-        Enter your monthly usage — this estimates system size, payback, and ROI. Not a quote; a
-        real number needs a site assessment.
+        {t.calculator.lede}
       </p>
     </div>
 
@@ -23,7 +34,7 @@ import Eyebrow from './Eyebrow.astro';
           for="consumption"
           class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-2.5"
         >
-          Current monthly consumption (kWh)
+          {t.calculator.consumptionLabel}
         </label>
         <input
           type="number"
@@ -37,7 +48,7 @@ import Eyebrow from './Eyebrow.astro';
           for="area"
           class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-2.5"
         >
-          Available area (m²)
+          {t.calculator.areaLabel}
         </label>
         <input
           type="number"
@@ -47,29 +58,29 @@ import Eyebrow from './Eyebrow.astro';
           step="50"
           class="w-full bg-bg border border-line text-text px-4 py-3.5 font-mono text-[22px] rounded-[3px] mb-[22px] focus:outline-2 focus:outline-neon focus:border-neon"
         />
-        <button id="calc-run" type="button" class="btn btn-primary w-full">Calculate →</button>
+        <button id="calc-run" type="button" class="btn btn-primary w-full">{t.calculator.calculateBtn}</button>
       </div>
 
       <div class="p-10 grid grid-cols-2 md:grid-cols-3 gap-[26px] content-start">
         <div>
           <div class="font-mono text-[30px] font-semibold text-neon" id="out-capacity">—</div>
-          <div class="text-[13px] text-muted mt-1">System capacity (kWp)</div>
+          <div class="text-[13px] text-muted mt-1">{t.calculator.statCapacity}</div>
         </div>
         <div>
           <div class="font-mono text-[30px] font-semibold text-neon" id="out-gen">—</div>
-          <div class="text-[13px] text-muted mt-1">Est. annual generation (MWh/yr)</div>
+          <div class="text-[13px] text-muted mt-1">{t.calculator.statGen}</div>
         </div>
         <div>
           <div class="font-mono text-[30px] font-semibold text-neon" id="out-minarea">—</div>
-          <div class="text-[13px] text-muted mt-1">Min. area to cover your usage (m²)</div>
+          <div class="text-[13px] text-muted mt-1">{t.calculator.statMinArea}</div>
         </div>
         <div>
           <div class="font-mono text-[30px] font-semibold text-neon" id="out-payback">—</div>
-          <div class="text-[13px] text-muted mt-1">Est. payback period (years)</div>
+          <div class="text-[13px] text-muted mt-1">{t.calculator.statPayback}</div>
         </div>
         <div>
           <div class="font-mono text-[30px] font-semibold text-neon" id="out-roi">—</div>
-          <div class="text-[13px] text-muted mt-1">ROI (%)</div>
+          <div class="text-[13px] text-muted mt-1">{t.calculator.statRoi}</div>
         </div>
 
         <div
@@ -81,11 +92,7 @@ import Eyebrow from './Eyebrow.astro';
         <div
           class="col-span-2 md:col-span-3 font-mono text-[11.5px] text-muted border-t border-line pt-[18px] mt-1.5 leading-[1.6]"
         >
-          System sized to offset your annual consumption, assuming 1200 kWh/kWp/yr yield and 4.3
-          m²/kWp. Install cost is tiered by system size — €480/kWp under 20 kWp, €450/kWp from
-          20–50 kWp, €430/kWp from 50–100 kWp, €410/kWp from 100–250 kWp, €390/kWp above 250 kWp.
-          Savings assume 90% self-consumption at €0.18/kWh, capped at your annual consumption. A
-          rough estimate, not a quote — a real number needs a site assessment.
+          {t.calculator.disclaimer}
         </div>
       </div>
     </div>
@@ -98,18 +105,18 @@ import Eyebrow from './Eyebrow.astro';
     class="hidden fixed bottom-4 right-4 left-4 sm:left-auto sm:w-[360px] z-50 bg-bg-2 border border-neon-dim border-l-[3px] border-l-neon rounded-[2px] p-4 shadow-lg opacity-0 translate-y-2 transition-all duration-300 ease-out motion-reduce:transition-none"
   >
     <div class="flex items-start justify-between gap-3">
-      <p class="text-sm text-text pr-2 m-0">Talk with sales for a site assessment and real values.</p>
+      <p class="text-sm text-text pr-2 m-0">{t.calculator.toastMessage}</p>
       <button
         id="calc-toast-close"
         type="button"
-        aria-label="Dismiss"
+        aria-label={t.calculator.toastDismissLabel}
         class="text-muted hover:text-text text-lg leading-none bg-transparent border-none cursor-pointer p-0"
       >
         ×
       </button>
     </div>
     <a href="#contact" class="btn btn-primary px-4 py-2 mt-3 inline-block text-center w-full">
-      Contact sales →
+      {t.calculator.toastCta}
     </a>
   </div>
 </section>
@@ -123,6 +130,10 @@ import Eyebrow from './Eyebrow.astro';
     if (capacity < 100) return 430;
     if (capacity <= 250) return 410;
     return 390;
+  }
+
+  function fillTemplate(template: string, vars: Record<string, string | number>): string {
+    return template.replace(/\{(\w+)\}/g, (_match, key: string) => String(vars[key] ?? ''));
   }
 
   function showToast(): void {
@@ -141,6 +152,8 @@ import Eyebrow from './Eyebrow.astro';
   });
 
   function runCalc(): void {
+    const section = document.getElementById('calculator') as HTMLElement;
+    const warningTemplate = section.dataset.warningTemplate || '';
     const consumptionEl = document.getElementById('consumption') as HTMLInputElement;
     const areaEl = document.getElementById('area') as HTMLInputElement;
     const consumption = parseFloat(consumptionEl.value) || 0; // kWh/month
@@ -173,7 +186,11 @@ import Eyebrow from './Eyebrow.astro';
     const warning = document.getElementById('area-warning') as HTMLElement;
     if (area < minAreaNeeded && minAreaNeeded > 0) {
       const coveragePct = Math.round((area / minAreaNeeded) * 100);
-      warning.textContent = `Your available space (${Math.round(area)} m²) covers only ${coveragePct}% of your usage. ${Math.round(minAreaNeeded)} m² would fully offset your consumption.`;
+      warning.textContent = fillTemplate(warningTemplate, {
+        area: Math.round(area),
+        pct: coveragePct,
+        minArea: Math.round(minAreaNeeded),
+      });
       warning.classList.remove('hidden');
     } else {
       warning.classList.add('hidden');
