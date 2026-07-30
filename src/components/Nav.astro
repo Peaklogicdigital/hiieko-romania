@@ -1,26 +1,55 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import type { Lang } from '../i18n/ui';
+import { defaultLang, getTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = defaultLang } = Astro.props;
+const t = getTranslations(lang);
+
 const links = [
-  { href: '/solutions/', label: 'Solutions' },
-  { href: '/#calculator', label: 'Calculator' },
-  { href: '/projects/', label: 'Projects' },
-  { href: '/about/', label: 'About' },
-  { href: '/team/', label: 'Team' },
-  { href: '/contact/', label: 'Contact' },
+  { href: '/solutions/', label: t.nav.solutions },
+  { href: '/#calculator', label: t.nav.calculator },
+  { href: '/projects/', label: t.nav.projects },
+  { href: '/about/', label: t.nav.about },
+  { href: '/team/', label: t.nav.team },
+  { href: '/contact/', label: t.nav.contact },
 ];
+
+// Same canonical-path derivation as BaseLayout, so the toggle always lands
+// on the equivalent page in the other language, not just the homepage.
+const currentPath = Astro.url.pathname;
+const canonicalPath = currentPath.startsWith('/ro/') ? currentPath.slice(3) : currentPath;
+const enHref = getRelativeLocaleUrl('en', canonicalPath);
+const roHref = getRelativeLocaleUrl('ro', canonicalPath);
+
+function localizedLink(href: string): string {
+  if (lang !== 'ro') return href;
+  const hashIndex = href.indexOf('#');
+  if (hashIndex === -1) return getRelativeLocaleUrl('ro', href);
+  // Localize the path portion only — running the hash fragment through
+  // trailingSlash normalization would mangle it (e.g. "/#calculator"
+  // becoming "/ro/#calculator/", breaking the in-page anchor scroll).
+  const path = href.slice(0, hashIndex) || '/';
+  const hash = href.slice(hashIndex);
+  return getRelativeLocaleUrl('ro', path) + hash;
+}
 ---
 
 <nav
   class="sticky top-0 z-50 bg-bg/90 backdrop-blur-[8px] border-b border-line"
 >
   <div class="wrap flex items-center justify-between h-[72px]">
-    <a href="/" class="font-display font-extrabold text-[19px] flex gap-2 no-underline">
+    <a href={lang === 'ro' ? '/ro/' : '/'} class="font-display font-extrabold text-[19px] flex gap-2 no-underline">
       HIIEKO<span class="text-neon">·</span>RO
     </a>
     <div class="hidden lg:flex items-center gap-[30px]">
       {
         links.map((link) => (
           <a
-            href={link.href}
+            href={localizedLink(link.href)}
             class="text-muted no-underline text-sm font-medium hover:text-text"
           >
             {link.label}
@@ -29,17 +58,23 @@ const links = [
       }
     </div>
     <div class="flex items-center gap-[22px]">
-      <div class="hidden lg:flex font-mono text-xs text-muted gap-1.5">
-        <b class="text-neon">EN</b><span>/</span><span>RO</span>
+      <div class="hidden lg:flex font-mono text-xs gap-1.5">
+        <a href={enHref} class:list={['no-underline', lang === 'en' ? 'text-neon font-bold' : 'text-muted hover:text-text']}>
+          EN
+        </a>
+        <span class="text-muted">/</span>
+        <a href={roHref} class:list={['no-underline', lang === 'ro' ? 'text-neon font-bold' : 'text-muted hover:text-text']}>
+          RO
+        </a>
       </div>
-      <a href="/contact/" class="btn btn-ghost px-[18px] py-[10px] hidden lg:inline-block">
-        Get a site assessment
+      <a href={localizedLink('/contact/')} class="btn btn-ghost px-[18px] py-[10px] hidden lg:inline-block">
+        {t.nav.cta}
       </a>
       <button
         id="nav-toggle"
         type="button"
         class="lg:hidden flex items-center justify-center w-9 h-9 -mr-1.5 text-text"
-        aria-label="Toggle menu"
+        aria-label={t.nav.toggleMenu}
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
@@ -82,7 +117,7 @@ const links = [
       {
         links.map((link) => (
           <a
-            href={link.href}
+            href={localizedLink(link.href)}
             class="mobile-nav-link text-text no-underline text-base font-medium py-3 border-b border-line last:border-b-0"
           >
             {link.label}
@@ -90,11 +125,17 @@ const links = [
         ))
       }
       <div class="flex items-center justify-between pt-4">
-        <div class="font-mono text-xs text-muted flex gap-1.5">
-          <b class="text-neon">EN</b><span>/</span><span>RO</span>
+        <div class="font-mono text-xs flex gap-1.5">
+          <a href={enHref} class:list={['no-underline', lang === 'en' ? 'text-neon font-bold' : 'text-muted']}>
+            EN
+          </a>
+          <span class="text-muted">/</span>
+          <a href={roHref} class:list={['no-underline', lang === 'ro' ? 'text-neon font-bold' : 'text-muted']}>
+            RO
+          </a>
         </div>
-        <a href="/contact/" class="mobile-nav-link btn btn-ghost px-[18px] py-[10px]">
-          Get a site assessment
+        <a href={localizedLink('/contact/')} class="mobile-nav-link btn btn-ghost px-[18px] py-[10px]">
+          {t.nav.cta}
         </a>
       </div>
     </div>

@@ -1,13 +1,21 @@
 ---
 import StatBlock from './StatBlock.astro';
+import type { Lang } from '../i18n/ui';
+import { defaultLang, getTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = defaultLang } = Astro.props;
+const t = getTranslations(lang);
 ---
 
 <div class="bg-bg-2 border-t border-b border-line">
   <div class="wrap grid grid-cols-2 md:grid-cols-4 gap-x-[18px] gap-y-[22px] py-[26px] px-[28px]">
-    <StatBlock value="1994" label="Hiieko Group founded, Estonia" />
-    <StatBlock value="[[X]] MWp" label="Installed capacity — to confirm" />
-    <StatBlock value="0" countTo={21} label="Specialists at Hiieko Romania" />
-    <StatBlock value="ISO 9001·14001" label="Certified management systems" />
+    <StatBlock value={t.trust.founded.value} label={t.trust.founded.label} />
+    <StatBlock value={t.trust.capacity.value} label={t.trust.capacity.label} />
+    <StatBlock value="0" countTo={21} label={t.trust.specialists.label} />
+    <StatBlock value={t.trust.iso.value} label={t.trust.iso.label} />
   </div>
 </div>
 

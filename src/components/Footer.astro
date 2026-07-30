@@ -1,5 +1,15 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import type { Lang } from '../i18n/ui';
+import { defaultLang, fillTemplate, getTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = defaultLang } = Astro.props;
+const t = getTranslations(lang);
 const year = new Date().getFullYear();
+const privacyHref = getRelativeLocaleUrl(lang, '/privacy/');
 ---
 
 <footer class="bg-bg-2 text-muted pt-12 pb-[30px] border-t border-line">
@@ -8,25 +18,27 @@ const year = new Date().getFullYear();
   >
     <div>
       <h4 class="font-mono text-[11px] text-text uppercase tracking-[0.08em] mb-3">
-        Hiieko Romania
+        {t.footer.companyHeading}
       </h4>
-      <div class="text-[13.5px] mb-1.5">Bd. Theodor Pallady 51N</div>
-      <div class="text-[13.5px] mb-1.5">Sector 3, Bucharest</div>
-      <div class="text-[13.5px] mb-1.5">[[ email ]] · [[ phone ]]</div>
+      <div class="text-[13.5px] mb-1.5">{t.footer.addressLine1}</div>
+      <div class="text-[13.5px] mb-1.5">{t.footer.addressLine2}</div>
+      <div class="text-[13.5px] mb-1.5">{t.footer.emailPhonePlaceholder}</div>
     </div>
     <div>
-      <h4 class="font-mono text-[11px] text-text uppercase tracking-[0.08em] mb-3">Group</h4>
-      <div class="text-[13.5px] mb-1.5">AS Hiieko — Tallinn, Estonia</div>
-      <div class="text-[13.5px] mb-1.5">hiieko.ee</div>
+      <h4 class="font-mono text-[11px] text-text uppercase tracking-[0.08em] mb-3">{t.footer.groupHeading}</h4>
+      <div class="text-[13.5px] mb-1.5">{t.footer.groupLine1}</div>
+      <div class="text-[13.5px] mb-1.5">{t.footer.groupLine2}</div>
     </div>
     <div>
-      <h4 class="font-mono text-[11px] text-text uppercase tracking-[0.08em] mb-3">Legal</h4>
-      <div class="text-[13.5px] mb-1.5">CIF 42849908</div>
-      <div class="text-[13.5px] mb-1.5">Privacy Policy</div>
+      <h4 class="font-mono text-[11px] text-text uppercase tracking-[0.08em] mb-3">{t.footer.legalHeading}</h4>
+      <div class="text-[13.5px] mb-1.5">{t.footer.cifLine}</div>
+      <div class="text-[13.5px] mb-1.5">
+        <a href={privacyHref} class="text-muted hover:text-text no-underline">{t.footer.privacyLine}</a>
+      </div>
     </div>
   </div>
   <div class="wrap flex justify-between text-[12.5px] flex-wrap gap-2.5">
-    <span>© {year} Hiieko Romania SRL</span>
-    <span>Part of the AS Hiieko group, founded 1994</span>
+    <span>{fillTemplate(t.footer.copyright, { year })}</span>
+    <span>{t.footer.tagline}</span>
   </div>
 </footer>

@@ -1,8 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Eyebrow from '../../components/Eyebrow.astro';
-import { getTranslations } from '../../i18n/ui';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Eyebrow from '../../../components/Eyebrow.astro';
+import { getTranslations } from '../../../i18n/ui';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 const { service } = Astro.props;
 const { Content } = await render(service);
 
-const lang = 'en' as const;
+const lang = 'ro' as const;
 const t = getTranslations(lang);
 ---
 
@@ -37,7 +37,7 @@ const t = getTranslations(lang);
         <Content />
       </div>
       <div class="mt-12">
-        <a href="/solutions/" class="text-neon underline text-sm">{t.solutionDetail.backLink}</a>
+        <a href="/ro/solutions/" class="text-neon underline text-sm">{t.solutionDetail.backLink}</a>
       </div>
     </div>
   </section>

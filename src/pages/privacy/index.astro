@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Eyebrow from '../../components/Eyebrow.astro';
+import { getTranslations } from '../../i18n/ui';
+
+const lang = 'en' as const;
+const t = getTranslations(lang);
+---
+
+<BaseLayout
+  title={t.meta.privacy.title}
+  description={t.meta.privacy.description}
+  ogType="website"
+  lang={lang}
+>
+  <section class="py-[100px]">
+    <div class="wrap reveal max-w-[760px]">
+      <Eyebrow text={t.privacy.eyebrow} />
+      <h1 class="text-[clamp(30px,3.6vw,44px)] mt-2.5 mb-10">{t.privacy.h1}</h1>
+
+      <div class="prose-content text-text">
+        {
+          t.privacy.sections.map((section) => (
+            <div>
+              <h2>{section.heading}</h2>
+              <p>{section.body}</p>
+            </div>
+          ))
+        }
+        <div>
+          <h2>{t.privacy.rightsHeading}</h2>
+          <p>
+            {t.privacy.rightsBody}{' '}
+            <a href="https://www.dataprotection.ro" target="_blank" rel="noopener noreferrer">
+              {t.privacy.rightsLinkLabel}
+            </a>.
+          </p>
+        </div>
+        <div>
+          <h2>{t.privacy.changesHeading}</h2>
+          <p>{t.privacy.changesBody}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose-content :global(h2) {
+    font-size: 22px;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-content :global(p) {
+    color: var(--color-muted);
+    font-size: 15.5px;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .prose-content :global(a) {
+    color: var(--color-neon);
+    text-decoration: underline;
+  }
+</style>

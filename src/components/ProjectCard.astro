@@ -2,18 +2,23 @@
 interface Props {
   title: string;
   category: 'rooftop' | 'ground-mount' | 'bess';
+  categoryLabel: string;
   location: string;
   specLabel: string;
   specValue: string;
   isPlaceholder?: boolean;
+  placeholderBadge: string;
 }
-const { title, category, location, specLabel, specValue, isPlaceholder = false } = Astro.props;
-
-const categoryLabels: Record<string, string> = {
-  rooftop: 'Rooftop',
-  'ground-mount': 'Ground-mount',
-  bess: 'BESS',
-};
+const {
+  title,
+  category,
+  categoryLabel,
+  location,
+  specLabel,
+  specValue,
+  isPlaceholder = false,
+  placeholderBadge,
+} = Astro.props;
 ---
 
 <div
@@ -30,14 +35,14 @@ const categoryLabels: Record<string, string> = {
     {
       isPlaceholder && (
         <span class="absolute top-2.5 left-2.5 font-mono text-[9.5px] bg-neon-dim text-neon px-2 py-1 rounded-sm tracking-[0.05em]">
-          PLACEHOLDER
+          {placeholderBadge}
         </span>
       )
     }
   </div>
   <div class="px-5 py-[18px]">
     <div class="font-mono text-[10.5px] text-volt uppercase tracking-[0.06em]">
-      {categoryLabels[category]}
+      {categoryLabel}
     </div>
     <h3 class="text-base my-2 mb-1">{title}</h3>
     <div class="text-[13px] text-muted mb-3">{location}</div>

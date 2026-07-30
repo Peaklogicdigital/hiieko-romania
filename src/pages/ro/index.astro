@@ -1,17 +1,17 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Eyebrow from '../components/Eyebrow.astro';
-import Button from '../components/Button.astro';
-import DashboardSchematic from '../components/DashboardSchematic.astro';
-import TrustStrip from '../components/TrustStrip.astro';
-import DifferentiationSection from '../components/DifferentiationSection.astro';
-import SolutionsGrid from '../components/SolutionsGrid.astro';
-import Calculator from '../components/Calculator.astro';
-import ProjectsGallery from '../components/ProjectsGallery.astro';
-import ContactForm from '../components/ContactForm.astro';
-import { getTranslations } from '../i18n/ui';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Eyebrow from '../../components/Eyebrow.astro';
+import Button from '../../components/Button.astro';
+import DashboardSchematic from '../../components/DashboardSchematic.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import DifferentiationSection from '../../components/DifferentiationSection.astro';
+import SolutionsGrid from '../../components/SolutionsGrid.astro';
+import Calculator from '../../components/Calculator.astro';
+import ProjectsGallery from '../../components/ProjectsGallery.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { getTranslations } from '../../i18n/ui';
 
-const lang = 'en' as const;
+const lang = 'ro' as const;
 const t = getTranslations(lang);
 ---
 
@@ -37,8 +37,8 @@ const t = getTranslations(lang);
           {t.hero.lede}
         </p>
         <div class="flex gap-3.5 flex-wrap mb-14">
-          <Button variant="primary" href="/contact/">{t.hero.ctaPrimary}</Button>
-          <Button variant="ghost" href="/#calculator">{t.hero.ctaSecondary}</Button>
+          <Button variant="primary" href="/ro/contact/">{t.hero.ctaPrimary}</Button>
+          <Button variant="ghost" href="/ro/#calculator">{t.hero.ctaSecondary}</Button>
         </div>
       </div>
 
@@ -79,7 +79,7 @@ const t = getTranslations(lang);
         <Eyebrow text={t.projectsHome.eyebrow} />
         <h2 class="text-[clamp(26px,3vw,36px)] mt-2.5 mb-3.5">{t.projectsHome.h2}</h2>
         <p class="text-muted text-[15.5px]">
-          {t.projectsHome.ledePrefix} <a href="/projects/" class="text-neon underline">{t.projectsHome.seeAllLink}</a>
+          {t.projectsHome.ledePrefix} <a href="/ro/projects/" class="text-neon underline">{t.projectsHome.seeAllLink}</a>
         </p>
       </div>
       <ProjectsGallery limit={3} lang={lang} />
@@ -99,7 +99,7 @@ const t = getTranslations(lang);
         <p class="text-muted text-[15.5px] mb-4">
           {t.about.para2}
         </p>
-        <a href="/about/" class="text-neon underline text-sm">{t.about.readMoreLink}</a>
+        <a href="/ro/about/" class="text-neon underline text-sm">{t.about.readMoreLink}</a>
         <div class="flex gap-3.5 mt-[26px]">
           <div class="border border-line rounded-[2px] px-3.5 py-2.5 font-mono text-xs flex items-center gap-2">
             <span class="w-[7px] h-[7px] rounded-full bg-neon shadow-[0_0_6px_var(--color-neon)]"></span>
