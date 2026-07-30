@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import BackgroundLayer from '../components/BackgroundLayer.astro';
 import type { Lang } from '../i18n/ui';
 import { defaultLang } from '../i18n/ui';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
   title: string;
@@ -57,6 +58,8 @@ const roHref = getRelativeLocaleUrl('ro', canonicalPath);
     <div class="relative z-10">
       <Footer lang={lang} />
     </div>
+
+    <SpeedInsights />
 
     <script>
       import { initReveal } from '../scripts/reveal';
