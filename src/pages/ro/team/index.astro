@@ -39,6 +39,7 @@ const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.
               role={member.data.role}
               phone={member.data.phone}
               email={member.data.email}
+              photo={member.data.photo}
               isPlaceholder={member.data.isPlaceholder}
               placeholderBadge={t.common.placeholderBadge}
             />

@@ -4,10 +4,11 @@ interface Props {
   role: string;
   phone?: string;
   email?: string;
+  photo?: string;
   isPlaceholder?: boolean;
   placeholderBadge: string;
 }
-const { name, role, phone, email, isPlaceholder = false, placeholderBadge } = Astro.props;
+const { name, role, phone, email, photo, isPlaceholder = false, placeholderBadge } = Astro.props;
 
 const initials = name
   .replace(/[[\]]/g, '')
@@ -19,6 +20,7 @@ const initials = name
   .toUpperCase();
 
 const telHref = phone?.replace(/[\s()-]/g, '');
+const photoAlt = photo ? `Photo of ${name}, ${role} at Hiieko Romania` : undefined;
 ---
 
 <div
@@ -29,9 +31,15 @@ const telHref = phone?.replace(/[\s()-]/g, '');
 >
   <div
     class="h-40 relative bg-bg-3 flex items-center justify-center"
-    style="background-image: repeating-linear-gradient(135deg, rgba(234,242,237,0.05) 0 2px, transparent 2px 14px);"
+    style={photo ? undefined : 'background-image: repeating-linear-gradient(135deg, rgba(234,242,237,0.05) 0 2px, transparent 2px 14px);'}
   >
-    <span class="font-display font-extrabold text-3xl text-muted">{initials || '—'}</span>
+    {
+      photo ? (
+        <img src={photo} alt={photoAlt} class="w-full h-full object-cover" loading="lazy" />
+      ) : (
+        <span class="font-display font-extrabold text-3xl text-muted">{initials || '—'}</span>
+      )
+    }
     {
       isPlaceholder && (
         <span class="absolute top-2.5 left-2.5 font-mono text-[9.5px] bg-neon-dim text-neon px-2 py-1 rounded-sm tracking-[0.05em]">
