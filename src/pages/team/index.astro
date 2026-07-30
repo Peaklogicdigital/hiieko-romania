@@ -28,7 +28,7 @@ const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.
           {t.team.lede}
         </p>
       </div>
-      <!-- Team member profiles (name/role/bio) come from the content
+      <!-- Team member profiles (name/role/phone/email) come from the content
            collection, which is not yet translated — they render in English
            regardless of lang until the collection itself is localized. -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[22px]">
@@ -37,7 +37,8 @@ const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.
             <TeamCard
               name={member.data.name}
               role={member.data.role}
-              bio={member.data.bio}
+              phone={member.data.phone}
+              email={member.data.email}
               isPlaceholder={member.data.isPlaceholder}
               placeholderBadge={t.common.placeholderBadge}
             />

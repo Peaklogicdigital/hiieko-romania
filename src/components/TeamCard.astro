@@ -2,11 +2,12 @@
 interface Props {
   name: string;
   role: string;
-  bio?: string;
+  phone?: string;
+  email?: string;
   isPlaceholder?: boolean;
   placeholderBadge: string;
 }
-const { name, role, bio, isPlaceholder = false, placeholderBadge } = Astro.props;
+const { name, role, phone, email, isPlaceholder = false, placeholderBadge } = Astro.props;
 
 const initials = name
   .replace(/[[\]]/g, '')
@@ -16,6 +17,8 @@ const initials = name
   .join('')
   .slice(0, 2)
   .toUpperCase();
+
+const telHref = phone?.replace(/[\s()-]/g, '');
 ---
 
 <div
@@ -37,9 +40,18 @@ const initials = name
       )
     }
   </div>
-  <div class="px-5 py-[18px]">
+  <div class="px-5 py-5 flex flex-col gap-1.5">
+    <h3 class="text-base m-0">{name}</h3>
     <div class="font-mono text-[10.5px] text-volt uppercase tracking-[0.06em]">{role}</div>
-    <h3 class="text-base my-2 mb-1">{name}</h3>
-    {bio && <p class="text-[13px] text-muted mt-2 mb-0">{bio}</p>}
+    {phone && (
+      <a href={`tel:${telHref}`} class="text-neon underline text-[13px]">
+        {phone}
+      </a>
+    )}
+    {email && (
+      <a href={`mailto:${email}`} class="text-neon underline text-[13px]">
+        {email}
+      </a>
+    )}
   </div>
 </div>
