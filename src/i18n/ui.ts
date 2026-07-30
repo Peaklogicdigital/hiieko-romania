@@ -267,8 +267,8 @@ const en = {
   },
   industries: {
     eyebrow: 'Who we serve',
-    headline: "Over 100 MWp installed for businesses across Romania's highest-consumption industries.",
-    lede: 'From dairy farms to distribution hubs, we size systems for the operations that draw the most power — and can least afford downtime.',
+    headline: 'Energy prices keep climbing. These businesses stopped caring.',
+    lede: "Over 100 MWp installed across Romania's highest-consumption industries — proof the energy crisis doesn't have to be permanent for yours.",
     ctaLabel: 'See projects →',
     items: [
       { name: 'Agriculture' },
@@ -573,8 +573,8 @@ const ro: Dictionary = {
   },
   industries: {
     eyebrow: 'Pentru cine lucrăm',
-    headline: 'Peste 100 MWp instalați pentru afaceri din cele mai mari consumatoare industrii ale României.',
-    lede: 'De la ferme de lapte la hub-uri de distribuție, dimensionăm sisteme pentru operațiunile cu cel mai mare consum — și care își permit cel mai puțin întreruperi.',
+    headline: 'Prețurile la energie continuă să crească. Aceste companii au încetat să le mai pese.',
+    lede: 'Peste 100 MWp instalați în cele mai mari industrii consumatoare de energie din România — dovada că criza energetică nu trebuie să fie permanentă și pentru afacerea ta.',
     ctaLabel: 'Vezi proiectele →',
     items: [
       { name: 'Agricultură' },
