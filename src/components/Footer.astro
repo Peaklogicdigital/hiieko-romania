@@ -1,4 +1,5 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import type { Lang } from '../i18n/ui';
 import { defaultLang, fillTemplate, getTranslations } from '../i18n/ui';
 
@@ -8,6 +9,7 @@ interface Props {
 const { lang = defaultLang } = Astro.props;
 const t = getTranslations(lang);
 const year = new Date().getFullYear();
+const privacyHref = getRelativeLocaleUrl(lang, '/privacy/');
 ---
 
 <footer class="bg-bg-2 text-muted pt-12 pb-[30px] border-t border-line">
@@ -30,7 +32,9 @@ const year = new Date().getFullYear();
     <div>
       <h4 class="font-mono text-[11px] text-text uppercase tracking-[0.08em] mb-3">{t.footer.legalHeading}</h4>
       <div class="text-[13.5px] mb-1.5">{t.footer.cifLine}</div>
-      <div class="text-[13.5px] mb-1.5">{t.footer.privacyLine}</div>
+      <div class="text-[13.5px] mb-1.5">
+        <a href={privacyHref} class="text-muted hover:text-text no-underline">{t.footer.privacyLine}</a>
+      </div>
     </div>
   </div>
   <div class="wrap flex justify-between text-[12.5px] flex-wrap gap-2.5">

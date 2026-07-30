@@ -179,6 +179,45 @@ const en = {
   common: {
     placeholderBadge: 'PLACEHOLDER',
   },
+  // Draft privacy policy — legal content pending review by counsel before
+  // launch. Every [[bracketed]] placeholder below must be resolved with
+  // real values before this goes live; do not invent values for them.
+  privacy: {
+    eyebrow: 'Legal',
+    h1: 'Privacy Policy',
+    sections: [
+      {
+        heading: 'Who we are',
+        body: 'Hiieko Romania SRL (CIF 42849908), [[registered address]], is part of the AS Hiieko group and is the data controller for this website.',
+      },
+      {
+        heading: 'What we collect',
+        body: 'Through the contact form, we collect the name, company name, email address, phone number, project type, and site details you provide. We do not use tracking cookies at this time; if analytics or advertising cookies are added later, this policy and a cookie consent banner will be updated accordingly.',
+      },
+      {
+        heading: 'Why we collect it',
+        body: 'We use this information to respond to your inquiry and provide a quote or site assessment. Our legal basis is legitimate interest in responding to business inquiries, and/or steps taken at your request prior to entering into a contract (GDPR Art. 6(1)(b) and (f)).',
+      },
+      {
+        heading: 'Who we share it with',
+        body: 'Your submission is processed by [[Formspree / current form handler]], a third-party service that delivers it to our email. [[If/when a CRM pipeline is added: name the additional processors here — e.g. Airtable, automation tooling — and update this section before that goes live.]] We do not sell your data to third parties.',
+      },
+      {
+        heading: 'International transfers',
+        body: 'Some of the processors above may be based outside the EU/EEA. [[Confirm with legal counsel whether Standard Contractual Clauses or another safeguard applies to each processor in use.]]',
+      },
+      {
+        heading: 'Retention',
+        body: 'We retain contact form submissions for [[X months/years — confirm internally]], after which they are deleted unless an ongoing business relationship requires longer retention.',
+      },
+    ],
+    rightsHeading: 'Your rights',
+    rightsBody:
+      "Under GDPR, you have the right to access, correct, delete, or restrict the use of your data, to receive a copy of it (data portability), and to object to processing. To exercise these rights, contact us at [[privacy contact email]]. You may also lodge a complaint with ANSPDCP, Romania's National Supervisory Authority for Personal Data Processing, at",
+    rightsLinkLabel: 'www.dataprotection.ro',
+    changesHeading: 'Changes',
+    changesBody: 'This policy may be updated periodically. Last updated: [[date]].',
+  },
   meta: {
     home: {
       title: 'Hiieko Romania — Industrial Solar & Energy Storage',
@@ -208,6 +247,11 @@ const en = {
       title: 'Contact — Hiieko Romania',
       description:
         'Request a site assessment from Hiieko Romania — rooftop solar, ground-mount solar parks, and battery storage.',
+    },
+    privacy: {
+      title: 'Privacy Policy — Hiieko Romania',
+      description:
+        'How Hiieko Romania collects, uses, and protects personal data submitted through this site.',
     },
   },
 };
@@ -392,6 +436,42 @@ const ro: Dictionary = {
   common: {
     placeholderBadge: 'EXEMPLU',
   },
+  privacy: {
+    eyebrow: 'Legal',
+    h1: 'Politica de confidențialitate',
+    sections: [
+      {
+        heading: 'Cine suntem',
+        body: 'Hiieko Romania SRL (CIF 42849908), [[adresa sediului social]], face parte din grupul AS Hiieko și este operatorul de date pentru acest site.',
+      },
+      {
+        heading: 'Ce colectăm',
+        body: 'Prin formularul de contact, colectăm numele, denumirea companiei, adresa de email, numărul de telefon, tipul de proiect și detaliile despre site pe care ni le furnizezi. Nu folosim cookie-uri de urmărire în acest moment; dacă vor fi adăugate ulterior cookie-uri de analiză sau publicitate, această politică și un banner de consimțământ pentru cookie-uri vor fi actualizate corespunzător.',
+      },
+      {
+        heading: 'De ce le colectăm',
+        body: 'Folosim aceste informații pentru a răspunde solicitării tale și pentru a oferi o ofertă sau o evaluare a site-ului. Temeiul nostru legal este interesul legitim de a răspunde solicitărilor de afaceri și/sau demersurile realizate la cererea ta înainte de încheierea unui contract (Art. 6(1)(b) și (f) GDPR).',
+      },
+      {
+        heading: 'Cui le transmitem',
+        body: 'Solicitarea ta este procesată de [[Formspree / procesatorul actual al formularului]], un serviciu terț care o livrează pe email-ul nostru. [[Dacă/când este adăugat un flux CRM: menționează aici procesatorii suplimentari — de ex. Airtable, unelte de automatizare — și actualizează această secțiune înainte ca acesta să intre în funcțiune.]] Nu vindem datele tale către terți.',
+      },
+      {
+        heading: 'Transferuri internaționale',
+        body: 'Unii dintre procesatorii de mai sus pot fi localizați în afara UE/SEE. [[Confirmă cu un consilier juridic dacă se aplică Clauze Contractuale Standard sau o altă garanție pentru fiecare procesator utilizat.]]',
+      },
+      {
+        heading: 'Păstrarea datelor',
+        body: 'Păstrăm solicitările trimise prin formularul de contact timp de [[X luni/ani — de confirmat intern]], după care sunt șterse, cu excepția cazului în care o relație de afaceri continuă necesită o păstrare mai îndelungată.',
+      },
+    ],
+    rightsHeading: 'Drepturile tale',
+    rightsBody:
+      'Conform GDPR, ai dreptul de a accesa, corecta, șterge sau restricționa utilizarea datelor tale, de a primi o copie a acestora (portabilitatea datelor) și de a te opune prelucrării. Pentru a-ți exercita aceste drepturi, contactează-ne la [[adresa de email pentru confidențialitate]]. De asemenea, poți depune o plângere la ANSPDCP, Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal, la',
+    rightsLinkLabel: 'www.dataprotection.ro',
+    changesHeading: 'Modificări',
+    changesBody: 'Această politică poate fi actualizată periodic. Ultima actualizare: [[dată]].',
+  },
   meta: {
     home: {
       title: 'Hiieko România — Solar Industrial & Stocare de Energie',
@@ -421,6 +501,11 @@ const ro: Dictionary = {
       title: 'Contact — Hiieko România',
       description:
         'Solicită o evaluare de la Hiieko România — solar pe acoperiș, parcuri solare la sol și stocare cu baterii.',
+    },
+    privacy: {
+      title: 'Politica de confidențialitate — Hiieko România',
+      description:
+        'Cum colectează, folosește și protejează Hiieko România datele personale transmise prin acest site.',
     },
   },
 };
