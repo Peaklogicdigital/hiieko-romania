@@ -120,7 +120,7 @@ const en = {
   team: {
     eyebrow: 'Our team',
     h1: 'Over 25 specialists, one accountable team.',
-    lede: 'The people who design, install, and maintain every system after handover. Entries marked PLACEHOLDER are examples pending real profiles.',
+    lede: 'Real engineers, real accountability. Every person on this page is someone you can actually call once your system is live — not a subcontractor, not a call center.',
   },
   contact: {
     eyebrow: 'Next step',
@@ -128,7 +128,7 @@ const en = {
     lede: "Send a few details about the site and consumption. You'll get a sizing estimate back — not a sales pitch.",
     companyName: 'Hiieko Romania SRL',
     addressLine: 'Bd. Theodor Pallady 51N, Sector 3, Bucharest',
-    email: 'bogdan.otelea@hiieko.ro',
+    email: 'office@hiieko.ro',
   },
   contactForm: {
     nameLabel: 'Name',
@@ -173,7 +173,7 @@ const en = {
     companyHeading: 'Hiieko Romania',
     addressLine1: 'Bd. Theodor Pallady 51N',
     addressLine2: 'Sector 3, Bucharest',
-    email: 'bogdan.otelea@hiieko.ro',
+    email: 'office@hiieko.ro',
     groupHeading: 'Group',
     groupLine1: 'AS Hiieko — Tallinn, Estonia',
     groupLine2: 'hiieko.ee',
@@ -440,7 +440,7 @@ const ro: Dictionary = {
   team: {
     eyebrow: 'Echipa noastră',
     h1: 'Peste 25 de specialiști, o singură echipă responsabilă.',
-    lede: 'Oamenii care proiectează, instalează și întrețin fiecare sistem după predare. Intrările marcate PLACEHOLDER sunt exemple, în așteptarea profilurilor reale.',
+    lede: 'Ingineri reali, responsabilitate reală. Fiecare persoană de pe această pagină este cineva pe care chiar îl poți suna după ce sistemul tău este funcțional — nu un subcontractant, nu un call center.',
   },
   contact: {
     eyebrow: 'Următorul pas',
@@ -448,7 +448,7 @@ const ro: Dictionary = {
     lede: 'Trimite-ne câteva detalii despre site și consum. Vei primi o estimare de dimensionare — nu un discurs de vânzare.',
     companyName: 'Hiieko Romania SRL',
     addressLine: 'Bd. Theodor Pallady 51N, Sector 3, București',
-    email: 'bogdan.otelea@hiieko.ro',
+    email: 'office@hiieko.ro',
   },
   contactForm: {
     nameLabel: 'Nume',
@@ -493,7 +493,7 @@ const ro: Dictionary = {
     companyHeading: 'Hiieko România',
     addressLine1: 'Bd. Theodor Pallady 51N',
     addressLine2: 'Sector 3, București',
-    email: 'bogdan.otelea@hiieko.ro',
+    email: 'office@hiieko.ro',
     groupHeading: 'Grup',
     groupLine1: 'AS Hiieko — Tallinn, Estonia',
     groupLine2: 'hiieko.ee',
