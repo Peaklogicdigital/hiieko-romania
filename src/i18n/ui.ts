@@ -2,6 +2,13 @@ export const languages = { en: 'English', ro: 'Română' } as const;
 export type Lang = keyof typeof languages;
 export const defaultLang: Lang = 'en';
 
+// No specific Google Maps place URL was provided for the registered address —
+// this is a generated search-query link (Google's documented maps/search
+// pattern), not a fabricated place ID. Swap for an exact Maps URL if one
+// exists.
+export const PRIVACY_ADDRESS_MAPS_URL =
+  'https://www.google.com/maps/search/?api=1&query=Bulevardul+Theodor+Pallady+51N%2C+032258+Bucharest%2C+Romania';
+
 const en = {
   nav: {
     solutions: 'Solutions',
@@ -179,17 +186,17 @@ const en = {
   common: {
     placeholderBadge: 'PLACEHOLDER',
   },
-  // Draft privacy policy — legal content pending review by counsel before
-  // launch. Every [[bracketed]] placeholder below must be resolved with
-  // real values before this goes live; do not invent values for them.
+  // Draft privacy policy — legal content pending sign-off by counsel before
+  // launch. See also the top-of-file notes and inline HTML comment in
+  // src/pages/privacy/index.astro (and its RO mirror).
   privacy: {
     eyebrow: 'Legal',
     h1: 'Privacy Policy',
+    whoWeAreHeading: 'Who we are',
+    whoWeArePrefix: 'Hiieko Romania SRL (CIF 42849908),',
+    whoWeAreAddressText: 'Building C1, Bulevardul Theodor Pallady 51N, Block A, 3rd floor, 032258 București',
+    whoWeAreSuffix: 'is part of the AS Hiieko group and is the data controller for this website.',
     sections: [
-      {
-        heading: 'Who we are',
-        body: 'Hiieko Romania SRL (CIF 42849908), [[registered address]], is part of the AS Hiieko group and is the data controller for this website.',
-      },
       {
         heading: 'What we collect',
         body: 'Through the contact form, we collect the name, company name, email address, phone number, project type, and site details you provide. We do not use tracking cookies at this time; if analytics or advertising cookies are added later, this policy and a cookie consent banner will be updated accordingly.',
@@ -200,23 +207,24 @@ const en = {
       },
       {
         heading: 'Who we share it with',
-        body: 'Your submission is processed by [[Formspree / current form handler]], a third-party service that delivers it to our email. [[If/when a CRM pipeline is added: name the additional processors here — e.g. Airtable, automation tooling — and update this section before that goes live.]] We do not sell your data to third parties.',
-      },
-      {
-        heading: 'International transfers',
-        body: 'Some of the processors above may be based outside the EU/EEA. [[Confirm with legal counsel whether Standard Contractual Clauses or another safeguard applies to each processor in use.]]',
+        body: 'Your submission is processed by Formspree, a third-party service that delivers it to our email. We do not sell your data to third parties.',
       },
       {
         heading: 'Retention',
-        body: 'We retain contact form submissions for [[X months/years — confirm internally]], after which they are deleted unless an ongoing business relationship requires longer retention.',
+        body: 'We retain contact form submissions for 6 months, after which they are deleted unless an ongoing business relationship requires longer retention.',
       },
     ],
+    transfersHeading: 'International transfers',
+    transfersBody: 'Some of the processors above may be based outside the EU/EEA.',
     rightsHeading: 'Your rights',
-    rightsBody:
-      "Under GDPR, you have the right to access, correct, delete, or restrict the use of your data, to receive a copy of it (data portability), and to object to processing. To exercise these rights, contact us at [[privacy contact email]]. You may also lodge a complaint with ANSPDCP, Romania's National Supervisory Authority for Personal Data Processing, at",
+    rightsIntro:
+      'Under GDPR, you have the right to access, correct, delete, or restrict the use of your data, to receive a copy of it (data portability), and to object to processing. To exercise these rights, contact us at',
+    rightsEmail: 'alexander.zeciu@hiieko.ee',
+    rightsMiddle:
+      ". You may also lodge a complaint with ANSPDCP, Romania's National Supervisory Authority for Personal Data Processing, at",
     rightsLinkLabel: 'www.dataprotection.ro',
     changesHeading: 'Changes',
-    changesBody: 'This policy may be updated periodically. Last updated: [[date]].',
+    changesBody: 'This policy may be updated periodically. Last updated: 1 August 2026.',
   },
   meta: {
     home: {
@@ -439,11 +447,11 @@ const ro: Dictionary = {
   privacy: {
     eyebrow: 'Legal',
     h1: 'Politica de confidențialitate',
+    whoWeAreHeading: 'Cine suntem',
+    whoWeArePrefix: 'Hiieko Romania SRL (CIF 42849908),',
+    whoWeAreAddressText: 'Clădirea C1, Bulevardul Theodor Pallady nr. 51N, Bloc A, etaj 3, 032258 București',
+    whoWeAreSuffix: 'face parte din grupul AS Hiieko și este operatorul de date pentru acest site.',
     sections: [
-      {
-        heading: 'Cine suntem',
-        body: 'Hiieko Romania SRL (CIF 42849908), [[adresa sediului social]], face parte din grupul AS Hiieko și este operatorul de date pentru acest site.',
-      },
       {
         heading: 'Ce colectăm',
         body: 'Prin formularul de contact, colectăm numele, denumirea companiei, adresa de email, numărul de telefon, tipul de proiect și detaliile despre site pe care ni le furnizezi. Nu folosim cookie-uri de urmărire în acest moment; dacă vor fi adăugate ulterior cookie-uri de analiză sau publicitate, această politică și un banner de consimțământ pentru cookie-uri vor fi actualizate corespunzător.',
@@ -454,23 +462,24 @@ const ro: Dictionary = {
       },
       {
         heading: 'Cui le transmitem',
-        body: 'Solicitarea ta este procesată de [[Formspree / procesatorul actual al formularului]], un serviciu terț care o livrează pe email-ul nostru. [[Dacă/când este adăugat un flux CRM: menționează aici procesatorii suplimentari — de ex. Airtable, unelte de automatizare — și actualizează această secțiune înainte ca acesta să intre în funcțiune.]] Nu vindem datele tale către terți.',
-      },
-      {
-        heading: 'Transferuri internaționale',
-        body: 'Unii dintre procesatorii de mai sus pot fi localizați în afara UE/SEE. [[Confirmă cu un consilier juridic dacă se aplică Clauze Contractuale Standard sau o altă garanție pentru fiecare procesator utilizat.]]',
+        body: 'Solicitarea ta este procesată de Formspree, un serviciu terț care o livrează pe email-ul nostru. Nu vindem datele tale către terți.',
       },
       {
         heading: 'Păstrarea datelor',
-        body: 'Păstrăm solicitările trimise prin formularul de contact timp de [[X luni/ani — de confirmat intern]], după care sunt șterse, cu excepția cazului în care o relație de afaceri continuă necesită o păstrare mai îndelungată.',
+        body: 'Păstrăm solicitările trimise prin formularul de contact timp de 6 luni, după care sunt șterse, cu excepția cazului în care o relație de afaceri continuă necesită o păstrare mai îndelungată.',
       },
     ],
+    transfersHeading: 'Transferuri internaționale',
+    transfersBody: 'Unii dintre procesatorii de mai sus pot fi localizați în afara UE/SEE.',
     rightsHeading: 'Drepturile tale',
-    rightsBody:
-      'Conform GDPR, ai dreptul de a accesa, corecta, șterge sau restricționa utilizarea datelor tale, de a primi o copie a acestora (portabilitatea datelor) și de a te opune prelucrării. Pentru a-ți exercita aceste drepturi, contactează-ne la [[adresa de email pentru confidențialitate]]. De asemenea, poți depune o plângere la ANSPDCP, Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal, la',
+    rightsIntro:
+      'Conform GDPR, ai dreptul de a accesa, corecta, șterge sau restricționa utilizarea datelor tale, de a primi o copie a acestora (portabilitatea datelor) și de a te opune prelucrării. Pentru a-ți exercita aceste drepturi, contactează-ne la',
+    rightsEmail: 'alexander.zeciu@hiieko.ee',
+    rightsMiddle:
+      '. De asemenea, poți depune o plângere la ANSPDCP, Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal, la',
     rightsLinkLabel: 'www.dataprotection.ro',
     changesHeading: 'Modificări',
-    changesBody: 'Această politică poate fi actualizată periodic. Ultima actualizare: [[dată]].',
+    changesBody: 'Această politică poate fi actualizată periodic. Ultima actualizare: 1 august 2026.',
   },
   meta: {
     home: {
