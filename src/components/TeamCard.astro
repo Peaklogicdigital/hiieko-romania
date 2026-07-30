@@ -30,12 +30,12 @@ const photoAlt = photo ? `Photo of ${name}, ${role} at Hiieko Romania` : undefin
   ]}
 >
   <div
-    class="h-40 relative bg-bg-3 flex items-center justify-center"
+    class="aspect-square relative bg-bg-3 flex items-center justify-center overflow-hidden"
     style={photo ? undefined : 'background-image: repeating-linear-gradient(135deg, rgba(234,242,237,0.05) 0 2px, transparent 2px 14px);'}
   >
     {
       photo ? (
-        <img src={photo} alt={photoAlt} class="w-full h-full object-cover" loading="lazy" />
+        <img src={photo} alt={photoAlt} class="w-full h-full object-cover object-top" loading="lazy" />
       ) : (
         <span class="font-display font-extrabold text-3xl text-muted">{initials || '—'}</span>
       )
