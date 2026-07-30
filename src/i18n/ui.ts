@@ -186,6 +186,15 @@ const en = {
   common: {
     placeholderBadge: 'PLACEHOLDER',
   },
+  notFound: {
+    badge: '404 · Signal lost',
+    headline: "Signal lost — this page isn't in the system.",
+    lede: "The page you're looking for doesn't exist, or the link's out of date.",
+    ctaHome: 'Back to Home →',
+    linkSolutions: 'Solutions',
+    linkProjects: 'Projects',
+    linkContact: 'Contact',
+  },
   // Draft privacy policy — legal content pending sign-off by counsel before
   // launch. See also the top-of-file notes and inline HTML comment in
   // src/pages/privacy/index.astro (and its RO mirror).
@@ -496,6 +505,15 @@ const ro: Dictionary = {
   },
   common: {
     placeholderBadge: 'EXEMPLU',
+  },
+  notFound: {
+    badge: '404 · Semnal pierdut',
+    headline: 'Semnal pierdut — această pagină nu există în sistem.',
+    lede: 'Pagina pe care o cauți nu există sau linkul nu mai este valid.',
+    ctaHome: 'Înapoi acasă →',
+    linkSolutions: 'Soluții',
+    linkProjects: 'Proiecte',
+    linkContact: 'Contact',
   },
   privacy: {
     eyebrow: 'Legal',
