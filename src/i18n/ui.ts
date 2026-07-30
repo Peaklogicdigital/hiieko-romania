@@ -119,7 +119,7 @@ const en = {
   },
   team: {
     eyebrow: 'Our team',
-    h1: '21 specialists, one accountable team.',
+    h1: 'Over 25 specialists, one accountable team.',
     lede: 'The people who design, install, and maintain every system after handover. Entries marked PLACEHOLDER are examples pending real profiles.',
   },
   contact: {
@@ -430,7 +430,7 @@ const ro: Dictionary = {
   },
   team: {
     eyebrow: 'Echipa noastră',
-    h1: '21 de specialiști, o singură echipă responsabilă.',
+    h1: 'Peste 25 de specialiști, o singură echipă responsabilă.',
     lede: 'Oamenii care proiectează, instalează și întrețin fiecare sistem după predare. Intrările marcate PLACEHOLDER sunt exemple, în așteptarea profilurilor reale.',
   },
   contact: {
