@@ -7,6 +7,7 @@ import BackgroundLayer from '../components/BackgroundLayer.astro';
 import type { Lang } from '../i18n/ui';
 import { defaultLang } from '../i18n/ui';
 import SpeedInsights from '@vercel/speed-insights/astro';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title: string;
@@ -60,6 +61,7 @@ const roHref = getRelativeLocaleUrl('ro', canonicalPath);
     </div>
 
     <SpeedInsights />
+    <Analytics />
 
     <script>
       import { initReveal } from '../scripts/reveal';
