@@ -4,6 +4,7 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import BackgroundLayer from '../components/BackgroundLayer.astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 import type { Lang } from '../i18n/ui';
 import { defaultLang } from '../i18n/ui';
 
@@ -62,5 +63,6 @@ const roHref = getRelativeLocaleUrl('ro', canonicalPath);
       import { initReveal } from '../scripts/reveal';
       initReveal();
     </script>
+    <SpeedInsights />
   </body>
 </html>
