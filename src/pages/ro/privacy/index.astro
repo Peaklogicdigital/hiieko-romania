@@ -65,6 +65,24 @@ const t = getTranslations(lang);
           <h2>{t.privacy.changesHeading}</h2>
           <p>{t.privacy.changesBody}</p>
         </div>
+
+        <!--
+          New content, drafted separately from the Privacy Policy text above —
+          the Privacy Policy content is lawyer-approved and final and is not
+          touched by this section. This Cookie section is pending legal
+          review before launch.
+        -->
+        <div>
+          <h2>{t.privacy.cookies.heading}</h2>
+          {
+            t.privacy.cookies.sections.map((section) => (
+              <div>
+                <h3>{section.heading}</h3>
+                <p>{section.body}</p>
+              </div>
+            ))
+          }
+        </div>
       </div>
     </div>
   </section>
@@ -75,6 +93,11 @@ const t = getTranslations(lang);
     font-size: 22px;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
+  }
+  .prose-content :global(h3) {
+    font-size: 16.5px;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
   }
   .prose-content :global(p) {
     color: var(--color-muted);

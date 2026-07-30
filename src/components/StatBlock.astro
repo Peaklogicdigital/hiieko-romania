@@ -3,13 +3,14 @@ interface Props {
   value: string;
   label: string;
   countTo?: number;
+  suffix?: string;
 }
-const { value, label, countTo } = Astro.props;
+const { value, label, countTo, suffix } = Astro.props;
 ---
 
 <div class="md:px-[22px] md:border-l md:border-line md:first:pl-0 md:first:border-l-0">
-  <div class="font-mono text-neon text-[22px] font-semibold" data-count={countTo}>
-    {countTo !== undefined ? '0' : value}
+  <div class="font-mono text-neon text-[22px] font-semibold">
+    <span data-count={countTo}>{countTo !== undefined ? '0' : value}</span>{suffix}
   </div>
   <div class="text-muted text-[12.5px] mt-1">{label}</div>
 </div>
