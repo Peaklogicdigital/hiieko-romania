@@ -1,7 +1,9 @@
 ---
+// Draft — this entire page is placeholder legal content pending sign-off
+// by counsel before launch. Do not treat any of this copy as final.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
-import { getTranslations } from '../../i18n/ui';
+import { getTranslations, PRIVACY_ADDRESS_MAPS_URL } from '../../i18n/ui';
 
 const lang = 'en' as const;
 const t = getTranslations(lang);
@@ -19,6 +21,16 @@ const t = getTranslations(lang);
       <h1 class="text-[clamp(30px,3.6vw,44px)] mt-2.5 mb-10">{t.privacy.h1}</h1>
 
       <div class="prose-content text-text">
+        <div>
+          <h2>{t.privacy.whoWeAreHeading}</h2>
+          <p>
+            {t.privacy.whoWeArePrefix}{' '}
+            <a href={PRIVACY_ADDRESS_MAPS_URL} target="_blank" rel="noopener noreferrer">
+              {t.privacy.whoWeAreAddressText}
+            </a>, {t.privacy.whoWeAreSuffix}
+          </p>
+        </div>
+
         {
           t.privacy.sections.map((section) => (
             <div>
@@ -27,18 +39,49 @@ const t = getTranslations(lang);
             </div>
           ))
         }
+
+        <div>
+          <h2>{t.privacy.transfersHeading}</h2>
+          <p>{t.privacy.transfersBody}</p>
+          <!--
+            TODO (legal): name the specific safeguard mechanism that applies
+            to any processor based outside the EU/EEA (e.g. Standard
+            Contractual Clauses) and confirm with counsel before launch.
+          -->
+        </div>
+
         <div>
           <h2>{t.privacy.rightsHeading}</h2>
           <p>
-            {t.privacy.rightsBody}{' '}
+            {t.privacy.rightsIntro}{' '}
+            <a href={`mailto:${t.privacy.rightsEmail}`}>{t.privacy.rightsEmail}</a>{t.privacy.rightsMiddle}{' '}
             <a href="https://www.dataprotection.ro" target="_blank" rel="noopener noreferrer">
               {t.privacy.rightsLinkLabel}
             </a>.
           </p>
         </div>
+
         <div>
           <h2>{t.privacy.changesHeading}</h2>
           <p>{t.privacy.changesBody}</p>
+        </div>
+
+        <!--
+          New content, drafted separately from the Privacy Policy text above —
+          the Privacy Policy content is lawyer-approved and final and is not
+          touched by this section. This Cookie section is pending legal
+          review before launch.
+        -->
+        <div>
+          <h2>{t.privacy.cookies.heading}</h2>
+          {
+            t.privacy.cookies.sections.map((section) => (
+              <div>
+                <h3>{section.heading}</h3>
+                <p>{section.body}</p>
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -50,6 +93,11 @@ const t = getTranslations(lang);
     font-size: 22px;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
+  }
+  .prose-content :global(h3) {
+    font-size: 16.5px;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
   }
   .prose-content :global(p) {
     color: var(--color-muted);

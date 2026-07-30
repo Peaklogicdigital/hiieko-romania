@@ -6,6 +6,7 @@ import DashboardSchematic from '../../components/DashboardSchematic.astro';
 import TrustStrip from '../../components/TrustStrip.astro';
 import DifferentiationSection from '../../components/DifferentiationSection.astro';
 import SolutionsGrid from '../../components/SolutionsGrid.astro';
+import IndustriesSection from '../../components/IndustriesSection.astro';
 import Calculator from '../../components/Calculator.astro';
 import ProjectsGallery from '../../components/ProjectsGallery.astro';
 import ContactForm from '../../components/ContactForm.astro';
@@ -70,6 +71,8 @@ const t = getTranslations(lang);
       <SolutionsGrid lang={lang} />
     </div>
   </section>
+
+  <IndustriesSection lang={lang} />
 
   <Calculator lang={lang} />
 
@@ -147,7 +150,7 @@ const t = getTranslations(lang);
         <div class="mt-7 text-sm text-muted">
           <div class="mb-2"><b class="text-text">{t.contact.companyName}</b></div>
           <div class="mb-2">{t.contact.addressLine}</div>
-          <div class="mb-2">{t.contact.emailPhonePlaceholder}</div>
+          <div class="mb-2">{t.contact.email}</div>
         </div>
       </div>
       <ContactForm lang={lang} />

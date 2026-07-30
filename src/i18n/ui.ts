@@ -2,6 +2,13 @@ export const languages = { en: 'English', ro: 'Română' } as const;
 export type Lang = keyof typeof languages;
 export const defaultLang: Lang = 'en';
 
+// No specific Google Maps place URL was provided for the registered address —
+// this is a generated search-query link (Google's documented maps/search
+// pattern), not a fabricated place ID. Swap for an exact Maps URL if one
+// exists.
+export const PRIVACY_ADDRESS_MAPS_URL =
+  'https://www.google.com/maps/search/?api=1&query=Bulevardul+Theodor+Pallady+51N%2C+032258+Bucharest%2C+Romania';
+
 const en = {
   nav: {
     solutions: 'Solutions',
@@ -24,7 +31,7 @@ const en = {
   },
   trust: {
     founded: { value: '1994', label: 'Hiieko Group founded, Estonia' },
-    capacity: { value: '[[X]] MWp', label: 'Installed capacity — to confirm' },
+    capacity: { label: 'Installed capacity' },
     specialists: { label: 'Specialists at Hiieko Romania' },
     iso: { value: 'ISO 9001·14001', label: 'Certified management systems' },
   },
@@ -46,12 +53,12 @@ const en = {
       {
         n: '03 / GUARANTEE',
         title: 'Workmanship guarantee',
-        body: '[[ guarantee terms — years / scope, confirm with team ]] on every installation we complete.',
+        body: 'A minimum 60-month workmanship guarantee on every installation we complete.',
       },
       {
         n: '04 / MAINTAIN',
         title: 'Ongoing maintenance',
-        body: 'Scheduled service and monitoring after handover — the system stays our responsibility.',
+        body: 'Scheduled service and monitoring for the same 60-month period after handover — the system stays our responsibility.',
       },
     ],
     callout:
@@ -105,7 +112,7 @@ const en = {
       founded: { label: 'Group founded', value: '1994, Tallinn' },
       subsidiary: { label: 'Romania subsidiary established', value: '2020' },
       purpose: { label: 'Purpose', value: 'Solar parks + storage' },
-      localTeam: { label: 'Local team', value: '21 specialists' },
+      localTeam: { label: 'Local team', value: 'Over 25 specialists' },
       certification: { label: 'Certification', value: 'ISO 9001 / 14001' },
       address: { label: 'Address', value: 'Bd. Theodor Pallady 51N, Bucharest' },
     },
@@ -121,7 +128,7 @@ const en = {
     lede: "Send a few details about the site and consumption. You'll get a sizing estimate back — not a sales pitch.",
     companyName: 'Hiieko Romania SRL',
     addressLine: 'Bd. Theodor Pallady 51N, Sector 3, Bucharest',
-    emailPhonePlaceholder: '[[ RO contact email ]] · [[ RO phone ]]',
+    email: 'bogdan.otelea@hiieko.ro',
   },
   contactForm: {
     nameLabel: 'Name',
@@ -166,7 +173,7 @@ const en = {
     companyHeading: 'Hiieko Romania',
     addressLine1: 'Bd. Theodor Pallady 51N',
     addressLine2: 'Sector 3, Bucharest',
-    emailPhonePlaceholder: '[[ email ]] · [[ phone ]]',
+    email: 'bogdan.otelea@hiieko.ro',
     groupHeading: 'Group',
     groupLine1: 'AS Hiieko — Tallinn, Estonia',
     groupLine2: 'hiieko.ee',
@@ -179,17 +186,17 @@ const en = {
   common: {
     placeholderBadge: 'PLACEHOLDER',
   },
-  // Draft privacy policy — legal content pending review by counsel before
-  // launch. Every [[bracketed]] placeholder below must be resolved with
-  // real values before this goes live; do not invent values for them.
+  // Draft privacy policy — legal content pending sign-off by counsel before
+  // launch. See also the top-of-file notes and inline HTML comment in
+  // src/pages/privacy/index.astro (and its RO mirror).
   privacy: {
     eyebrow: 'Legal',
     h1: 'Privacy Policy',
+    whoWeAreHeading: 'Who we are',
+    whoWeArePrefix: 'Hiieko Romania SRL (CIF 42849908),',
+    whoWeAreAddressText: 'Building C1, Bulevardul Theodor Pallady 51N, Block A, 3rd floor, 032258 București',
+    whoWeAreSuffix: 'is part of the AS Hiieko group and is the data controller for this website.',
     sections: [
-      {
-        heading: 'Who we are',
-        body: 'Hiieko Romania SRL (CIF 42849908), [[registered address]], is part of the AS Hiieko group and is the data controller for this website.',
-      },
       {
         heading: 'What we collect',
         body: 'Through the contact form, we collect the name, company name, email address, phone number, project type, and site details you provide. We do not use tracking cookies at this time; if analytics or advertising cookies are added later, this policy and a cookie consent banner will be updated accordingly.',
@@ -200,23 +207,77 @@ const en = {
       },
       {
         heading: 'Who we share it with',
-        body: 'Your submission is processed by [[Formspree / current form handler]], a third-party service that delivers it to our email. [[If/when a CRM pipeline is added: name the additional processors here — e.g. Airtable, automation tooling — and update this section before that goes live.]] We do not sell your data to third parties.',
-      },
-      {
-        heading: 'International transfers',
-        body: 'Some of the processors above may be based outside the EU/EEA. [[Confirm with legal counsel whether Standard Contractual Clauses or another safeguard applies to each processor in use.]]',
+        body: 'Your submission is processed by Formspree, a third-party service that delivers it to our email. We do not sell your data to third parties.',
       },
       {
         heading: 'Retention',
-        body: 'We retain contact form submissions for [[X months/years — confirm internally]], after which they are deleted unless an ongoing business relationship requires longer retention.',
+        body: 'We retain contact form submissions for 6 months, after which they are deleted unless an ongoing business relationship requires longer retention.',
       },
     ],
+    transfersHeading: 'International transfers',
+    transfersBody: 'Some of the processors above may be based outside the EU/EEA.',
     rightsHeading: 'Your rights',
-    rightsBody:
-      "Under GDPR, you have the right to access, correct, delete, or restrict the use of your data, to receive a copy of it (data portability), and to object to processing. To exercise these rights, contact us at [[privacy contact email]]. You may also lodge a complaint with ANSPDCP, Romania's National Supervisory Authority for Personal Data Processing, at",
+    rightsIntro:
+      'Under GDPR, you have the right to access, correct, delete, or restrict the use of your data, to receive a copy of it (data portability), and to object to processing. To exercise these rights, contact us at',
+    rightsEmail: 'alexander.zeciu@hiieko.ee',
+    rightsMiddle:
+      ". You may also lodge a complaint with ANSPDCP, Romania's National Supervisory Authority for Personal Data Processing, at",
     rightsLinkLabel: 'www.dataprotection.ro',
     changesHeading: 'Changes',
-    changesBody: 'This policy may be updated periodically. Last updated: [[date]].',
+    changesBody: 'This policy may be updated periodically. Last updated: 1 August 2026.',
+    // Cookie section is new content, drafted separately from the lawyer-approved
+    // Privacy Policy text above — pending legal review before launch.
+    cookies: {
+      heading: 'Cookies',
+      sections: [
+        {
+          heading: 'What are cookies',
+          body: 'Cookies are small text files placed on your device when you visit a website, used to make the site function, remember preferences, or gather usage statistics.',
+        },
+        {
+          heading: 'Cookies on this site today',
+          body: 'This website does not currently use cookies. If cookies are introduced in the future — for example, for website analytics or advertising — this section will be updated with the specific cookies in use, and a consent banner will request your permission before any non-essential cookie is set.',
+        },
+        {
+          heading: 'Types of cookies we may use in future',
+          body: 'Strictly necessary cookies (required for the site to function, no consent needed), analytics cookies (e.g. to understand how visitors use the site), and advertising cookies (e.g. to measure ad performance) — only the strictly necessary category would ever be set without your prior consent.',
+        },
+        {
+          heading: 'How we handle consent',
+          body: 'Before any non-essential cookie is set, you will be shown a consent banner allowing you to accept or decline by category. You may change your choice at any time.',
+        },
+        {
+          heading: 'What data cookies may collect',
+          body: 'Depending on the cookie type, this could include IP address, browser and device type, pages visited, time spent on the site, and referral source.',
+        },
+        {
+          heading: 'Your rights regarding cookies',
+          body: 'You may accept or decline non-essential cookies, and withdraw consent at any time. Declining cookies will not affect your ability to browse the site or use the contact form.',
+        },
+        {
+          heading: 'How to control cookies',
+          body: "Once introduced, cookie preferences will be manageable through the consent banner. You can also control or delete cookies through your browser's settings at any time.",
+        },
+        {
+          heading: 'Updates to this section',
+          body: 'This section will be reviewed and updated whenever new cookies are introduced to the site, and periodically thereafter.',
+        },
+      ],
+    },
+  },
+  industries: {
+    eyebrow: 'Who we serve',
+    headline: "Over 100 MWp installed for businesses across Romania's highest-consumption industries.",
+    lede: 'From dairy farms to distribution hubs, we size systems for the operations that draw the most power — and can least afford downtime.',
+    ctaLabel: 'See projects →',
+    items: [
+      { name: 'Agriculture' },
+      { name: 'Manufacturing' },
+      { name: 'Retail' },
+      { name: 'Hospitality', sublabel: 'Hotels, Restaurants & Catering' },
+      { name: 'Institutions' },
+      { name: 'Construction' },
+    ],
   },
   meta: {
     home: {
@@ -281,7 +342,7 @@ const ro: Dictionary = {
   },
   trust: {
     founded: { value: '1994', label: 'Grupul Hiieko fondat, Estonia' },
-    capacity: { value: '[[X]] MWp', label: 'Capacitate instalată — de confirmat' },
+    capacity: { label: 'Capacitate instalată' },
     specialists: { label: 'Specialiști la Hiieko România' },
     iso: { value: 'ISO 9001·14001', label: 'Sisteme de management certificate' },
   },
@@ -303,12 +364,12 @@ const ro: Dictionary = {
       {
         n: '03 / GARANȚIE',
         title: 'Garanție de execuție',
-        body: '[[ termeni de garanție — ani / domeniu, de confirmat cu echipa ]] la fiecare instalare finalizată.',
+        body: 'O garanție de execuție de minimum 60 de luni la fiecare instalare pe care o finalizăm.',
       },
       {
         n: '04 / ÎNTREȚINERE',
         title: 'Mentenanță continuă',
-        body: 'Service programat și monitorizare după predare — sistemul rămâne responsabilitatea noastră.',
+        body: 'Service programat și monitorizare pentru aceeași perioadă de 60 de luni după predare — sistemul rămâne responsabilitatea noastră.',
       },
     ],
     callout:
@@ -362,7 +423,7 @@ const ro: Dictionary = {
       founded: { label: 'Grup fondat', value: '1994, Tallinn' },
       subsidiary: { label: 'Filiala din România înființată', value: '2020' },
       purpose: { label: 'Scop', value: 'Parcuri solare + stocare' },
-      localTeam: { label: 'Echipă locală', value: '21 specialiști' },
+      localTeam: { label: 'Echipă locală', value: 'Peste 25 de specialiști' },
       certification: { label: 'Certificare', value: 'ISO 9001 / 14001' },
       address: { label: 'Adresă', value: 'Bd. Theodor Pallady 51N, București' },
     },
@@ -378,7 +439,7 @@ const ro: Dictionary = {
     lede: 'Trimite-ne câteva detalii despre site și consum. Vei primi o estimare de dimensionare — nu un discurs de vânzare.',
     companyName: 'Hiieko Romania SRL',
     addressLine: 'Bd. Theodor Pallady 51N, Sector 3, București',
-    emailPhonePlaceholder: '[[ email de contact ]] · [[ telefon ]]',
+    email: 'bogdan.otelea@hiieko.ro',
   },
   contactForm: {
     nameLabel: 'Nume',
@@ -423,7 +484,7 @@ const ro: Dictionary = {
     companyHeading: 'Hiieko România',
     addressLine1: 'Bd. Theodor Pallady 51N',
     addressLine2: 'Sector 3, București',
-    emailPhonePlaceholder: '[[ email ]] · [[ telefon ]]',
+    email: 'bogdan.otelea@hiieko.ro',
     groupHeading: 'Grup',
     groupLine1: 'AS Hiieko — Tallinn, Estonia',
     groupLine2: 'hiieko.ee',
@@ -439,11 +500,11 @@ const ro: Dictionary = {
   privacy: {
     eyebrow: 'Legal',
     h1: 'Politica de confidențialitate',
+    whoWeAreHeading: 'Cine suntem',
+    whoWeArePrefix: 'Hiieko Romania SRL (CIF 42849908),',
+    whoWeAreAddressText: 'Clădirea C1, Bulevardul Theodor Pallady nr. 51N, Bloc A, etaj 3, 032258 București',
+    whoWeAreSuffix: 'face parte din grupul AS Hiieko și este operatorul de date pentru acest site.',
     sections: [
-      {
-        heading: 'Cine suntem',
-        body: 'Hiieko Romania SRL (CIF 42849908), [[adresa sediului social]], face parte din grupul AS Hiieko și este operatorul de date pentru acest site.',
-      },
       {
         heading: 'Ce colectăm',
         body: 'Prin formularul de contact, colectăm numele, denumirea companiei, adresa de email, numărul de telefon, tipul de proiect și detaliile despre site pe care ni le furnizezi. Nu folosim cookie-uri de urmărire în acest moment; dacă vor fi adăugate ulterior cookie-uri de analiză sau publicitate, această politică și un banner de consimțământ pentru cookie-uri vor fi actualizate corespunzător.',
@@ -454,23 +515,75 @@ const ro: Dictionary = {
       },
       {
         heading: 'Cui le transmitem',
-        body: 'Solicitarea ta este procesată de [[Formspree / procesatorul actual al formularului]], un serviciu terț care o livrează pe email-ul nostru. [[Dacă/când este adăugat un flux CRM: menționează aici procesatorii suplimentari — de ex. Airtable, unelte de automatizare — și actualizează această secțiune înainte ca acesta să intre în funcțiune.]] Nu vindem datele tale către terți.',
-      },
-      {
-        heading: 'Transferuri internaționale',
-        body: 'Unii dintre procesatorii de mai sus pot fi localizați în afara UE/SEE. [[Confirmă cu un consilier juridic dacă se aplică Clauze Contractuale Standard sau o altă garanție pentru fiecare procesator utilizat.]]',
+        body: 'Solicitarea ta este procesată de Formspree, un serviciu terț care o livrează pe email-ul nostru. Nu vindem datele tale către terți.',
       },
       {
         heading: 'Păstrarea datelor',
-        body: 'Păstrăm solicitările trimise prin formularul de contact timp de [[X luni/ani — de confirmat intern]], după care sunt șterse, cu excepția cazului în care o relație de afaceri continuă necesită o păstrare mai îndelungată.',
+        body: 'Păstrăm solicitările trimise prin formularul de contact timp de 6 luni, după care sunt șterse, cu excepția cazului în care o relație de afaceri continuă necesită o păstrare mai îndelungată.',
       },
     ],
+    transfersHeading: 'Transferuri internaționale',
+    transfersBody: 'Unii dintre procesatorii de mai sus pot fi localizați în afara UE/SEE.',
     rightsHeading: 'Drepturile tale',
-    rightsBody:
-      'Conform GDPR, ai dreptul de a accesa, corecta, șterge sau restricționa utilizarea datelor tale, de a primi o copie a acestora (portabilitatea datelor) și de a te opune prelucrării. Pentru a-ți exercita aceste drepturi, contactează-ne la [[adresa de email pentru confidențialitate]]. De asemenea, poți depune o plângere la ANSPDCP, Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal, la',
+    rightsIntro:
+      'Conform GDPR, ai dreptul de a accesa, corecta, șterge sau restricționa utilizarea datelor tale, de a primi o copie a acestora (portabilitatea datelor) și de a te opune prelucrării. Pentru a-ți exercita aceste drepturi, contactează-ne la',
+    rightsEmail: 'alexander.zeciu@hiieko.ee',
+    rightsMiddle:
+      '. De asemenea, poți depune o plângere la ANSPDCP, Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal, la',
     rightsLinkLabel: 'www.dataprotection.ro',
     changesHeading: 'Modificări',
-    changesBody: 'Această politică poate fi actualizată periodic. Ultima actualizare: [[dată]].',
+    changesBody: 'Această politică poate fi actualizată periodic. Ultima actualizare: 1 august 2026.',
+    cookies: {
+      heading: 'Cookie-uri',
+      sections: [
+        {
+          heading: 'Ce sunt cookie-urile',
+          body: 'Cookie-urile sunt fișiere text mici plasate pe dispozitivul tău atunci când vizitezi un site web, folosite pentru a face site-ul să funcționeze, a reține preferințele sau a colecta statistici de utilizare.',
+        },
+        {
+          heading: 'Cookie-uri pe acest site în prezent',
+          body: 'Acest site nu folosește în prezent cookie-uri. Dacă vor fi introduse cookie-uri în viitor — de exemplu, pentru analiza site-ului sau publicitate — această secțiune va fi actualizată cu cookie-urile specifice utilizate, iar un banner de consimțământ îți va solicita permisiunea înainte de setarea oricărui cookie neesențial.',
+        },
+        {
+          heading: 'Tipuri de cookie-uri pe care le-am putea folosi în viitor',
+          body: 'Cookie-uri strict necesare (necesare pentru funcționarea site-ului, fără a necesita consimțământ), cookie-uri de analiză (de exemplu, pentru a înțelege cum utilizează vizitatorii site-ul) și cookie-uri publicitare (de exemplu, pentru a măsura performanța reclamelor) — doar categoria strict necesară ar fi vreodată setată fără consimțământul tău prealabil.',
+        },
+        {
+          heading: 'Cum gestionăm consimțământul',
+          body: 'Înainte de setarea oricărui cookie neesențial, ți se va afișa un banner de consimțământ care îți permite să accepți sau să refuzi pe categorii. Îți poți schimba alegerea în orice moment.',
+        },
+        {
+          heading: 'Ce date pot colecta cookie-urile',
+          body: 'În funcție de tipul cookie-ului, acestea pot include adresa IP, tipul de browser și dispozitiv, paginile vizitate, timpul petrecut pe site și sursa de referință.',
+        },
+        {
+          heading: 'Drepturile tale privind cookie-urile',
+          body: 'Poți accepta sau refuza cookie-urile neesențiale și îți poți retrage consimțământul în orice moment. Refuzul cookie-urilor nu îți va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
+        },
+        {
+          heading: 'Cum controlezi cookie-urile',
+          body: 'Odată introduse, preferințele privind cookie-urile vor putea fi gestionate prin bannerul de consimțământ. De asemenea, poți controla sau șterge cookie-urile din setările browserului tău în orice moment.',
+        },
+        {
+          heading: 'Actualizări ale acestei secțiuni',
+          body: 'Această secțiune va fi revizuită și actualizată ori de câte ori sunt introduse cookie-uri noi pe site, și periodic ulterior.',
+        },
+      ],
+    },
+  },
+  industries: {
+    eyebrow: 'Pentru cine lucrăm',
+    headline: 'Peste 100 MWp instalați pentru afaceri din cele mai mari consumatoare industrii ale României.',
+    lede: 'De la ferme de lapte la hub-uri de distribuție, dimensionăm sisteme pentru operațiunile cu cel mai mare consum — și care își permit cel mai puțin întreruperi.',
+    ctaLabel: 'Vezi proiectele →',
+    items: [
+      { name: 'Agricultură' },
+      { name: 'Producție' },
+      { name: 'Retail' },
+      { name: 'Ospitalitate', sublabel: 'Hoteluri, restaurante și catering' },
+      { name: 'Instituții' },
+      { name: 'Construcții' },
+    ],
   },
   meta: {
     home: {

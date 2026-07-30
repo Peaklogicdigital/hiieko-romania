@@ -1,0 +1,101 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import Eyebrow from './Eyebrow.astro';
+import Button from './Button.astro';
+import type { Lang } from '../i18n/ui';
+import { defaultLang, getTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = defaultLang } = Astro.props;
+const t = getTranslations(lang);
+const projectsHref = getRelativeLocaleUrl(lang, '/projects/');
+
+// Original line-style icons, drawn to match DashboardSchematic's visual
+// language (muted outline strokes + a small neon accent dot) — one per
+// industry in t.industries.items, same order.
+const icons = [
+  // Agriculture — leaf
+  `<path d="M20 32 C13 28 9 21 11 14 C13 8 20 6 27 9 C28 15 26 22 20 27 C19.5 28.5 20 30 20 32 Z" class="fill-none stroke-muted stroke-[1.2px]" />
+   <path d="M20 32 C20 24 22 18 27 9" class="fill-none stroke-muted stroke-[1.2px]" />
+   <circle cx="27" cy="9" r="1.8" class="fill-neon" filter="drop-shadow(0 0 4px var(--color-neon))" />`,
+  // Manufacturing — gear
+  `<circle cx="20" cy="20" r="7" class="fill-none stroke-muted stroke-[1.2px]" />
+   <circle cx="20" cy="20" r="2.4" class="fill-none stroke-muted stroke-[1.2px]" />
+   <g class="stroke-muted stroke-[1.2px]">
+     <line x1="20" y1="8" x2="20" y2="12" />
+     <line x1="20" y1="28" x2="20" y2="32" />
+     <line x1="8" y1="20" x2="12" y2="20" />
+     <line x1="28" y1="20" x2="32" y2="20" />
+     <line x1="11.5" y1="11.5" x2="14.3" y2="14.3" />
+     <line x1="25.7" y1="25.7" x2="28.5" y2="28.5" />
+     <line x1="28.5" y1="11.5" x2="25.7" y2="14.3" />
+     <line x1="14.3" y1="25.7" x2="11.5" y2="28.5" />
+   </g>
+   <circle cx="20" cy="20" r="0.9" class="fill-neon" filter="drop-shadow(0 0 4px var(--color-neon))" />`,
+  // Retail — shopping bag
+  `<path d="M12 15 L28 15 L27 32 L13 32 Z" class="fill-none stroke-muted stroke-[1.2px]" />
+   <path d="M15 15 C15 10 17 7 20 7 C23 7 25 10 25 15" class="fill-none stroke-muted stroke-[1.2px]" />
+   <circle cx="20" cy="22" r="1.6" class="fill-neon" filter="drop-shadow(0 0 4px var(--color-neon))" />`,
+  // Hospitality — crossed fork & knife
+  `<line x1="14" y1="9" x2="14" y2="32" class="stroke-muted stroke-[1.2px]" />
+   <line x1="11" y1="9" x2="11" y2="16" class="stroke-muted stroke-[1.2px]" />
+   <line x1="17" y1="9" x2="17" y2="16" class="stroke-muted stroke-[1.2px]" />
+   <path d="M11 16 C11 19 17 19 17 16" class="fill-none stroke-muted stroke-[1.2px]" />
+   <path d="M26 9 C22 9 22 15 26 17 L26 32" class="fill-none stroke-muted stroke-[1.2px]" />
+   <circle cx="14" cy="7" r="1.6" class="fill-neon" filter="drop-shadow(0 0 4px var(--color-neon))" />`,
+  // Institutions — columned building
+  `<path d="M8 16 L20 8 L32 16" class="fill-none stroke-muted stroke-[1.2px]" />
+   <line x1="8" y1="16" x2="32" y2="16" class="stroke-muted stroke-[1.2px]" />
+   <line x1="11" y1="16" x2="11" y2="28" class="stroke-muted stroke-[1.2px]" />
+   <line x1="16" y1="16" x2="16" y2="28" class="stroke-muted stroke-[1.2px]" />
+   <line x1="24" y1="16" x2="24" y2="28" class="stroke-muted stroke-[1.2px]" />
+   <line x1="29" y1="16" x2="29" y2="28" class="stroke-muted stroke-[1.2px]" />
+   <line x1="8" y1="28" x2="32" y2="28" class="stroke-muted stroke-[1.2px]" />
+   <line x1="8" y1="32" x2="32" y2="32" class="stroke-muted stroke-[1.2px]" />
+   <circle cx="20" cy="7" r="1.6" class="fill-neon" filter="drop-shadow(0 0 4px var(--color-neon))" />`,
+  // Construction — crane
+  `<line x1="10" y1="32" x2="10" y2="8" class="stroke-muted stroke-[1.2px]" />
+   <line x1="10" y1="8" x2="30" y2="8" class="stroke-muted stroke-[1.2px]" />
+   <line x1="10" y1="8" x2="6" y2="14" class="stroke-muted stroke-[1.2px]" />
+   <line x1="24" y1="8" x2="24" y2="18" class="stroke-volt stroke-[1.2px] opacity-55" stroke-dasharray="3 3" />
+   <rect x="21" y="18" width="6" height="5" class="fill-none stroke-muted stroke-[1.2px]" />
+   <line x1="6" y1="32" x2="14" y2="32" class="stroke-muted stroke-[1.2px]" />
+   <circle cx="10" cy="8" r="1.6" class="fill-neon" filter="drop-shadow(0 0 4px var(--color-neon))" />`,
+];
+---
+
+<section class="py-[100px] reveal">
+  <div class="wrap">
+    <div class="max-w-[640px] mb-[52px]">
+      <Eyebrow text={t.industries.eyebrow} />
+      <h2 class="text-[clamp(26px,3vw,36px)] mt-2.5 mb-3.5">{t.industries.headline}</h2>
+      <p class="text-muted text-[15.5px] mb-6">{t.industries.lede}</p>
+      <Button variant="ghost" href={projectsHref}>{t.industries.ctaLabel}</Button>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {
+        t.industries.items.map((item, i) => (
+          <div class="bg-bg-2 p-[28px_24px] flex flex-col gap-3">
+            <svg
+              class="w-10 h-10"
+              viewBox="0 0 40 40"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label={item.name}
+              set:html={icons[i]}
+            />
+            <div>
+              <h3 class="text-[16px] mb-0.5">{item.name}</h3>
+              {'sublabel' in item && item.sublabel && (
+                <p class="text-[12.5px] text-muted m-0">{item.sublabel}</p>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
