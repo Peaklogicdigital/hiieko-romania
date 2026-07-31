@@ -23,7 +23,7 @@ const t = getTranslations(lang);
   lang={lang}
 >
   <header class="pt-20 overflow-hidden relative">
-    <div class="wrap relative z-10 grid grid-cols-1 md:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
+    <div class="wrap relative z-10 grid grid-cols-1 md:grid-cols-[1fr_1.15fr] gap-10 items-center">
       <div>
         <Eyebrow text={t.hero.eyebrow} />
         <h1 class="text-[clamp(34px,4.4vw,54px)] leading-[1.05] my-[18px] mb-[22px]">
@@ -38,15 +38,7 @@ const t = getTranslations(lang);
         </div>
       </div>
 
-      <div class="bg-chip border border-white/10 rounded-md p-[22px] reveal">
-        <div class="flex justify-between items-center mb-3.5">
-          <span class="font-mono text-[11px] text-muted tracking-[0.06em] uppercase">
-            {t.hero.dashboardLabel}
-          </span>
-          <Eyebrow text={t.hero.liveLabel} small />
-        </div>
-        <HeroSchematic />
-      </div>
+      <HeroSchematic />
     </div>
 
     <TrustStrip lang={lang} />

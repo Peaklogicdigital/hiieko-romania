@@ -8,8 +8,8 @@ interface Props {
 const { value, label, countTo, suffix } = Astro.props;
 ---
 
-<div>
-  <div class="font-mono text-gold text-[22px] font-semibold">
+<div class="lg:px-5 lg:border-l lg:border-white/10 lg:first:pl-0 lg:first:border-l-0">
+  <div class="font-mono text-gold-bright text-[22px] font-semibold">
     <span data-count={countTo}>{countTo !== undefined ? '0' : value}</span>{suffix}
   </div>
   <div class="text-muted text-[12.5px] mt-1">{label}</div>

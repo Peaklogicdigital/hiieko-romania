@@ -49,6 +49,15 @@
 
   html {
     scroll-behavior: smooth;
+    /*
+      Explicit background on html prevents the UA from propagating body's
+      background to the canvas/viewport (the CSS root-background
+      propagation rule) — without this, percentage gradient stops on body
+      would resolve against the viewport height instead of the page's own
+      full content height, and the gradient would look "stuck" after one
+      scroll on any page taller than the viewport.
+    */
+    background: var(--color-charcoal);
   }
 
   body {
@@ -56,17 +65,17 @@
     font-size: 16px;
     line-height: 1.55;
     /*
-      Fixed vertical gradient: green-dark at the top, through a mid green,
-      into charcoal — using pixel stops (not %) so the transition zone is a
-      constant physical distance from the top of the document regardless of
-      page length, then holds flat charcoal for the rest of the page.
+      Vertical gradient scaled to each page's own total height (percentage
+      stops, no background-attachment) so the proportions — mostly green,
+      transitioning to charcoal near the bottom — hold on a short page
+      (Privacy) and a long one (Home) alike.
     */
     background: linear-gradient(
-      to bottom,
-      var(--color-green-dark) 0px,
-      #16402d 60px,
-      #16402d 500px,
-      var(--color-charcoal) 1100px,
+      180deg,
+      var(--color-green-dark) 0%,
+      var(--color-green-dark) 15%,
+      #16402d 65%,
+      var(--color-charcoal) 90%,
       var(--color-charcoal) 100%
     );
   }

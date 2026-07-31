@@ -26,8 +26,6 @@ const en = {
     lede: 'Design, installation, and long-term maintenance of rooftop and ground-mount solar plus battery storage for Romanian industrial and commercial sites — one contractor, one guarantee, backed by Estonian engineering since 1994.',
     ctaPrimary: 'Get a site assessment →',
     ctaSecondary: 'Estimate your system ↓',
-    dashboardLabel: 'System overview',
-    liveLabel: 'Live',
   },
   trust: {
     founded: { value: '1994', label: 'Group Founded, Estonia' },
@@ -347,8 +345,6 @@ const ro: Dictionary = {
     lede: 'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru site-uri industriale și comerciale din România — un singur contractor, o singură garanție, susținută de inginerie estoniană din 1994.',
     ctaPrimary: 'Solicită o evaluare →',
     ctaSecondary: 'Estimează sistemul ↓',
-    dashboardLabel: 'Prezentare sistem',
-    liveLabel: 'Live',
   },
   trust: {
     founded: { value: '1994', label: 'Grup fondat, Estonia' },
