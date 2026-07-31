@@ -12,17 +12,16 @@ const { lang = defaultLang } = Astro.props;
 const t = getTranslations(lang);
 const projectsHref = getRelativeLocaleUrl(lang, '/projects/');
 
-// Original line-style icons, drawn to match DashboardSchematic's visual
-// language (outline strokes + a small neon accent dot) — one per industry
-// in t.industries.items, same order. Outline strokes use `stroke-current`
-// so the on-hover muted→neon color shift can be driven from a single
-// `text-*` class on the wrapping <svg> below, instead of touching every
-// path individually.
+// Original line-style icons — outline strokes + a small gold accent dot —
+// one per industry in t.industries.items, same order. Outline strokes use
+// `stroke-current` so the on-hover muted→gold color shift can be driven
+// from a single `text-*` class on the wrapping <svg> below, instead of
+// touching every path individually.
 const icons = [
   // Agriculture — leaf
   `<path d="M20 32 C13 28 9 21 11 14 C13 8 20 6 27 9 C28 15 26 22 20 27 C19.5 28.5 20 30 20 32 Z" class="fill-none stroke-current stroke-[1.2px]" />
    <path d="M20 32 C20 24 22 18 27 9" class="fill-none stroke-current stroke-[1.2px]" />
-   <circle cx="27" cy="9" r="1.8" class="fill-neon" filter="drop-shadow(0 0 4px var(--color-neon))" />`,
+   <circle cx="27" cy="9" r="1.8" class="fill-gold" filter="drop-shadow(0 0 4px var(--color-gold))" />`,
   // Manufacturing — gear
   `<circle cx="20" cy="20" r="7" class="fill-none stroke-current stroke-[1.2px]" />
    <circle cx="20" cy="20" r="2.4" class="fill-none stroke-current stroke-[1.2px]" />
@@ -36,18 +35,18 @@ const icons = [
      <line x1="28.5" y1="11.5" x2="25.7" y2="14.3" />
      <line x1="14.3" y1="25.7" x2="11.5" y2="28.5" />
    </g>
-   <circle cx="20" cy="20" r="0.9" class="fill-neon" filter="drop-shadow(0 0 4px var(--color-neon))" />`,
+   <circle cx="20" cy="20" r="0.9" class="fill-gold" filter="drop-shadow(0 0 4px var(--color-gold))" />`,
   // Retail — shopping bag
   `<path d="M12 15 L28 15 L27 32 L13 32 Z" class="fill-none stroke-current stroke-[1.2px]" />
    <path d="M15 15 C15 10 17 7 20 7 C23 7 25 10 25 15" class="fill-none stroke-current stroke-[1.2px]" />
-   <circle cx="20" cy="22" r="1.6" class="fill-neon" filter="drop-shadow(0 0 4px var(--color-neon))" />`,
+   <circle cx="20" cy="22" r="1.6" class="fill-gold" filter="drop-shadow(0 0 4px var(--color-gold))" />`,
   // Hospitality — crossed fork & knife
   `<line x1="14" y1="9" x2="14" y2="32" class="stroke-current stroke-[1.2px]" />
    <line x1="11" y1="9" x2="11" y2="16" class="stroke-current stroke-[1.2px]" />
    <line x1="17" y1="9" x2="17" y2="16" class="stroke-current stroke-[1.2px]" />
    <path d="M11 16 C11 19 17 19 17 16" class="fill-none stroke-current stroke-[1.2px]" />
    <path d="M26 9 C22 9 22 15 26 17 L26 32" class="fill-none stroke-current stroke-[1.2px]" />
-   <circle cx="14" cy="7" r="1.6" class="fill-neon" filter="drop-shadow(0 0 4px var(--color-neon))" />`,
+   <circle cx="14" cy="7" r="1.6" class="fill-gold" filter="drop-shadow(0 0 4px var(--color-gold))" />`,
   // Institutions — columned building
   `<path d="M8 16 L20 8 L32 16" class="fill-none stroke-current stroke-[1.2px]" />
    <line x1="8" y1="16" x2="32" y2="16" class="stroke-current stroke-[1.2px]" />
@@ -57,15 +56,15 @@ const icons = [
    <line x1="29" y1="16" x2="29" y2="28" class="stroke-current stroke-[1.2px]" />
    <line x1="8" y1="28" x2="32" y2="28" class="stroke-current stroke-[1.2px]" />
    <line x1="8" y1="32" x2="32" y2="32" class="stroke-current stroke-[1.2px]" />
-   <circle cx="20" cy="7" r="1.6" class="fill-neon" filter="drop-shadow(0 0 4px var(--color-neon))" />`,
+   <circle cx="20" cy="7" r="1.6" class="fill-gold" filter="drop-shadow(0 0 4px var(--color-gold))" />`,
   // Construction — crane
   `<line x1="10" y1="32" x2="10" y2="8" class="stroke-current stroke-[1.2px]" />
    <line x1="10" y1="8" x2="30" y2="8" class="stroke-current stroke-[1.2px]" />
    <line x1="10" y1="8" x2="6" y2="14" class="stroke-current stroke-[1.2px]" />
-   <line x1="24" y1="8" x2="24" y2="18" class="stroke-volt stroke-[1.2px] opacity-55" stroke-dasharray="3 3" />
+   <line x1="24" y1="8" x2="24" y2="18" class="stroke-gold-bright stroke-[1.2px] opacity-55" stroke-dasharray="3 3" />
    <rect x="21" y="18" width="6" height="5" class="fill-none stroke-current stroke-[1.2px]" />
    <line x1="6" y1="32" x2="14" y2="32" class="stroke-current stroke-[1.2px]" />
-   <circle cx="10" cy="8" r="1.6" class="fill-neon" filter="drop-shadow(0 0 4px var(--color-neon))" />`,
+   <circle cx="10" cy="8" r="1.6" class="fill-gold" filter="drop-shadow(0 0 4px var(--color-gold))" />`,
 ];
 ---
 
@@ -82,10 +81,10 @@ const icons = [
       {
         t.industries.items.map((item, i) => (
           <div
-            class="group rounded-md border border-line bg-bg-2 p-[28px_24px] flex flex-col gap-3 transition-all duration-200 ease-out hover:-translate-y-1.5 hover:bg-bg-3 hover:border-neon hover:shadow-[0_0_22px_rgba(70,247,156,0.35)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+            class="group border-t-2 border-green-mid p-[28px_24px] flex flex-col gap-3 transition-all duration-200 ease-out hover:-translate-y-1.5 hover:border-gold hover:shadow-[0_0_22px_rgba(224,168,62,0.35)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
           >
             <svg
-              class="w-10 h-10 text-muted transition-[color,transform] duration-200 ease-out group-hover:text-neon group-hover:scale-110 group-hover:rotate-6 motion-reduce:transition-none motion-reduce:group-hover:scale-100 motion-reduce:group-hover:rotate-0"
+              class="w-10 h-10 text-muted transition-[color,transform] duration-200 ease-out group-hover:text-gold group-hover:scale-110 group-hover:rotate-6 motion-reduce:transition-none motion-reduce:group-hover:scale-100 motion-reduce:group-hover:rotate-0"
               viewBox="0 0 40 40"
               xmlns="http://www.w3.org/2000/svg"
               role="img"

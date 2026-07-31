@@ -11,11 +11,11 @@ const Tag = href ? 'a' : 'div';
 
 <Tag
   href={href}
-  class="bg-bg-2 hover:bg-bg-3 p-[34px_28px] px-7 py-[34px] min-h-[220px] flex flex-col justify-between transition-colors no-underline"
+  class="border-t-2 border-green-mid hover:border-gold p-[38px_28px] min-h-[220px] flex flex-col justify-between transition-colors no-underline"
 >
   <div>
-    <span class="font-mono text-[11px] text-neon tracking-[0.08em] uppercase">{tagNumber}</span>
-    <h3 class="text-[19px] my-3.5">{title}</h3>
+    <span class="font-mono text-[11px] text-gold tracking-[0.08em] uppercase">{tagNumber}</span>
+    <h3 class="text-[19px] my-3.5 text-white">{title}</h3>
     <p class="text-sm text-muted m-0">{summary}</p>
   </div>
 </Tag>

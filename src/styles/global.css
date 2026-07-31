@@ -11,21 +11,19 @@
 @import "@fontsource/ibm-plex-mono/600.css";
 
 /*
-  Design tokens ported from hiieko-romania-homepage-v2.html.
-  Using the shipped :root values (#141B18 bg etc.), not the #0A0F0D
-  documented in that file's rationale comment — the shipped value is what
-  was actually visually tuned and rendered.
+  Design tokens for the gradient-based redesign. Replaces the earlier dark
+  neon "monitoring dashboard" palette entirely — nothing in the codebase
+  should reference --color-bg/-bg-2/-bg-3/-neon/-volt/-text/-line anymore.
 */
 @theme {
-  --color-bg: #141b18;
-  --color-bg-2: #1b2420;
-  --color-bg-3: #222d28;
-  --color-neon: #46f79c;
-  --color-neon-dim: rgb(70 247 156 / 0.14);
-  --color-volt: #5b8def;
-  --color-text: #eaf2ed;
-  --color-muted: #8fa79b;
-  --color-line: rgb(234 242 237 / 0.09);
+  --color-green-dark: #0d3323;
+  --color-charcoal: #1e231f;
+  --color-green-mid: #3e8562;
+  --color-gold: #e0a83e;
+  --color-gold-bright: #f2c86a;
+  --color-white: #fafbf7;
+  --color-muted: rgb(250 251 247 / 0.62);
+  --color-chip: rgb(10 16 12 / 0.62);
 
   --font-display: "Archivo", "IBM Plex Sans", sans-serif;
   --font-sans: "IBM Plex Sans", system-ui, sans-serif;
@@ -54,9 +52,23 @@
   }
 
   body {
-    @apply bg-bg text-text font-sans;
+    @apply text-white font-sans;
     font-size: 16px;
     line-height: 1.55;
+    /*
+      Fixed vertical gradient: green-dark at the top, through a mid green,
+      into charcoal — using pixel stops (not %) so the transition zone is a
+      constant physical distance from the top of the document regardless of
+      page length, then holds flat charcoal for the rest of the page.
+    */
+    background: linear-gradient(
+      to bottom,
+      var(--color-green-dark) 0px,
+      #16402d 60px,
+      #16402d 500px,
+      var(--color-charcoal) 1100px,
+      var(--color-charcoal) 100%
+    );
   }
 
   h1,
@@ -98,22 +110,22 @@
       color 0.15s ease;
   }
   .btn:focus-visible {
-    outline: 2px solid var(--color-neon);
+    outline: 2px solid var(--color-gold);
     outline-offset: 3px;
   }
   .btn-primary {
-    @apply bg-neon px-6 py-3.5 border-none;
-    color: #06120b;
+    @apply bg-gold px-6 py-3.5 border-none;
+    color: var(--color-charcoal);
   }
   .btn-primary:hover {
     transform: translateY(-1px);
-    box-shadow: 0 0 22px rgba(70, 247, 156, 0.35);
+    box-shadow: 0 0 22px rgba(224, 168, 62, 0.35);
   }
   .btn-ghost {
-    @apply bg-transparent text-text border border-line px-6 py-[13px];
+    @apply bg-transparent text-white border border-white/15 px-6 py-[13px];
   }
   .btn-ghost:hover {
-    @apply border-neon text-neon;
+    @apply border-gold text-gold;
   }
 }
 

@@ -22,26 +22,26 @@ const webhookUrl = import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL ?? '';
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
     <div>
       <label for="nume" class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-1.5">{t.contactForm.nameLabel}</label>
-      <input id="nume" name="name" type="text" required class="w-full bg-bg-2 border border-line text-text px-[13px] py-3 text-sm rounded-[3px] focus:outline-2 focus:outline-neon focus:border-neon" />
+      <input id="nume" name="name" type="text" required class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] focus:outline-2 focus:outline-gold focus:border-gold" />
     </div>
     <div>
       <label for="companie" class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-1.5">{t.contactForm.companyLabel}</label>
-      <input id="companie" name="company" type="text" required class="w-full bg-bg-2 border border-line text-text px-[13px] py-3 text-sm rounded-[3px] focus:outline-2 focus:outline-neon focus:border-neon" />
+      <input id="companie" name="company" type="text" required class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] focus:outline-2 focus:outline-gold focus:border-gold" />
     </div>
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
     <div>
       <label for="email" class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-1.5">{t.contactForm.emailLabel}</label>
-      <input id="email" name="email" type="email" required class="w-full bg-bg-2 border border-line text-text px-[13px] py-3 text-sm rounded-[3px] focus:outline-2 focus:outline-neon focus:border-neon" />
+      <input id="email" name="email" type="email" required class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] focus:outline-2 focus:outline-gold focus:border-gold" />
     </div>
     <div>
       <label for="tel" class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-1.5">{t.contactForm.phoneLabel}</label>
-      <input id="tel" name="phone" type="tel" class="w-full bg-bg-2 border border-line text-text px-[13px] py-3 text-sm rounded-[3px] focus:outline-2 focus:outline-neon focus:border-neon" />
+      <input id="tel" name="phone" type="tel" class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] focus:outline-2 focus:outline-gold focus:border-gold" />
     </div>
   </div>
   <div>
     <label for="tip" class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-1.5">{t.contactForm.projectTypeLabel}</label>
-    <select id="tip" name="projectType" class="w-full bg-bg-2 border border-line text-text px-[13px] py-3 text-sm rounded-[3px] focus:outline-2 focus:outline-neon focus:border-neon">
+    <select id="tip" name="projectType" class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] focus:outline-2 focus:outline-gold focus:border-gold">
       <option>{t.contactForm.projectTypeOptions.rooftop}</option>
       <option>{t.contactForm.projectTypeOptions.groundMount}</option>
       <option>{t.contactForm.projectTypeOptions.bess}</option>
@@ -50,7 +50,7 @@ const webhookUrl = import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL ?? '';
   </div>
   <div>
     <label for="mesaj" class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-1.5">{t.contactForm.messageLabel}</label>
-    <textarea id="mesaj" name="message" class="w-full bg-bg-2 border border-line text-text px-[13px] py-3 text-sm rounded-[3px] min-h-[90px] resize-y focus:outline-2 focus:outline-neon focus:border-neon"></textarea>
+    <textarea id="mesaj" name="message" class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] min-h-[90px] resize-y focus:outline-2 focus:outline-gold focus:border-gold"></textarea>
   </div>
   <button type="submit" class="btn btn-primary justify-self-start">{t.contactForm.submitBtn}</button>
   <p id="contact-status" class="font-mono text-[12.5px] text-muted min-h-[1em]" role="status" aria-live="polite"></p>
@@ -70,7 +70,7 @@ const webhookUrl = import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL ?? '';
 
     if (!webhookUrl) {
       status.textContent = statusNotConfigured;
-      status.classList.remove('text-neon');
+      status.classList.remove('text-gold');
       status.classList.add('text-muted');
       return;
     }
@@ -81,7 +81,7 @@ const webhookUrl = import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL ?? '';
     const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
     submitBtn.disabled = true;
     status.textContent = statusSending;
-    status.classList.remove('text-neon');
+    status.classList.remove('text-gold');
     status.classList.add('text-muted');
 
     try {
@@ -93,11 +93,11 @@ const webhookUrl = import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL ?? '';
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
       status.textContent = statusSuccess;
       status.classList.remove('text-muted');
-      status.classList.add('text-neon');
+      status.classList.add('text-gold');
       form.reset();
     } catch {
       status.textContent = statusError;
-      status.classList.remove('text-neon');
+      status.classList.remove('text-gold');
       status.classList.add('text-muted');
     } finally {
       submitBtn.disabled = false;

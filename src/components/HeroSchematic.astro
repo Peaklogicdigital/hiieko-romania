@@ -1,0 +1,213 @@
+---
+// Home-page-exclusive animated schematic: sun -> panel -> inverter ->
+// battery -> [facility, grid]. Built from the redesign's prose spec (the
+// reference file, hiieko-color-direction-i2.html, was not available in
+// this session — flagged to the user; port pixel-for-pixel against it if
+// it surfaces later).
+//
+// Motion is layered two ways, each gated the way this codebase already
+// gates animation elsewhere:
+//   - CSS keyframe animations (ray rotation, sun pulse, dash flow) are
+//     wrapped in `@media (prefers-reduced-motion: no-preference)` below,
+//     mirroring global.css's `.reveal` reduced-motion override.
+//   - The SMIL <animateMotion> comet pulses can't be gated by a CSS media
+//     query, so a small inline script removes them under reduced motion,
+//     the same `matchMedia('(prefers-reduced-motion: reduce)')` check the
+//     old backgroundParallax.ts used to gate its own JS-driven animation.
+---
+
+<svg
+  class="w-full h-auto"
+  viewBox="0 0 560 320"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Animated energy flow diagram: sun, solar panel, inverter, battery, industrial facility and grid connection"
+>
+  <!-- static connector lines: panel -> inverter -> battery -->
+  <path class="fill-none stroke-white/25 stroke-[1.6px]" stroke-dasharray="5 5" d="M205,150 L235,150" />
+  <path class="fill-none stroke-white/25 stroke-[1.6px]" stroke-dasharray="5 5" d="M325,150 L343,150" />
+
+  <!-- branch connectors: battery -> facility, battery -> grid -->
+  <path id="branch-facility" class="fill-none stroke-white/25 stroke-[1.6px]" stroke-dasharray="5 5" d="M397,150 L397,90 L455,72" />
+  <path id="branch-grid" class="fill-none stroke-white/25 stroke-[1.6px]" stroke-dasharray="5 5" d="M397,150 L397,220 L455,244" />
+
+  <!-- sun -->
+  <g class="hero-rays" transform-origin="75px 75px">
+    {
+      Array.from({ length: 8 }).map((_, i) => {
+        const angle = (i * 360) / 8;
+        return (
+          <line
+            x1="75"
+            y1="75"
+            x2="75"
+            y2="41"
+            class="stroke-gold-bright stroke-[1.6px]"
+            stroke-linecap="round"
+            transform={`rotate(${angle} 75 75)`}
+          />
+        );
+      })
+    }
+  </g>
+  <circle cx="75" cy="75" r="16" class="hero-sun-glow fill-gold" opacity="0.25" />
+  <circle cx="75" cy="75" r="9" class="hero-sun-core fill-gold-bright" filter="drop-shadow(0 0 6px var(--color-gold-bright))" />
+
+  <!-- animated dashed gold beam: sun -> panel -->
+  <path
+    class="hero-beam fill-none stroke-gold stroke-[1.8px]"
+    stroke-dasharray="6 6"
+    stroke-linecap="round"
+    d="M75,100 L75,135 L136,150"
+  />
+
+  <!-- solar panel: cell grid + corner mounting brackets -->
+  <g>
+    <rect x="136" y="127" width="68" height="46" rx="2" class="fill-none stroke-white/70 stroke-[1.2px]" />
+    <line x1="159" y1="127" x2="159" y2="173" class="stroke-white/35 stroke-[1px]" />
+    <line x1="181" y1="127" x2="181" y2="173" class="stroke-white/35 stroke-[1px]" />
+    <line x1="136" y1="150" x2="204" y2="150" class="stroke-white/35 stroke-[1px]" />
+    <!-- corner mounting brackets -->
+    <path d="M136,133 L131,133 L131,127" class="fill-none stroke-white/70 stroke-[1.2px]" />
+    <path d="M204,133 L209,133 L209,127" class="fill-none stroke-white/70 stroke-[1.2px]" />
+    <path d="M136,167 L131,167 L131,173" class="fill-none stroke-white/70 stroke-[1.2px]" />
+    <path d="M204,167 L209,167 L209,173" class="fill-none stroke-white/70 stroke-[1.2px]" />
+  </g>
+
+  <!-- inverter: vents + status display + indicator light -->
+  <g>
+    <rect x="235" y="130" width="46" height="40" rx="2" class="fill-none stroke-white/70 stroke-[1.2px]" />
+    <line x1="242" y1="138" x2="242" y2="150" class="stroke-white/40 stroke-[1px]" />
+    <line x1="247" y1="138" x2="247" y2="150" class="stroke-white/40 stroke-[1px]" />
+    <line x1="252" y1="138" x2="252" y2="150" class="stroke-white/40 stroke-[1px]" />
+    <rect x="259" y="137" width="16" height="9" rx="1" class="fill-none stroke-gold-bright stroke-[1px]" />
+    <circle cx="267" cy="159" r="2.2" class="hero-indicator-light fill-gold-bright" />
+  </g>
+
+  <!-- battery: 3 stacked modules with individual charge indicators -->
+  <g>
+    <rect x="343" y="128" width="54" height="12" rx="1.5" class="fill-none stroke-white/70 stroke-[1.2px]" />
+    <rect x="347" y="132" width="30" height="4" rx="0.5" class="fill-gold-bright" opacity="0.85" />
+    <rect x="343" y="144" width="54" height="12" rx="1.5" class="fill-none stroke-white/70 stroke-[1.2px]" />
+    <rect x="347" y="148" width="24" height="4" rx="0.5" class="fill-gold-bright" opacity="0.65" />
+    <rect x="343" y="160" width="54" height="12" rx="1.5" class="fill-none stroke-white/70 stroke-[1.2px]" />
+    <rect x="347" y="164" width="18" height="4" rx="0.5" class="fill-gold-bright" opacity="0.45" />
+  </g>
+
+  <!-- industrial facility: flat roof, rooftop HVAC, 2 high windows, wide bay door -->
+  <g>
+    <rect x="428" y="52" width="88" height="52" class="fill-none stroke-white/70 stroke-[1.2px]" />
+    <rect x="453" y="40" width="24" height="12" rx="1" class="fill-none stroke-white/70 stroke-[1.2px]" />
+    <line x1="458" y1="40" x2="458" y2="32" class="stroke-white/40 stroke-[1px]" />
+    <line x1="464" y1="40" x2="464" y2="32" class="stroke-white/40 stroke-[1px]" />
+    <line x1="470" y1="40" x2="470" y2="32" class="stroke-white/40 stroke-[1px]" />
+    <rect x="437" y="61" width="8" height="8" class="fill-none stroke-white/50 stroke-[1px]" />
+    <rect x="453" y="61" width="8" height="8" class="fill-none stroke-white/50 stroke-[1px]" />
+    <rect x="438" y="84" width="70" height="18" class="fill-none stroke-white/70 stroke-[1.2px]" />
+    <line x1="438" y1="93" x2="508" y2="93" class="stroke-white/40 stroke-[1px]" />
+  </g>
+
+  <!-- simplified transmission pylon -->
+  <g class="stroke-white/70 stroke-[1.2px]">
+    <line x1="472" y1="272" x2="472" y2="212" fill="none" />
+    <line x1="455" y1="272" x2="472" y2="212" fill="none" />
+    <line x1="489" y1="272" x2="472" y2="212" fill="none" />
+    <line x1="452" y1="222" x2="492" y2="222" fill="none" />
+    <line x1="458" y1="238" x2="486" y2="238" fill="none" />
+    <line x1="452" y1="222" x2="440" y2="212" fill="none" />
+    <line x1="492" y1="222" x2="504" y2="212" fill="none" />
+  </g>
+  <circle cx="440" cy="212" r="1.8" class="fill-white/70" />
+  <circle cx="504" cy="212" r="1.8" class="fill-white/70" />
+
+  <!-- comet-trail pulses: battery -> facility, battery -> grid, staggered -->
+  <g class="hero-pulse">
+    <circle r="6" class="fill-gold" opacity="0.35">
+      <animateMotion dur="4.2s" begin="0s" repeatCount="indefinite" path="M397,150 L397,90 L455,72" />
+    </circle>
+    <circle r="3" class="fill-gold-bright" filter="drop-shadow(0 0 5px var(--color-gold-bright))">
+      <animateMotion dur="4.2s" begin="0s" repeatCount="indefinite" path="M397,150 L397,90 L455,72" />
+    </circle>
+  </g>
+  <g class="hero-pulse">
+    <circle r="6" class="fill-gold" opacity="0.35">
+      <animateMotion dur="4.2s" begin="1.4s" repeatCount="indefinite" path="M397,150 L397,220 L455,244" />
+    </circle>
+    <circle r="3" class="fill-gold-bright" filter="drop-shadow(0 0 5px var(--color-gold-bright))">
+      <animateMotion dur="4.2s" begin="1.4s" repeatCount="indefinite" path="M397,150 L397,220 L455,244" />
+    </circle>
+  </g>
+
+  <!-- labels, each on its own dark chip for legibility against the gradient -->
+  <g class="font-mono text-[10px] tracking-[0.04em] uppercase">
+    <rect x="57" y="103" width="36" height="15" rx="2" class="fill-chip" />
+    <text x="75" y="114" text-anchor="middle" class="fill-white">Sun</text>
+
+    <rect x="140" y="178" width="60" height="15" rx="2" class="fill-chip" />
+    <text x="170" y="189" text-anchor="middle" class="fill-white">Panel</text>
+
+    <rect x="234" y="176" width="48" height="15" rx="2" class="fill-chip" />
+    <text x="258" y="187" text-anchor="middle" class="fill-white">Inverter</text>
+
+    <rect x="342" y="178" width="56" height="15" rx="2" class="fill-chip" />
+    <text x="370" y="189" text-anchor="middle" class="fill-white">Battery</text>
+
+    <rect x="443" y="20" width="58" height="15" rx="2" class="fill-chip" />
+    <text x="472" y="31" text-anchor="middle" class="fill-white">Facility</text>
+
+    <rect x="452" y="284" width="42" height="15" rx="2" class="fill-chip" />
+    <text x="473" y="295" text-anchor="middle" class="fill-white">Grid</text>
+  </g>
+</svg>
+
+<script>
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.hero-pulse').forEach((el) => el.remove());
+  }
+</script>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-rays {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: hero-rotate 24s linear infinite;
+    }
+    .hero-sun-core,
+    .hero-sun-glow {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: hero-pulse-anim 3.2s ease-in-out infinite;
+    }
+    .hero-indicator-light {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: hero-pulse-anim 3.2s ease-in-out infinite;
+    }
+    .hero-beam {
+      animation: hero-dash-flow 1.4s linear infinite;
+    }
+  }
+
+  @keyframes hero-rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes hero-pulse-anim {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.18);
+      opacity: 0.75;
+    }
+  }
+  @keyframes hero-dash-flow {
+    to {
+      stroke-dashoffset: -24;
+    }
+  }
+</style>

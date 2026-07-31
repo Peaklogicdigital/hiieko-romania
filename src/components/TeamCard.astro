@@ -25,13 +25,13 @@ const photoAlt = photo ? `Photo of ${name}, ${role} at Hiieko Romania` : undefin
 
 <div
   class:list={[
-    'border rounded-md overflow-hidden bg-bg-2 transition-all hover:-translate-y-[3px]',
-    isPlaceholder ? 'border-dashed border-line hover:border-neon-dim' : 'border-line hover:border-neon-dim',
+    'border-t-2 overflow-hidden transition-all hover:-translate-y-[3px]',
+    isPlaceholder ? 'border-dashed border-green-mid/60 hover:border-gold' : 'border-green-mid hover:border-gold',
   ]}
 >
   <div
-    class="aspect-square relative bg-bg-3 flex items-center justify-center overflow-hidden"
-    style={photo ? undefined : 'background-image: repeating-linear-gradient(135deg, rgba(234,242,237,0.05) 0 2px, transparent 2px 14px);'}
+    class="aspect-square relative flex items-center justify-center overflow-hidden"
+    style={photo ? undefined : 'background-image: repeating-linear-gradient(135deg, rgba(250,251,247,0.05) 0 2px, transparent 2px 14px);'}
   >
     {
       photo ? (
@@ -42,22 +42,22 @@ const photoAlt = photo ? `Photo of ${name}, ${role} at Hiieko Romania` : undefin
     }
     {
       isPlaceholder && (
-        <span class="absolute top-2.5 left-2.5 font-mono text-[9.5px] bg-neon-dim text-neon px-2 py-1 rounded-sm tracking-[0.05em]">
+        <span class="absolute top-2.5 left-2.5 font-mono text-[9.5px] bg-chip text-gold px-2 py-1 rounded-sm tracking-[0.05em]">
           {placeholderBadge}
         </span>
       )
     }
   </div>
   <div class="px-5 py-5 flex flex-col gap-1.5">
-    <h3 class="text-base m-0">{name}</h3>
-    <div class="font-mono text-[10.5px] text-volt uppercase tracking-[0.06em]">{role}</div>
+    <h3 class="text-base m-0 text-white">{name}</h3>
+    <div class="font-mono text-[10.5px] text-gold-bright uppercase tracking-[0.06em]">{role}</div>
     {phone && (
-      <a href={`tel:${telHref}`} class="text-neon underline text-[13px]">
+      <a href={`tel:${telHref}`} class="text-gold underline text-[13px]">
         {phone}
       </a>
     )}
     {email && (
-      <a href={`mailto:${email}`} class="text-neon underline text-[13px]">
+      <a href={`mailto:${email}`} class="text-gold underline text-[13px]">
         {email}
       </a>
     )}

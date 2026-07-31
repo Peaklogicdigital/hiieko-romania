@@ -33,11 +33,11 @@ const t = getTranslations(lang);
       <!-- The services content collection is not yet translated — the body
            below always renders in English, regardless of lang, until the
            collection itself is localized. -->
-      <div class="prose-content text-text">
+      <div class="prose-content text-white">
         <Content />
       </div>
       <div class="mt-12">
-        <a href="/ro/solutions/" class="text-neon underline text-sm">{t.solutionDetail.backLink}</a>
+        <a href="/ro/solutions/" class="text-gold underline text-sm">{t.solutionDetail.backLink}</a>
       </div>
     </div>
   </section>
@@ -64,7 +64,7 @@ const t = getTranslations(lang);
     list-style: disc;
   }
   .prose-content :global(a) {
-    color: var(--color-neon);
+    color: var(--color-gold);
     text-decoration: underline;
   }
 </style>

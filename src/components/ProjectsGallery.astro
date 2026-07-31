@@ -37,8 +37,8 @@ const categoryLabels: Record<string, string> = {
           <button
             type="button"
             class:list={[
-              'filter-btn bg-transparent border border-line text-muted px-4 py-[9px] text-xs font-mono uppercase',
-              i === 0 && 'active border-neon! text-neon!',
+              'filter-btn bg-transparent border border-white/10 text-muted px-4 py-[9px] text-xs font-mono uppercase',
+              i === 0 && 'active border-gold! text-gold!',
             ]}
             data-f={item.f}
           >
@@ -75,9 +75,9 @@ const categoryLabels: Record<string, string> = {
       filterBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
           filterBtns.forEach((b) => {
-            b.classList.remove('active', 'border-neon!', 'text-neon!');
+            b.classList.remove('active', 'border-gold!', 'text-gold!');
           });
-          btn.classList.add('active', 'border-neon!', 'text-neon!');
+          btn.classList.add('active', 'border-gold!', 'text-gold!');
           const f = btn.dataset.f;
           projCards.forEach((card) => {
             const show = f === 'all' || card.dataset.cat === f;

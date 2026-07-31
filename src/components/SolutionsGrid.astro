@@ -13,7 +13,7 @@ const { lang = defaultLang } = Astro.props;
 const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-line">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
   {
     services.map((service) => (
       <SolutionCard

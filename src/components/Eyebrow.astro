@@ -8,12 +8,12 @@ const { text, small = false } = Astro.props;
 
 <span
   class:list={[
-    'font-mono uppercase text-neon font-semibold flex items-center gap-2',
+    'font-mono uppercase text-gold font-semibold flex items-center gap-2',
     small ? 'text-[10px]' : 'text-xs tracking-[0.14em]',
   ]}
 >
   <span
-    class="w-1.5 h-1.5 rounded-full bg-neon shadow-[0_0_8px_var(--color-neon)] animate-blink motion-reduce:animate-none"
+    class="w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_8px_var(--color-gold)] animate-blink motion-reduce:animate-none"
   ></span>
   {text}
 </span>

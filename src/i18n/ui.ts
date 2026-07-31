@@ -30,10 +30,11 @@ const en = {
     liveLabel: 'Live',
   },
   trust: {
-    founded: { value: '1994', label: 'Hiieko Group founded, Estonia' },
-    capacity: { label: 'Installed capacity' },
-    specialists: { label: 'Specialists at Hiieko Romania' },
-    iso: { value: 'ISO 9001·14001', label: 'Certified management systems' },
+    founded: { value: '1994', label: 'Group Founded, Estonia' },
+    capacity: { label: 'MWp Installed' },
+    happyClients: { label: 'Happy Clients in Romania' },
+    specialists: { label: 'Specialists in Romania' },
+    iso: { value: 'ISO', label: '9001 · 14001 Certified' },
   },
   diff: {
     eyebrow: 'How we work',
@@ -350,10 +351,11 @@ const ro: Dictionary = {
     liveLabel: 'Live',
   },
   trust: {
-    founded: { value: '1994', label: 'Grupul Hiieko fondat, Estonia' },
-    capacity: { label: 'Capacitate instalată' },
-    specialists: { label: 'Specialiști la Hiieko România' },
-    iso: { value: 'ISO 9001·14001', label: 'Sisteme de management certificate' },
+    founded: { value: '1994', label: 'Grup fondat, Estonia' },
+    capacity: { label: 'MWp instalați' },
+    happyClients: { label: 'Clienți mulțumiți în România' },
+    specialists: { label: 'Specialiști în România' },
+    iso: { value: 'ISO', label: '9001 · 14001 Certificat' },
   },
   diff: {
     eyebrow: 'Cum lucrăm',

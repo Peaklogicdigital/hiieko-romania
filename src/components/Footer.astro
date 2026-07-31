@@ -12,12 +12,12 @@ const year = new Date().getFullYear();
 const privacyHref = getRelativeLocaleUrl(lang, '/privacy/');
 ---
 
-<footer class="bg-bg-2 text-muted pt-12 pb-[30px] border-t border-line">
+<footer class="text-muted pt-12 pb-[30px] border-t border-white/10">
   <div
-    class="wrap flex justify-between flex-wrap gap-[30px] border-b border-line pb-[34px] mb-[22px]"
+    class="wrap flex justify-between flex-wrap gap-[30px] border-b border-white/10 pb-[34px] mb-[22px]"
   >
     <div>
-      <h4 class="font-mono text-[11px] text-text uppercase tracking-[0.08em] mb-3">
+      <h4 class="font-mono text-[11px] text-white uppercase tracking-[0.08em] mb-3">
         {t.footer.companyHeading}
       </h4>
       <div class="text-[13.5px] mb-1.5">{t.footer.addressLine1}</div>
@@ -25,15 +25,15 @@ const privacyHref = getRelativeLocaleUrl(lang, '/privacy/');
       <div class="text-[13.5px] mb-1.5">{t.footer.email}</div>
     </div>
     <div>
-      <h4 class="font-mono text-[11px] text-text uppercase tracking-[0.08em] mb-3">{t.footer.groupHeading}</h4>
+      <h4 class="font-mono text-[11px] text-white uppercase tracking-[0.08em] mb-3">{t.footer.groupHeading}</h4>
       <div class="text-[13.5px] mb-1.5">{t.footer.groupLine1}</div>
       <div class="text-[13.5px] mb-1.5">{t.footer.groupLine2}</div>
     </div>
     <div>
-      <h4 class="font-mono text-[11px] text-text uppercase tracking-[0.08em] mb-3">{t.footer.legalHeading}</h4>
+      <h4 class="font-mono text-[11px] text-white uppercase tracking-[0.08em] mb-3">{t.footer.legalHeading}</h4>
       <div class="text-[13.5px] mb-1.5">{t.footer.cifLine}</div>
       <div class="text-[13.5px] mb-1.5">
-        <a href={privacyHref} class="text-muted hover:text-text no-underline">{t.footer.privacyLine}</a>
+        <a href={privacyHref} class="text-muted hover:text-white no-underline">{t.footer.privacyLine}</a>
       </div>
     </div>
   </div>
