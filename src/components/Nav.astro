@@ -42,7 +42,8 @@ function localizedLink(href: string): string {
   class="sticky top-0 z-50 bg-bg/90 backdrop-blur-[8px] border-b border-line"
 >
   <div class="wrap flex items-center justify-between h-[72px]">
-    <a href={lang === 'ro' ? '/ro/' : '/'} class="font-display font-extrabold text-[19px] flex gap-2 no-underline">
+    <a href={lang === 'ro' ? '/ro/' : '/'} class="font-display font-extrabold text-[19px] flex items-center gap-2 no-underline">
+      <img src="/logo-icon.png" alt="" width="34" height="34" class="w-[34px] h-[34px]" />
       HIIEKO<span class="text-neon">·</span>RO
     </a>
     <div class="hidden lg:flex items-center gap-[30px]">
@@ -114,6 +115,13 @@ function localizedLink(href: string): string {
     class="hidden lg:hidden border-t border-line bg-bg"
   >
     <div class="wrap flex flex-col py-4">
+      <a
+        href={lang === 'ro' ? '/ro/' : '/'}
+        class="font-display font-extrabold text-[19px] flex items-center gap-2 no-underline py-3 border-b border-line"
+      >
+        <img src="/logo-icon.png" alt="" width="34" height="34" class="w-[34px] h-[34px]" />
+        HIIEKO<span class="text-neon">·</span>RO
+      </a>
       {
         links.map((link) => (
           <a
