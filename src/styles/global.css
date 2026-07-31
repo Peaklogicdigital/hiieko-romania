@@ -16,7 +16,7 @@
   should reference --color-bg/-bg-2/-bg-3/-neon/-volt/-text/-line anymore.
 */
 @theme {
-  --color-green-dark: #0d3323;
+  --color-green-dark: #092519;
   --color-charcoal: #1e231f;
   --color-green-mid: #3e8562;
   --color-gold: #e0a83e;
@@ -74,7 +74,7 @@
       180deg,
       var(--color-green-dark) 0%,
       var(--color-green-dark) 15%,
-      #16402d 65%,
+      #102e20 65%,
       var(--color-charcoal) 90%,
       var(--color-charcoal) 100%
     );
