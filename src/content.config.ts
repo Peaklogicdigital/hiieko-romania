@@ -20,6 +20,7 @@ const projects = defineCollection({
     location: z.string(),
     specLabel: z.string(),
     specValue: z.string(),
+    specPending: z.boolean().default(false),
     image: z.string().optional(),
     order: z.number().default(0),
     isPlaceholder: z.boolean().default(false),

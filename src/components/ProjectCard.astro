@@ -6,6 +6,7 @@ interface Props {
   location: string;
   specLabel: string;
   specValue: string;
+  specPending?: boolean;
   isPlaceholder?: boolean;
   placeholderBadge: string;
 }
@@ -16,6 +17,7 @@ const {
   location,
   specLabel,
   specValue,
+  specPending = false,
   isPlaceholder = false,
   placeholderBadge,
 } = Astro.props;
@@ -48,7 +50,14 @@ const {
     <div class="text-[13px] text-muted mb-3">{location}</div>
     <div class="flex justify-between text-[12.5px] border-t border-white/10 pt-2.5">
       <span class="text-muted">{specLabel}</span>
-      <span class="font-mono text-white font-semibold">{specValue}</span>
+      <span
+        class:list={[
+          'font-mono',
+          specPending ? 'text-muted italic' : 'text-white font-semibold',
+        ]}
+      >
+        {specValue}
+      </span>
     </div>
   </div>
 </div>
