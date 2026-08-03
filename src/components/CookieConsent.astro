@@ -1,0 +1,39 @@
+---
+// GA4 must never appear in the page's static HTML — the gtag.js script
+// and its inline config are only ever injected client-side in
+// ../scripts/cookieConsent.ts, and only once analytics consent is true.
+// This component just renders the banner and hands the GA measurement ID
+// to that script via a data attribute.
+import type { Lang } from '../i18n/ui';
+import { defaultLang, getTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = defaultLang } = Astro.props;
+const t = getTranslations(lang);
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? '';
+---
+
+<div
+  id="cookie-consent-banner"
+  class="hidden fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-[400px] z-50 bg-chip border border-gold/30 border-l-[3px] border-l-gold rounded-[2px] p-5 shadow-lg"
+  role="dialog"
+  aria-label={t.cookieConsent.ariaLabel}
+  data-ga-id={gaId}
+>
+  <p class="text-sm text-white mb-4">{t.cookieConsent.message}</p>
+  <div class="flex gap-3">
+    <button id="cookie-consent-decline" type="button" class="btn btn-ghost flex-1 text-center">
+      {t.cookieConsent.decline}
+    </button>
+    <button id="cookie-consent-accept" type="button" class="btn btn-primary flex-1 text-center">
+      {t.cookieConsent.accept}
+    </button>
+  </div>
+</div>
+
+<script>
+  import { initCookieConsent } from '../scripts/cookieConsent';
+  initCookieConsent();
+</script>

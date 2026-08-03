@@ -179,6 +179,7 @@ const en = {
     legalHeading: 'Legal',
     cifLine: 'CIF 42849908',
     privacyLine: 'Privacy Policy',
+    cookiePreferencesLine: 'Cookie preferences',
     copyright: '© {year} Hiieko Romania SRL',
     tagline: 'Part of the AS Hiieko group, founded 1994',
   },
@@ -244,27 +245,27 @@ const en = {
         },
         {
           heading: 'Cookies on this site today',
-          body: 'This website does not currently use cookies. If cookies are introduced in the future — for example, for website analytics or advertising — this section will be updated with the specific cookies in use, and a consent banner will request your permission before any non-essential cookie is set.',
+          body: 'This website uses Google Analytics (GA4), an analytics cookie, to understand how visitors use the site. This cookie is only set after you accept it via the consent banner — if you decline, no analytics cookie is set. We do not currently use advertising cookies.',
         },
         {
-          heading: 'Types of cookies we may use in future',
-          body: 'Strictly necessary cookies (required for the site to function, no consent needed), analytics cookies (e.g. to understand how visitors use the site), and advertising cookies (e.g. to measure ad performance) — only the strictly necessary category would ever be set without your prior consent.',
+          heading: 'Types of cookies we use',
+          body: 'Strictly necessary cookies (required for the site to function, no consent needed) and analytics cookies (Google Analytics, used to understand how visitors use the site) — the only two categories currently in use. Advertising cookies are not currently used; if that changes in the future, this section will be updated and your consent requested first.',
         },
         {
           heading: 'How we handle consent',
-          body: 'Before any non-essential cookie is set, you will be shown a consent banner allowing you to accept or decline by category. You may change your choice at any time.',
+          body: 'Before the Google Analytics cookie is set, you are shown a consent banner letting you accept or decline. You may change your choice at any time using the "Cookie preferences" link in the site footer.',
         },
         {
-          heading: 'What data cookies may collect',
-          body: 'Depending on the cookie type, this could include IP address, browser and device type, pages visited, time spent on the site, and referral source.',
+          heading: 'What data Google Analytics collects',
+          body: 'Google Analytics collects anonymized usage data — pages visited, session duration, and general location and device type. It does not collect your name, email address, or other directly identifying information.',
         },
         {
           heading: 'Your rights regarding cookies',
-          body: 'You may accept or decline non-essential cookies, and withdraw consent at any time. Declining cookies will not affect your ability to browse the site or use the contact form.',
+          body: 'You may accept or decline the analytics cookie, and withdraw consent at any time using the "Cookie preferences" link in the site footer. Declining does not affect your ability to browse the site or use the contact form.',
         },
         {
           heading: 'How to control cookies',
-          body: "Once introduced, cookie preferences will be manageable through the consent banner. You can also control or delete cookies through your browser's settings at any time.",
+          body: 'You can change your analytics cookie choice at any time using the "Cookie preferences" link in the site footer. You can also control or delete cookies through your browser\'s settings at any time.',
         },
         {
           heading: 'Updates to this section',
@@ -272,6 +273,13 @@ const en = {
         },
       ],
     },
+  },
+  cookieConsent: {
+    message:
+      'We use Google Analytics to understand how visitors use this site. This only runs if you accept — declining won’t affect your ability to browse the site or use the contact form.',
+    accept: 'Accept',
+    decline: 'Decline',
+    ariaLabel: 'Cookie consent',
   },
   industries: {
     eyebrow: 'Who we serve',
@@ -498,6 +506,7 @@ const ro: Dictionary = {
     legalHeading: 'Legal',
     cifLine: 'CIF 42849908',
     privacyLine: 'Politica de confidențialitate',
+    cookiePreferencesLine: 'Preferințe cookie-uri',
     copyright: '© {year} Hiieko Romania SRL',
     tagline: 'Parte a grupului AS Hiieko, fondat în 1994',
   },
@@ -558,27 +567,27 @@ const ro: Dictionary = {
         },
         {
           heading: 'Cookie-uri pe acest site în prezent',
-          body: 'Acest site nu folosește în prezent cookie-uri. Dacă vor fi introduse cookie-uri în viitor — de exemplu, pentru analiza site-ului sau publicitate — această secțiune va fi actualizată cu cookie-urile specifice utilizate, iar un banner de consimțământ îți va solicita permisiunea înainte de setarea oricărui cookie neesențial.',
+          body: 'Acest site folosește Google Analytics (GA4), un cookie de analiză, pentru a înțelege cum utilizează vizitatorii site-ul. Acest cookie este setat doar după ce îl accepți prin bannerul de consimțământ — dacă refuzi, niciun cookie de analiză nu este setat. Nu folosim în prezent cookie-uri publicitare.',
         },
         {
-          heading: 'Tipuri de cookie-uri pe care le-am putea folosi în viitor',
-          body: 'Cookie-uri strict necesare (necesare pentru funcționarea site-ului, fără a necesita consimțământ), cookie-uri de analiză (de exemplu, pentru a înțelege cum utilizează vizitatorii site-ul) și cookie-uri publicitare (de exemplu, pentru a măsura performanța reclamelor) — doar categoria strict necesară ar fi vreodată setată fără consimțământul tău prealabil.',
+          heading: 'Tipuri de cookie-uri pe care le folosim',
+          body: 'Cookie-uri strict necesare (necesare pentru funcționarea site-ului, fără a necesita consimțământ) și cookie-uri de analiză (Google Analytics, folosite pentru a înțelege cum utilizează vizitatorii site-ul) — singurele două categorii folosite în prezent. Cookie-urile publicitare nu sunt folosite în prezent; dacă acest lucru se va schimba în viitor, această secțiune va fi actualizată și consimțământul tău va fi solicitat mai întâi.',
         },
         {
           heading: 'Cum gestionăm consimțământul',
-          body: 'Înainte de setarea oricărui cookie neesențial, ți se va afișa un banner de consimțământ care îți permite să accepți sau să refuzi pe categorii. Îți poți schimba alegerea în orice moment.',
+          body: 'Înainte de setarea cookie-ului Google Analytics, ți se afișează un banner de consimțământ care îți permite să accepți sau să refuzi. Îți poți schimba alegerea în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului.',
         },
         {
-          heading: 'Ce date pot colecta cookie-urile',
-          body: 'În funcție de tipul cookie-ului, acestea pot include adresa IP, tipul de browser și dispozitiv, paginile vizitate, timpul petrecut pe site și sursa de referință.',
+          heading: 'Ce date colectează Google Analytics',
+          body: 'Google Analytics colectează date de utilizare anonimizate — paginile vizitate, durata sesiunii și locația generală și tipul de dispozitiv. Nu colectează numele tău, adresa de email sau alte informații direct identificabile.',
         },
         {
           heading: 'Drepturile tale privind cookie-urile',
-          body: 'Poți accepta sau refuza cookie-urile neesențiale și îți poți retrage consimțământul în orice moment. Refuzul cookie-urilor nu îți va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
+          body: 'Poți accepta sau refuza cookie-ul de analiză și îți poți retrage consimțământul în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului. Refuzul nu îți va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
         },
         {
           heading: 'Cum controlezi cookie-urile',
-          body: 'Odată introduse, preferințele privind cookie-urile vor putea fi gestionate prin bannerul de consimțământ. De asemenea, poți controla sau șterge cookie-urile din setările browserului tău în orice moment.',
+          body: 'Îți poți schimba alegerea privind cookie-ul de analiză în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului. De asemenea, poți controla sau șterge cookie-urile din setările browserului tău în orice moment.',
         },
         {
           heading: 'Actualizări ale acestei secțiuni',
@@ -586,6 +595,13 @@ const ro: Dictionary = {
         },
       ],
     },
+  },
+  cookieConsent: {
+    message:
+      'Folosim Google Analytics pentru a înțelege cum utilizează vizitatorii acest site. Acesta rulează doar dacă accepți — refuzul nu îți va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
+    accept: 'Accept',
+    decline: 'Refuz',
+    ariaLabel: 'Consimțământ cookie-uri',
   },
   industries: {
     eyebrow: 'Pentru cine lucrăm',
