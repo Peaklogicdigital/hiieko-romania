@@ -32,6 +32,44 @@ const currentPath = Astro.url.pathname;
 const canonicalPath = currentPath.startsWith('/ro/') ? currentPath.slice(3) : currentPath;
 const enHref = getRelativeLocaleUrl('en', canonicalPath);
 const roHref = getRelativeLocaleUrl('ro', canonicalPath);
+
+// Structured data is language-independent (machine-facing, not a rendered
+// translation), so it uses one canonical set of business details regardless
+// of `lang` — same object on every page via this shared layout. There is no
+// company-level phone number anywhere in the site's copy (only individual
+// team members' personal numbers), so `telephone` is intentionally omitted
+// rather than guessed.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Hiieko Romania SRL',
+  url: 'https://hiiekoromania.com',
+  logo: 'https://hiiekoromania.com/logo-icon.png',
+  email: 'office@hiieko.ro',
+  taxID: '42849908',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Bulevardul Theodor Pallady 51N, Building C1, Block A, 3rd floor',
+    addressLocality: 'Bucharest',
+    addressRegion: 'Sector 3',
+    postalCode: '032258',
+    addressCountry: 'RO',
+  },
+  areaServed: 'Romania',
+  sameAs: ['https://hiieko.ee'],
+  hasCredential: [
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'certification',
+      name: 'ISO 9001:2015',
+    },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'certification',
+      name: 'ISO 14001:2015',
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -54,6 +92,7 @@ const roHref = getRelativeLocaleUrl('ro', canonicalPath);
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
     <title>{title}</title>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
   </head>
   <body class="m-0 relative">
     <TextureOverlay />
