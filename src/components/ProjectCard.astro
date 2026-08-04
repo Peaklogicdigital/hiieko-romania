@@ -1,4 +1,7 @@
 ---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 interface Props {
   title: string;
   category: 'rooftop' | 'ground-mount' | 'bess';
@@ -7,7 +10,7 @@ interface Props {
   specLabel: string;
   specValue: string;
   specPending?: boolean;
-  image?: string;
+  image?: ImageMetadata;
   imageAlt?: string;
   isPlaceholder?: boolean;
   placeholderBadge: string;
@@ -40,7 +43,16 @@ const {
   >
     {
       image ? (
-        <img src={image} alt={imageAlt ?? `Photo of the ${title}`} class="w-full h-full object-cover" loading="lazy" />
+        <Picture
+          src={image}
+          alt={imageAlt ?? `Photo of the ${title}`}
+          formats={['avif', 'webp']}
+          fallbackFormat="jpeg"
+          widths={[200, 300, 400, 600]}
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
       ) : null
     }
     {

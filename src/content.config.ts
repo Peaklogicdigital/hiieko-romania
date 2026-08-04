@@ -29,31 +29,37 @@ const servicesRo = defineCollection({
 
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
-  schema: z.object({
-    title: z.string(),
-    category: z.enum(['rooftop', 'ground-mount', 'bess']),
-    location: z.string(),
-    specLabel: z.string(),
-    specValue: z.string(),
-    specPending: z.boolean().default(false),
-    image: z.string().optional(),
-    imageAlt: z.string().optional(),
-    order: z.number().default(0),
-    isPlaceholder: z.boolean().default(false),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      category: z.enum(['rooftop', 'ground-mount', 'bess']),
+      location: z.string(),
+      specLabel: z.string(),
+      specValue: z.string(),
+      specPending: z.boolean().default(false),
+      // image() imports the file at build time so Astro can resize/reformat
+      // it (see ProjectCard.astro's <Picture>) — the referenced path must be
+      // a relative path to a file colocated in this same directory, not a
+      // public/ URL.
+      image: image().optional(),
+      imageAlt: z.string().optional(),
+      order: z.number().default(0),
+      isPlaceholder: z.boolean().default(false),
+    }),
 });
 
 const team = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/team' }),
-  schema: z.object({
-    name: z.string(),
-    role: z.string(),
-    email: z.string().optional(),
-    phone: z.string().optional(),
-    photo: z.string().optional(),
-    order: z.number().default(0),
-    isPlaceholder: z.boolean().default(true),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      role: z.string(),
+      email: z.string().optional(),
+      phone: z.string().optional(),
+      photo: image().optional(),
+      order: z.number().default(0),
+      isPlaceholder: z.boolean().default(true),
+    }),
 });
 
 export const collections = { services, servicesRo, projects, team };
