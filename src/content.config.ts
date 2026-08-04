@@ -37,6 +37,7 @@ const projects = defineCollection({
     specValue: z.string(),
     specPending: z.boolean().default(false),
     image: z.string().optional(),
+    imageAlt: z.string().optional(),
     order: z.number().default(0),
     isPlaceholder: z.boolean().default(false),
   }),

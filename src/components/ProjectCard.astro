@@ -8,6 +8,7 @@ interface Props {
   specValue: string;
   specPending?: boolean;
   image?: string;
+  imageAlt?: string;
   isPlaceholder?: boolean;
   placeholderBadge: string;
 }
@@ -20,6 +21,7 @@ const {
   specValue,
   specPending = false,
   image,
+  imageAlt,
   isPlaceholder = false,
   placeholderBadge,
 } = Astro.props;
@@ -38,7 +40,7 @@ const {
   >
     {
       image ? (
-        <img src={image} alt={`Photo of the ${title}`} class="w-full h-full object-cover" loading="lazy" />
+        <img src={image} alt={imageAlt ?? `Photo of the ${title}`} class="w-full h-full object-cover" loading="lazy" />
       ) : null
     }
     {
