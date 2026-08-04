@@ -13,7 +13,7 @@ solar installation.
 ## How it works
 
 We size a battery system to your facility's load profile and, where
-relevant, alongside a rooftop or ground-mount solar installation — designed,
+relevant, alongside a rooftop or ground-mount solar installation, designed,
 installed, and maintained under the same one-contract model as our solar
 work.
 

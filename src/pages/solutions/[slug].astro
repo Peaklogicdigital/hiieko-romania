@@ -20,7 +20,7 @@ const t = getTranslations(lang);
 ---
 
 <BaseLayout
-  title={`${service.data.title} — Hiieko Romania`}
+  title={`${service.data.title} · Hiieko Romania`}
   description={service.data.summary}
   ogType="website"
   lang={lang}
@@ -30,9 +30,6 @@ const t = getTranslations(lang);
       <Eyebrow text={`${t.solutionDetail.eyebrowPrefix} ${service.data.tagNumber}`} />
       <h1 class="text-[clamp(30px,3.6vw,44px)] mt-2.5 mb-3.5">{service.data.title}</h1>
       <p class="text-muted text-[15.5px] mb-10">{service.data.summary}</p>
-      <!-- The services content collection is not yet translated — the body
-           below always renders in English, regardless of lang, until the
-           collection itself is localized. -->
       <div class="prose-content text-white">
         <Content />
       </div>

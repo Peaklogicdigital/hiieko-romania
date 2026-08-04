@@ -6,7 +6,7 @@ order: 2
 isPlaceholder: false
 ---
 
-Ground-mount solar parks on unproductive or unused land — from feasibility
+Ground-mount solar parks on unproductive or unused land: from feasibility
 study through design, installation, and grid connection.
 
 ## How it works

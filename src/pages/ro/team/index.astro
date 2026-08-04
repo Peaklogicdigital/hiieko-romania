@@ -9,6 +9,23 @@ const lang = 'ro' as const;
 const t = getTranslations(lang);
 
 const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
+
+// Draft AI-assisted translation of team role titles, pending native-speaker
+// review before launch. The team collection itself stays English-only (see
+// comment below); this lookup translates just the `role` field for this page.
+const roleLabels: Record<string, string> = {
+  'Supervisory Board Member, Business Associate, Administrator':
+    'Membru al Consiliului de Supraveghere, Asociat de Afaceri, Administrator',
+  'Field Leader': 'Șef de echipă teren',
+  'Business Development Representative': 'Reprezentant Dezvoltare Afaceri',
+  'Client Analyst': 'Analist Clienți',
+  'Planning Group Leader': 'Șef Grup Planificare',
+  'Engineer & Budgeting and Pricing Analyst': 'Inginer și Analist Bugetare și Prețuri',
+  'Head of Budgeting': 'Șef Departament Bugetare',
+  'New Business Developer': 'Dezvoltator Afaceri Noi',
+  'Project Manager': 'Manager de Proiect',
+  'Process and Project Manager': 'Manager Procese și Proiecte',
+};
 ---
 
 <BaseLayout
@@ -28,15 +45,15 @@ const team = (await getCollection('team')).sort((a, b) => a.data.order - b.data.
           {t.team.lede}
         </p>
       </div>
-      <!-- Team member profiles (name/role/phone/email) come from the content
-           collection, which is not yet translated — they render in English
-           regardless of lang until the collection itself is localized. -->
+      <!-- Team member names, photos, phone, and email come from the content
+           collection and render as-is (they aren't language-specific). Only
+           `role` is translated, via the roleLabels lookup above. -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[22px]">
         {
           team.map((member) => (
             <TeamCard
               name={member.data.name}
-              role={member.data.role}
+              role={roleLabels[member.data.role] ?? member.data.role}
               phone={member.data.phone}
               email={member.data.email}
               photo={member.data.photo}

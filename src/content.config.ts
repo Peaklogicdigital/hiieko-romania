@@ -12,6 +12,21 @@ const services = defineCollection({
   }),
 });
 
+// Romanian translation of the services collection above, keyed by the same
+// filename/slug as its English counterpart so getStaticPaths and card links
+// resolve to matching routes. Draft AI-assisted translation, pending
+// native-speaker review before launch.
+const servicesRo = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/services-ro' }),
+  schema: z.object({
+    title: z.string(),
+    tagNumber: z.string(),
+    summary: z.string(),
+    order: z.number().default(0),
+    isPlaceholder: z.boolean().default(false),
+  }),
+});
+
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
   schema: z.object({
@@ -40,4 +55,4 @@ const team = defineCollection({
   }),
 });
 
-export const collections = { services, projects, team };
+export const collections = { services, servicesRo, projects, team };

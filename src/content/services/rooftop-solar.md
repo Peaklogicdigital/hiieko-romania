@@ -7,7 +7,7 @@ isPlaceholder: false
 ---
 
 Rooftop photovoltaic systems for industrial platforms, logistics halls, and
-production facilities — sized to your real consumption profile and roof
+production facilities, sized to your real consumption profile and roof
 structure, not a generic package.
 
 ## How it works
@@ -25,6 +25,6 @@ facility already uses.
   requirements
 - Ongoing maintenance and monitoring after handover
 
-Rooftop solar is one of three systems we deliver end to end — see also
+Rooftop solar is one of three systems we deliver end to end: see also
 [Ground-Mount Solar Parks](/solutions/ground-mount-solar-parks/) and
 [Battery Storage (BESS)](/solutions/battery-storage-bess/).

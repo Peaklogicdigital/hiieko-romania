@@ -27,6 +27,15 @@ const categoryLabels: Record<string, string> = {
   'ground-mount': t.projectsFilters.groundMount,
   bess: t.projectsFilters.bess,
 };
+
+// Draft AI-assisted translation of project spec labels/values, pending
+// native-speaker review before launch. Most specValue entries are
+// language-neutral numbers/units (e.g. "150 kWp") and pass through
+// unchanged; only the "pending" placeholder text needs translating.
+const specLabelTranslations: Record<string, string> =
+  lang === 'ro' ? { Capacity: 'Capacitate', Storage: 'Stocare' } : {};
+const specValueTranslations: Record<string, string> =
+  lang === 'ro' ? { 'Pending: confirm with team': 'În așteptare: de confirmat cu echipa' } : {};
 ---
 
 <div>
@@ -56,8 +65,8 @@ const categoryLabels: Record<string, string> = {
           category={project.data.category}
           categoryLabel={categoryLabels[project.data.category]}
           location={project.data.location}
-          specLabel={project.data.specLabel}
-          specValue={project.data.specValue}
+          specLabel={specLabelTranslations[project.data.specLabel] ?? project.data.specLabel}
+          specValue={specValueTranslations[project.data.specValue] ?? project.data.specValue}
           specPending={project.data.specPending}
           image={project.data.image}
           isPlaceholder={project.data.isPlaceholder}
