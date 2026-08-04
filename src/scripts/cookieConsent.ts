@@ -59,6 +59,18 @@ function disableGoogleAnalytics(measurementId: string): void {
   document.getElementById('ga4-inline-config')?.remove();
 }
 
+// Shared by any component that wants to fire a GA4 event (ContactForm,
+// Calculator, ...). `gtag` only ever exists on `window` once
+// loadGoogleAnalytics() above has run, which only happens after analytics
+// consent — so this existence check doubles as the consent gate. Callers
+// don't need their own localStorage/consent check.
+export function trackEvent(eventName: string, params?: Record<string, unknown>): void {
+  const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+  if (typeof gtag === 'function') {
+    gtag('event', eventName, params);
+  }
+}
+
 export function initCookieConsent(): void {
   const banner = document.getElementById('cookie-consent-banner') as HTMLElement | null;
   const acceptBtn = document.getElementById('cookie-consent-accept') as HTMLButtonElement | null;

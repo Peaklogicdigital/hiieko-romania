@@ -57,6 +57,8 @@ const webhookUrl = import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL ?? '';
 </form>
 
 <script>
+  import { trackEvent } from '../scripts/cookieConsent';
+
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const status = document.getElementById('contact-status') as HTMLParagraphElement;
   const webhookUrl = form.dataset.webhookUrl || '';
@@ -95,6 +97,7 @@ const webhookUrl = import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL ?? '';
       status.classList.remove('text-muted');
       status.classList.add('text-gold');
       form.reset();
+      trackEvent('generate_lead', { value: 1, currency: 'EUR' });
     } catch {
       status.textContent = statusError;
       status.classList.remove('text-gold');

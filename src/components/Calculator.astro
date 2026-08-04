@@ -123,6 +123,7 @@ const t = getTranslations(lang);
 
 <script>
   import { countUp } from '../scripts/countUp';
+  import { trackEvent } from '../scripts/cookieConsent';
 
   function tieredCostPerKwp(capacity: number): number {
     if (capacity < 20) return 480;
@@ -200,6 +201,7 @@ const t = getTranslations(lang);
   document.getElementById('calc-run')?.addEventListener('click', () => {
     runCalc();
     showToast();
+    trackEvent('calculator_used');
   });
   runCalc();
 </script>
