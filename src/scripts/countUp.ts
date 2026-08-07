@@ -1,4 +1,4 @@
-export function countUp(el: Element, target: number, duration = 900): void {
+export function countUp(el: Element, target: number, duration = 2200): void {
   const start = performance.now();
   function tick(now: number) {
     const p = Math.min((now - start) / duration, 1);
@@ -20,7 +20,7 @@ export function initCountUpStats(): void {
           }
         });
       },
-      { threshold: 0.6 },
+      { threshold: 0.4 },
     );
     obs.observe(el);
   });

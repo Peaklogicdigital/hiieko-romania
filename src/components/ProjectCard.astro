@@ -1,54 +1,100 @@
 ---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 interface Props {
   title: string;
   category: 'rooftop' | 'ground-mount' | 'bess';
   categoryLabel: string;
+  subcategory?: string;
   location: string;
   specLabel: string;
   specValue: string;
+  specPending?: boolean;
+  image?: ImageMetadata;
+  imageAlt?: string;
   isPlaceholder?: boolean;
   placeholderBadge: string;
+  status?: 'completed' | 'in-progress';
+  inProgressBadge: string;
 }
 const {
   title,
   category,
   categoryLabel,
+  subcategory,
   location,
   specLabel,
   specValue,
+  specPending = false,
+  image,
+  imageAlt,
   isPlaceholder = false,
   placeholderBadge,
+  status = 'completed',
+  inProgressBadge,
 } = Astro.props;
 ---
 
 <div
   class:list={[
-    'border rounded-md overflow-hidden bg-bg-2 transition-all hover:-translate-y-[3px]',
-    isPlaceholder ? 'border-dashed border-line hover:border-neon-dim' : 'border-line hover:border-neon-dim',
+    'border-t-2 transition-all hover:-translate-y-[3px]',
+    isPlaceholder ? 'border-dashed border-green-mid/60 hover:border-gold' : 'border-green-mid hover:border-gold',
   ]}
   data-cat={category}
+  data-subcat={subcategory ?? ''}
 >
   <div
-    class="h-40 relative bg-bg-3"
-    style="background-image: repeating-linear-gradient(135deg, rgba(234,242,237,0.05) 0 2px, transparent 2px 14px);"
+    class="h-40 relative overflow-hidden"
+    style={image ? undefined : 'background-image: repeating-linear-gradient(135deg, rgba(250,251,247,0.05) 0 2px, transparent 2px 14px);'}
   >
     {
-      isPlaceholder && (
-        <span class="absolute top-2.5 left-2.5 font-mono text-[9.5px] bg-neon-dim text-neon px-2 py-1 rounded-sm tracking-[0.05em]">
-          {placeholderBadge}
-        </span>
-      )
+      image ? (
+        <Picture
+          src={image}
+          alt={imageAlt ?? `Photo of the ${title}`}
+          formats={['avif', 'webp']}
+          fallbackFormat="jpeg"
+          widths={[200, 300, 400, 600]}
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+      ) : null
     }
+    <div class="absolute top-2.5 left-2.5 flex flex-col items-start gap-1.5">
+      {
+        isPlaceholder && (
+          <span class="font-mono text-[9.5px] bg-chip text-gold px-2 py-1 rounded-sm tracking-[0.05em]">
+            {placeholderBadge}
+          </span>
+        )
+      }
+      {
+        status === 'in-progress' && (
+          <span class="font-mono text-[9.5px] bg-charcoal/90 text-white border border-white/25 px-2 py-1 rounded-sm tracking-[0.05em]">
+            {inProgressBadge}
+          </span>
+        )
+      }
+    </div>
   </div>
-  <div class="px-5 py-[18px]">
-    <div class="font-mono text-[10.5px] text-volt uppercase tracking-[0.06em]">
+  <div class="px-5 py-5">
+    <div class="font-mono text-[10.5px] text-gold-bright uppercase tracking-[0.06em]">
       {categoryLabel}
     </div>
-    <h3 class="text-base my-2 mb-1">{title}</h3>
+    <h3 class="text-base my-2 mb-1 text-white">{title}</h3>
     <div class="text-[13px] text-muted mb-3">{location}</div>
-    <div class="flex justify-between text-[12.5px] border-t border-line pt-2.5">
-      <span>{specLabel}</span>
-      <span class="font-mono text-text font-semibold">{specValue}</span>
+    <div class="flex justify-between text-[12.5px] border-t border-white/10 pt-2.5">
+      <span class="text-muted">{specLabel}</span>
+      <span
+        class:list={[
+          'font-mono',
+          specPending ? 'text-muted italic' : 'text-white font-semibold',
+        ]}
+      >
+        {specValue}
+      </span>
     </div>
   </div>
 </div>

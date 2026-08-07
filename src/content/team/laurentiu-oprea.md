@@ -1,0 +1,9 @@
+---
+name: "Laurentiu Oprea"
+role: "New Business Developer"
+phone: "+40 746 579 871"
+email: "laurentiu.oprea@hiieko.ro"
+photo: "./laurentiu-oprea.jpg"
+order: 7
+isPlaceholder: false
+---

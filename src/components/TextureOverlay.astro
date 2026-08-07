@@ -1,0 +1,45 @@
+---
+import { getImage } from 'astro:assets';
+import textureSrc from '../assets/textures/concrete-046.jpg';
+
+// Photographic concrete texture over the page gradient (replaces the
+// earlier feTurbulence-based synthetic grain attempts entirely — both
+// the sharp-grain and low-frequency-mottle versions are gone, nothing
+// from either remains). Static (no animation), so it needs no
+// prefers-reduced-motion handling. Sits at z-0, above body's gradient
+// (which isn't part of the stacking order at all — it's the root canvas
+// paint) and below real content, which is z-10 throughout this layout.
+//
+// grayscale(1) strips the texture's own color entirely, so overlay blend
+// tints it purely from whatever gradient color sits beneath it — stays
+// locked to the --color-green-dark/--color-charcoal gradient, no new
+// color introduced.
+//
+// The source file is a 1024px JPEG at ~1.07MB, but it's tiled at a 640px
+// CSS background-size, grayscale-filtered, and shown at 35% opacity under
+// an overlay blend — full source resolution/quality is wasted here.
+// getImage() re-encodes it to WebP at a size just above the tile's CSS
+// footprint (768px covers up to ~1.2x DPR) and a quality low enough that
+// the compression artifacts are invisible once blended.
+const optimizedTexture = await getImage({
+  src: textureSrc,
+  format: 'webp',
+  width: 768,
+  quality: 65,
+});
+---
+
+<div
+  class="fixed inset-0 z-0"
+  style={`
+    background-image: url('${optimizedTexture.src}');
+    background-repeat: repeat;
+    background-size: 640px;
+    filter: grayscale(1) contrast(1.05);
+    mix-blend-mode: overlay;
+    opacity: 0.35;
+    pointer-events: none;
+  `}
+  aria-hidden="true"
+>
+</div>

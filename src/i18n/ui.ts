@@ -21,24 +21,23 @@ const en = {
     toggleMenu: 'Toggle menu',
   },
   hero: {
-    eyebrow: 'Hiieko Romania — Industrial Solar & Storage',
+    eyebrow: 'Hiieko Romania · Industrial Solar & Storage',
     h1: "We don't sell panels. We deliver a system and stand behind it.",
-    lede: 'Design, installation, and long-term maintenance of rooftop and ground-mount solar plus battery storage for Romanian industrial and commercial sites — one contractor, one guarantee, backed by Estonian engineering since 1994.',
+    lede: 'Design, installation, and long-term maintenance of rooftop and ground-mount solar plus battery storage for Romanian industrial and commercial sites: one contractor, one guarantee, backed by Estonian engineering since 1994.',
     ctaPrimary: 'Get a site assessment →',
     ctaSecondary: 'Estimate your system ↓',
-    dashboardLabel: 'System overview',
-    liveLabel: 'Live',
   },
   trust: {
-    founded: { value: '1994', label: 'Hiieko Group founded, Estonia' },
-    capacity: { label: 'Installed capacity' },
-    specialists: { label: 'Specialists at Hiieko Romania' },
-    iso: { value: 'ISO 9001·14001', label: 'Certified management systems' },
+    founded: { value: '1994', label: 'Group Founded, Estonia' },
+    capacity: { label: 'MWp Installed' },
+    happyClients: { label: 'Happy Clients in Romania' },
+    specialists: { label: 'Specialists in Romania' },
+    iso: { value: 'ISO', label: '9001 · 14001 Certified' },
   },
   diff: {
     eyebrow: 'How we work',
     h2: "We're the contractor who stays after commissioning.",
-    lede: 'Most solar installers in Romania sell equipment and move on. Hiieko Romania designs, builds, and maintains every system under one contract — with a workmanship guarantee and a maintenance plan that starts the day the system goes live.',
+    lede: 'Most solar installers in Romania sell equipment and move on. Hiieko Romania designs, builds, and maintains every system under one contract, with a workmanship guarantee and a maintenance plan that starts the day the system goes live.',
     steps: [
       {
         n: '01 / DESIGN',
@@ -48,7 +47,7 @@ const en = {
       {
         n: '02 / INSTALL',
         title: 'Installation & commissioning',
-        body: 'Our own crews, not subcontracted labor — installed to ANRE grid-connection requirements.',
+        body: 'Our own crews, not subcontracted labor, installed to ANRE grid-connection requirements.',
       },
       {
         n: '03 / GUARANTEE',
@@ -58,16 +57,92 @@ const en = {
       {
         n: '04 / MAINTAIN',
         title: 'Ongoing maintenance',
-        body: 'Scheduled service and monitoring for the same 60-month period after handover — the system stays our responsibility.',
+        body: 'Scheduled service and monitoring for the same 60-month period after handover. The system stays our responsibility.',
       },
     ],
     callout:
-      "We don't resell panels and batteries — we deliver the full engineering-to-maintenance lifecycle, under one contract, with one team accountable for the result.",
+      "We don't resell panels and batteries: we deliver the full engineering-to-maintenance lifecycle, under one contract, with one team accountable for the result.",
+    comparison: {
+      heading: 'Why Hiieko Romania',
+      columnTypical: 'Typical Installer',
+      columnHiieko: 'Hiieko Romania',
+      rows: [
+        {
+          typical: 'Sells equipment and leaves the site',
+          hiieko: 'Design, installation, and maintenance in one contract',
+        },
+        {
+          typical: 'Work done via subcontracting',
+          hiieko: 'Own installation crews, no subcontracting',
+        },
+        {
+          typical: 'Limited or no execution warranty',
+          hiieko: 'Minimum 60-month execution warranty',
+        },
+        {
+          typical: 'No maintenance plan after handover',
+          hiieko: 'Active maintenance plan from day one',
+        },
+        {
+          typical: 'Responsibility fragmented across suppliers',
+          hiieko: 'Single point of responsibility: Hiieko',
+        },
+      ],
+    },
   },
   solutionsHome: {
     eyebrow: 'What we build',
     h2: 'Three systems. One team.',
     lede: 'For industrial platforms, logistics halls, production facilities, and unused land.',
+  },
+  performance: {
+    eyebrow: 'Performance & yield',
+    h2: 'Built to still be earning its keep in year 30.',
+    lede: 'Real coefficients from the equipment we install and maintain, not marketing averages.',
+    stats: [
+      { value: '~1,200', label: 'kWh/kWp/yr average yield' },
+      { value: '98.6%', label: 'Peak inverter efficiency' },
+      { value: '6,000+', label: 'Battery charge cycles' },
+      { value: '30-year', label: 'Panel performance warranty' },
+    ],
+    chartCaption: 'Even after 30 years, a well-chosen system still produces nearly 89% of its original output.',
+    chartYAxisLabel: 'Output vs. Year 0',
+  },
+  techPartners: {
+    eyebrow: 'Technology partners',
+    h2: 'Equipment we trust enough to warranty.',
+    lede: 'Every system is built from tier-one components, selected for the specific project, not a single default package.',
+    groups: [
+      {
+        heading: 'Panel manufacturers',
+        items: [
+          { name: 'Unicasolar', detail: 'Monocrystalline' },
+          { name: 'Astroenergy', detail: 'N-Type TOPCon' },
+          { name: 'Aiko', detail: 'N-Type ABC technology, 24%+ efficiency' },
+        ],
+      },
+      {
+        heading: 'Inverters',
+        items: [
+          { name: 'Huawei', detail: 'Industrial, 98.6% efficiency' },
+          { name: 'Solis', detail: 'Commercial' },
+        ],
+      },
+      {
+        heading: 'Storage',
+        items: [
+          { name: 'Dyness', detail: '' },
+          { name: 'Huawei LUNA2000', detail: 'LFP chemistry' },
+        ],
+      },
+      {
+        heading: 'Infrastructure',
+        items: [
+          { name: 'ZPUE', detail: 'Prefabricated transformer substations' },
+          { name: 'Tesla Power Systems', detail: 'Romanian-manufactured MT/LV equipment, factory in Buzău' },
+        ],
+      },
+    ],
   },
   solutionsPage: {
     eyebrow: 'What we build',
@@ -94,6 +169,14 @@ const en = {
     rooftop: 'Rooftop',
     groundMount: 'Ground-mount',
     bess: 'BESS',
+    subcategoryAll: 'All',
+    industrial: 'Industrial',
+    retail: 'Retail',
+    warehouse: 'Warehouse',
+    agriculture: 'Agriculture',
+    institutional: 'Institutional',
+    residential: 'Residential',
+    commercial: 'Commercial',
   },
   about: {
     eyebrow: 'Why Hiieko',
@@ -101,34 +184,47 @@ const en = {
     para1:
       'Hiieko Romania SRL is part of the Estonian Hiieko group, which has designed, installed, and maintained construction technical systems since 1994. In Romania, that same engineering discipline was applied to a purpose-built subsidiary, established in 2020 specifically to develop industrial solar parks and storage facilities.',
     para2:
-      "We're not a panel installer that appeared last year. We're part of a group with three decades of execution on complex sites — and a Romanian team that stays accountable after handover.",
+      "We're not a panel installer that appeared last year. We're part of a group with three decades of execution on complex sites and a Romanian team that stays accountable after handover.",
     para3Page:
-      'Most solar installers in Romania sell equipment and move on. Hiieko Romania designs, builds, and maintains every system under one contract — with a workmanship guarantee and a maintenance plan that starts the day the system goes live. Meet the',
+      'Most solar installers in Romania sell equipment and move on. Hiieko Romania designs, builds, and maintains every system under one contract, with a workmanship guarantee and a maintenance plan that starts the day the system goes live. Meet the',
     readMoreLink: 'Read more about Hiieko →',
     readMoreTeamLink: 'team behind the work →',
     iso1: 'ISO 9001:2015',
     iso2: 'ISO 14001:2015',
+    iso3: 'ISO 27001',
+    iso4: 'ISO 45001',
+    isoRegistration: 'Registration RO 1450/1/1/1–4, issued 18.08.2025, certified by ROCERT, RENAR-accredited.',
+    anre: {
+      heading: 'ANRE Authorizations',
+      description:
+        'Legally mandatory authorizations for any company that designs, executes, or connects electrical installations in Romania, issued directly by the national energy regulator.',
+      items: [
+        { code: 'E1', label: 'Design' },
+        { code: 'E2', label: 'Execution' },
+        { code: 'A3', label: 'Grid Connection' },
+      ],
+    },
     figs: {
       founded: { label: 'Group founded', value: '1994, Tallinn' },
       subsidiary: { label: 'Romania subsidiary established', value: '2020' },
       purpose: { label: 'Purpose', value: 'Solar parks + storage' },
-      localTeam: { label: 'Local team', value: 'Over 25 specialists' },
-      certification: { label: 'Certification', value: 'ISO 9001 / 14001' },
+      localTeam: { label: 'Local team', value: 'Over 40 specialists' },
+      certification: { label: 'Certification', value: 'ISO 9001 / 14001 / 27001 / 45001' },
       address: { label: 'Address', value: 'Bd. Theodor Pallady 51N, Bucharest' },
     },
   },
   team: {
     eyebrow: 'Our team',
-    h1: '21 specialists, one accountable team.',
-    lede: 'The people who design, install, and maintain every system after handover. Entries marked PLACEHOLDER are examples pending real profiles.',
+    h1: 'Over 40 specialists, one accountable team.',
+    lede: 'Real engineers, real accountability. Every person on this page is someone you can actually call once your system is live, not a subcontractor, not a call center.',
   },
   contact: {
     eyebrow: 'Next step',
     heading: 'Request a site assessment.',
-    lede: "Send a few details about the site and consumption. You'll get a sizing estimate back — not a sales pitch.",
+    lede: "Send a few details about the site and consumption. You'll get a sizing estimate back, not a sales pitch.",
     companyName: 'Hiieko Romania SRL',
     addressLine: 'Bd. Theodor Pallady 51N, Sector 3, Bucharest',
-    email: 'bogdan.otelea@hiieko.ro',
+    email: 'office@hiieko.ro',
   },
   contactForm: {
     nameLabel: 'Name',
@@ -144,15 +240,15 @@ const en = {
     },
     messageLabel: 'Site details (area, approximate monthly consumption)',
     submitBtn: 'Send request →',
-    statusNotConfigured: 'Contact endpoint not configured yet — please email us directly.',
+    statusNotConfigured: 'Contact endpoint not configured yet. Please email us directly.',
     statusSending: 'Sending…',
     statusSuccess: 'Request sent. We’ll get back to you shortly.',
-    statusError: 'Something went wrong — please email us directly.',
+    statusError: 'Something went wrong. Please email us directly.',
   },
   calculator: {
     eyebrow: 'Estimate your system',
     h2: 'See what your electricity bill could fund.',
-    lede: 'Enter your monthly usage — this estimates system size, payback, and ROI. Not a quote; a real number needs a site assessment.',
+    lede: 'Enter your monthly usage: this estimates system size, payback, and ROI. Not a quote; a real number needs a site assessment.',
     consumptionLabel: 'Current monthly consumption (kWh)',
     areaLabel: 'Available area (m²)',
     calculateBtn: 'Calculate →',
@@ -162,7 +258,7 @@ const en = {
     statPayback: 'Est. payback period (years)',
     statRoi: 'ROI (%)',
     disclaimer:
-      'System sized to offset your annual consumption, assuming 1200 kWh/kWp/yr yield and 4.3 m²/kWp. Install cost is tiered by system size — €480/kWp under 20 kWp, €450/kWp from 20–50 kWp, €430/kWp from 50–100 kWp, €410/kWp from 100–250 kWp, €390/kWp above 250 kWp. Savings assume 90% self-consumption at €0.18/kWh, capped at your annual consumption. A rough estimate, not a quote — a real number needs a site assessment.',
+      'System sized to offset your annual consumption, assuming 1200 kWh/kWp/yr yield and 4.3 m²/kWp. Install cost is tiered by system size: €480/kWp under 20 kWp, €450/kWp from 20–50 kWp, €430/kWp from 50–100 kWp, €410/kWp from 100–250 kWp, €390/kWp above 250 kWp. Savings assume 90% self-consumption at €0.18/kWh, capped at your annual consumption. A rough estimate, not a quote. A real number needs a site assessment.',
     warningTemplate:
       'Your available space ({area} m²) covers only {pct}% of your usage. {minArea} m² would fully offset your consumption.',
     toastMessage: 'Talk with sales for a site assessment and real values.',
@@ -173,18 +269,29 @@ const en = {
     companyHeading: 'Hiieko Romania',
     addressLine1: 'Bd. Theodor Pallady 51N',
     addressLine2: 'Sector 3, Bucharest',
-    email: 'bogdan.otelea@hiieko.ro',
+    email: 'office@hiieko.ro',
     groupHeading: 'Group',
-    groupLine1: 'AS Hiieko — Tallinn, Estonia',
+    groupLine1: 'AS Hiieko, Tallinn, Estonia',
     groupLine2: 'hiieko.ee',
     legalHeading: 'Legal',
     cifLine: 'CIF 42849908',
     privacyLine: 'Privacy Policy',
+    cookiePreferencesLine: 'Cookie preferences',
     copyright: '© {year} Hiieko Romania SRL',
     tagline: 'Part of the AS Hiieko group, founded 1994',
   },
   common: {
     placeholderBadge: 'PLACEHOLDER',
+    inProgressBadge: 'In Progress',
+  },
+  notFound: {
+    badge: '404 · Signal lost',
+    headline: "Signal lost: this page isn't in the system.",
+    lede: "The page you're looking for doesn't exist, or the link's out of date.",
+    ctaHome: 'Back to Home →',
+    linkSolutions: 'Solutions',
+    linkProjects: 'Projects',
+    linkContact: 'Contact',
   },
   // Draft privacy policy — legal content pending sign-off by counsel before
   // launch. See also the top-of-file notes and inline HTML comment in
@@ -236,27 +343,27 @@ const en = {
         },
         {
           heading: 'Cookies on this site today',
-          body: 'This website does not currently use cookies. If cookies are introduced in the future — for example, for website analytics or advertising — this section will be updated with the specific cookies in use, and a consent banner will request your permission before any non-essential cookie is set.',
+          body: 'This website uses Google Analytics (GA4), an analytics cookie, to understand how visitors use the site. This cookie is only set after you accept it via the consent banner; if you decline, no analytics cookie is set. We do not currently use advertising cookies.',
         },
         {
-          heading: 'Types of cookies we may use in future',
-          body: 'Strictly necessary cookies (required for the site to function, no consent needed), analytics cookies (e.g. to understand how visitors use the site), and advertising cookies (e.g. to measure ad performance) — only the strictly necessary category would ever be set without your prior consent.',
+          heading: 'Types of cookies we use',
+          body: 'Strictly necessary cookies (required for the site to function, no consent needed) and analytics cookies (Google Analytics, used to understand how visitors use the site), the only two categories currently in use. Advertising cookies are not currently used; if that changes in the future, this section will be updated and your consent requested first.',
         },
         {
           heading: 'How we handle consent',
-          body: 'Before any non-essential cookie is set, you will be shown a consent banner allowing you to accept or decline by category. You may change your choice at any time.',
+          body: 'Before the Google Analytics cookie is set, you are shown a consent banner letting you accept or decline. You may change your choice at any time using the "Cookie preferences" link in the site footer.',
         },
         {
-          heading: 'What data cookies may collect',
-          body: 'Depending on the cookie type, this could include IP address, browser and device type, pages visited, time spent on the site, and referral source.',
+          heading: 'What data Google Analytics collects',
+          body: 'Google Analytics collects anonymized usage data: pages visited, session duration, and general location and device type. It does not collect your name, email address, or other directly identifying information.',
         },
         {
           heading: 'Your rights regarding cookies',
-          body: 'You may accept or decline non-essential cookies, and withdraw consent at any time. Declining cookies will not affect your ability to browse the site or use the contact form.',
+          body: 'You may accept or decline the analytics cookie, and withdraw consent at any time using the "Cookie preferences" link in the site footer. Declining does not affect your ability to browse the site or use the contact form.',
         },
         {
           heading: 'How to control cookies',
-          body: "Once introduced, cookie preferences will be manageable through the consent banner. You can also control or delete cookies through your browser's settings at any time.",
+          body: 'You can change your analytics cookie choice at any time using the "Cookie preferences" link in the site footer. You can also control or delete cookies through your browser\'s settings at any time.',
         },
         {
           heading: 'Updates to this section',
@@ -265,10 +372,17 @@ const en = {
       ],
     },
   },
+  cookieConsent: {
+    message:
+      'We use Google Analytics to understand how visitors use this site. This only runs if you accept; declining won’t affect your ability to browse the site or use the contact form.',
+    accept: 'Accept',
+    decline: 'Decline',
+    ariaLabel: 'Cookie consent',
+  },
   industries: {
     eyebrow: 'Who we serve',
-    headline: "Over 100 MWp installed for businesses across Romania's highest-consumption industries.",
-    lede: 'From dairy farms to distribution hubs, we size systems for the operations that draw the most power — and can least afford downtime.',
+    headline: 'Energy prices keep climbing. These businesses stopped caring.',
+    lede: "Over 200 MWp installed across Romania's highest-consumption industries: proof the energy crisis doesn't have to be permanent for yours.",
     ctaLabel: 'See projects →',
     items: [
       { name: 'Agriculture' },
@@ -281,36 +395,36 @@ const en = {
   },
   meta: {
     home: {
-      title: 'Hiieko Romania — Industrial Solar & Energy Storage',
+      title: 'Hiieko Romania · Industrial Solar & Energy Storage',
       description:
-        'Design, installation, and long-term maintenance of rooftop and ground-mount solar plus battery storage for Romanian industrial and commercial sites — one contractor, one guarantee, backed by Estonian engineering since 1994.',
+        'Design, installation, and long-term maintenance of rooftop and ground-mount solar plus battery storage for Romanian industrial and commercial sites: one contractor, one guarantee, backed by Estonian engineering since 1994.',
     },
     solutions: {
-      title: 'Solutions — Hiieko Romania',
+      title: 'Solutions · Hiieko Romania',
       description:
-        'Rooftop solar, ground-mount solar parks, and battery storage (BESS) — designed, installed, and maintained by Hiieko Romania.',
+        'Rooftop solar, ground-mount solar parks, and battery storage (BESS), designed, installed, and maintained by Hiieko Romania.',
     },
     projects: {
-      title: 'Projects — Hiieko Romania',
+      title: 'Projects · Hiieko Romania',
       description:
         'Completed rooftop, ground-mount, and battery storage projects from Hiieko Romania.',
     },
     about: {
-      title: 'About — Hiieko Romania',
+      title: 'About · Hiieko Romania',
       description:
         'Hiieko Romania SRL is part of the Estonian Hiieko group, designing, installing, and maintaining industrial solar and storage systems since 2020.',
     },
     team: {
-      title: 'Team — Hiieko Romania',
+      title: 'Team · Hiieko Romania',
       description: "The Romanian team behind Hiieko's industrial solar and storage installations.",
     },
     contact: {
-      title: 'Contact — Hiieko Romania',
+      title: 'Contact · Hiieko Romania',
       description:
-        'Request a site assessment from Hiieko Romania — rooftop solar, ground-mount solar parks, and battery storage.',
+        'Request a site assessment from Hiieko Romania: rooftop solar, ground-mount solar parks, and battery storage.',
     },
     privacy: {
-      title: 'Privacy Policy — Hiieko Romania',
+      title: 'Privacy Policy · Hiieko Romania',
       description:
         'How Hiieko Romania collects, uses, and protects personal data submitted through this site.',
     },
@@ -332,24 +446,23 @@ const ro: Dictionary = {
     toggleMenu: 'Comută meniul',
   },
   hero: {
-    eyebrow: 'Hiieko România — Solar Industrial & Stocare',
+    eyebrow: 'Hiieko România · Solar Industrial & Stocare',
     h1: 'Nu vindem panouri. Livrăm un sistem și răspundem pentru el.',
-    lede: 'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru site-uri industriale și comerciale din România — un singur contractor, o singură garanție, susținută de inginerie estoniană din 1994.',
+    lede: 'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru site-uri industriale și comerciale din România: un singur contractor, o singură garanție, susținută de inginerie estoniană din 1994.',
     ctaPrimary: 'Solicită o evaluare →',
     ctaSecondary: 'Estimează sistemul ↓',
-    dashboardLabel: 'Prezentare sistem',
-    liveLabel: 'Live',
   },
   trust: {
-    founded: { value: '1994', label: 'Grupul Hiieko fondat, Estonia' },
-    capacity: { label: 'Capacitate instalată' },
-    specialists: { label: 'Specialiști la Hiieko România' },
-    iso: { value: 'ISO 9001·14001', label: 'Sisteme de management certificate' },
+    founded: { value: '1994', label: 'Grup fondat, Estonia' },
+    capacity: { label: 'MWp instalați' },
+    happyClients: { label: 'Clienți mulțumiți în România' },
+    specialists: { label: 'Specialiști în România' },
+    iso: { value: 'ISO', label: '9001 · 14001 Certificat' },
   },
   diff: {
     eyebrow: 'Cum lucrăm',
     h2: 'Suntem contractorul care rămâne după punerea în funcțiune.',
-    lede: 'Majoritatea instalatorilor de solar din România vând echipamente și pleacă mai departe. Hiieko România proiectează, construiește și întreține fiecare sistem printr-un singur contract — cu garanție de execuție și un plan de mentenanță care începe din ziua punerii în funcțiune.',
+    lede: 'Majoritatea instalatorilor de solar din România vând echipamente și pleacă mai departe. Hiieko România proiectează, construiește și întreține fiecare sistem printr-un singur contract, cu garanție de execuție și un plan de mentenanță care începe din ziua punerii în funcțiune.',
     steps: [
       {
         n: '01 / PROIECTARE',
@@ -359,7 +472,7 @@ const ro: Dictionary = {
       {
         n: '02 / INSTALARE',
         title: 'Instalare și punere în funcțiune',
-        body: 'Echipe proprii, nu forță de muncă subcontractată — instalat conform cerințelor de racordare ANRE.',
+        body: 'Echipe proprii, nu forță de muncă subcontractată, instalat conform cerințelor de racordare ANRE.',
       },
       {
         n: '03 / GARANȚIE',
@@ -369,16 +482,92 @@ const ro: Dictionary = {
       {
         n: '04 / ÎNTREȚINERE',
         title: 'Mentenanță continuă',
-        body: 'Service programat și monitorizare pentru aceeași perioadă de 60 de luni după predare — sistemul rămâne responsabilitatea noastră.',
+        body: 'Service programat și monitorizare pentru aceeași perioadă de 60 de luni după predare. Sistemul rămâne responsabilitatea noastră.',
       },
     ],
     callout:
-      'Nu revindem panouri și baterii — livrăm întregul ciclu, de la inginerie la mentenanță, printr-un singur contract, cu o singură echipă responsabilă de rezultat.',
+      'Nu revindem panouri și baterii: livrăm întregul ciclu, de la inginerie la mentenanță, printr-un singur contract, cu o singură echipă responsabilă de rezultat.',
+    comparison: {
+      heading: 'De ce Hiieko România',
+      columnTypical: 'Instalator obișnuit',
+      columnHiieko: 'Hiieko România',
+      rows: [
+        {
+          typical: 'Vinde echipamente și părăsește șantierul',
+          hiieko: 'Proiectare, instalare și mentenanță printr-un singur contract',
+        },
+        {
+          typical: 'Lucrări realizate prin subcontractare',
+          hiieko: 'Echipe proprii de instalare, fără subcontractare',
+        },
+        {
+          typical: 'Garanție de execuție limitată sau inexistentă',
+          hiieko: 'Garanție de execuție de minimum 60 de luni',
+        },
+        {
+          typical: 'Fără plan de mentenanță după predare',
+          hiieko: 'Plan de mentenanță activ din prima zi',
+        },
+        {
+          typical: 'Responsabilitate fragmentată între furnizori',
+          hiieko: 'Un singur punct de responsabilitate: Hiieko',
+        },
+      ],
+    },
   },
   solutionsHome: {
     eyebrow: 'Ce construim',
     h2: 'Trei sisteme. O singură echipă.',
     lede: 'Pentru platforme industriale, hale logistice, unități de producție și terenuri neutilizate.',
+  },
+  performance: {
+    eyebrow: 'Performanță și randament',
+    h2: 'Construit ca să merite investiția și în anul 30.',
+    lede: 'Coeficienți reali ai echipamentelor pe care le instalăm și le întreținem, nu medii de marketing.',
+    stats: [
+      { value: '~1.200', label: 'kWh/kWp/an randament mediu' },
+      { value: '98,6%', label: 'Eficiență maximă invertor' },
+      { value: '6.000+', label: 'Cicluri de încărcare baterie' },
+      { value: '30 de ani', label: 'Garanție de performanță panouri' },
+    ],
+    chartCaption: 'Chiar și după 30 de ani, un sistem bine ales produce în continuare aproape 89% din producția inițială.',
+    chartYAxisLabel: 'Producție față de anul 0',
+  },
+  techPartners: {
+    eyebrow: 'Parteneri tehnologici',
+    h2: 'Echipamente în care avem suficientă încredere încât să le garantăm.',
+    lede: 'Fiecare sistem este construit din componente de top, alese pentru proiectul specific, nu dintr-un pachet unic implicit.',
+    groups: [
+      {
+        heading: 'Producători de panouri',
+        items: [
+          { name: 'Unicasolar', detail: 'Monocristalin' },
+          { name: 'Astroenergy', detail: 'N-Type TOPCon' },
+          { name: 'Aiko', detail: 'Tehnologie N-Type ABC, eficiență 24%+' },
+        ],
+      },
+      {
+        heading: 'Invertoare',
+        items: [
+          { name: 'Huawei', detail: 'Industrial, eficiență 98,6%' },
+          { name: 'Solis', detail: 'Comercial' },
+        ],
+      },
+      {
+        heading: 'Stocare',
+        items: [
+          { name: 'Dyness', detail: '' },
+          { name: 'Huawei LUNA2000', detail: 'Chimie LFP' },
+        ],
+      },
+      {
+        heading: 'Infrastructură',
+        items: [
+          { name: 'ZPUE', detail: 'Posturi de transformare prefabricate' },
+          { name: 'Tesla Power Systems', detail: 'Echipamente MT/JT fabricate în România, fabrică în Buzău' },
+        ],
+      },
+    ],
   },
   solutionsPage: {
     eyebrow: 'Ce construim',
@@ -405,6 +594,14 @@ const ro: Dictionary = {
     rooftop: 'Acoperiș',
     groundMount: 'La sol',
     bess: 'BESS',
+    subcategoryAll: 'Toate',
+    industrial: 'Industrial',
+    retail: 'Retail',
+    warehouse: 'Depozitare',
+    agriculture: 'Agricultură',
+    institutional: 'Instituțional',
+    residential: 'Rezidențial',
+    commercial: 'Comercial',
   },
   about: {
     eyebrow: 'De ce Hiieko',
@@ -412,34 +609,47 @@ const ro: Dictionary = {
     para1:
       'Hiieko România SRL face parte din grupul estonian Hiieko, care proiectează, instalează și întreține sisteme tehnice pentru construcții din 1994. În România, aceeași disciplină de inginerie a fost aplicată unei filiale dedicate, înființată în 2020 special pentru dezvoltarea de parcuri solare industriale și facilități de stocare.',
     para2:
-      'Nu suntem un instalator de panouri apărut anul trecut. Facem parte dintr-un grup cu trei decenii de execuție pe șantiere complexe — și o echipă din România care rămâne responsabilă după predare.',
+      'Nu suntem un instalator de panouri apărut anul trecut. Facem parte dintr-un grup cu trei decenii de execuție pe șantiere complexe și o echipă din România care rămâne responsabilă după predare.',
     para3Page:
-      'Majoritatea instalatorilor de solar din România vând echipamente și pleacă mai departe. Hiieko România proiectează, construiește și întreține fiecare sistem printr-un singur contract — cu garanție de execuție și un plan de mentenanță care începe din ziua punerii în funcțiune. Cunoaște',
+      'Majoritatea instalatorilor de solar din România vând echipamente și pleacă mai departe. Hiieko România proiectează, construiește și întreține fiecare sistem printr-un singur contract, cu garanție de execuție și un plan de mentenanță care începe din ziua punerii în funcțiune. Cunoaște',
     readMoreLink: 'Află mai multe despre Hiieko →',
     readMoreTeamLink: 'echipa din spatele lucrărilor →',
     iso1: 'ISO 9001:2015',
     iso2: 'ISO 14001:2015',
+    iso3: 'ISO 27001',
+    iso4: 'ISO 45001',
+    isoRegistration: 'Înregistrare RO 1450/1/1/1–4, emisă la 18.08.2025, certificată de ROCERT, acreditată RENAR.',
+    anre: {
+      heading: 'Autorizații ANRE',
+      description:
+        'Autorizații obligatorii prin lege pentru orice companie care proiectează, execută sau racordează instalații electrice în România, emise direct de autoritatea națională de reglementare în domeniul energiei.',
+      items: [
+        { code: 'E1', label: 'Proiectare' },
+        { code: 'E2', label: 'Execuție' },
+        { code: 'A3', label: 'Racordare la rețea' },
+      ],
+    },
     figs: {
       founded: { label: 'Grup fondat', value: '1994, Tallinn' },
       subsidiary: { label: 'Filiala din România înființată', value: '2020' },
       purpose: { label: 'Scop', value: 'Parcuri solare + stocare' },
-      localTeam: { label: 'Echipă locală', value: 'Peste 25 de specialiști' },
-      certification: { label: 'Certificare', value: 'ISO 9001 / 14001' },
+      localTeam: { label: 'Echipă locală', value: 'Peste 40 de specialiști' },
+      certification: { label: 'Certificare', value: 'ISO 9001 / 14001 / 27001 / 45001' },
       address: { label: 'Adresă', value: 'Bd. Theodor Pallady 51N, București' },
     },
   },
   team: {
     eyebrow: 'Echipa noastră',
-    h1: '21 de specialiști, o singură echipă responsabilă.',
-    lede: 'Oamenii care proiectează, instalează și întrețin fiecare sistem după predare. Intrările marcate PLACEHOLDER sunt exemple, în așteptarea profilurilor reale.',
+    h1: 'Peste 40 de specialiști, o singură echipă responsabilă.',
+    lede: 'Ingineri reali, responsabilitate reală. Fiecare persoană de pe această pagină este cineva pe care chiar îl poți suna după ce sistemul tău este funcțional, nu un subcontractant, nu un call center.',
   },
   contact: {
     eyebrow: 'Următorul pas',
     heading: 'Solicită o evaluare a site-ului.',
-    lede: 'Trimite-ne câteva detalii despre site și consum. Vei primi o estimare de dimensionare — nu un discurs de vânzare.',
+    lede: 'Trimite-ne câteva detalii despre site și consum. Vei primi o estimare de dimensionare, nu un discurs de vânzare.',
     companyName: 'Hiieko Romania SRL',
     addressLine: 'Bd. Theodor Pallady 51N, Sector 3, București',
-    email: 'bogdan.otelea@hiieko.ro',
+    email: 'office@hiieko.ro',
   },
   contactForm: {
     nameLabel: 'Nume',
@@ -455,15 +665,15 @@ const ro: Dictionary = {
     },
     messageLabel: 'Detalii site (suprafață, consum lunar aproximativ)',
     submitBtn: 'Trimite solicitarea →',
-    statusNotConfigured: 'Endpoint-ul de contact nu este încă configurat — te rugăm să ne scrii direct pe email.',
+    statusNotConfigured: 'Endpoint-ul de contact nu este încă configurat. Te rugăm să ne scrii direct pe email.',
     statusSending: 'Se trimite…',
     statusSuccess: 'Solicitare trimisă. Te contactăm în curând.',
-    statusError: 'Ceva nu a funcționat — te rugăm să ne scrii direct pe email.',
+    statusError: 'Ceva nu a funcționat. Te rugăm să ne scrii direct pe email.',
   },
   calculator: {
     eyebrow: 'Estimează-ți sistemul',
     h2: 'Vezi ce ți-ar putea finanța factura la curent.',
-    lede: 'Introdu consumul tău lunar — acesta estimează dimensiunea sistemului, perioada de amortizare și ROI. Nu este o ofertă fermă; o cifră reală necesită o evaluare la fața locului.',
+    lede: 'Introdu consumul tău lunar: acesta estimează dimensiunea sistemului, perioada de amortizare și ROI. Nu este o ofertă fermă; o cifră reală necesită o evaluare la fața locului.',
     consumptionLabel: 'Consum lunar actual (kWh)',
     areaLabel: 'Suprafață disponibilă (m²)',
     calculateBtn: 'Calculează →',
@@ -473,7 +683,7 @@ const ro: Dictionary = {
     statPayback: 'Perioadă de amortizare estimată (ani)',
     statRoi: 'ROI (%)',
     disclaimer:
-      'Sistem dimensionat pentru a acoperi consumul tău anual, presupunând un randament de 1200 kWh/kWp/an și 4,3 m²/kWp. Costul instalării este eșalonat în funcție de dimensiunea sistemului — 480 €/kWp sub 20 kWp, 450 €/kWp între 20–50 kWp, 430 €/kWp între 50–100 kWp, 410 €/kWp între 100–250 kWp, 390 €/kWp peste 250 kWp. Economiile presupun un autoconsum de 90% la 0,18 €/kWh, plafonat la consumul tău anual. O estimare aproximativă, nu o ofertă fermă — o cifră reală necesită o evaluare la fața locului.',
+      'Sistem dimensionat pentru a acoperi consumul tău anual, presupunând un randament de 1200 kWh/kWp/an și 4,3 m²/kWp. Costul instalării este eșalonat în funcție de dimensiunea sistemului: 480 €/kWp sub 20 kWp, 450 €/kWp între 20–50 kWp, 430 €/kWp între 50–100 kWp, 410 €/kWp între 100–250 kWp, 390 €/kWp peste 250 kWp. Economiile presupun un autoconsum de 90% la 0,18 €/kWh, plafonat la consumul tău anual. O estimare aproximativă, nu o ofertă fermă. O cifră reală necesită o evaluare la fața locului.',
     warningTemplate:
       'Spațiul tău disponibil ({area} m²) acoperă doar {pct}% din consumul tău. {minArea} m² ar acoperi integral consumul.',
     toastMessage: 'Discută cu echipa de vânzări pentru o evaluare la fața locului și cifre reale.',
@@ -484,18 +694,29 @@ const ro: Dictionary = {
     companyHeading: 'Hiieko România',
     addressLine1: 'Bd. Theodor Pallady 51N',
     addressLine2: 'Sector 3, București',
-    email: 'bogdan.otelea@hiieko.ro',
+    email: 'office@hiieko.ro',
     groupHeading: 'Grup',
-    groupLine1: 'AS Hiieko — Tallinn, Estonia',
+    groupLine1: 'AS Hiieko, Tallinn, Estonia',
     groupLine2: 'hiieko.ee',
     legalHeading: 'Legal',
     cifLine: 'CIF 42849908',
     privacyLine: 'Politica de confidențialitate',
+    cookiePreferencesLine: 'Preferințe cookie-uri',
     copyright: '© {year} Hiieko Romania SRL',
     tagline: 'Parte a grupului AS Hiieko, fondat în 1994',
   },
   common: {
     placeholderBadge: 'EXEMPLU',
+    inProgressBadge: 'În desfășurare',
+  },
+  notFound: {
+    badge: '404 · Semnal pierdut',
+    headline: 'Semnal pierdut: această pagină nu există în sistem.',
+    lede: 'Pagina pe care o cauți nu există sau linkul nu mai este valid.',
+    ctaHome: 'Înapoi acasă →',
+    linkSolutions: 'Soluții',
+    linkProjects: 'Proiecte',
+    linkContact: 'Contact',
   },
   privacy: {
     eyebrow: 'Legal',
@@ -542,27 +763,27 @@ const ro: Dictionary = {
         },
         {
           heading: 'Cookie-uri pe acest site în prezent',
-          body: 'Acest site nu folosește în prezent cookie-uri. Dacă vor fi introduse cookie-uri în viitor — de exemplu, pentru analiza site-ului sau publicitate — această secțiune va fi actualizată cu cookie-urile specifice utilizate, iar un banner de consimțământ îți va solicita permisiunea înainte de setarea oricărui cookie neesențial.',
+          body: 'Acest site folosește Google Analytics (GA4), un cookie de analiză, pentru a înțelege cum utilizează vizitatorii site-ul. Acest cookie este setat doar după ce îl accepți prin bannerul de consimțământ; dacă refuzi, niciun cookie de analiză nu este setat. Nu folosim în prezent cookie-uri publicitare.',
         },
         {
-          heading: 'Tipuri de cookie-uri pe care le-am putea folosi în viitor',
-          body: 'Cookie-uri strict necesare (necesare pentru funcționarea site-ului, fără a necesita consimțământ), cookie-uri de analiză (de exemplu, pentru a înțelege cum utilizează vizitatorii site-ul) și cookie-uri publicitare (de exemplu, pentru a măsura performanța reclamelor) — doar categoria strict necesară ar fi vreodată setată fără consimțământul tău prealabil.',
+          heading: 'Tipuri de cookie-uri pe care le folosim',
+          body: 'Cookie-uri strict necesare (necesare pentru funcționarea site-ului, fără a necesita consimțământ) și cookie-uri de analiză (Google Analytics, folosite pentru a înțelege cum utilizează vizitatorii site-ul), singurele două categorii folosite în prezent. Cookie-urile publicitare nu sunt folosite în prezent; dacă acest lucru se va schimba în viitor, această secțiune va fi actualizată și consimțământul tău va fi solicitat mai întâi.',
         },
         {
           heading: 'Cum gestionăm consimțământul',
-          body: 'Înainte de setarea oricărui cookie neesențial, ți se va afișa un banner de consimțământ care îți permite să accepți sau să refuzi pe categorii. Îți poți schimba alegerea în orice moment.',
+          body: 'Înainte de setarea cookie-ului Google Analytics, ți se afișează un banner de consimțământ care îți permite să accepți sau să refuzi. Îți poți schimba alegerea în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului.',
         },
         {
-          heading: 'Ce date pot colecta cookie-urile',
-          body: 'În funcție de tipul cookie-ului, acestea pot include adresa IP, tipul de browser și dispozitiv, paginile vizitate, timpul petrecut pe site și sursa de referință.',
+          heading: 'Ce date colectează Google Analytics',
+          body: 'Google Analytics colectează date de utilizare anonimizate: paginile vizitate, durata sesiunii și locația generală și tipul de dispozitiv. Nu colectează numele tău, adresa de email sau alte informații direct identificabile.',
         },
         {
           heading: 'Drepturile tale privind cookie-urile',
-          body: 'Poți accepta sau refuza cookie-urile neesențiale și îți poți retrage consimțământul în orice moment. Refuzul cookie-urilor nu îți va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
+          body: 'Poți accepta sau refuza cookie-ul de analiză și îți poți retrage consimțământul în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului. Refuzul nu îți va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
         },
         {
           heading: 'Cum controlezi cookie-urile',
-          body: 'Odată introduse, preferințele privind cookie-urile vor putea fi gestionate prin bannerul de consimțământ. De asemenea, poți controla sau șterge cookie-urile din setările browserului tău în orice moment.',
+          body: 'Îți poți schimba alegerea privind cookie-ul de analiză în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului. De asemenea, poți controla sau șterge cookie-urile din setările browserului tău în orice moment.',
         },
         {
           heading: 'Actualizări ale acestei secțiuni',
@@ -571,10 +792,17 @@ const ro: Dictionary = {
       ],
     },
   },
+  cookieConsent: {
+    message:
+      'Folosim Google Analytics pentru a înțelege cum utilizează vizitatorii acest site. Acesta rulează doar dacă accepți; refuzul nu îți va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
+    accept: 'Accept',
+    decline: 'Refuz',
+    ariaLabel: 'Consimțământ cookie-uri',
+  },
   industries: {
     eyebrow: 'Pentru cine lucrăm',
-    headline: 'Peste 100 MWp instalați pentru afaceri din cele mai mari consumatoare industrii ale României.',
-    lede: 'De la ferme de lapte la hub-uri de distribuție, dimensionăm sisteme pentru operațiunile cu cel mai mare consum — și care își permit cel mai puțin întreruperi.',
+    headline: 'Prețurile la energie continuă să crească. Aceste companii au încetat să le mai pese.',
+    lede: 'Peste 200 MWp instalați în cele mai mari industrii consumatoare de energie din România: dovada că criza energetică nu trebuie să fie permanentă și pentru afacerea ta.',
     ctaLabel: 'Vezi proiectele →',
     items: [
       { name: 'Agricultură' },
@@ -587,36 +815,36 @@ const ro: Dictionary = {
   },
   meta: {
     home: {
-      title: 'Hiieko România — Solar Industrial & Stocare de Energie',
+      title: 'Hiieko România · Solar Industrial & Stocare de Energie',
       description:
-        'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru site-uri industriale și comerciale din România — un singur contractor, o singură garanție, susținută de inginerie estoniană din 1994.',
+        'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru site-uri industriale și comerciale din România: un singur contractor, o singură garanție, susținută de inginerie estoniană din 1994.',
     },
     solutions: {
-      title: 'Soluții — Hiieko România',
+      title: 'Soluții · Hiieko România',
       description:
-        'Solar pe acoperiș, parcuri solare la sol și stocare cu baterii (BESS) — proiectate, instalate și întreținute de Hiieko România.',
+        'Solar pe acoperiș, parcuri solare la sol și stocare cu baterii (BESS), proiectate, instalate și întreținute de Hiieko România.',
     },
     projects: {
-      title: 'Proiecte — Hiieko România',
+      title: 'Proiecte · Hiieko România',
       description:
         'Proiecte finalizate de solar pe acoperiș, la sol și stocare cu baterii de la Hiieko România.',
     },
     about: {
-      title: 'Despre noi — Hiieko România',
+      title: 'Despre noi · Hiieko România',
       description:
         'Hiieko România SRL face parte din grupul estonian Hiieko, proiectând, instalând și întreținând sisteme industriale de solar și stocare din 2020.',
     },
     team: {
-      title: 'Echipă — Hiieko România',
+      title: 'Echipă · Hiieko România',
       description: 'Echipa din România din spatele instalațiilor Hiieko de solar industrial și stocare.',
     },
     contact: {
-      title: 'Contact — Hiieko România',
+      title: 'Contact · Hiieko România',
       description:
-        'Solicită o evaluare de la Hiieko România — solar pe acoperiș, parcuri solare la sol și stocare cu baterii.',
+        'Solicită o evaluare de la Hiieko România: solar pe acoperiș, parcuri solare la sol și stocare cu baterii.',
     },
     privacy: {
-      title: 'Politica de confidențialitate — Hiieko România',
+      title: 'Politica de confidențialitate · Hiieko România',
       description:
         'Cum colectează, folosește și protejează Hiieko România datele personale transmise prin acest site.',
     },

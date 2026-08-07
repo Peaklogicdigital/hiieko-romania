@@ -39,18 +39,19 @@ function localizedLink(href: string): string {
 ---
 
 <nav
-  class="sticky top-0 z-50 bg-bg/90 backdrop-blur-[8px] border-b border-line"
+  class="sticky top-0 z-50 bg-charcoal/80 backdrop-blur-[12px]"
 >
   <div class="wrap flex items-center justify-between h-[72px]">
-    <a href={lang === 'ro' ? '/ro/' : '/'} class="font-display font-extrabold text-[19px] flex gap-2 no-underline">
-      HIIEKO<span class="text-neon">·</span>RO
+    <a href={lang === 'ro' ? '/ro/' : '/'} class="font-display font-extrabold text-[19px] flex items-center gap-2 no-underline text-white">
+      <img src="/logo-icon.png" alt="" width="34" height="34" class="w-[34px] h-[34px]" />
+      HIIEKO<span class="text-gold">·</span>RO
     </a>
     <div class="hidden lg:flex items-center gap-[30px]">
       {
         links.map((link) => (
           <a
             href={localizedLink(link.href)}
-            class="text-muted no-underline text-sm font-medium hover:text-text"
+            class="text-muted no-underline text-sm font-medium hover:text-white"
           >
             {link.label}
           </a>
@@ -59,21 +60,21 @@ function localizedLink(href: string): string {
     </div>
     <div class="flex items-center gap-[22px]">
       <div class="hidden lg:flex font-mono text-xs gap-1.5">
-        <a href={enHref} class:list={['no-underline', lang === 'en' ? 'text-neon font-bold' : 'text-muted hover:text-text']}>
+        <a href={enHref} class:list={['no-underline', lang === 'en' ? 'text-gold font-bold' : 'text-muted hover:text-white']}>
           EN
         </a>
         <span class="text-muted">/</span>
-        <a href={roHref} class:list={['no-underline', lang === 'ro' ? 'text-neon font-bold' : 'text-muted hover:text-text']}>
+        <a href={roHref} class:list={['no-underline', lang === 'ro' ? 'text-gold font-bold' : 'text-muted hover:text-white']}>
           RO
         </a>
       </div>
-      <a href={localizedLink('/contact/')} class="btn btn-ghost px-[18px] py-[10px] hidden lg:inline-block">
+      <a href={localizedLink('/contact/')} class="btn btn-primary px-[18px] py-[10px] hidden lg:inline-block">
         {t.nav.cta}
       </a>
       <button
         id="nav-toggle"
         type="button"
-        class="lg:hidden flex items-center justify-center w-9 h-9 -mr-1.5 text-text"
+        class="lg:hidden flex items-center justify-center w-9 h-9 -mr-1.5 text-white"
         aria-label={t.nav.toggleMenu}
         aria-expanded="false"
         aria-controls="mobile-menu"
@@ -111,14 +112,21 @@ function localizedLink(href: string): string {
 
   <div
     id="mobile-menu"
-    class="hidden lg:hidden border-t border-line bg-bg"
+    class="hidden lg:hidden border-t border-white/10 bg-charcoal"
   >
     <div class="wrap flex flex-col py-4">
+      <a
+        href={lang === 'ro' ? '/ro/' : '/'}
+        class="font-display font-extrabold text-[19px] flex items-center gap-2 no-underline py-3 border-b border-white/10 text-white"
+      >
+        <img src="/logo-icon.png" alt="" width="34" height="34" class="w-[34px] h-[34px]" />
+        HIIEKO<span class="text-gold">·</span>RO
+      </a>
       {
         links.map((link) => (
           <a
             href={localizedLink(link.href)}
-            class="mobile-nav-link text-text no-underline text-base font-medium py-3 border-b border-line last:border-b-0"
+            class="mobile-nav-link text-white no-underline text-base font-medium py-3 border-b border-white/10 last:border-b-0"
           >
             {link.label}
           </a>
@@ -126,15 +134,15 @@ function localizedLink(href: string): string {
       }
       <div class="flex items-center justify-between pt-4">
         <div class="font-mono text-xs flex gap-1.5">
-          <a href={enHref} class:list={['no-underline', lang === 'en' ? 'text-neon font-bold' : 'text-muted']}>
+          <a href={enHref} class:list={['no-underline', lang === 'en' ? 'text-gold font-bold' : 'text-muted']}>
             EN
           </a>
           <span class="text-muted">/</span>
-          <a href={roHref} class:list={['no-underline', lang === 'ro' ? 'text-neon font-bold' : 'text-muted']}>
+          <a href={roHref} class:list={['no-underline', lang === 'ro' ? 'text-gold font-bold' : 'text-muted']}>
             RO
           </a>
         </div>
-        <a href={localizedLink('/contact/')} class="mobile-nav-link btn btn-ghost px-[18px] py-[10px]">
+        <a href={localizedLink('/contact/')} class="mobile-nav-link btn btn-primary px-[18px] py-[10px]">
           {t.nav.cta}
         </a>
       </div>

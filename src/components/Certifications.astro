@@ -1,0 +1,41 @@
+---
+import type { Lang } from '../i18n/ui';
+import { defaultLang, getTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = defaultLang } = Astro.props;
+const t = getTranslations(lang);
+
+const isoBadges = [t.about.iso1, t.about.iso2, t.about.iso3, t.about.iso4];
+---
+
+<div>
+  <div class="flex gap-3.5 flex-wrap">
+    {
+      isoBadges.map((badge) => (
+        <div class="border border-white/10 rounded-[2px] px-3.5 py-2.5 font-mono text-xs flex items-center gap-2">
+          <span class="w-[7px] h-[7px] rounded-full bg-gold shadow-[0_0_6px_var(--color-gold)]" />
+          {badge}
+        </div>
+      ))
+    }
+  </div>
+  <p class="text-muted text-[12px] mt-2.5 mb-0">{t.about.isoRegistration}</p>
+
+  <div class="mt-[18px] py-5 px-6 bg-chip border border-gold/30 border-l-[3px] border-l-gold rounded-[2px]">
+    <h3 class="text-[14.5px] text-white font-semibold mb-2">{t.about.anre.heading}</h3>
+    <p class="text-muted text-[13px] mb-4">{t.about.anre.description}</p>
+    <div class="flex gap-6 flex-wrap">
+      {
+        t.about.anre.items.map((item) => (
+          <div>
+            <div class="font-mono text-gold-bright text-[15px] font-semibold">{item.code}</div>
+            <div class="text-muted text-[11.5px] mt-0.5">{item.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

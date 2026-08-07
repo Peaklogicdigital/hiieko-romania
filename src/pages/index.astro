@@ -2,14 +2,17 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import Button from '../components/Button.astro';
-import DashboardSchematic from '../components/DashboardSchematic.astro';
+import HeroSchematic from '../components/HeroSchematic.astro';
 import TrustStrip from '../components/TrustStrip.astro';
 import DifferentiationSection from '../components/DifferentiationSection.astro';
 import SolutionsGrid from '../components/SolutionsGrid.astro';
+import PerformanceSection from '../components/PerformanceSection.astro';
+import TechPartnersSection from '../components/TechPartnersSection.astro';
 import IndustriesSection from '../components/IndustriesSection.astro';
 import Calculator from '../components/Calculator.astro';
 import ProjectsGallery from '../components/ProjectsGallery.astro';
 import ContactForm from '../components/ContactForm.astro';
+import Certifications from '../components/Certifications.astro';
 import { getTranslations } from '../i18n/ui';
 
 const lang = 'en' as const;
@@ -23,12 +26,7 @@ const t = getTranslations(lang);
   lang={lang}
 >
   <header class="pt-20 overflow-hidden relative">
-    <div
-      class="absolute inset-0 z-0 pointer-events-none"
-      style="background: radial-gradient(600px 400px at 80% 10%, rgba(70,247,156,0.08), transparent 70%);"
-    >
-    </div>
-    <div class="wrap relative z-10 grid grid-cols-1 md:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
+    <div class="wrap relative z-10 grid grid-cols-1 md:grid-cols-[1fr_1.15fr] gap-10 items-center">
       <div>
         <Eyebrow text={t.hero.eyebrow} />
         <h1 class="text-[clamp(34px,4.4vw,54px)] leading-[1.05] my-[18px] mb-[22px]">
@@ -43,15 +41,7 @@ const t = getTranslations(lang);
         </div>
       </div>
 
-      <div class="bg-bg-2 border border-line rounded-md p-[22px] reveal">
-        <div class="flex justify-between items-center mb-3.5">
-          <span class="font-mono text-[11px] text-muted tracking-[0.06em] uppercase">
-            {t.hero.dashboardLabel}
-          </span>
-          <Eyebrow text={t.hero.liveLabel} small />
-        </div>
-        <DashboardSchematic />
-      </div>
+      <HeroSchematic />
     </div>
 
     <TrustStrip lang={lang} />
@@ -59,7 +49,7 @@ const t = getTranslations(lang);
 
   <DifferentiationSection lang={lang} />
 
-  <section class="bg-bg-2 py-[100px]" id="solutions">
+  <section class="py-[100px]" id="solutions">
     <div class="wrap reveal">
       <div class="max-w-[640px] mb-[52px]">
         <Eyebrow text={t.solutionsHome.eyebrow} />
@@ -72,6 +62,10 @@ const t = getTranslations(lang);
     </div>
   </section>
 
+  <PerformanceSection lang={lang} />
+
+  <TechPartnersSection lang={lang} />
+
   <IndustriesSection lang={lang} />
 
   <Calculator lang={lang} />
@@ -82,14 +76,14 @@ const t = getTranslations(lang);
         <Eyebrow text={t.projectsHome.eyebrow} />
         <h2 class="text-[clamp(26px,3vw,36px)] mt-2.5 mb-3.5">{t.projectsHome.h2}</h2>
         <p class="text-muted text-[15.5px]">
-          {t.projectsHome.ledePrefix} <a href="/projects/" class="text-neon underline">{t.projectsHome.seeAllLink}</a>
+          {t.projectsHome.ledePrefix} <a href="/projects/" class="text-gold underline">{t.projectsHome.seeAllLink}</a>
         </p>
       </div>
       <ProjectsGallery limit={3} lang={lang} />
     </div>
   </section>
 
-  <section class="bg-bg-2 py-[100px]" id="about">
+  <section class="py-[100px]" id="about">
     <div class="wrap reveal grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
       <div>
         <Eyebrow text={t.about.eyebrow} />
@@ -102,38 +96,31 @@ const t = getTranslations(lang);
         <p class="text-muted text-[15.5px] mb-4">
           {t.about.para2}
         </p>
-        <a href="/about/" class="text-neon underline text-sm">{t.about.readMoreLink}</a>
-        <div class="flex gap-3.5 mt-[26px]">
-          <div class="border border-line rounded-[2px] px-3.5 py-2.5 font-mono text-xs flex items-center gap-2">
-            <span class="w-[7px] h-[7px] rounded-full bg-neon shadow-[0_0_6px_var(--color-neon)]"></span>
-            {t.about.iso1}
-          </div>
-          <div class="border border-line rounded-[2px] px-3.5 py-2.5 font-mono text-xs flex items-center gap-2">
-            <span class="w-[7px] h-[7px] rounded-full bg-neon shadow-[0_0_6px_var(--color-neon)]"></span>
-            {t.about.iso2}
-          </div>
+        <a href="/about/" class="text-gold underline text-sm">{t.about.readMoreLink}</a>
+        <div class="mt-[26px]">
+          <Certifications lang={lang} />
         </div>
       </div>
-      <div class="bg-bg border border-line rounded-md">
-        <div class="p-5 px-[22px] border-b border-line flex justify-between items-baseline">
+      <div class="bg-chip border border-white/10 rounded-md">
+        <div class="p-5 px-[22px] border-b border-white/10 flex justify-between items-baseline">
           <span class="text-[13.5px] text-muted">{t.about.figs.founded.label}</span>
-          <span class="font-mono font-semibold text-volt">{t.about.figs.founded.value}</span>
+          <span class="font-mono font-semibold text-gold-bright">{t.about.figs.founded.value}</span>
         </div>
-        <div class="p-5 px-[22px] border-b border-line flex justify-between items-baseline">
+        <div class="p-5 px-[22px] border-b border-white/10 flex justify-between items-baseline">
           <span class="text-[13.5px] text-muted">{t.about.figs.subsidiary.label}</span>
-          <span class="font-mono font-semibold text-volt">{t.about.figs.subsidiary.value}</span>
+          <span class="font-mono font-semibold text-gold-bright">{t.about.figs.subsidiary.value}</span>
         </div>
-        <div class="p-5 px-[22px] border-b border-line flex justify-between items-baseline">
+        <div class="p-5 px-[22px] border-b border-white/10 flex justify-between items-baseline">
           <span class="text-[13.5px] text-muted">{t.about.figs.purpose.label}</span>
-          <span class="font-mono font-semibold text-volt">{t.about.figs.purpose.value}</span>
+          <span class="font-mono font-semibold text-gold-bright">{t.about.figs.purpose.value}</span>
         </div>
-        <div class="p-5 px-[22px] border-b border-line flex justify-between items-baseline">
+        <div class="p-5 px-[22px] border-b border-white/10 flex justify-between items-baseline">
           <span class="text-[13.5px] text-muted">{t.about.figs.localTeam.label}</span>
-          <span class="font-mono font-semibold text-volt">{t.about.figs.localTeam.value}</span>
+          <span class="font-mono font-semibold text-gold-bright">{t.about.figs.localTeam.value}</span>
         </div>
         <div class="p-5 px-[22px] flex justify-between items-baseline">
           <span class="text-[13.5px] text-muted">{t.about.figs.certification.label}</span>
-          <span class="font-mono font-semibold text-volt">{t.about.figs.certification.value}</span>
+          <span class="font-mono font-semibold text-gold-bright">{t.about.figs.certification.value}</span>
         </div>
       </div>
     </div>
@@ -148,7 +135,7 @@ const t = getTranslations(lang);
           {t.contact.lede}
         </p>
         <div class="mt-7 text-sm text-muted">
-          <div class="mb-2"><b class="text-text">{t.contact.companyName}</b></div>
+          <div class="mb-2"><b class="text-white">{t.contact.companyName}</b></div>
           <div class="mb-2">{t.contact.addressLine}</div>
           <div class="mb-2">{t.contact.email}</div>
         </div>

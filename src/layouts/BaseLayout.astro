@@ -3,11 +3,12 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import BackgroundLayer from '../components/BackgroundLayer.astro';
-import type { Lang } from '../i18n/ui';
-import { defaultLang } from '../i18n/ui';
+import TextureOverlay from '../components/TextureOverlay.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import Analytics from '@vercel/analytics/astro';
+import type { Lang } from '../i18n/ui';
+import { defaultLang } from '../i18n/ui';
 
 interface Props {
   title: string;
@@ -33,6 +34,44 @@ const currentPath = Astro.url.pathname;
 const canonicalPath = currentPath.startsWith('/ro/') ? currentPath.slice(3) : currentPath;
 const enHref = getRelativeLocaleUrl('en', canonicalPath);
 const roHref = getRelativeLocaleUrl('ro', canonicalPath);
+
+// Structured data is language-independent (machine-facing, not a rendered
+// translation), so it uses one canonical set of business details regardless
+// of `lang` — same object on every page via this shared layout. There is no
+// company-level phone number anywhere in the site's copy (only individual
+// team members' personal numbers), so `telephone` is intentionally omitted
+// rather than guessed.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Hiieko Romania SRL',
+  url: 'https://hiiekoromania.com',
+  logo: 'https://hiiekoromania.com/logo-icon.png',
+  email: 'office@hiieko.ro',
+  taxID: '42849908',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Bulevardul Theodor Pallady 51N, Building C1, Block A, 3rd floor',
+    addressLocality: 'Bucharest',
+    addressRegion: 'Sector 3',
+    postalCode: '032258',
+    addressCountry: 'RO',
+  },
+  areaServed: 'Romania',
+  sameAs: ['https://hiieko.ee'],
+  hasCredential: [
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'certification',
+      name: 'ISO 9001:2015',
+    },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'certification',
+      name: 'ISO 14001:2015',
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -48,10 +87,17 @@ const roHref = getRelativeLocaleUrl('ro', canonicalPath);
     <link rel="alternate" hreflang="ro" href={roHref} />
     <link rel="alternate" hreflang="x-default" href={enHref} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
     <title>{title}</title>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
   </head>
   <body class="m-0 relative">
-    <BackgroundLayer />
+    <TextureOverlay />
     <Nav lang={lang} />
     <main class="relative z-10">
       <slot />
@@ -60,12 +106,13 @@ const roHref = getRelativeLocaleUrl('ro', canonicalPath);
       <Footer lang={lang} />
     </div>
 
-    <SpeedInsights />
-    <Analytics />
+    <CookieConsent lang={lang} />
 
     <script>
       import { initReveal } from '../scripts/reveal';
       initReveal();
     </script>
+    <SpeedInsights />
+    <Analytics />
   </body>
 </html>

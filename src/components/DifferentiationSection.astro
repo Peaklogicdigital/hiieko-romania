@@ -22,22 +22,22 @@ const steps = t.diff.steps;
         {t.diff.lede}
       </p>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-y-[26px] md:gap-y-0 border-t border-line">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-y-[26px] md:gap-y-0 border-t border-white/10">
       {
         // desktop: border-right on all but the last; mobile (2 cols): border-right
         // dropped on the last item of each row (index 1 and 3)
         steps.map((step, i) => {
           const borderClasses = [0, 2].includes(i)
-            ? 'border-r border-line'
+            ? 'border-r border-white/10'
             : i === 1
-              ? 'md:border-r md:border-line'
+              ? 'md:border-r md:border-white/10'
               : '';
           return (
             <div class:list={['pt-[30px] pr-[26px] pb-0', borderClasses]}>
-              <span class="font-mono text-volt text-[12.5px] font-semibold mb-3 block">
+              <span class="font-mono text-gold-bright text-[12.5px] font-semibold mb-3 block">
                 {step.n}
               </span>
-              <h3 class="text-[16.5px] mb-2">{step.title}</h3>
+              <h3 class="text-[16.5px] mb-2 text-white">{step.title}</h3>
               <p class="text-[13.5px] text-muted max-w-[30ch]">{step.body}</p>
             </div>
           );
@@ -45,9 +45,37 @@ const steps = t.diff.steps;
       }
     </div>
     <div
-      class="mt-[46px] py-6 px-7 bg-bg-2 border border-neon-dim border-l-[3px] border-l-neon text-[15.5px] text-text rounded-[2px]"
+      class="mt-[46px] py-6 px-7 bg-chip border border-gold/30 border-l-[3px] border-l-gold text-[15.5px] text-white rounded-[2px]"
     >
       {t.diff.callout}
+    </div>
+
+    <div class="mt-[64px]">
+      <h3 class="text-[19px] text-white mb-6">{t.diff.comparison.heading}</h3>
+      <div class="border border-white/10 rounded-md overflow-hidden">
+        <div class="grid grid-cols-2 bg-chip">
+          <div class="px-4 py-3 md:px-6 text-muted text-[11px] font-mono uppercase tracking-[0.06em] border-r border-white/10">
+            {t.diff.comparison.columnTypical}
+          </div>
+          <div class="px-4 py-3 md:px-6 text-gold text-[11px] font-mono uppercase tracking-[0.06em]">
+            {t.diff.comparison.columnHiieko}
+          </div>
+        </div>
+        {
+          t.diff.comparison.rows.map((row) => (
+            <div class="grid grid-cols-2 border-t border-white/10">
+              <div class="px-4 py-3.5 md:px-6 text-muted text-[13.5px] border-r border-white/10 flex gap-2">
+                <span class="text-muted/60 shrink-0">✕</span>
+                <span>{row.typical}</span>
+              </div>
+              <div class="px-4 py-3.5 md:px-6 text-white text-[13.5px] flex gap-2">
+                <span class="text-gold shrink-0">✓</span>
+                <span>{row.hiieko}</span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>

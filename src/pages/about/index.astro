@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
+import Certifications from '../../components/Certifications.astro';
 import { getTranslations } from '../../i18n/ui';
 
 const lang = 'en' as const;
@@ -28,43 +29,36 @@ const t = getTranslations(lang);
         </p>
         <p class="text-muted text-[15.5px] mb-4">
           {t.about.para3Page}
-          <a href="/team/" class="text-neon underline">{t.about.readMoreTeamLink}</a>
+          <a href="/team/" class="text-gold underline">{t.about.readMoreTeamLink}</a>
         </p>
-        <div class="flex gap-3.5 mt-[26px]">
-          <div class="border border-line rounded-[2px] px-3.5 py-2.5 font-mono text-xs flex items-center gap-2">
-            <span class="w-[7px] h-[7px] rounded-full bg-neon shadow-[0_0_6px_var(--color-neon)]"></span>
-            {t.about.iso1}
-          </div>
-          <div class="border border-line rounded-[2px] px-3.5 py-2.5 font-mono text-xs flex items-center gap-2">
-            <span class="w-[7px] h-[7px] rounded-full bg-neon shadow-[0_0_6px_var(--color-neon)]"></span>
-            {t.about.iso2}
-          </div>
+        <div class="mt-[26px]">
+          <Certifications lang={lang} />
         </div>
       </div>
-      <div class="bg-bg-2 border border-line rounded-md">
-        <div class="p-5 px-[22px] border-b border-line flex justify-between items-baseline">
+      <div class="bg-chip border border-white/10 rounded-md">
+        <div class="p-5 px-[22px] border-b border-white/10 flex justify-between items-baseline">
           <span class="text-[13.5px] text-muted">{t.about.figs.founded.label}</span>
-          <span class="font-mono font-semibold text-volt">{t.about.figs.founded.value}</span>
+          <span class="font-mono font-semibold text-gold-bright">{t.about.figs.founded.value}</span>
         </div>
-        <div class="p-5 px-[22px] border-b border-line flex justify-between items-baseline">
+        <div class="p-5 px-[22px] border-b border-white/10 flex justify-between items-baseline">
           <span class="text-[13.5px] text-muted">{t.about.figs.subsidiary.label}</span>
-          <span class="font-mono font-semibold text-volt">{t.about.figs.subsidiary.value}</span>
+          <span class="font-mono font-semibold text-gold-bright">{t.about.figs.subsidiary.value}</span>
         </div>
-        <div class="p-5 px-[22px] border-b border-line flex justify-between items-baseline">
+        <div class="p-5 px-[22px] border-b border-white/10 flex justify-between items-baseline">
           <span class="text-[13.5px] text-muted">{t.about.figs.purpose.label}</span>
-          <span class="font-mono font-semibold text-volt">{t.about.figs.purpose.value}</span>
+          <span class="font-mono font-semibold text-gold-bright">{t.about.figs.purpose.value}</span>
         </div>
-        <div class="p-5 px-[22px] border-b border-line flex justify-between items-baseline">
+        <div class="p-5 px-[22px] border-b border-white/10 flex justify-between items-baseline">
           <span class="text-[13.5px] text-muted">{t.about.figs.localTeam.label}</span>
-          <span class="font-mono font-semibold text-volt">{t.about.figs.localTeam.value}</span>
+          <span class="font-mono font-semibold text-gold-bright">{t.about.figs.localTeam.value}</span>
         </div>
-        <div class="p-5 px-[22px] border-b border-line flex justify-between items-baseline">
+        <div class="p-5 px-[22px] border-b border-white/10 flex justify-between items-baseline">
           <span class="text-[13.5px] text-muted">{t.about.figs.certification.label}</span>
-          <span class="font-mono font-semibold text-volt">{t.about.figs.certification.value}</span>
+          <span class="font-mono font-semibold text-gold-bright">{t.about.figs.certification.value}</span>
         </div>
         <div class="p-5 px-[22px] flex justify-between items-baseline">
           <span class="text-[13.5px] text-muted">{t.about.figs.address.label}</span>
-          <span class="font-mono font-semibold text-volt text-right">{t.about.figs.address.value}</span>
+          <span class="font-mono font-semibold text-gold-bright text-right">{t.about.figs.address.value}</span>
         </div>
       </div>
     </div>

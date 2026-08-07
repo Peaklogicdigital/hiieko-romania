@@ -1,12 +1,17 @@
 ---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 interface Props {
   name: string;
   role: string;
-  bio?: string;
+  phone?: string;
+  email?: string;
+  photo?: ImageMetadata;
   isPlaceholder?: boolean;
   placeholderBadge: string;
 }
-const { name, role, bio, isPlaceholder = false, placeholderBadge } = Astro.props;
+const { name, role, phone, email, photo, isPlaceholder = false, placeholderBadge } = Astro.props;
 
 const initials = name
   .replace(/[[\]]/g, '')
@@ -16,30 +21,57 @@ const initials = name
   .join('')
   .slice(0, 2)
   .toUpperCase();
+
+const telHref = phone?.replace(/[\s()-]/g, '');
+const photoAlt = `Photo of ${name}, ${role} at Hiieko Romania`;
 ---
 
 <div
   class:list={[
-    'border rounded-md overflow-hidden bg-bg-2 transition-all hover:-translate-y-[3px]',
-    isPlaceholder ? 'border-dashed border-line hover:border-neon-dim' : 'border-line hover:border-neon-dim',
+    'border-t-2 overflow-hidden transition-all hover:-translate-y-[3px]',
+    isPlaceholder ? 'border-dashed border-green-mid/60 hover:border-gold' : 'border-green-mid hover:border-gold',
   ]}
 >
   <div
-    class="h-40 relative bg-bg-3 flex items-center justify-center"
-    style="background-image: repeating-linear-gradient(135deg, rgba(234,242,237,0.05) 0 2px, transparent 2px 14px);"
+    class="aspect-square relative flex items-center justify-center overflow-hidden"
+    style={photo ? undefined : 'background-image: repeating-linear-gradient(135deg, rgba(250,251,247,0.05) 0 2px, transparent 2px 14px);'}
   >
-    <span class="font-display font-extrabold text-3xl text-muted">{initials || '—'}</span>
+    {
+      photo ? (
+        <Picture
+          src={photo}
+          alt={photoAlt}
+          formats={['avif', 'webp']}
+          fallbackFormat="jpeg"
+          widths={[200, 300, 400, 600]}
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          class="w-full h-full object-cover object-top"
+          loading="lazy"
+        />
+      ) : (
+        <span class="font-display font-extrabold text-3xl text-muted">{initials || '–'}</span>
+      )
+    }
     {
       isPlaceholder && (
-        <span class="absolute top-2.5 left-2.5 font-mono text-[9.5px] bg-neon-dim text-neon px-2 py-1 rounded-sm tracking-[0.05em]">
+        <span class="absolute top-2.5 left-2.5 font-mono text-[9.5px] bg-chip text-gold px-2 py-1 rounded-sm tracking-[0.05em]">
           {placeholderBadge}
         </span>
       )
     }
   </div>
-  <div class="px-5 py-[18px]">
-    <div class="font-mono text-[10.5px] text-volt uppercase tracking-[0.06em]">{role}</div>
-    <h3 class="text-base my-2 mb-1">{name}</h3>
-    {bio && <p class="text-[13px] text-muted mt-2 mb-0">{bio}</p>}
+  <div class="px-5 py-5 flex flex-col gap-1.5">
+    <h3 class="text-base m-0 text-white">{name}</h3>
+    <div class="font-mono text-[10.5px] text-gold-bright uppercase tracking-[0.06em]">{role}</div>
+    {phone && (
+      <a href={`tel:${telHref}`} class="text-gold underline text-[13px]">
+        {phone}
+      </a>
+    )}
+    {email && (
+      <a href={`mailto:${email}`} class="text-gold underline text-[13px]">
+        {email}
+      </a>
+    )}
   </div>
 </div>

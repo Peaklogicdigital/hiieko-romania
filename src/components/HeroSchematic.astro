@@ -1,0 +1,268 @@
+---
+// Home-page-exclusive animated schematic: sun -> panel -> inverter ->
+// battery -> [facility, grid]. Ported directly from the reference file's
+// (hiieko-color-direction-i2.html) hero SVG — same viewBox, coordinates,
+// stroke-widths, and animation timings — with two deliberate additions
+// the reference (a static color-direction demo) doesn't need:
+//   - reduced-motion gating: CSS keyframe animations are wrapped in
+//     `@media (prefers-reduced-motion: no-preference)` below, mirroring
+//     global.css's `.reveal` reduced-motion override; the SMIL
+//     <animateMotion> comet pulses are removed via a JS matchMedia check
+//     (the same convention the old backgroundParallax.ts used to gate
+//     its own JS-driven animation), since SMIL can't be gated by CSS.
+//   - CSS custom property names mapped to this project's existing
+//     @theme tokens (--color-gold etc.) instead of the reference's own
+//     shorter --gold/--charcoal/... aliases.
+---
+
+<svg
+  class="w-full h-auto overflow-visible"
+  viewBox="0 0 640 320"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Animated energy flow diagram: sun, solar panel, inverter, battery, industrial facility and grid connection"
+>
+  <!-- SUN -->
+  <circle cx="100" cy="90" r="30" class="hero-sun-glow" fill="var(--color-gold)" />
+  <g class="hero-rays">
+    <line x1="100" y1="40" x2="100" y2="26" class="hero-ray" />
+    <line x1="141" y1="53" x2="151" y2="43" class="hero-ray" />
+    <line x1="154" y1="90" x2="168" y2="90" class="hero-ray" />
+    <line x1="141" y1="127" x2="151" y2="137" class="hero-ray" />
+    <line x1="59" y1="53" x2="49" y2="43" class="hero-ray" />
+    <line x1="46" y1="90" x2="32" y2="90" class="hero-ray" />
+    <line x1="59" y1="127" x2="49" y2="137" class="hero-ray" />
+    <line x1="100" y1="140" x2="100" y2="154" class="hero-ray" />
+  </g>
+  <circle cx="100" cy="90" r="18" class="hero-sun-core" fill="var(--color-gold-bright)" />
+  <rect x="80" y="152" width="40" height="16" rx="3" class="hero-label-chip" />
+  <text x="100" y="164" class="hero-label-text">Sun</text>
+
+  <path class="hero-flow-line" d="M100,120 L100,160" />
+
+  <!-- SOLAR PANEL — cell grid + corner mounting brackets, tilted like an install -->
+  <g transform="translate(20,178) rotate(-4)">
+    <rect x="0" y="0" width="160" height="88" rx="3" class="hero-panel-frame" />
+    <line x1="40" y1="0" x2="40" y2="88" class="hero-panel-cell" />
+    <line x1="80" y1="0" x2="80" y2="88" class="hero-panel-cell" />
+    <line x1="120" y1="0" x2="120" y2="88" class="hero-panel-cell" />
+    <line x1="0" y1="29" x2="160" y2="29" class="hero-panel-cell" />
+    <line x1="0" y1="58" x2="160" y2="58" class="hero-panel-cell" />
+    <rect x="-4" y="82" width="10" height="10" class="hero-equip-line" fill="rgba(250,251,247,0.08)" />
+    <rect x="154" y="82" width="10" height="10" class="hero-equip-line" fill="rgba(250,251,247,0.08)" />
+  </g>
+  <rect x="55" y="278" width="90" height="16" rx="3" class="hero-label-chip" />
+  <text x="100" y="290" class="hero-label-text">Solar Panel</text>
+
+  <path class="hero-flow-line" d="M180,222 L252,222" />
+
+  <!-- INVERTER — vents + status display -->
+  <g>
+    <rect x="252" y="200" width="46" height="40" rx="2" class="hero-equip-line" fill="rgba(250,251,247,0.05)" />
+    <rect x="259" y="207" width="16" height="10" rx="1" class="hero-equip-line" />
+    <circle cx="285" cy="212" r="2" class="hero-indicator" />
+    <line x1="259" y1="224" x2="291" y2="224" class="hero-equip-line" />
+    <line x1="259" y1="230" x2="291" y2="230" class="hero-equip-line" />
+    <line x1="259" y1="236" x2="291" y2="236" class="hero-equip-line" />
+  </g>
+  <rect x="240" y="252" width="70" height="16" rx="3" class="hero-label-chip" />
+  <text x="275" y="264" class="hero-label-text">Inverter</text>
+
+  <path class="hero-flow-line" d="M298,220 L372,220" />
+
+  <!-- BATTERY — stacked rows with charge indicators -->
+  <g>
+    <rect x="372" y="196" width="46" height="46" rx="2" class="hero-equip-line" fill="rgba(250,251,247,0.05)" />
+    <line x1="372" y1="211" x2="418" y2="211" class="hero-equip-line" />
+    <line x1="372" y1="227" x2="418" y2="227" class="hero-equip-line" />
+    <circle cx="410" cy="203" r="2" class="hero-indicator" />
+    <circle cx="410" cy="219" r="2" class="hero-indicator" />
+    <circle cx="410" cy="235" r="2" class="hero-indicator" />
+  </g>
+  <rect x="360" y="254" width="66" height="16" rx="3" class="hero-label-chip" />
+  <text x="393" y="266" class="hero-label-text">Battery</text>
+
+  <path class="hero-flow-line" d="M418,219 L418,150 L490,120" />
+
+  <!-- FACILITY — flat-roofed industrial building: rooftop HVAC, high windows, wide bay door -->
+  <g>
+    <rect x="488" y="100" width="52" height="38" class="hero-equip-line" fill="rgba(250,251,247,0.05)" />
+    <rect x="506" y="91" width="16" height="9" class="hero-equip-line" fill="rgba(250,251,247,0.08)" />
+    <line x1="510" y1="91" x2="510" y2="100" class="hero-equip-line" />
+    <line x1="518" y1="91" x2="518" y2="100" class="hero-equip-line" />
+    <rect x="494" y="108" width="9" height="7" class="hero-equip-line" />
+    <rect x="525" y="108" width="9" height="7" class="hero-equip-line" />
+    <rect x="503" y="120" width="22" height="18" class="hero-equip-line" fill="rgba(250,251,247,0.05)" />
+    <line x1="503" y1="129" x2="525" y2="129" class="hero-equip-line" />
+  </g>
+  <rect x="480" y="150" width="70" height="16" rx="3" class="hero-label-chip" />
+  <text x="515" y="162" class="hero-label-text">Facility</text>
+
+  <path class="hero-flow-line" d="M418,219 L418,278 L490,278" />
+
+  <!-- GRID — simplified transmission pylon -->
+  <g>
+    <line x1="518" y1="252" x2="518" y2="300" class="hero-equip-line" />
+    <line x1="500" y1="264" x2="536" y2="264" class="hero-equip-line" />
+    <line x1="504" y1="278" x2="532" y2="278" class="hero-equip-line" />
+    <line x1="500" y1="264" x2="512" y2="300" class="hero-equip-line" />
+    <line x1="536" y1="264" x2="524" y2="300" class="hero-equip-line" />
+    <circle cx="500" cy="264" r="2.2" class="hero-indicator" />
+    <circle cx="536" cy="264" r="2.2" class="hero-indicator" />
+  </g>
+  <rect x="490" y="304" width="56" height="16" rx="3" class="hero-label-chip" />
+  <text x="518" y="316" class="hero-label-text">Grid</text>
+
+  <!-- comet-trail pulses: full sun -> facility / sun -> grid paths, staggered -->
+  <g class="hero-pulse">
+    <circle r="7" class="hero-pulse-glow">
+      <animateMotion
+        dur="4.2s"
+        repeatCount="indefinite"
+        path="M100,120 L100,160 L100,222 L180,222 L252,222 L298,220 L372,220 L418,219 L418,150 L490,120"
+      />
+    </circle>
+    <circle r="3" class="hero-pulse-core">
+      <animateMotion
+        dur="4.2s"
+        repeatCount="indefinite"
+        path="M100,120 L100,160 L100,222 L180,222 L252,222 L298,220 L372,220 L418,219 L418,150 L490,120"
+      />
+    </circle>
+  </g>
+  <g class="hero-pulse">
+    <circle r="7" class="hero-pulse-glow" opacity="0.7">
+      <animateMotion
+        dur="4.2s"
+        begin="1.4s"
+        repeatCount="indefinite"
+        path="M100,120 L100,160 L100,222 L180,222 L252,222 L298,220 L372,220 L418,219 L418,278 L490,278"
+      />
+    </circle>
+    <circle r="3" class="hero-pulse-core" opacity="0.7">
+      <animateMotion
+        dur="4.2s"
+        begin="1.4s"
+        repeatCount="indefinite"
+        path="M100,120 L100,160 L100,222 L180,222 L252,222 L298,220 L372,220 L418,219 L418,278 L490,278"
+      />
+    </circle>
+  </g>
+</svg>
+
+<script>
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.hero-pulse').forEach((el) => el.remove());
+  }
+</script>
+
+<style>
+  .hero-flow-line {
+    fill: none;
+    stroke: var(--color-gold);
+    stroke-width: 2;
+    stroke-dasharray: 6 8;
+    opacity: 0.75;
+  }
+  .hero-equip-line {
+    fill: none;
+    stroke: rgba(250, 251, 247, 0.6);
+    stroke-width: 1.3;
+  }
+  .hero-indicator {
+    fill: var(--color-gold-bright);
+  }
+  .hero-label-chip {
+    fill: var(--color-chip);
+  }
+  .hero-label-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    fill: var(--color-white);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-anchor: middle;
+  }
+  .hero-panel-cell {
+    fill: none;
+    stroke: rgba(250, 251, 247, 0.5);
+    stroke-width: 1.2;
+  }
+  .hero-panel-frame {
+    fill: none;
+    stroke: var(--color-white);
+    stroke-width: 2;
+  }
+  .hero-pulse-glow {
+    fill: var(--color-gold-bright);
+    filter: blur(3px);
+  }
+  .hero-pulse-core {
+    fill: var(--color-gold-bright);
+  }
+  .hero-ray {
+    stroke: var(--color-gold);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+  }
+  .hero-sun-glow {
+    /* resting opacity matches the animation's own 0%/100% keyframe value,
+       so reduced-motion users (animation absent) still see a soft glow
+       instead of a solid full-opacity disc. */
+    opacity: 0.35;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-rays {
+      animation: hero-rotate-rays 24s linear infinite;
+      transform-origin: 100px 90px;
+    }
+    .hero-sun-core {
+      animation: hero-sun-pulse 3.2s ease-in-out infinite;
+      transform-origin: 100px 90px;
+    }
+    .hero-sun-glow {
+      animation: hero-glow-pulse 3.2s ease-in-out infinite;
+      transform-origin: 100px 90px;
+    }
+    .hero-flow-line {
+      animation: hero-dash-flow 2s linear infinite;
+    }
+  }
+
+  @keyframes hero-rotate-rays {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes hero-sun-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.85;
+    }
+  }
+  @keyframes hero-glow-pulse {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.15);
+    }
+  }
+  @keyframes hero-dash-flow {
+    to {
+      stroke-dashoffset: -40;
+    }
+  }
+</style>
