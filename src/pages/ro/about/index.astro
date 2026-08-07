@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Eyebrow from '../../../components/Eyebrow.astro';
 import Certifications from '../../../components/Certifications.astro';
+import TechPartnersSection from '../../../components/TechPartnersSection.astro';
 import { getTranslations } from '../../../i18n/ui';
 
 const lang = 'ro' as const;
@@ -63,4 +64,6 @@ const t = getTranslations(lang);
       </div>
     </div>
   </section>
+
+  <TechPartnersSection lang={lang} />
 </BaseLayout>

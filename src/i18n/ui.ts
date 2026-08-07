@@ -23,7 +23,7 @@ const en = {
   hero: {
     eyebrow: 'Hiieko Romania · Industrial Solar & Storage',
     h1: "We don't sell panels. We deliver a system and stand behind it.",
-    lede: 'Design, installation, and long-term maintenance of rooftop and ground-mount solar plus battery storage for Romanian industrial and commercial sites: one contractor, one guarantee, backed by Estonian engineering since 1994.',
+    lede: 'Design, installation, and long-term maintenance of rooftop and ground-mount solar plus battery storage for Romanian industrial and commercial sites: one contractor, one guarantee, backed by international engineering since 1994.',
     ctaPrimary: 'Get a site assessment →',
     ctaSecondary: 'Estimate your system ↓',
   },
@@ -180,7 +180,7 @@ const en = {
   },
   about: {
     eyebrow: 'Why Hiieko',
-    heading: 'Estonian engineering, delivered locally.',
+    heading: 'International engineering, delivered locally.',
     para1:
       'Hiieko Romania SRL is part of the Estonian Hiieko group, which has designed, installed, and maintained construction technical systems since 1994. In Romania, that same engineering discipline was applied to a purpose-built subsidiary, established in 2020 specifically to develop industrial solar parks and storage facilities.',
     para2:
@@ -397,7 +397,7 @@ const en = {
     home: {
       title: 'Hiieko Romania · Industrial Solar & Energy Storage',
       description:
-        'Design, installation, and long-term maintenance of rooftop and ground-mount solar plus battery storage for Romanian industrial and commercial sites: one contractor, one guarantee, backed by Estonian engineering since 1994.',
+        'Design, installation, and long-term maintenance of rooftop and ground-mount solar plus battery storage for Romanian industrial and commercial sites: one contractor, one guarantee, backed by international engineering since 1994.',
     },
     solutions: {
       title: 'Solutions · Hiieko Romania',
@@ -448,7 +448,7 @@ const ro: Dictionary = {
   hero: {
     eyebrow: 'Hiieko România · Solar Industrial & Stocare',
     h1: 'Nu vindem panouri. Livrăm un sistem și răspundem pentru el.',
-    lede: 'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru site-uri industriale și comerciale din România: un singur contractor, o singură garanție, susținută de inginerie estoniană din 1994.',
+    lede: 'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru site-uri industriale și comerciale din România: un singur contractor, o singură garanție, susținută de inginerie internațională din 1994.',
     ctaPrimary: 'Solicită o evaluare →',
     ctaSecondary: 'Estimează sistemul ↓',
   },
@@ -605,7 +605,7 @@ const ro: Dictionary = {
   },
   about: {
     eyebrow: 'De ce Hiieko',
-    heading: 'Inginerie estoniană, livrată local.',
+    heading: 'Inginerie internațională, livrată local.',
     para1:
       'Hiieko România SRL face parte din grupul estonian Hiieko, care proiectează, instalează și întreține sisteme tehnice pentru construcții din 1994. În România, aceeași disciplină de inginerie a fost aplicată unei filiale dedicate, înființată în 2020 special pentru dezvoltarea de parcuri solare industriale și facilități de stocare.',
     para2:
@@ -817,7 +817,7 @@ const ro: Dictionary = {
     home: {
       title: 'Hiieko România · Solar Industrial & Stocare de Energie',
       description:
-        'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru site-uri industriale și comerciale din România: un singur contractor, o singură garanție, susținută de inginerie estoniană din 1994.',
+        'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru site-uri industriale și comerciale din România: un singur contractor, o singură garanție, susținută de inginerie internațională din 1994.',
     },
     solutions: {
       title: 'Soluții · Hiieko România',
