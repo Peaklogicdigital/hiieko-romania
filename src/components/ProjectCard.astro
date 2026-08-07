@@ -15,6 +15,8 @@ interface Props {
   imageAlt?: string;
   isPlaceholder?: boolean;
   placeholderBadge: string;
+  status?: 'completed' | 'in-progress';
+  inProgressBadge: string;
 }
 const {
   title,
@@ -29,6 +31,8 @@ const {
   imageAlt,
   isPlaceholder = false,
   placeholderBadge,
+  status = 'completed',
+  inProgressBadge,
 } = Astro.props;
 ---
 
@@ -58,13 +62,22 @@ const {
         />
       ) : null
     }
-    {
-      isPlaceholder && (
-        <span class="absolute top-2.5 left-2.5 font-mono text-[9.5px] bg-chip text-gold px-2 py-1 rounded-sm tracking-[0.05em]">
-          {placeholderBadge}
-        </span>
-      )
-    }
+    <div class="absolute top-2.5 left-2.5 flex flex-col items-start gap-1.5">
+      {
+        isPlaceholder && (
+          <span class="font-mono text-[9.5px] bg-chip text-gold px-2 py-1 rounded-sm tracking-[0.05em]">
+            {placeholderBadge}
+          </span>
+        )
+      }
+      {
+        status === 'in-progress' && (
+          <span class="font-mono text-[9.5px] bg-charcoal/90 text-white border border-white/25 px-2 py-1 rounded-sm tracking-[0.05em]">
+            {inProgressBadge}
+          </span>
+        )
+      }
+    </div>
   </div>
   <div class="px-5 py-5">
     <div class="font-mono text-[10.5px] text-gold-bright uppercase tracking-[0.06em]">

@@ -51,6 +51,11 @@ const projects = defineCollection({
       specLabel: z.string(),
       specValue: z.string(),
       specPending: z.boolean().default(false),
+      // Real projects that are under construction or planned, not yet
+      // finished — distinct from isPlaceholder, which flags fake example
+      // content. An in-progress project is real and gets its own badge,
+      // never the dashed-border/PLACEHOLDER treatment.
+      status: z.enum(['completed', 'in-progress']).default('completed'),
       // image() imports the file at build time so Astro can resize/reformat
       // it (see ProjectCard.astro's <Picture>) — the referenced path must be
       // a relative path to a file colocated in this same directory, not a

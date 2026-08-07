@@ -55,9 +55,14 @@ const subcategoryFilters: Record<string, { f: string; label: string }[]> = {
 // language-neutral numbers/units (e.g. "150 kWp") and pass through
 // unchanged; only the "pending" placeholder text needs translating.
 const specLabelTranslations: Record<string, string> =
-  lang === 'ro' ? { Capacity: 'Capacitate', Storage: 'Stocare' } : {};
+  lang === 'ro' ? { Capacity: 'Capacitate', Storage: 'Stocare', Details: 'Detalii' } : {};
 const specValueTranslations: Record<string, string> =
-  lang === 'ro' ? { 'Pending: confirm with team': 'În așteptare: de confirmat cu echipa' } : {};
+  lang === 'ro'
+    ? {
+        'Pending: confirm with team': 'În așteptare: de confirmat cu echipa',
+        'Available on request': 'Disponibil la cerere',
+      }
+    : {};
 ---
 
 <div>
@@ -116,6 +121,8 @@ const specValueTranslations: Record<string, string> =
           imageAlt={project.data.imageAlt}
           isPlaceholder={project.data.isPlaceholder}
           placeholderBadge={t.common.placeholderBadge}
+          status={project.data.status}
+          inProgressBadge={t.common.inProgressBadge}
         />
       ))
     }

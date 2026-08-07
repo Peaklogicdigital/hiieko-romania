@@ -282,6 +282,7 @@ const en = {
   },
   common: {
     placeholderBadge: 'PLACEHOLDER',
+    inProgressBadge: 'In Progress',
   },
   notFound: {
     badge: '404 · Signal lost',
@@ -706,6 +707,7 @@ const ro: Dictionary = {
   },
   common: {
     placeholderBadge: 'EXEMPLU',
+    inProgressBadge: 'În desfășurare',
   },
   notFound: {
     badge: '404 · Semnal pierdut',
