@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import TextureOverlay from '../components/TextureOverlay.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
+import Analytics from '@vercel/analytics/astro';
 import type { Lang } from '../i18n/ui';
 import { defaultLang } from '../i18n/ui';
 
@@ -112,5 +113,6 @@ const jsonLd = {
       initReveal();
     </script>
     <SpeedInsights />
+    <Analytics />
   </body>
 </html>
