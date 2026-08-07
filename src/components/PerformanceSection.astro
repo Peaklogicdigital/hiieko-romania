@@ -1,0 +1,107 @@
+---
+import Eyebrow from './Eyebrow.astro';
+import type { Lang } from '../i18n/ui';
+import { defaultLang, getTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = defaultLang } = Astro.props;
+const t = getTranslations(lang);
+
+// Panel performance-warranty degradation curve, from the internal
+// presentation deck's figures — not a formula, the exact reported points.
+const degradationPoints = [
+  { year: 0, pct: 100 },
+  { year: 1, pct: 99 },
+  { year: 5, pct: 97.6 },
+  { year: 10, pct: 95.85 },
+  { year: 15, pct: 94.1 },
+  { year: 20, pct: 92.35 },
+  { year: 25, pct: 90.6 },
+  { year: 30, pct: 88.85 },
+];
+
+const chartLeft = 46;
+const chartRight = 600;
+const chartTop = 16;
+const chartBottom = 168;
+const yMin = 85;
+const yMax = 100;
+
+function xFor(year: number): number {
+  return chartLeft + (year / 30) * (chartRight - chartLeft);
+}
+function yFor(pct: number): number {
+  return chartBottom - ((pct - yMin) / (yMax - yMin)) * (chartBottom - chartTop);
+}
+
+const polylinePoints = degradationPoints.map((p) => `${xFor(p.year)},${yFor(p.pct)}`).join(' ');
+const yAxisTicks = [85, 90, 95, 100];
+const xAxisTicks = [0, 5, 10, 15, 20, 25, 30];
+---
+
+<section class="py-[100px] reveal">
+  <div class="wrap">
+    <div class="max-w-[640px] mb-[52px]">
+      <Eyebrow text={t.performance.eyebrow} />
+      <h2 class="text-[clamp(26px,3vw,36px)] mt-2.5 mb-3.5">{t.performance.h2}</h2>
+      <p class="text-muted text-[15.5px]">{t.performance.lede}</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-[22px] mb-[52px]">
+      {
+        t.performance.stats.map((stat) => (
+          <div class="border-t-2 border-green-mid pt-[18px]">
+            <div class="font-mono text-gold-bright text-[26px] font-semibold">{stat.value}</div>
+            <div class="text-muted text-[12.5px] mt-1">{stat.label}</div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="border border-white/10 rounded-md p-6 md:p-8">
+      <div class="text-muted text-[11px] font-mono uppercase tracking-[0.06em] mb-4">
+        {t.performance.chartYAxisLabel}
+      </div>
+      <svg viewBox="0 0 620 200" class="w-full h-auto" role="img" aria-label={t.performance.chartCaption}>
+        {
+          yAxisTicks.map((tick) => (
+            <g>
+              <line
+                x1={chartLeft}
+                y1={yFor(tick)}
+                x2={chartRight}
+                y2={yFor(tick)}
+                class="stroke-white/10"
+                stroke-width="1"
+              />
+              <text x={chartLeft - 10} y={yFor(tick) + 4} text-anchor="end" class="fill-muted text-[10px] font-mono">
+                {tick}%
+              </text>
+            </g>
+          ))
+        }
+        {
+          xAxisTicks.map((year) => (
+            <text
+              x={xFor(year)}
+              y={chartBottom + 20}
+              text-anchor="middle"
+              class="fill-muted text-[10px] font-mono"
+            >
+              {year}
+            </text>
+          ))
+        }
+        <polyline points={polylinePoints} class="fill-none stroke-gold" stroke-width="2" />
+        {
+          degradationPoints.map((p) => (
+            <circle cx={xFor(p.year)} cy={yFor(p.pct)} r="3.5" class="fill-gold-bright" />
+          ))
+        }
+      </svg>
+      <p class="text-muted text-[13.5px] mt-4 mb-0">{t.performance.chartCaption}</p>
+    </div>
+  </div>
+</section>

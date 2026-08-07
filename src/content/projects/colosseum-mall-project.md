@@ -1,6 +1,7 @@
 ---
 title: "Colosseum Mall Project"
 category: "rooftop"
+subcategory: "retail"
 location: "Bucharest, Romania"
 specLabel: "Capacity"
 specValue: "400 kWp"

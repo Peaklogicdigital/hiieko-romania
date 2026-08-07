@@ -6,10 +6,13 @@ import HeroSchematic from '../../components/HeroSchematic.astro';
 import TrustStrip from '../../components/TrustStrip.astro';
 import DifferentiationSection from '../../components/DifferentiationSection.astro';
 import SolutionsGrid from '../../components/SolutionsGrid.astro';
+import PerformanceSection from '../../components/PerformanceSection.astro';
+import TechPartnersSection from '../../components/TechPartnersSection.astro';
 import IndustriesSection from '../../components/IndustriesSection.astro';
 import Calculator from '../../components/Calculator.astro';
 import ProjectsGallery from '../../components/ProjectsGallery.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import Certifications from '../../components/Certifications.astro';
 import { getTranslations } from '../../i18n/ui';
 
 const lang = 'ro' as const;
@@ -59,6 +62,10 @@ const t = getTranslations(lang);
     </div>
   </section>
 
+  <PerformanceSection lang={lang} />
+
+  <TechPartnersSection lang={lang} />
+
   <IndustriesSection lang={lang} />
 
   <Calculator lang={lang} />
@@ -90,15 +97,8 @@ const t = getTranslations(lang);
           {t.about.para2}
         </p>
         <a href="/ro/about/" class="text-gold underline text-sm">{t.about.readMoreLink}</a>
-        <div class="flex gap-3.5 mt-[26px]">
-          <div class="border border-white/10 rounded-[2px] px-3.5 py-2.5 font-mono text-xs flex items-center gap-2">
-            <span class="w-[7px] h-[7px] rounded-full bg-gold shadow-[0_0_6px_var(--color-gold)]"></span>
-            {t.about.iso1}
-          </div>
-          <div class="border border-white/10 rounded-[2px] px-3.5 py-2.5 font-mono text-xs flex items-center gap-2">
-            <span class="w-[7px] h-[7px] rounded-full bg-gold shadow-[0_0_6px_var(--color-gold)]"></span>
-            {t.about.iso2}
-          </div>
+        <div class="mt-[26px]">
+          <Certifications lang={lang} />
         </div>
       </div>
       <div class="bg-chip border border-white/10 rounded-md">

@@ -49,5 +49,33 @@ const steps = t.diff.steps;
     >
       {t.diff.callout}
     </div>
+
+    <div class="mt-[64px]">
+      <h3 class="text-[19px] text-white mb-6">{t.diff.comparison.heading}</h3>
+      <div class="border border-white/10 rounded-md overflow-hidden">
+        <div class="grid grid-cols-2 bg-chip">
+          <div class="px-4 py-3 md:px-6 text-muted text-[11px] font-mono uppercase tracking-[0.06em] border-r border-white/10">
+            {t.diff.comparison.columnTypical}
+          </div>
+          <div class="px-4 py-3 md:px-6 text-gold text-[11px] font-mono uppercase tracking-[0.06em]">
+            {t.diff.comparison.columnHiieko}
+          </div>
+        </div>
+        {
+          t.diff.comparison.rows.map((row) => (
+            <div class="grid grid-cols-2 border-t border-white/10">
+              <div class="px-4 py-3.5 md:px-6 text-muted text-[13.5px] border-r border-white/10 flex gap-2">
+                <span class="text-muted/60 shrink-0">✕</span>
+                <span>{row.typical}</span>
+              </div>
+              <div class="px-4 py-3.5 md:px-6 text-white text-[13.5px] flex gap-2">
+                <span class="text-gold shrink-0">✓</span>
+                <span>{row.hiieko}</span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
   </div>
 </section>

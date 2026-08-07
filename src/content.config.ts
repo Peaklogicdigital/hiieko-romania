@@ -33,6 +33,20 @@ const projects = defineCollection({
     z.object({
       title: z.string(),
       category: z.enum(['rooftop', 'ground-mount', 'bess']),
+      // Only meaningful for rooftop/bess projects — ground-mount stays a
+      // single flat category with no subdivision, so its entries omit this
+      // field entirely rather than picking an arbitrary value.
+      subcategory: z
+        .enum([
+          'industrial',
+          'retail',
+          'warehouse',
+          'agriculture',
+          'institutional',
+          'residential',
+          'commercial',
+        ])
+        .optional(),
       location: z.string(),
       specLabel: z.string(),
       specValue: z.string(),

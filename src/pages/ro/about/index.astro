@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Eyebrow from '../../../components/Eyebrow.astro';
+import Certifications from '../../../components/Certifications.astro';
 import { getTranslations } from '../../../i18n/ui';
 
 const lang = 'ro' as const;
@@ -30,15 +31,8 @@ const t = getTranslations(lang);
           {t.about.para3Page}
           <a href="/ro/team/" class="text-gold underline">{t.about.readMoreTeamLink}</a>
         </p>
-        <div class="flex gap-3.5 mt-[26px]">
-          <div class="border border-white/10 rounded-[2px] px-3.5 py-2.5 font-mono text-xs flex items-center gap-2">
-            <span class="w-[7px] h-[7px] rounded-full bg-gold shadow-[0_0_6px_var(--color-gold)]"></span>
-            {t.about.iso1}
-          </div>
-          <div class="border border-white/10 rounded-[2px] px-3.5 py-2.5 font-mono text-xs flex items-center gap-2">
-            <span class="w-[7px] h-[7px] rounded-full bg-gold shadow-[0_0_6px_var(--color-gold)]"></span>
-            {t.about.iso2}
-          </div>
+        <div class="mt-[26px]">
+          <Certifications lang={lang} />
         </div>
       </div>
       <div class="bg-chip border border-white/10 rounded-md">

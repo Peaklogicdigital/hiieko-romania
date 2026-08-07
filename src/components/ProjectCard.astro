@@ -6,6 +6,7 @@ interface Props {
   title: string;
   category: 'rooftop' | 'ground-mount' | 'bess';
   categoryLabel: string;
+  subcategory?: string;
   location: string;
   specLabel: string;
   specValue: string;
@@ -19,6 +20,7 @@ const {
   title,
   category,
   categoryLabel,
+  subcategory,
   location,
   specLabel,
   specValue,
@@ -36,6 +38,7 @@ const {
     isPlaceholder ? 'border-dashed border-green-mid/60 hover:border-gold' : 'border-green-mid hover:border-gold',
   ]}
   data-cat={category}
+  data-subcat={subcategory ?? ''}
 >
   <div
     class="h-40 relative overflow-hidden"

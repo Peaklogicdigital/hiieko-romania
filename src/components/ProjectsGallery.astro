@@ -28,6 +28,28 @@ const categoryLabels: Record<string, string> = {
   bess: t.projectsFilters.bess,
 };
 
+// Second filter row, shown only while Rooftop or BESS is the active primary
+// filter — Ground-Mount stays a single flat category with no subdivision.
+// Each row's "All" chip clears the subcategory (primary match only); any
+// other chip requires both the primary category AND this subcategory to
+// match, layered on top of the existing primary show/hide logic.
+const subcategoryFilters: Record<string, { f: string; label: string }[]> = {
+  rooftop: [
+    { f: 'all', label: t.projectsFilters.subcategoryAll },
+    { f: 'industrial', label: t.projectsFilters.industrial },
+    { f: 'retail', label: t.projectsFilters.retail },
+    { f: 'warehouse', label: t.projectsFilters.warehouse },
+    { f: 'agriculture', label: t.projectsFilters.agriculture },
+    { f: 'institutional', label: t.projectsFilters.institutional },
+    { f: 'residential', label: t.projectsFilters.residential },
+  ],
+  bess: [
+    { f: 'all', label: t.projectsFilters.subcategoryAll },
+    { f: 'commercial', label: t.projectsFilters.commercial },
+    { f: 'residential', label: t.projectsFilters.residential },
+  ],
+};
+
 // Draft AI-assisted translation of project spec labels/values, pending
 // native-speaker review before launch. Most specValue entries are
 // language-neutral numbers/units (e.g. "150 kWp") and pass through
@@ -41,18 +63,39 @@ const specValueTranslations: Record<string, string> =
 <div>
   {
     filterable && (
-      <div class="flex gap-2.5 mb-9 flex-wrap">
-        {filters.map((item, i) => (
-          <button
-            type="button"
-            class:list={[
-              'filter-btn bg-transparent border border-white/10 text-muted px-4 py-[9px] text-xs font-mono uppercase',
-              i === 0 && 'active border-gold! text-gold!',
-            ]}
-            data-f={item.f}
+      <div class="mb-9">
+        <div class="flex gap-2.5 flex-wrap">
+          {filters.map((item, i) => (
+            <button
+              type="button"
+              class:list={[
+                'filter-btn bg-transparent border border-white/10 text-muted px-4 py-[9px] text-xs font-mono uppercase',
+                i === 0 && 'active border-gold! text-gold!',
+              ]}
+              data-f={item.f}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+        {Object.entries(subcategoryFilters).map(([cat, items]) => (
+          <div
+            data-subrow={cat}
+            class="hidden gap-2 flex-wrap mt-2.5 pl-4 border-l border-white/10"
           >
-            {item.label}
-          </button>
+            {items.map((item, i) => (
+              <button
+                type="button"
+                class:list={[
+                  'subfilter-btn bg-transparent border border-white/10 text-muted px-3 py-[6px] text-[11px] font-mono uppercase',
+                  i === 0 && 'active border-gold! text-gold!',
+                ]}
+                data-sf={item.f}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
         ))}
       </div>
     )
@@ -64,6 +107,7 @@ const specValueTranslations: Record<string, string> =
           title={project.data.title}
           category={project.data.category}
           categoryLabel={categoryLabels[project.data.category]}
+          subcategory={project.data.subcategory}
           location={project.data.location}
           specLabel={specLabelTranslations[project.data.specLabel] ?? project.data.specLabel}
           specValue={specValueTranslations[project.data.specValue] ?? project.data.specValue}
@@ -82,7 +126,19 @@ const specValueTranslations: Record<string, string> =
   filterable && (
     <script>
       const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+      const subRows = document.querySelectorAll<HTMLElement>('[data-subrow]');
       const projCards = document.querySelectorAll<HTMLElement>('#proj-grid [data-cat]');
+
+      let activeCategory = 'all';
+      let activeSubcategory = 'all';
+
+      function applyFilter(): void {
+        projCards.forEach((card) => {
+          const catMatch = activeCategory === 'all' || card.dataset.cat === activeCategory;
+          const subMatch = activeSubcategory === 'all' || card.dataset.subcat === activeSubcategory;
+          card.style.display = catMatch && subMatch ? '' : 'none';
+        });
+      }
 
       filterBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
@@ -90,10 +146,36 @@ const specValueTranslations: Record<string, string> =
             b.classList.remove('active', 'border-gold!', 'text-gold!');
           });
           btn.classList.add('active', 'border-gold!', 'text-gold!');
-          const f = btn.dataset.f;
-          projCards.forEach((card) => {
-            const show = f === 'all' || card.dataset.cat === f;
-            card.style.display = show ? '' : 'none';
+          activeCategory = btn.dataset.f || 'all';
+          activeSubcategory = 'all';
+
+          subRows.forEach((row) => {
+            const show = row.dataset.subrow === activeCategory;
+            row.classList.toggle('hidden', !show);
+            row.classList.toggle('flex', show);
+            if (show) {
+              const rowBtns = row.querySelectorAll<HTMLButtonElement>('.subfilter-btn');
+              rowBtns.forEach((b) => b.classList.remove('active', 'border-gold!', 'text-gold!'));
+              row.querySelector<HTMLButtonElement>('.subfilter-btn[data-sf="all"]')?.classList.add(
+                'active',
+                'border-gold!',
+                'text-gold!',
+              );
+            }
+          });
+
+          applyFilter();
+        });
+      });
+
+      subRows.forEach((row) => {
+        const rowBtns = row.querySelectorAll<HTMLButtonElement>('.subfilter-btn');
+        rowBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            rowBtns.forEach((b) => b.classList.remove('active', 'border-gold!', 'text-gold!'));
+            btn.classList.add('active', 'border-gold!', 'text-gold!');
+            activeSubcategory = btn.dataset.sf || 'all';
+            applyFilter();
           });
         });
       });

@@ -62,11 +62,87 @@ const en = {
     ],
     callout:
       "We don't resell panels and batteries: we deliver the full engineering-to-maintenance lifecycle, under one contract, with one team accountable for the result.",
+    comparison: {
+      heading: 'Why Hiieko Romania',
+      columnTypical: 'Typical Installer',
+      columnHiieko: 'Hiieko Romania',
+      rows: [
+        {
+          typical: 'Sells equipment and leaves the site',
+          hiieko: 'Design, installation, and maintenance in one contract',
+        },
+        {
+          typical: 'Work done via subcontracting',
+          hiieko: 'Own installation crews, no subcontracting',
+        },
+        {
+          typical: 'Limited or no execution warranty',
+          hiieko: 'Minimum 60-month execution warranty',
+        },
+        {
+          typical: 'No maintenance plan after handover',
+          hiieko: 'Active maintenance plan from day one',
+        },
+        {
+          typical: 'Responsibility fragmented across suppliers',
+          hiieko: 'Single point of responsibility: Hiieko',
+        },
+      ],
+    },
   },
   solutionsHome: {
     eyebrow: 'What we build',
     h2: 'Three systems. One team.',
     lede: 'For industrial platforms, logistics halls, production facilities, and unused land.',
+  },
+  performance: {
+    eyebrow: 'Performance & yield',
+    h2: 'Built to still be earning its keep in year 30.',
+    lede: 'Real coefficients from the equipment we install and maintain, not marketing averages.',
+    stats: [
+      { value: '~1,200', label: 'kWh/kWp/yr average yield' },
+      { value: '98.6%', label: 'Peak inverter efficiency' },
+      { value: '6,000+', label: 'Battery charge cycles' },
+      { value: '30-year', label: 'Panel performance warranty' },
+    ],
+    chartCaption: 'Even after 30 years, a well-chosen system still produces nearly 89% of its original output.',
+    chartYAxisLabel: 'Output vs. Year 0',
+  },
+  techPartners: {
+    eyebrow: 'Technology partners',
+    h2: 'Equipment we trust enough to warranty.',
+    lede: 'Every system is built from tier-one components, selected for the specific project, not a single default package.',
+    groups: [
+      {
+        heading: 'Panel manufacturers',
+        items: [
+          { name: 'Unicasolar', detail: 'Monocrystalline' },
+          { name: 'Astroenergy', detail: 'N-Type TOPCon' },
+          { name: 'Aiko', detail: 'N-Type ABC technology, 24%+ efficiency' },
+        ],
+      },
+      {
+        heading: 'Inverters',
+        items: [
+          { name: 'Huawei', detail: 'Industrial, 98.6% efficiency' },
+          { name: 'Solis', detail: 'Commercial' },
+        ],
+      },
+      {
+        heading: 'Storage',
+        items: [
+          { name: 'Dyness', detail: '' },
+          { name: 'Huawei LUNA2000', detail: 'LFP chemistry' },
+        ],
+      },
+      {
+        heading: 'Infrastructure',
+        items: [
+          { name: 'ZPUE', detail: 'Prefabricated transformer substations' },
+          { name: 'Tesla Power Systems', detail: 'Romanian-manufactured MT/LV equipment, factory in Buzău' },
+        ],
+      },
+    ],
   },
   solutionsPage: {
     eyebrow: 'What we build',
@@ -93,6 +169,14 @@ const en = {
     rooftop: 'Rooftop',
     groundMount: 'Ground-mount',
     bess: 'BESS',
+    subcategoryAll: 'All',
+    industrial: 'Industrial',
+    retail: 'Retail',
+    warehouse: 'Warehouse',
+    agriculture: 'Agriculture',
+    institutional: 'Institutional',
+    residential: 'Residential',
+    commercial: 'Commercial',
   },
   about: {
     eyebrow: 'Why Hiieko',
@@ -107,18 +191,31 @@ const en = {
     readMoreTeamLink: 'team behind the work →',
     iso1: 'ISO 9001:2015',
     iso2: 'ISO 14001:2015',
+    iso3: 'ISO 27001',
+    iso4: 'ISO 45001',
+    isoRegistration: 'Registration RO 1450/1/1/1–4, issued 18.08.2025, certified by ROCERT, RENAR-accredited.',
+    anre: {
+      heading: 'ANRE Authorizations',
+      description:
+        'Legally mandatory authorizations for any company that designs, executes, or connects electrical installations in Romania, issued directly by the national energy regulator.',
+      items: [
+        { code: 'E1', label: 'Design' },
+        { code: 'E2', label: 'Execution' },
+        { code: 'A3', label: 'Grid Connection' },
+      ],
+    },
     figs: {
       founded: { label: 'Group founded', value: '1994, Tallinn' },
       subsidiary: { label: 'Romania subsidiary established', value: '2020' },
       purpose: { label: 'Purpose', value: 'Solar parks + storage' },
-      localTeam: { label: 'Local team', value: 'Over 25 specialists' },
-      certification: { label: 'Certification', value: 'ISO 9001 / 14001' },
+      localTeam: { label: 'Local team', value: 'Over 40 specialists' },
+      certification: { label: 'Certification', value: 'ISO 9001 / 14001 / 27001 / 45001' },
       address: { label: 'Address', value: 'Bd. Theodor Pallady 51N, Bucharest' },
     },
   },
   team: {
     eyebrow: 'Our team',
-    h1: 'Over 25 specialists, one accountable team.',
+    h1: 'Over 40 specialists, one accountable team.',
     lede: 'Real engineers, real accountability. Every person on this page is someone you can actually call once your system is live, not a subcontractor, not a call center.',
   },
   contact: {
@@ -284,7 +381,7 @@ const en = {
   industries: {
     eyebrow: 'Who we serve',
     headline: 'Energy prices keep climbing. These businesses stopped caring.',
-    lede: "Over 100 MWp installed across Romania's highest-consumption industries: proof the energy crisis doesn't have to be permanent for yours.",
+    lede: "Over 200 MWp installed across Romania's highest-consumption industries: proof the energy crisis doesn't have to be permanent for yours.",
     ctaLabel: 'See projects →',
     items: [
       { name: 'Agriculture' },
@@ -389,11 +486,87 @@ const ro: Dictionary = {
     ],
     callout:
       'Nu revindem panouri și baterii: livrăm întregul ciclu, de la inginerie la mentenanță, printr-un singur contract, cu o singură echipă responsabilă de rezultat.',
+    comparison: {
+      heading: 'De ce Hiieko România',
+      columnTypical: 'Instalator obișnuit',
+      columnHiieko: 'Hiieko România',
+      rows: [
+        {
+          typical: 'Vinde echipamente și părăsește șantierul',
+          hiieko: 'Proiectare, instalare și mentenanță printr-un singur contract',
+        },
+        {
+          typical: 'Lucrări realizate prin subcontractare',
+          hiieko: 'Echipe proprii de instalare, fără subcontractare',
+        },
+        {
+          typical: 'Garanție de execuție limitată sau inexistentă',
+          hiieko: 'Garanție de execuție de minimum 60 de luni',
+        },
+        {
+          typical: 'Fără plan de mentenanță după predare',
+          hiieko: 'Plan de mentenanță activ din prima zi',
+        },
+        {
+          typical: 'Responsabilitate fragmentată între furnizori',
+          hiieko: 'Un singur punct de responsabilitate: Hiieko',
+        },
+      ],
+    },
   },
   solutionsHome: {
     eyebrow: 'Ce construim',
     h2: 'Trei sisteme. O singură echipă.',
     lede: 'Pentru platforme industriale, hale logistice, unități de producție și terenuri neutilizate.',
+  },
+  performance: {
+    eyebrow: 'Performanță și randament',
+    h2: 'Construit ca să merite investiția și în anul 30.',
+    lede: 'Coeficienți reali ai echipamentelor pe care le instalăm și le întreținem, nu medii de marketing.',
+    stats: [
+      { value: '~1.200', label: 'kWh/kWp/an randament mediu' },
+      { value: '98,6%', label: 'Eficiență maximă invertor' },
+      { value: '6.000+', label: 'Cicluri de încărcare baterie' },
+      { value: '30 de ani', label: 'Garanție de performanță panouri' },
+    ],
+    chartCaption: 'Chiar și după 30 de ani, un sistem bine ales produce în continuare aproape 89% din producția inițială.',
+    chartYAxisLabel: 'Producție față de anul 0',
+  },
+  techPartners: {
+    eyebrow: 'Parteneri tehnologici',
+    h2: 'Echipamente în care avem suficientă încredere încât să le garantăm.',
+    lede: 'Fiecare sistem este construit din componente de top, alese pentru proiectul specific, nu dintr-un pachet unic implicit.',
+    groups: [
+      {
+        heading: 'Producători de panouri',
+        items: [
+          { name: 'Unicasolar', detail: 'Monocristalin' },
+          { name: 'Astroenergy', detail: 'N-Type TOPCon' },
+          { name: 'Aiko', detail: 'Tehnologie N-Type ABC, eficiență 24%+' },
+        ],
+      },
+      {
+        heading: 'Invertoare',
+        items: [
+          { name: 'Huawei', detail: 'Industrial, eficiență 98,6%' },
+          { name: 'Solis', detail: 'Comercial' },
+        ],
+      },
+      {
+        heading: 'Stocare',
+        items: [
+          { name: 'Dyness', detail: '' },
+          { name: 'Huawei LUNA2000', detail: 'Chimie LFP' },
+        ],
+      },
+      {
+        heading: 'Infrastructură',
+        items: [
+          { name: 'ZPUE', detail: 'Posturi de transformare prefabricate' },
+          { name: 'Tesla Power Systems', detail: 'Echipamente MT/JT fabricate în România, fabrică în Buzău' },
+        ],
+      },
+    ],
   },
   solutionsPage: {
     eyebrow: 'Ce construim',
@@ -420,6 +593,14 @@ const ro: Dictionary = {
     rooftop: 'Acoperiș',
     groundMount: 'La sol',
     bess: 'BESS',
+    subcategoryAll: 'Toate',
+    industrial: 'Industrial',
+    retail: 'Retail',
+    warehouse: 'Depozitare',
+    agriculture: 'Agricultură',
+    institutional: 'Instituțional',
+    residential: 'Rezidențial',
+    commercial: 'Comercial',
   },
   about: {
     eyebrow: 'De ce Hiieko',
@@ -434,18 +615,31 @@ const ro: Dictionary = {
     readMoreTeamLink: 'echipa din spatele lucrărilor →',
     iso1: 'ISO 9001:2015',
     iso2: 'ISO 14001:2015',
+    iso3: 'ISO 27001',
+    iso4: 'ISO 45001',
+    isoRegistration: 'Înregistrare RO 1450/1/1/1–4, emisă la 18.08.2025, certificată de ROCERT, acreditată RENAR.',
+    anre: {
+      heading: 'Autorizații ANRE',
+      description:
+        'Autorizații obligatorii prin lege pentru orice companie care proiectează, execută sau racordează instalații electrice în România, emise direct de autoritatea națională de reglementare în domeniul energiei.',
+      items: [
+        { code: 'E1', label: 'Proiectare' },
+        { code: 'E2', label: 'Execuție' },
+        { code: 'A3', label: 'Racordare la rețea' },
+      ],
+    },
     figs: {
       founded: { label: 'Grup fondat', value: '1994, Tallinn' },
       subsidiary: { label: 'Filiala din România înființată', value: '2020' },
       purpose: { label: 'Scop', value: 'Parcuri solare + stocare' },
-      localTeam: { label: 'Echipă locală', value: 'Peste 25 de specialiști' },
-      certification: { label: 'Certificare', value: 'ISO 9001 / 14001' },
+      localTeam: { label: 'Echipă locală', value: 'Peste 40 de specialiști' },
+      certification: { label: 'Certificare', value: 'ISO 9001 / 14001 / 27001 / 45001' },
       address: { label: 'Adresă', value: 'Bd. Theodor Pallady 51N, București' },
     },
   },
   team: {
     eyebrow: 'Echipa noastră',
-    h1: 'Peste 25 de specialiști, o singură echipă responsabilă.',
+    h1: 'Peste 40 de specialiști, o singură echipă responsabilă.',
     lede: 'Ingineri reali, responsabilitate reală. Fiecare persoană de pe această pagină este cineva pe care chiar îl poți suna după ce sistemul tău este funcțional, nu un subcontractant, nu un call center.',
   },
   contact: {
@@ -606,7 +800,7 @@ const ro: Dictionary = {
   industries: {
     eyebrow: 'Pentru cine lucrăm',
     headline: 'Prețurile la energie continuă să crească. Aceste companii au încetat să le mai pese.',
-    lede: 'Peste 100 MWp instalați în cele mai mari industrii consumatoare de energie din România: dovada că criza energetică nu trebuie să fie permanentă și pentru afacerea ta.',
+    lede: 'Peste 200 MWp instalați în cele mai mari industrii consumatoare de energie din România: dovada că criza energetică nu trebuie să fie permanentă și pentru afacerea ta.',
     ctaLabel: 'Vezi proiectele →',
     items: [
       { name: 'Agricultură' },
