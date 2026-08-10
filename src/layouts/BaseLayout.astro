@@ -37,17 +37,15 @@ const roHref = getRelativeLocaleUrl('ro', canonicalPath);
 
 // Structured data is language-independent (machine-facing, not a rendered
 // translation), so it uses one canonical set of business details regardless
-// of `lang` — same object on every page via this shared layout. There is no
-// company-level phone number anywhere in the site's copy (only individual
-// team members' personal numbers), so `telephone` is intentionally omitted
-// rather than guessed.
+// of `lang` — same object on every page via this shared layout.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Hiieko Romania SRL',
   url: 'https://hiiekoromania.com',
   logo: 'https://hiiekoromania.com/logo-icon.png',
-  email: 'office@hiieko.ro',
+  email: 'bogdan.otelea@hiieko.ro',
+  telephone: '+40 750 293 899',
   taxID: '42849908',
   address: {
     '@type': 'PostalAddress',
