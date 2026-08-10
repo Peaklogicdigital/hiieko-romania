@@ -259,7 +259,7 @@ const en = {
     statPayback: 'Est. payback period (years)',
     statRoi: 'ROI (%)',
     disclaimer:
-      'System sized to offset your annual consumption, assuming 1200 kWh/kWp/yr yield and 4.3 m²/kWp. Install cost is tiered by system size: €480/kWp under 20 kWp, €450/kWp from 20–50 kWp, €430/kWp from 50–100 kWp, €410/kWp from 100–250 kWp, €390/kWp above 250 kWp. Savings assume 90% self-consumption at €0.18/kWh, capped at your annual consumption. A rough estimate, not a quote. A real number needs a site assessment.',
+      "This estimate reflects typical project economics across our completed installations — but no two roofs, no two grid connections, and no two sites price the same. Treat this as a starting point, not a quote. The real number only comes after we've actually seen your site.",
     warningTemplate:
       'Your available space ({area} m²) covers only {pct}% of your usage. {minArea} m² would fully offset your consumption.',
     toastMessage: 'Talk with sales for a site assessment and real values.',
@@ -686,7 +686,7 @@ const ro: Dictionary = {
     statPayback: 'Perioadă de amortizare estimată (ani)',
     statRoi: 'ROI (%)',
     disclaimer:
-      'Sistem dimensionat pentru a acoperi consumul tău anual, presupunând un randament de 1200 kWh/kWp/an și 4,3 m²/kWp. Costul instalării este eșalonat în funcție de dimensiunea sistemului: 480 €/kWp sub 20 kWp, 450 €/kWp între 20–50 kWp, 430 €/kWp între 50–100 kWp, 410 €/kWp între 100–250 kWp, 390 €/kWp peste 250 kWp. Economiile presupun un autoconsum de 90% la 0,18 €/kWh, plafonat la consumul tău anual. O estimare aproximativă, nu o ofertă fermă. O cifră reală necesită o evaluare la fața locului.',
+      'Această estimare reflectă costurile tipice ale proiectelor noastre finalizate, însă niciun acoperiș, nicio conexiune la rețea și nicio locație nu au același preț. Consideră acest calcul un punct de plecare, nu o ofertă fermă. Cifra reală se stabilește doar după ce vedem efectiv locația ta.',
     warningTemplate:
       'Spațiul tău disponibil ({area} m²) acoperă doar {pct}% din consumul tău. {minArea} m² ar acoperi integral consumul.',
     toastMessage: 'Discută cu echipa de vânzări pentru o evaluare la fața locului și cifre reale.',
