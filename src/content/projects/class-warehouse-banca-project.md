@@ -1,5 +1,5 @@
 ---
-title: "Class Warehouse Bancă"
+title: "Project Banca"
 category: "ground-mount"
 location: "Vaslui, Romania"
 specLabel: "Capacity"
