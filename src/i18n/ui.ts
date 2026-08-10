@@ -182,7 +182,7 @@ const en = {
     eyebrow: 'Why Hiieko',
     heading: 'International engineering, delivered locally.',
     para1:
-      'Hiieko Romania SRL is part of the Estonian Hiieko group, which has designed, installed, and maintained construction technical systems since 1994. In Romania, that same engineering discipline was applied to a purpose-built subsidiary, established in 2020 specifically to develop industrial solar parks and storage facilities.',
+      'Hiieko Romania SRL is part of Hiieko Group, which has designed, installed, and maintained construction technical systems since 1994. In Romania, that same engineering discipline was applied to a purpose-built subsidiary, established in 2020 specifically to develop industrial solar parks and storage facilities.',
     para2:
       "We're not a panel installer that appeared last year. We're part of a group with three decades of execution on complex sites and a Romanian team that stays accountable after handover.",
     para3Page:
@@ -414,7 +414,7 @@ const en = {
     about: {
       title: 'About · Hiieko Romania',
       description:
-        'Hiieko Romania SRL is part of the Estonian Hiieko group, designing, installing, and maintaining industrial solar and storage systems since 2020.',
+        'Hiieko Romania SRL is part of Hiieko Group, designing, installing, and maintaining industrial solar and storage systems since 2020.',
     },
     team: {
       title: 'Team · Hiieko Romania',
@@ -609,7 +609,7 @@ const ro: Dictionary = {
     eyebrow: 'De ce Hiieko',
     heading: 'Inginerie internațională, livrată local.',
     para1:
-      'Hiieko România SRL face parte din grupul estonian Hiieko, care proiectează, instalează și întreține sisteme tehnice pentru construcții din 1994. În România, aceeași disciplină de inginerie a fost aplicată unei filiale dedicate, înființată în 2020 special pentru dezvoltarea de parcuri solare industriale și facilități de stocare.',
+      'Hiieko România SRL face parte din Grupul Hiieko, care proiectează, instalează și întreține sisteme tehnice pentru construcții din 1994. În România, aceeași disciplină de inginerie a fost aplicată unei filiale dedicate, înființată în 2020 special pentru dezvoltarea de parcuri solare industriale și facilități de stocare.',
     para2:
       'Nu suntem un instalator de panouri apărut anul trecut. Facem parte dintr-un grup cu trei decenii de execuție pe șantiere complexe și o echipă din România care rămâne responsabilă după predare.',
     para3Page:
@@ -836,7 +836,7 @@ const ro: Dictionary = {
     about: {
       title: 'Despre noi · Hiieko România',
       description:
-        'Hiieko România SRL face parte din grupul estonian Hiieko, proiectând, instalând și întreținând sisteme industriale de solar și stocare din 2020.',
+        'Hiieko România SRL face parte din Grupul Hiieko, proiectând, instalând și întreținând sisteme industriale de solar și stocare din 2020.',
     },
     team: {
       title: 'Echipă · Hiieko România',
