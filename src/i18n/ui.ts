@@ -162,7 +162,7 @@ const en = {
   projectsPage: {
     eyebrow: 'Projects',
     h1: "What we've built.",
-    lede: 'A sample of completed work. Entries marked PLACEHOLDER are examples pending real project data.',
+    lede: 'A sample of completed work. Any additional detail is available on request.',
   },
   projectsFilters: {
     all: 'All',
@@ -588,7 +588,7 @@ const ro: Dictionary = {
   projectsPage: {
     eyebrow: 'Proiecte',
     h1: 'Ce am construit.',
-    lede: 'O selecție de proiecte finalizate. Intrările marcate PLACEHOLDER sunt exemple, în așteptarea datelor reale despre proiect.',
+    lede: 'O selecție de proiecte finalizate. Orice detaliu suplimentar este disponibil la cerere.',
   },
   projectsFilters: {
     all: 'Toate',
