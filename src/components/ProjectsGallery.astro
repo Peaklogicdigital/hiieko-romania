@@ -63,6 +63,8 @@ const specValueTranslations: Record<string, string> =
         'Available on request': 'Disponibil la cerere',
       }
     : {};
+const titleTranslations: Record<string, string> =
+  lang === 'ro' ? { 'Project Banca': 'Proiectul Banca' } : {};
 ---
 
 <div>
@@ -109,7 +111,7 @@ const specValueTranslations: Record<string, string> =
     {
       projects.map((project) => (
         <ProjectCard
-          title={project.data.title}
+          title={titleTranslations[project.data.title] ?? project.data.title}
           category={project.data.category}
           categoryLabel={categoryLabels[project.data.category]}
           subcategory={project.data.subcategory}
