@@ -61,7 +61,7 @@ const en = {
       },
     ],
     callout:
-      "We don't resell panels and batteries: we deliver the full engineering-to-maintenance lifecycle, under one contract, with one team accountable for the result.",
+      'We go beyond equipment supply. From engineering and installation to commissioning and long-term maintenance, we manage the complete project lifecycle under one contract, with one team accountable for the result.',
     comparison: {
       heading: 'Why Hiieko Romania',
       columnTypical: 'Typical Installer',
@@ -487,7 +487,7 @@ const ro: Dictionary = {
       },
     ],
     callout:
-      'Nu revindem panouri și baterii: livrăm întregul ciclu, de la inginerie la mentenanță, printr-un singur contract, cu o singură echipă responsabilă de rezultat.',
+      'Mergem dincolo de simpla furnizare de echipamente. De la inginerie și instalare până la punere în funcțiune și mentenanță pe termen lung, gestionăm întregul ciclu de viață al proiectului printr-un singur contract, cu o singură echipă responsabilă de rezultat.',
     comparison: {
       heading: 'De ce Hiieko România',
       columnTypical: 'Instalator obișnuit',
