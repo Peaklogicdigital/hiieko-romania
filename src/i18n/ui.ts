@@ -186,7 +186,7 @@ const en = {
     para2:
       "We're not a panel installer that appeared last year. We're part of a group with three decades of execution on complex sites and a Romanian team that stays accountable after handover.",
     para3Page:
-      'Most solar installers in Romania sell equipment and move on. Hiieko Romania designs, builds, and maintains every system under one contract, with a workmanship guarantee and a maintenance plan that starts the day the system goes live. Meet the',
+      'Hiieko Romania designs, builds, and maintains every system under one contract, with a workmanship guarantee and a maintenance plan that starts the day the system goes live. Meet the',
     readMoreLink: 'Read more about Hiieko →',
     readMoreTeamLink: 'team behind the work →',
     iso1: 'ISO 9001:2015',
@@ -216,7 +216,7 @@ const en = {
   team: {
     eyebrow: 'Our team',
     h1: 'Over 40 specialists, one accountable team.',
-    lede: 'Real engineers, real accountability. Every person on this page is someone you can actually call once your system is live, not a subcontractor, not a call center.',
+    lede: 'Dedicated engineers and specialists, accountable from start to finish. Every person on our team is directly involved in the projects we deliver. After commissioning, you still have access to the people who know your system. No subcontractors, no call center.',
   },
   contact: {
     eyebrow: 'Next step',
@@ -453,7 +453,7 @@ const ro: Dictionary = {
   hero: {
     eyebrow: 'Hiieko România · Solar Industrial & Stocare',
     h1: 'Mai mult decât panouri fotovoltaice. Sisteme integrate, proiectate pentru performanță.',
-    lede: 'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru site-uri industriale și comerciale din România: un singur contractor, o singură garanție, susținută de inginerie internațională din 1994.',
+    lede: 'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru locații industriale și comerciale din România: un singur contractor, o singură garanție, susținută de inginerie internațională din 1994.',
     ctaPrimary: 'Solicită o evaluare →',
     ctaSecondary: 'Estimează sistemul ↓',
   },
@@ -471,7 +471,7 @@ const ro: Dictionary = {
     steps: [
       {
         n: '01 / PROIECTARE',
-        title: 'Evaluare și dimensionare site',
+        title: 'Evaluare și dimensionare locație',
         body: 'Dimensionăm sistemul în funcție de consumul și structura reală, nu după un pachet generic.',
       },
       {
@@ -616,7 +616,7 @@ const ro: Dictionary = {
     para2:
       'Nu suntem un instalator de panouri apărut anul trecut. Facem parte dintr-un grup cu trei decenii de execuție pe șantiere complexe și o echipă din România care rămâne responsabilă după predare.',
     para3Page:
-      'Majoritatea instalatorilor de solar din România vând echipamente și pleacă mai departe. Hiieko România proiectează, construiește și întreține fiecare sistem printr-un singur contract, cu garanție de execuție și un plan de mentenanță care începe din ziua punerii în funcțiune. Cunoaște',
+      'Hiieko România proiectează, construiește și întreține fiecare sistem printr-un singur contract, cu garanție de execuție și un plan de mentenanță care începe din ziua punerii în funcțiune. Cunoaște',
     readMoreLink: 'Află mai multe despre Hiieko →',
     readMoreTeamLink: 'echipa din spatele lucrărilor →',
     iso1: 'ISO 9001:2015',
@@ -646,12 +646,12 @@ const ro: Dictionary = {
   team: {
     eyebrow: 'Echipa noastră',
     h1: 'Peste 40 de specialiști, o singură echipă responsabilă.',
-    lede: 'Ingineri reali, responsabilitate reală. Fiecare persoană de pe această pagină este cineva pe care chiar îl poți suna după ce sistemul tău este funcțional, nu un subcontractant, nu un call center.',
+    lede: 'Ingineri și specialiști dedicați, responsabilitate de la început până la final. Fiecare persoană din echipa noastră este implicată direct în proiectele pe care le livrăm. După punerea în funcțiune, ai în continuare acces la oamenii care cunosc sistemul tău. Fără subcontractanți, fără call center.',
   },
   contact: {
     eyebrow: 'Următorul pas',
-    heading: 'Solicită o evaluare a site-ului.',
-    lede: 'Trimite-ne câteva detalii despre site și consum. Vei primi o estimare de dimensionare, nu un discurs de vânzare.',
+    heading: 'Solicită o evaluare a locației.',
+    lede: 'Trimite-ne câteva detalii despre locație și consum. Vei primi în schimb o estimare de dimensionare și un calcul cu amortizarea investiției.',
     companyName: 'Hiieko Romania SRL',
     addressLine: 'Bd. Theodor Pallady 51N, Sector 3, București',
     email: 'bogdan.otelea@hiieko.ro',
@@ -671,7 +671,7 @@ const ro: Dictionary = {
       bess: 'Stocare cu baterii (BESS)',
       notSure: 'Nu sunt sigur încă',
     },
-    messageLabel: 'Detalii site (suprafață, consum lunar aproximativ)',
+    messageLabel: 'Detalii locație (suprafață, consum lunar aproximativ)',
     submitBtn: 'Trimite solicitarea →',
     statusNotConfigured: 'Endpoint-ul de contact nu este încă configurat. Te rugăm să ne scrii direct pe email.',
     statusSending: 'Se trimite…',
@@ -827,7 +827,7 @@ const ro: Dictionary = {
     home: {
       title: 'Hiieko România · Solar Industrial & Stocare de Energie',
       description:
-        'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru site-uri industriale și comerciale din România: un singur contractor, o singură garanție, susținută de inginerie internațională din 1994.',
+        'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru locații industriale și comerciale din România: un singur contractor, o singură garanție, susținută de inginerie internațională din 1994.',
     },
     solutions: {
       title: 'Soluții · Hiieko România',

@@ -16,7 +16,7 @@ Evaluăm terenul, capacitatea rețelei și traseul de autorizare, apoi proiectă
 
 ## Ce este inclus
 
-- Studiu de fezabilitate și evaluarea site-ului
+- Studiu de fezabilitate și evaluarea locației
 - Proiectarea și dimensionarea sistemului
 - Instalare și punere în funcțiune conform cerințelor de racordare ANRE
 - Mentenanță și monitorizare continuă după predare
