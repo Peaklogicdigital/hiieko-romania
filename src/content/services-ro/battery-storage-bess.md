@@ -16,7 +16,7 @@ Dimensionăm un sistem de baterii în funcție de profilul de sarcină al facili
 
 ## Ce este inclus
 
-- Evaluarea site-ului și analiza profilului de sarcină
+- Evaluarea locației și analiza profilului de sarcină
 - Proiectarea și dimensionarea sistemului
 - Instalare și punere în funcțiune
 - Mentenanță și monitorizare continuă după predare

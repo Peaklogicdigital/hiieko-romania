@@ -12,11 +12,11 @@ Sisteme fotovoltaice pe acoperiș pentru platforme industriale, hale logistice �
 
 ## Cum funcționează
 
-Începem cu o evaluare a site-ului: structura acoperișului, orientarea, umbrirea și consumul tău lunar real. Pornind de aici, proiectăm un sistem dimensionat în primul rând pentru autoconsum, astfel încât energia produsă de acoperișul tău să compenseze ceea ce facilitatea ta consumă deja.
+Începem cu o evaluare a locației: structura acoperișului, orientarea, umbrirea și consumul tău lunar real. Pornind de aici, proiectăm un sistem dimensionat în primul rând pentru autoconsum, astfel încât energia produsă de acoperișul tău să compenseze ceea ce facilitatea ta consumă deja.
 
 ## Ce este inclus
 
-- Evaluarea site-ului și analiza structurală
+- Evaluarea locației și analiza structurală
 - Proiectarea și dimensionarea sistemului
 - Instalare și punere în funcțiune de către echipele noastre proprii, conform cerințelor de racordare ANRE
 - Mentenanță și monitorizare continuă după predare
