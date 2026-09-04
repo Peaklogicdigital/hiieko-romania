@@ -28,13 +28,13 @@ const photoAlt = `Photo of ${name}, ${role} at Hiieko Romania`;
 
 <div
   class:list={[
-    'border-t-2 overflow-hidden transition-all hover:-translate-y-[3px]',
+    'border-t-2 overflow-hidden transition-all duration-200 ease-out hover:-translate-y-1.5 hover:shadow-[0_0_22px_var(--color-gold-glow)] motion-reduce:transition-none motion-reduce:hover:translate-y-0',
     isPlaceholder ? 'border-dashed border-green-mid/60 hover:border-gold' : 'border-green-mid hover:border-gold',
   ]}
 >
   <div
     class="aspect-square relative flex items-center justify-center overflow-hidden"
-    style={photo ? undefined : 'background-image: repeating-linear-gradient(135deg, rgba(250,251,247,0.05) 0 2px, transparent 2px 14px);'}
+    style={photo ? undefined : 'background-image: repeating-linear-gradient(135deg, var(--color-white-faint) 0 2px, transparent 2px 14px);'}
   >
     {
       photo ? (

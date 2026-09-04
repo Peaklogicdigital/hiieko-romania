@@ -1,15 +1,26 @@
 ---
+// Shared "big gold number + muted label" stat display — used by TrustStrip
+// (Home page) and PerformanceSection (Solutions page), which previously
+// duplicated this markup independently at two different sizes (22px vs
+// 26px) with two different divider treatments. Standardized here on the
+// border-t-2 accent already used by the card components (SolutionCard,
+// ProjectCard, TeamCard) rather than TrustStrip's old side-border, since a
+// top border reads correctly at any column count without the "orphaned
+// divider on row 2" problem a side-border has when a grid wraps on mobile
+// (the exact bug StatBlock's old lg:-scoped side-border existed to work
+// around in the first place).
 interface Props {
   value: string;
   label: string;
   countTo?: number;
   suffix?: string;
+  size?: 'md' | 'lg';
 }
-const { value, label, countTo, suffix } = Astro.props;
+const { value, label, countTo, suffix, size = 'md' } = Astro.props;
 ---
 
-<div class="lg:px-5 lg:border-l lg:border-white/10 lg:first:pl-0 lg:first:border-l-0">
-  <div class="font-mono text-gold-bright text-[22px] font-semibold">
+<div class="border-t-2 border-green-mid pt-[18px]">
+  <div class:list={['font-mono text-gold-bright font-semibold', size === 'lg' ? 'text-[26px]' : 'text-[22px]']}>
     <span data-count={countTo}>{countTo !== undefined ? '0' : value}</span>{suffix}
   </div>
   <div class="text-muted text-[12.5px] mt-1">{label}</div>
