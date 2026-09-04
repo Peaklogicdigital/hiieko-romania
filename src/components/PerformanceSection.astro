@@ -1,5 +1,6 @@
 ---
 import Eyebrow from './Eyebrow.astro';
+import StatBlock from './StatBlock.astro';
 import type { Lang } from '../i18n/ui';
 import { defaultLang, getTranslations } from '../i18n/ui';
 
@@ -52,10 +53,7 @@ const xAxisTicks = [0, 5, 10, 15, 20, 25, 30];
     <div class="grid grid-cols-2 md:grid-cols-4 gap-[22px] mb-[52px]">
       {
         t.performance.stats.map((stat) => (
-          <div class="border-t-2 border-green-mid pt-[18px]">
-            <div class="font-mono text-gold-bright text-[26px] font-semibold">{stat.value}</div>
-            <div class="text-muted text-[12.5px] mt-1">{stat.label}</div>
-          </div>
+          <StatBlock value={stat.value} label={stat.label} />
         ))
       }
     </div>

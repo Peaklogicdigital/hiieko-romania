@@ -9,9 +9,17 @@ const { tagNumber, title, summary, href } = Astro.props;
 const Tag = href ? 'a' : 'div';
 ---
 
+<!--
+  Hover-lift applies unconditionally here, not just when href is set: every
+  real call site (see SolutionsGrid.astro) always passes an href, so this
+  card is in practice always a genuine link — unlike ProjectCard/TeamCard,
+  which carry the same lift affordance while always rendering as inert
+  divs. SolutionCard has the strongest claim to the interactive treatment
+  of the three, so it gets it too.
+-->
 <Tag
   href={href}
-  class="border-t-2 border-green-mid hover:border-gold p-[38px_28px] min-h-[220px] flex flex-col justify-between transition-colors no-underline"
+  class="border-t-2 border-green-mid p-[38px_28px] min-h-[220px] flex flex-col justify-between no-underline transition-all duration-200 ease-out hover:-translate-y-1.5 hover:border-gold hover:shadow-[0_0_22px_var(--color-gold-glow)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
 >
   <div>
     <span class="font-mono text-[11px] text-gold tracking-[0.08em] uppercase">{tagNumber}</span>

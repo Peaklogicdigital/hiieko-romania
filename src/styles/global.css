@@ -24,6 +24,9 @@
   --color-white: #fafbf7;
   --color-muted: rgb(250 251 247 / 0.62);
   --color-chip: rgb(10 16 12 / 0.62);
+  --color-green-deep: #102e20;
+  --color-gold-glow: rgb(224 168 62 / 0.35);
+  --color-white-faint: rgb(250 251 247 / 0.05);
 
   --font-display: "Archivo", "IBM Plex Sans", sans-serif;
   --font-sans: "IBM Plex Sans", system-ui, sans-serif;
@@ -74,7 +77,7 @@
       180deg,
       var(--color-green-dark) 0%,
       var(--color-green-dark) 15%,
-      #102e20 65%,
+      var(--color-green-deep) 65%,
       var(--color-charcoal) 90%,
       var(--color-charcoal) 100%
     );
@@ -128,13 +131,50 @@
   }
   .btn-primary:hover {
     transform: translateY(-1px);
-    box-shadow: 0 0 22px rgba(224, 168, 62, 0.35);
+    box-shadow: 0 0 22px var(--color-gold-glow);
   }
   .btn-ghost {
     @apply bg-transparent text-white border border-white/15 px-6 py-[13px];
   }
   .btn-ghost:hover {
     @apply border-gold text-gold;
+  }
+  .btn-compact {
+    @apply px-[18px] py-[10px];
+  }
+
+  /* Shared long-form body styling for content-collection Markdown (Solutions
+     detail pages) and hand-written legal copy (Privacy) — previously
+     duplicated per-page with each page only styling the tags it happened to
+     use (Solutions: h2/p/ul/a, Privacy: h2/h3/p/a), so this covers the union
+     of both. */
+  .prose-content h2 {
+    font-size: 22px;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-content h3 {
+    font-size: 16.5px;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose-content p {
+    color: var(--color-muted);
+    font-size: 15.5px;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .prose-content ul {
+    color: var(--color-muted);
+    font-size: 15.5px;
+    line-height: 1.7;
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+    list-style: disc;
+  }
+  .prose-content a {
+    color: var(--color-gold);
+    text-decoration: underline;
   }
 }
 
