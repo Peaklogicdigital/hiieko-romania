@@ -1,0 +1,175 @@
+---
+// Home-hero-exclusive animated diagram: sun -> panel -> inverter -> battery
+// -> [facility, grid], built from 4 pre-rendered illustration frames rather
+// than the earlier hand-drawn SVG. Frames were cropped from client-supplied
+// mockups down to just the 3D illustration (nav/headline/button chrome and
+// the mockups' own numbered callout text were removed — see the frame
+// source images' git history for the originals) so they drop into the same
+// grid slot the old <HeroSchematic /> occupied, with the page's real HTML
+// headline/nav/buttons rendering around them unaffected.
+import { Picture } from 'astro:assets';
+import frame1 from '../assets/hero-frames/frame-1-dormant.png';
+import frame2 from '../assets/hero-frames/frame-2-panel-active.png';
+import frame3 from '../assets/hero-frames/frame-3-battery-charging.png';
+import frame4 from '../assets/hero-frames/frame-4-full-system.png';
+
+const frames = [frame1, frame2, frame3, frame4];
+---
+
+<div
+  class="hero-diagram relative w-full"
+  id="hero-diagram"
+  style={`aspect-ratio: ${frame1.width} / ${frame1.height};`}
+>
+  {
+    frames.map((frame, i) => (
+      <Picture
+        src={frame}
+        alt={
+          i === 0
+            ? 'Animated diagram of a solar and battery storage system: sun, panels, inverter, battery, facility, and grid connection'
+            : ''
+        }
+        formats={['avif', 'webp']}
+        fallbackFormat="jpeg"
+        widths={[400, 600, 800, 955]}
+        sizes="(min-width: 768px) 55vw, 100vw"
+        loading="eager"
+        class="hero-diagram-frame absolute inset-0 w-full h-full object-contain"
+        data-frame={i + 1}
+      />
+    ))
+  }
+</div>
+
+<script>
+  // Phase 1 (scroll-triggered reveal): frame opacity is driven by scroll
+  // progress through a fixed pixel distance below the page's initial
+  // scrollY=0 position. That distance is derived once (and on resize) from
+  // this diagram's own rendered height via getBoundingClientRect(), so it
+  // scales with the diagram's actual on-screen size at the current
+  // breakpoint instead of a single desktop-tuned constant — the mobile
+  // stacked layout renders a shorter diagram and gets a shorter, still
+  // reasonable, scroll distance. The ongoing per-scroll-tick read is
+  // window.scrollY rather than a fresh getBoundingClientRect() call, since
+  // reading layout geometry inside a high-frequency scroll handler forces
+  // synchronous layout and is the more expensive path; the codebase has no
+  // prior getBoundingClientRect()-scroll-progress pattern to match, so this
+  // hybrid (rect for the one-off distance calc, scrollY for the hot path)
+  // is a fresh, deliberately perf-conscious implementation.
+  //
+  // Phase 2 (continuous loop): once scroll progress reaches Frame 4, the
+  // scroll listener is torn down entirely and an interval takes over,
+  // cycling 1->2->3->4->1. Scrolling back above the hero afterward does
+  // NOT resume Phase 1 — re-linking scroll position to a loop already in
+  // flight would either snap the frame backward or require re-deriving
+  // where in the loop "scroll progress 0.6" should map to, both of which
+  // read as more jarring than just leaving the loop running. This mirrors
+  // the site's existing .reveal convention (IntersectionObserver-triggered
+  // once, never reversed on scroll-up) rather than inventing new behavior.
+  function initHeroDiagram(): void {
+    const container = document.getElementById('hero-diagram');
+    if (!container) return;
+    const frameEls = Array.from(container.querySelectorAll<HTMLElement>('.hero-diagram-frame'));
+    if (frameEls.length !== 4) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return; // CSS alone already shows Frame 4 statically, no crossfade/loop.
+    }
+
+    let distance = 400;
+    function recalcDistance(): void {
+      const rect = container!.getBoundingClientRect();
+      distance = Math.min(Math.max(rect.height * 0.9, 260), window.innerHeight * 0.9);
+    }
+    recalcDistance();
+    window.addEventListener('resize', recalcDistance, { passive: true });
+
+    function applyProgress(progress: number): void {
+      const segment = progress * 3; // 3 transitions across 4 frames
+      const idx = Math.min(Math.floor(segment), 2);
+      const localT = segment - idx;
+      frameEls.forEach((el, i) => {
+        let opacity = 0;
+        if (i === idx) opacity = 1 - localT;
+        else if (i === idx + 1) opacity = localT;
+        el.style.opacity = String(opacity);
+      });
+    }
+
+    let loopActive = false;
+    let loopIndex = 3; // Frame 4 (index 3) is showing when the loop takes over
+    let scrollTicking = false;
+
+    function startLoop(): void {
+      if (loopActive) return;
+      loopActive = true;
+      window.removeEventListener('scroll', onScroll);
+      // Enable the crossfade transition only now, and only after the
+      // current (instant, untransitioned) opacity values from the final
+      // scroll tick have had a frame to paint: adding a transition-enabling
+      // class in the same synchronous turn as the opacity change that
+      // triggered it makes the browser animate FROM whatever value was
+      // rendered before this tick TO the new one, i.e. a spurious crossfade
+      // from mid-scroll opacity to the Frame-4-only state. The double rAF
+      // defers the class by one paint so that jump has already settled
+      // before the transition (used for Phase 2's discrete, timed frame
+      // swaps) becomes active.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          container!.classList.add('loop-active');
+        });
+      });
+      setInterval(() => {
+        loopIndex = (loopIndex + 1) % 4;
+        frameEls.forEach((el, i) => {
+          el.style.opacity = i === loopIndex ? '1' : '0';
+        });
+      }, 2500);
+    }
+
+    function onScroll(): void {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(() => {
+        const progress = Math.min(Math.max(window.scrollY / distance, 0), 1);
+        applyProgress(progress);
+        if (progress >= 1) startLoop();
+        scrollTicking = false;
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroDiagram);
+  } else {
+    initHeroDiagram();
+  }
+</script>
+
+<style>
+  .hero-diagram-frame {
+    opacity: 0;
+  }
+  .hero-diagram-frame[data-frame='1'] {
+    opacity: 1;
+  }
+  /* Crossfade transition is scoped to the continuous-loop phase only (see
+     startLoop() below) — during scroll-scrubbing, opacity tracks scroll
+     position directly with no transition lag. */
+  .hero-diagram.loop-active .hero-diagram-frame {
+    transition: opacity 900ms ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-diagram-frame {
+      opacity: 0;
+    }
+    .hero-diagram-frame[data-frame='4'] {
+      opacity: 1;
+    }
+  }
+</style>
