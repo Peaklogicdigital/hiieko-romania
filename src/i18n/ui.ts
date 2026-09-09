@@ -27,8 +27,15 @@ const en = {
     ctaPrimary: 'Get a site assessment →',
     ctaSecondary: 'Estimate your system ↓',
   },
-  heroDiagram: {
-    alt: 'Diagram of a solar and battery storage system: sunlight hits the panels, the inverter converts the power, the battery stores it, and the facility is powered',
+  heroVideo: {
+    diagramAlt:
+      'Animated diagram of a solar and battery storage system: sunlight hits the panels, the inverter converts the power, the battery stores it, and the facility is powered',
+    captions: {
+      panel: 'Solar panels capture sunlight and generate DC electricity.',
+      inverter: 'The inverter converts DC into usable AC power.',
+      battery: 'Excess energy is stored in the battery for later use.',
+      building: 'Power is delivered to your facility, cutting grid costs.',
+    },
   },
   trust: {
     founded: { value: '1994', label: 'Group Founded, Estonia' },
@@ -460,8 +467,15 @@ const ro: Dictionary = {
     ctaPrimary: 'Solicită o evaluare →',
     ctaSecondary: 'Estimează sistemul ↓',
   },
-  heroDiagram: {
-    alt: 'Diagramă a unui sistem solar și de stocare cu baterii: lumina soarelui ajunge la panouri, invertorul transformă energia, bateria o stochează, iar facilitatea este alimentată',
+  heroVideo: {
+    diagramAlt:
+      'Diagramă animată a unui sistem solar și de stocare cu baterii: lumina soarelui ajunge la panouri, invertorul transformă energia, bateria o stochează, iar facilitatea este alimentată',
+    captions: {
+      panel: 'Panourile solare captează lumina soarelui și generează curent continuu (DC).',
+      inverter: 'Invertorul transformă curentul continuu (DC) în curent alternativ (AC) utilizabil.',
+      battery: 'Energia excedentară este stocată în baterie pentru a fi folosită ulterior.',
+      building: 'Energia este livrată către facilitatea ta, reducând costurile cu rețeaua.',
+    },
   },
   trust: {
     founded: { value: '1994', label: 'Grup fondat, Estonia' },
