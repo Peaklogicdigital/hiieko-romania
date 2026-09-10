@@ -14,14 +14,10 @@ interface Props {
   label: string;
   countTo?: number;
   suffix?: string;
-  // 'xl' exists for TrustStrip's ISO cert stat specifically: it needs to
-  // outweigh the Calculator's own output numbers (30px) rather than sit
-  // below them, since a verified credential should carry more visual
-  // weight than a number a visitor just typed in.
-  size?: 'md' | 'lg' | 'xl';
+  size?: 'md' | 'lg';
 }
 const { value, label, countTo, suffix, size = 'md' } = Astro.props;
-const sizeClass = size === 'xl' ? 'text-[34px]' : size === 'lg' ? 'text-[26px]' : 'text-[22px]';
+const sizeClass = size === 'lg' ? 'text-[26px]' : 'text-[22px]';
 ---
 
 <div class="border-t-2 border-green-mid pt-[18px]">
