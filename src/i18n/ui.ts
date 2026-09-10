@@ -42,7 +42,7 @@ const en = {
     capacity: { label: 'MWp Installed' },
     happyClients: { label: 'Happy Clients in Romania' },
     specialists: { label: 'Specialists in Romania' },
-    iso: { value: 'ISO', label: '9001 · 14001 Certified' },
+    iso: { value: 'ISO', label: '9001 · 14001 · 27001 · 45001 Certified' },
   },
   diff: {
     eyebrow: 'How we work',
@@ -73,7 +73,9 @@ const en = {
     callout:
       'We go beyond equipment supply. From engineering and installation to commissioning and long-term maintenance, we manage the complete project lifecycle under one contract, with one team accountable for the result.',
     comparison: {
+      eyebrow: 'The comparison',
       heading: 'Why Hiieko Romania',
+      lede: "Here's what that one-contract model actually looks like next to how most installers in Romania operate.",
       columnTypical: 'Typical Installer',
       columnHiieko: 'Hiieko Romania',
       rows: [
@@ -162,6 +164,8 @@ const en = {
   solutionDetail: {
     eyebrowPrefix: 'Solution',
     backLink: '← Back to all solutions',
+    equipmentHeading: 'Equipment we use for this system',
+    allPartnersLink: 'See all our technology partners →',
   },
   projectsHome: {
     eyebrow: 'Projects',
@@ -482,7 +486,7 @@ const ro: Dictionary = {
     capacity: { label: 'MWp instalați' },
     happyClients: { label: 'Clienți mulțumiți în România' },
     specialists: { label: 'Specialiști în România' },
-    iso: { value: 'ISO', label: '9001 · 14001 Certificat' },
+    iso: { value: 'ISO', label: '9001 · 14001 · 27001 · 45001 Certificat' },
   },
   diff: {
     eyebrow: 'Cum lucrăm',
@@ -513,7 +517,9 @@ const ro: Dictionary = {
     callout:
       'Mergem dincolo de simpla furnizare de echipamente. De la inginerie și instalare până la punere în funcțiune și mentenanță pe termen lung, gestionăm întregul ciclu de viață al proiectului printr-un singur contract, cu o singură echipă responsabilă de rezultat.',
     comparison: {
+      eyebrow: 'Comparația',
       heading: 'De ce Hiieko România',
+      lede: 'Iată cum arată, în practică, acest model cu un singur contract, comparat cu modul obișnuit de lucru al instalatorilor din România.',
       columnTypical: 'Instalator obișnuit',
       columnHiieko: 'Hiieko România',
       rows: [
@@ -602,6 +608,8 @@ const ro: Dictionary = {
   solutionDetail: {
     eyebrowPrefix: 'Soluția',
     backLink: '← Înapoi la toate soluțiile',
+    equipmentHeading: 'Echipamente pe care le folosim pentru acest sistem',
+    allPartnersLink: 'Vezi toți partenerii noștri tehnologici →',
   },
   projectsHome: {
     eyebrow: 'Proiecte',

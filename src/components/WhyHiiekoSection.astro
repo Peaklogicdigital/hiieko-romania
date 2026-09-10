@@ -1,4 +1,5 @@
 ---
+import Eyebrow from './Eyebrow.astro';
 import type { Lang } from '../i18n/ui';
 import { defaultLang, getTranslations } from '../i18n/ui';
 
@@ -11,24 +12,28 @@ const t = getTranslations(lang);
 
 <section class="py-[100px] reveal">
   <div class="wrap">
-    <h2 class="text-[19px] text-white mb-6">{t.diff.comparison.heading}</h2>
+    <div class="max-w-[640px] mb-[52px]">
+      <Eyebrow text={t.diff.comparison.eyebrow} />
+      <h2 class="text-[clamp(26px,3vw,36px)] mt-2.5 mb-3.5">{t.diff.comparison.heading}</h2>
+      <p class="text-muted text-[15.5px]">{t.diff.comparison.lede}</p>
+    </div>
     <div class="border border-white/10 rounded-md overflow-hidden">
       <div class="grid grid-cols-2 bg-chip">
-        <div class="px-4 py-3 md:px-6 text-muted text-[11px] font-mono uppercase tracking-[0.06em] border-r border-white/10">
+        <div class="px-5 py-6 md:p-10 text-muted text-[11px] font-mono uppercase tracking-[0.06em] border-r border-white/10">
           {t.diff.comparison.columnTypical}
         </div>
-        <div class="px-4 py-3 md:px-6 text-gold text-[11px] font-mono uppercase tracking-[0.06em]">
+        <div class="px-5 py-6 md:p-10 text-gold text-[11px] font-mono uppercase tracking-[0.06em]">
           {t.diff.comparison.columnHiieko}
         </div>
       </div>
       {
         t.diff.comparison.rows.map((row) => (
           <div class="grid grid-cols-2 border-t border-white/10">
-            <div class="px-4 py-3.5 md:px-6 text-muted text-[13.5px] border-r border-white/10 flex gap-2">
+            <div class="px-5 py-6 md:p-10 text-muted text-[13.5px] border-r border-white/10 flex gap-2">
               <span class="text-muted/60 shrink-0">✕</span>
               <span>{row.typical}</span>
             </div>
-            <div class="px-4 py-3.5 md:px-6 text-white text-[13.5px] flex gap-2">
+            <div class="px-5 py-6 md:p-10 text-white text-[13.5px] flex gap-2">
               <span class="text-gold shrink-0">✓</span>
               <span>{row.hiieko}</span>
             </div>
