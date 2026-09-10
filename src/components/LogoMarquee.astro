@@ -1,0 +1,109 @@
+---
+// Continuous client-logo strip. Source files vary wildly in aspect ratio
+// and, more importantly, in whether they even have a transparent
+// background -- about half are flat JPG/WebP exports with an opaque white
+// or brand-color canvas baked in. Rather than let some logos "float" on
+// the dark page background while others carry a visible rectangle, every
+// logo sits on the same fixed-size light chip regardless of its own
+// transparency, which is what actually makes 11 unrelated brand assets
+// read as one deliberate row instead of a pile of mismatched exports.
+import { Image } from 'astro:assets';
+import colosseum from '../assets/client-logos/colosseum.jpg';
+import maer from '../assets/client-logos/maer.jpg';
+import ford from '../assets/client-logos/ford.webp';
+import romindTg from '../assets/client-logos/romind-tg.jpg';
+import eurocooling from '../assets/client-logos/eurocooling.png';
+import utIasi from '../assets/client-logos/universitatea-tehnica-iasi.png';
+import peris from '../assets/client-logos/peris.png';
+import bigMan from '../assets/client-logos/big-man.png';
+import selectCosmetics from '../assets/client-logos/select-cosmetics.webp';
+import shoppingCitySibiu from '../assets/client-logos/shopping-city-sibiu.png';
+import oasis from '../assets/client-logos/oasis.png';
+
+const logos = [
+  { src: colosseum, alt: 'Colosseum' },
+  { src: maer, alt: 'MAER Marmură Granit' },
+  { src: ford, alt: 'Ford' },
+  { src: romindTg, alt: 'Romind T&G' },
+  { src: eurocooling, alt: 'Eurocooling Center' },
+  { src: utIasi, alt: 'Universitatea Tehnică „Gheorghe Asachi" Iași' },
+  { src: peris, alt: 'Periș' },
+  { src: bigMan, alt: 'Big Man' },
+  { src: selectCosmetics, alt: 'Select Cosmetics Wholesale' },
+  { src: shoppingCitySibiu, alt: 'Shopping City Sibiu' },
+  { src: oasis, alt: 'Oasis Relax / Recharge' },
+];
+
+// Duplicated so the CSS animation can translate exactly one set-width
+// (-50%) and loop with no visible seam -- the standard seamless-marquee
+// technique. The second copy is decorative-only (aria-hidden, no alt).
+const trackLogos = [...logos, ...logos];
+---
+
+<div class="logo-marquee-wrap overflow-hidden" data-logo-marquee>
+  <div class="logo-marquee-track flex items-center gap-10">
+    {
+      trackLogos.map((logo, i) => (
+        <div
+          class="logo-chip shrink-0 flex items-center justify-center h-[72px] w-[160px] bg-white rounded-md px-5"
+          aria-hidden={i >= logos.length ? 'true' : undefined}
+        >
+          <Image
+            src={logo.src}
+            alt={i >= logos.length ? '' : logo.alt}
+            height={140}
+            loading="lazy"
+            class="max-h-9 max-w-full w-auto h-auto object-contain"
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .logo-marquee-track {
+    width: max-content;
+    animation: logo-marquee-scroll 42s linear infinite;
+  }
+
+  @keyframes logo-marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Pause on hover, non-touch devices only: a touch device has no hover
+     state to leave, so pausing on tap would strand the scroll paused
+     until some other interaction -- it should just keep scrolling. */
+  @media (hover: hover) {
+    .logo-marquee-wrap:hover .logo-marquee-track {
+      animation-play-state: paused;
+    }
+  }
+
+  .logo-chip :global(img) {
+    filter: grayscale(1) opacity(0.65);
+    transition:
+      filter 300ms ease,
+      opacity 300ms ease;
+  }
+  .logo-chip:hover :global(img) {
+    filter: grayscale(0) opacity(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-marquee-track {
+      width: auto;
+      animation: none;
+      transform: none;
+      flex-wrap: wrap;
+    }
+    .logo-marquee-track > :nth-child(n + 12) {
+      display: none;
+    }
+  }
+</style>
