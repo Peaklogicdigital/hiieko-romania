@@ -1,0 +1,147 @@
+---
+// Full-bleed/section background video: autoplay/muted/loop, with a static
+// poster image as both the prefers-reduced-motion fallback and the
+// autoplay-blocked fallback (Chrome's power-save heuristic can reject
+// play() with an AbortError; when that happens there's no video frame to
+// show, so we swap to the poster instead of leaving a blank box). This is
+// the same retry/fallback shape the old hero video used: defer init until
+// DOMContentLoaded if the script runs before it, call play(), and on
+// rejection reveal the poster via a class toggle. reduced-motion itself is
+// handled in CSS alone so it holds even if this script never runs.
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: string;
+  poster: ImageMetadata;
+  alt: string;
+  // Applied to both the video and its poster fallback via a CSS custom
+  // property, so a color grade (e.g. Rooftop's warming filter) matches
+  // whichever one is actually visible.
+  filter?: string;
+  class?: string;
+}
+const { src, poster, alt, filter, class: className } = Astro.props;
+---
+
+<div
+  class:list={['video-bg', className]}
+  data-video-bg
+  style={filter ? `--video-bg-filter: ${filter}` : undefined}
+>
+  <video
+    class="video-bg-media"
+    autoplay
+    muted
+    loop
+    playsinline
+    webkit-playsinline="true"
+    preload="auto"
+    aria-hidden="true"
+    data-video-bg-el
+  >
+    <source src={src} type="video/mp4" />
+  </video>
+
+  <Picture
+    src={poster}
+    alt={alt}
+    formats={['avif', 'webp']}
+    fallbackFormat="jpeg"
+    widths={[640, 960, 1280, 1920]}
+    sizes="100vw"
+    loading="eager"
+    class="video-bg-fallback"
+  />
+
+  <slot />
+</div>
+
+<script>
+  function initVideoBackgrounds(): void {
+    const containers = document.querySelectorAll<HTMLElement>('[data-video-bg]');
+
+    containers.forEach((container) => {
+      const video = container.querySelector('[data-video-bg-el]');
+      if (!(video instanceof HTMLVideoElement)) return;
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return; // CSS alone already shows the static poster.
+      }
+
+      const showFallback = () => container.classList.add('show-fallback');
+
+      // Three distinct failure modes, none of which alone covers the
+      // others: play() rejecting (Chrome's power-save heuristic throws
+      // AbortError before any frame is requested), an outright network/
+      // decode `error` event, and the quieter case where play() resolves
+      // but no source was actually playable (e.g. an unsupported codec) --
+      // readyState just never leaves HAVE_NOTHING and neither of the other
+      // two ever fires. The timeout is that last safety net.
+      video.addEventListener('error', showFallback);
+
+      video.muted = true;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(showFallback);
+      }
+
+      window.setTimeout(() => {
+        if (video.readyState === HTMLMediaElement.HAVE_NOTHING) {
+          showFallback();
+        }
+      }, 3000);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initVideoBackgrounds);
+  } else {
+    initVideoBackgrounds();
+  }
+</script>
+
+<style>
+  .video-bg {
+    /* No position here on purpose: the caller's `class` prop sets it
+       (`relative` for an in-flow banner sized by aspect-ratio, `absolute
+       inset-0` for a full-bleed background filling a positioned ancestor).
+       Astro's scoping attribute makes a rule declared in this file's own
+       <style> more specific than a plain utility class, so a `position`
+       declared here would silently win over an `absolute` passed in via
+       `class` regardless of source order -- exactly the kind of
+       "invisible" component-vs-caller conflict that once collapsed the
+       hero's video to 0 height. */
+    overflow: hidden;
+  }
+
+  .video-bg-media,
+  .video-bg-fallback {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: var(--video-bg-filter, none);
+  }
+
+  .video-bg-fallback {
+    display: none;
+  }
+
+  .video-bg.show-fallback .video-bg-media {
+    display: none;
+  }
+  .video-bg.show-fallback .video-bg-fallback {
+    display: block;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .video-bg-media {
+      display: none;
+    }
+    .video-bg-fallback {
+      display: block;
+    }
+  }
+</style>

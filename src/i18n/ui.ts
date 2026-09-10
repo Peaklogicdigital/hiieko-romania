@@ -26,16 +26,7 @@ const en = {
     lede: 'Design, installation, and long-term maintenance of rooftop and ground-mount solar plus battery storage for Romanian industrial and commercial sites: one contractor, one guarantee, backed by international engineering since 1994.',
     ctaPrimary: 'Get a site assessment →',
     ctaSecondary: 'Estimate your system ↓',
-  },
-  heroVideo: {
-    diagramAlt:
-      'Animated diagram of a solar and battery storage system: sunlight hits the panels, the inverter converts the power, the battery stores it, and the facility is powered',
-    captions: {
-      panel: 'Solar panels capture sunlight and generate DC electricity.',
-      inverter: 'The inverter converts DC into usable AC power.',
-      battery: 'Excess energy is stored in the battery for later use.',
-      building: 'Power is delivered to your facility, cutting grid costs.',
-    },
+    videoAlt: 'Solar panels under a clear sky at golden hour',
   },
   trust: {
     founded: { value: '1994', label: 'Group Founded, Estonia' },
@@ -166,6 +157,8 @@ const en = {
     backLink: '← Back to all solutions',
     equipmentHeading: 'Equipment we use for this system',
     allPartnersLink: 'See all our technology partners →',
+    rooftopVideoAlt: 'Rooftop solar panel array installed on an industrial building',
+    groundMountVideoAlt: 'Aerial view of a ground-mount solar park',
   },
   projectsHome: {
     eyebrow: 'Projects',
@@ -231,6 +224,12 @@ const en = {
     eyebrow: 'Our team',
     h1: 'Over 40 specialists, one accountable team.',
     lede: 'Dedicated engineers and specialists, accountable from start to finish. Every person on our team is directly involved in the projects we deliver. After commissioning, you still have access to the people who know your system. No subcontractors, no call center.',
+  },
+  contactVideo: {
+    eyebrow: 'How we work',
+    heading: 'Real engineers, on real sites',
+    body: 'Every system is designed and installed by our own crews — not subcontracted, not outsourced.',
+    videoAlt: 'Hiieko engineers working on site',
   },
   contact: {
     eyebrow: 'Next step',
@@ -470,16 +469,7 @@ const ro: Dictionary = {
     lede: 'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru locații industriale și comerciale din România: un singur contractor, o singură garanție, susținută de inginerie internațională din 1994.',
     ctaPrimary: 'Solicită o evaluare →',
     ctaSecondary: 'Estimează sistemul ↓',
-  },
-  heroVideo: {
-    diagramAlt:
-      'Diagramă animată a unui sistem solar și de stocare cu baterii: lumina soarelui ajunge la panouri, invertorul transformă energia, bateria o stochează, iar facilitatea este alimentată',
-    captions: {
-      panel: 'Panourile solare captează lumina soarelui și generează curent continuu (DC).',
-      inverter: 'Invertorul transformă curentul continuu (DC) în curent alternativ (AC) utilizabil.',
-      battery: 'Energia excedentară este stocată în baterie pentru a fi folosită ulterior.',
-      building: 'Energia este livrată către facilitatea ta, reducând costurile cu rețeaua.',
-    },
+    videoAlt: 'Panouri solare sub cer senin, la ora aurie',
   },
   trust: {
     founded: { value: '1994', label: 'Grup fondat, Estonia' },
@@ -610,6 +600,8 @@ const ro: Dictionary = {
     backLink: '← Înapoi la toate soluțiile',
     equipmentHeading: 'Echipamente pe care le folosim pentru acest sistem',
     allPartnersLink: 'Vezi toți partenerii noștri tehnologici →',
+    rooftopVideoAlt: 'Panouri solare montate pe acoperișul unei clădiri industriale',
+    groundMountVideoAlt: 'Vedere aeriană a unui parc fotovoltaic la sol',
   },
   projectsHome: {
     eyebrow: 'Proiecte',
@@ -675,6 +667,12 @@ const ro: Dictionary = {
     eyebrow: 'Echipa noastră',
     h1: 'Peste 40 de specialiști, o singură echipă responsabilă.',
     lede: 'Ingineri și specialiști dedicați, responsabilitate de la început până la final. Fiecare persoană din echipa noastră este implicată direct în proiectele pe care le livrăm. După punerea în funcțiune, ai în continuare acces la oamenii care cunosc sistemul tău. Fără subcontractanți, fără call center.',
+  },
+  contactVideo: {
+    eyebrow: 'Cum lucrăm',
+    heading: 'Ingineri reali, pe șantiere reale',
+    body: 'Fiecare sistem este proiectat și instalat de echipele noastre proprii — fără subcontractori, fără externalizare.',
+    videoAlt: 'Ingineri Hiieko lucrând pe șantier',
   },
   contact: {
     eyebrow: 'Următorul pas',

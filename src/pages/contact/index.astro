@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import VideoBackground from '../../components/VideoBackground.astro';
+import engineersPoster from '../../assets/video-posters/engineers.jpg';
 import { getTranslations } from '../../i18n/ui';
 
 const lang = 'en' as const;
@@ -14,6 +16,28 @@ const t = getTranslations(lang);
   ogType="website"
   lang={lang}
 >
+  <section class="relative overflow-hidden">
+    <VideoBackground
+      src="/videos/engineers.mp4"
+      poster={engineersPoster}
+      alt={t.contactVideo.videoAlt}
+      class="absolute inset-0"
+    />
+    <div
+      class="absolute inset-0 bg-[linear-gradient(90deg,rgba(9,37,25,0.92)_0%,rgba(9,37,25,0.65)_40%,rgba(9,37,25,0.15)_75%,rgba(9,37,25,0)_100%),linear-gradient(180deg,rgba(9,37,25,0.25)_0%,rgba(9,37,25,0)_25%,rgba(9,37,25,0.35)_100%)]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="wrap relative z-10 py-[100px] min-h-[420px] md:min-h-[480px] flex flex-col justify-center">
+      <div class="max-w-[560px]">
+        <Eyebrow text={t.contactVideo.eyebrow} />
+        <h2 class="text-[clamp(26px,3vw,34px)] mt-2.5 mb-4">{t.contactVideo.heading}</h2>
+        <p class="text-muted text-[15.5px] max-w-[42ch]">{t.contactVideo.body}</p>
+      </div>
+    </div>
+  </section>
+
   <section class="py-[100px]">
     <div class="wrap reveal grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-14">
       <div>
