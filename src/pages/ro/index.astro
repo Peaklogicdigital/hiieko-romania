@@ -2,7 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
 import Button from '../../components/Button.astro';
-import HeroDiagram from '../../components/HeroDiagram.astro';
+import VideoBackground from '../../components/VideoBackground.astro';
+import heroPoster from '../../assets/video-posters/hero-panel-sky.jpg';
 import TrustStrip from '../../components/TrustStrip.astro';
 import DifferentiationSection from '../../components/DifferentiationSection.astro';
 import SolutionsGrid from '../../components/SolutionsGrid.astro';
@@ -23,8 +24,20 @@ const t = getTranslations(lang);
   ogType="website"
   lang={lang}
 >
-  <header class="pt-20 relative">
-    <div class="wrap relative z-10">
+  <header class="relative overflow-hidden">
+    <VideoBackground
+      src="/videos/hero-panel-sky.mp4"
+      poster={heroPoster}
+      alt={t.hero.videoAlt}
+      class="absolute inset-0"
+    />
+    <div
+      class="absolute inset-0 bg-[linear-gradient(90deg,rgba(9,37,25,0.92)_0%,rgba(9,37,25,0.65)_40%,rgba(9,37,25,0.15)_75%,rgba(9,37,25,0)_100%),linear-gradient(180deg,rgba(9,37,25,0.25)_0%,rgba(9,37,25,0)_25%,rgba(9,37,25,0.35)_100%)]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="wrap relative z-10 pt-20 pb-16 min-h-[560px] md:min-h-[680px] flex flex-col justify-center">
       <div class="max-w-[640px]">
         <Eyebrow text={t.hero.eyebrow} />
         <h1 class="text-[clamp(34px,4.4vw,54px)] leading-[1.05] my-[18px] mb-[22px]">
@@ -33,17 +46,15 @@ const t = getTranslations(lang);
         <p class="text-[17px] text-muted max-w-[48ch] mb-8">
           {t.hero.lede}
         </p>
-        <div class="flex gap-3.5 flex-wrap mb-14">
+        <div class="flex gap-3.5 flex-wrap">
           <Button variant="primary" href="/ro/contact/">{t.hero.ctaPrimary}</Button>
           <Button variant="ghost" href="/ro/#calculator">{t.hero.ctaSecondary}</Button>
         </div>
       </div>
-
-      <HeroDiagram lang={lang} />
     </div>
-
-    <TrustStrip lang={lang} />
   </header>
+
+  <TrustStrip lang={lang} />
 
   <DifferentiationSection lang={lang} />
 
