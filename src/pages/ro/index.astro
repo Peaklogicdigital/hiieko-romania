@@ -4,6 +4,7 @@ import Eyebrow from '../../components/Eyebrow.astro';
 import Button from '../../components/Button.astro';
 import VideoBackground from '../../components/VideoBackground.astro';
 import heroPoster from '../../assets/video-posters/hero-panel-sky.jpg';
+import LogoMarquee from '../../components/LogoMarquee.astro';
 import TrustStrip from '../../components/TrustStrip.astro';
 import DifferentiationSection from '../../components/DifferentiationSection.astro';
 import SolutionsGrid from '../../components/SolutionsGrid.astro';
@@ -53,6 +54,10 @@ const t = getTranslations(lang);
       </div>
     </div>
   </header>
+
+  <div class="wrap py-10">
+    <LogoMarquee />
+  </div>
 
   <TrustStrip lang={lang} />
 
