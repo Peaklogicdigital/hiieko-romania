@@ -159,6 +159,7 @@ const en = {
     allPartnersLink: 'See all our technology partners →',
     rooftopVideoAlt: 'Rooftop solar panel array installed on an industrial building',
     groundMountVideoAlt: 'Aerial view of a ground-mount solar park',
+    bessImageAlt: 'Battery storage containers installed beside a solar park',
   },
   projectsHome: {
     eyebrow: 'Projects',
@@ -602,6 +603,7 @@ const ro: Dictionary = {
     allPartnersLink: 'Vezi toți partenerii noștri tehnologici →',
     rooftopVideoAlt: 'Panouri solare montate pe acoperișul unei clădiri industriale',
     groundMountVideoAlt: 'Vedere aeriană a unui parc fotovoltaic la sol',
+    bessImageAlt: 'Containere de stocare cu baterii instalate lângă un parc fotovoltaic',
   },
   projectsHome: {
     eyebrow: 'Proiecte',
