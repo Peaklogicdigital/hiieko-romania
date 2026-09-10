@@ -1,12 +1,26 @@
 ---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import VideoBackground from './VideoBackground.astro';
+
 interface Props {
   tagNumber: string;
   title: string;
   summary: string;
   href?: string;
+  // Background media: either a looping video (with its own static poster
+  // for the reduced-motion/autoplay-failure fallback) or, when no video
+  // footage exists for a card (BESS), a static photo used on its own.
+  // Exactly one of mediaVideo/mediaImage is expected when media is used at
+  // all -- mediaImage doubles as the video's poster when both are set.
+  mediaVideo?: string;
+  mediaImage?: ImageMetadata;
+  mediaAlt?: string;
+  mediaFilter?: string;
 }
-const { tagNumber, title, summary, href } = Astro.props;
+const { tagNumber, title, summary, href, mediaVideo, mediaImage, mediaAlt, mediaFilter } = Astro.props;
 const Tag = href ? 'a' : 'div';
+const hasMedia = Boolean(mediaVideo || mediaImage);
 ---
 
 <!--
@@ -19,9 +33,49 @@ const Tag = href ? 'a' : 'div';
 -->
 <Tag
   href={href}
-  class="border-t-2 border-green-mid p-[38px_28px] min-h-[220px] flex flex-col justify-between no-underline transition-all duration-200 ease-out hover:-translate-y-1.5 hover:border-gold hover:shadow-[0_0_22px_var(--color-gold-glow)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+  class:list={[
+    'relative block border-t-2 border-green-mid p-[38px_28px] min-h-[220px] flex flex-col justify-between no-underline transition-all duration-200 ease-out hover:-translate-y-1.5 hover:border-gold hover:shadow-[0_0_22px_var(--color-gold-glow)] motion-reduce:transition-none motion-reduce:hover:translate-y-0',
+    hasMedia && 'overflow-hidden rounded-md',
+  ]}
 >
-  <div>
+  {
+    hasMedia && (
+      <>
+        {mediaVideo && mediaImage ? (
+          <VideoBackground
+            src={mediaVideo}
+            poster={mediaImage}
+            alt={mediaAlt ?? ''}
+            filter={mediaFilter}
+            sizes="(min-width: 768px) 33vw, 100vw"
+            widths={[400, 600, 800]}
+            loading="lazy"
+            class="absolute inset-0"
+          />
+        ) : (
+          mediaImage && (
+            <Picture
+              src={mediaImage}
+              alt={mediaAlt ?? ''}
+              formats={['avif', 'webp']}
+              fallbackFormat="jpeg"
+              widths={[400, 600, 800]}
+              sizes="(min-width: 768px) 33vw, 100vw"
+              loading="lazy"
+              class="absolute inset-0 w-full h-full object-cover"
+              style={mediaFilter ? `filter: ${mediaFilter}` : undefined}
+            />
+          )
+        )}
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-[rgba(9,37,25,0.88)] via-[rgba(9,37,25,0.5)] to-[rgba(9,37,25,0.15)]"
+          aria-hidden="true"
+        />
+      </>
+    )
+  }
+
+  <div class="relative z-10">
     <span class="font-mono text-[11px] text-gold tracking-[0.08em] uppercase">{tagNumber}</span>
     <h3 class="text-[19px] my-3.5 text-white">{title}</h3>
     <p class="text-sm text-muted m-0">{summary}</p>

@@ -20,8 +20,24 @@ interface Props {
   // whichever one is actually visible.
   filter?: string;
   class?: string;
+  // Defaults suit a full-bleed section; a small rendered instance (e.g. a
+  // grid card) should pass a narrower `sizes`/`widths` so its poster
+  // fallback doesn't request full-viewport-width images, and `loading`
+  // lazy since it's typically below the fold.
+  sizes?: string;
+  widths?: number[];
+  loading?: 'eager' | 'lazy';
 }
-const { src, poster, alt, filter, class: className } = Astro.props;
+const {
+  src,
+  poster,
+  alt,
+  filter,
+  class: className,
+  sizes = '100vw',
+  widths = [640, 960, 1280, 1920],
+  loading = 'eager',
+} = Astro.props;
 ---
 
 <div
@@ -48,9 +64,9 @@ const { src, poster, alt, filter, class: className } = Astro.props;
     alt={alt}
     formats={['avif', 'webp']}
     fallbackFormat="jpeg"
-    widths={[640, 960, 1280, 1920]}
-    sizes="100vw"
-    loading="eager"
+    widths={widths}
+    sizes={sizes}
+    loading={loading}
     class="video-bg-fallback"
   />
 

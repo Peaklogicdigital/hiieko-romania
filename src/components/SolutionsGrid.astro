@@ -2,28 +2,71 @@
 import { getCollection } from 'astro:content';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import SolutionCard from './SolutionCard.astro';
+import type { ImageMetadata } from 'astro';
 import type { Lang } from '../i18n/ui';
-import { defaultLang } from '../i18n/ui';
+import { defaultLang, getTranslations } from '../i18n/ui';
+import rooftopPoster from '../assets/video-posters/rooftop.jpg';
+import groundMountPoster from '../assets/video-posters/ground-mount-aerial.jpg';
+import bessPhoto from '../assets/solution-cards/bess-installation.png';
 
 interface Props {
   lang?: Lang;
 }
 const { lang = defaultLang } = Astro.props;
+const t = getTranslations(lang);
 
 const services = (
   await getCollection(lang === 'ro' ? 'servicesRo' : 'services')
 ).sort((a, b) => a.data.order - b.data.order);
+
+// Background media per solution, keyed by service.id (shared by both the
+// English and Romanian collections since they use matching filenames/
+// slugs). Same clips as each solution's own detail-page banner, just
+// re-compressed at a fraction of the resolution/bitrate for this much
+// smaller card-sized display; the warming grade on Rooftop is the same
+// filter value as its detail page, reused here for consistency. Ground-
+// mount needs no grade -- already golden-hour. BESS has no usable video
+// footage, so it's a static photo, warmed to match the other two rather
+// than shipped cool-toned next to them.
+const cardMedia: Record<
+  string,
+  { video?: string; image: ImageMetadata; alt: string; filter?: string }
+> = {
+  'rooftop-solar': {
+    video: '/videos/rooftop-card.mp4',
+    image: rooftopPoster,
+    alt: t.solutionDetail.rooftopVideoAlt,
+    filter: 'saturate(1.15) sepia(0.18) hue-rotate(-6deg) brightness(1.04)',
+  },
+  'ground-mount-solar-parks': {
+    video: '/videos/ground-mount-card.mp4',
+    image: groundMountPoster,
+    alt: t.solutionDetail.groundMountVideoAlt,
+  },
+  'battery-storage-bess': {
+    image: bessPhoto,
+    alt: t.solutionDetail.bessImageAlt,
+    filter: 'saturate(1.1) sepia(0.15) hue-rotate(-5deg) brightness(0.96)',
+  },
+};
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
   {
-    services.map((service) => (
-      <SolutionCard
-        tagNumber={service.data.tagNumber}
-        title={service.data.title}
-        summary={service.data.summary}
-        href={getRelativeLocaleUrl(lang, `/solutions/${service.id}/`)}
-      />
-    ))
+    services.map((service) => {
+      const media = cardMedia[service.id];
+      return (
+        <SolutionCard
+          tagNumber={service.data.tagNumber}
+          title={service.data.title}
+          summary={service.data.summary}
+          href={getRelativeLocaleUrl(lang, `/solutions/${service.id}/`)}
+          mediaVideo={media?.video}
+          mediaImage={media?.image}
+          mediaAlt={media?.alt}
+          mediaFilter={media?.filter}
+        />
+      );
+    })
   }
 </div>
