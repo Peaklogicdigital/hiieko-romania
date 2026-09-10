@@ -1,0 +1,72 @@
+---
+// Comic/weather-icon-style cloud callout: a real scalloped SVG silhouette
+// (one continuous bezier/arc path, not a rounded rectangle) with a
+// triangular tail merged into the same path so there's no seam where a
+// separately-drawn tail would overlap the body's stroke. The path is
+// stretched to fill whatever box the caption text ends up needing
+// (preserveAspectRatio="none"), so it works for both a two-word tag and a
+// full sentence without hand-fitting geometry per instance.
+interface Props {
+  text: string;
+  tailDirection?: 'up' | 'down';
+  style?: string;
+  dataStart?: number;
+  dataEnd?: number;
+  class?: string;
+}
+const { text, tailDirection = 'down', style, dataStart, dataEnd, class: className } = Astro.props;
+
+const cloudPathTailDown =
+  'M 30 95 A 25 25 0 1 1 55 55 A 20 20 0 1 1 90 40 A 28 28 0 1 1 145 42 A 24 24 0 1 1 190 65 A 22 22 0 1 1 195 95 L 118 96 L 92 132 L 98 95 L 30 95 Z';
+const cloudPathTailUp =
+  'M 195 45 L 118 44 L 92 8 L 98 45 A 25 25 0 1 0 55 85 A 20 20 0 1 0 90 100 A 28 28 0 1 0 145 98 A 24 24 0 1 0 190 75 A 22 22 0 1 0 195 45 Z';
+const path = tailDirection === 'up' ? cloudPathTailUp : cloudPathTailDown;
+---
+
+<div
+  class:list={['cloud-callout', tailDirection === 'up' ? 'cloud-callout-tail-up' : 'cloud-callout-tail-down', className]}
+  style={style}
+  data-start={dataStart}
+  data-end={dataEnd}
+  aria-hidden="true"
+>
+  <svg class="cloud-callout-bg" viewBox="0 0 220 140" preserveAspectRatio="none">
+    <path d={path} />
+  </svg>
+  <p class="cloud-callout-text">{text}</p>
+</div>
+
+<style>
+  .cloud-callout {
+    position: absolute;
+    min-width: 150px;
+    max-width: 260px;
+  }
+  .cloud-callout-tail-down {
+    padding: 22px 22px 38px;
+  }
+  .cloud-callout-tail-up {
+    padding: 38px 22px 22px;
+  }
+  .cloud-callout-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .cloud-callout-bg path {
+    fill: var(--color-chip);
+    stroke: var(--color-gold);
+    stroke-width: 1.5;
+    stroke-opacity: 0.45;
+  }
+  .cloud-callout-text {
+    position: relative;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: var(--color-white);
+    text-align: center;
+  }
+</style>

@@ -1,0 +1,27 @@
+---
+// One heading + bulleted equipment list, extracted from TechPartnersSection
+// so the exact same treatment can also render just the 1-2 groups relevant
+// to a specific /solutions/[slug]/ page, without duplicating the markup.
+interface Props {
+  heading: string;
+  items: { name: string; detail?: string }[];
+}
+const { heading, items } = Astro.props;
+---
+
+<div class="border-t-2 border-green-mid pt-[18px]">
+  <h3 class="font-mono text-[11px] text-muted uppercase tracking-[0.06em] mb-4">{heading}</h3>
+  <ul class="list-none p-0 m-0 flex flex-col gap-3.5">
+    {
+      items.map((item) => (
+        <li class="flex gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-[7px] shadow-[0_0_6px_var(--color-gold)]" />
+          <div>
+            <div class="text-white text-[14.5px]">{item.name}</div>
+            {item.detail && <div class="text-muted text-[12px] mt-0.5">{item.detail}</div>}
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</div>

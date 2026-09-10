@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
 import SolutionsGrid from '../../components/SolutionsGrid.astro';
-import PerformanceSection from '../../components/PerformanceSection.astro';
 import WhyHiiekoSection from '../../components/WhyHiiekoSection.astro';
 import { getTranslations } from '../../i18n/ui';
 
@@ -28,8 +27,6 @@ const t = getTranslations(lang);
       <SolutionsGrid lang={lang} />
     </div>
   </section>
-
-  <PerformanceSection lang={lang} />
 
   <WhyHiiekoSection lang={lang} />
 </BaseLayout>
