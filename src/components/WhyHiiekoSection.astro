@@ -8,38 +8,43 @@ interface Props {
 }
 const { lang = defaultLang } = Astro.props;
 const t = getTranslations(lang);
+const c = t.diff.comparison;
 ---
 
 <section class="py-[100px] reveal">
   <div class="wrap">
     <div class="max-w-[640px] mb-[52px]">
-      <Eyebrow text={t.diff.comparison.eyebrow} />
-      <h2 class="text-[clamp(26px,3vw,36px)] mt-2.5 mb-3.5">{t.diff.comparison.heading}</h2>
-      <p class="text-muted text-[15.5px]">{t.diff.comparison.lede}</p>
+      <Eyebrow text={c.eyebrow} />
+      <h2 class="text-[clamp(26px,3vw,36px)] mt-2.5 mb-3.5">{c.heading}</h2>
+      <p class="text-muted text-[15.5px]">{c.lede}</p>
     </div>
-    <div class="border border-white/10 rounded-md overflow-hidden">
-      <div class="grid grid-cols-2 bg-chip">
-        <div class="px-5 py-6 md:p-10 text-muted text-[11px] font-mono uppercase tracking-[0.06em] border-r border-white/10">
-          {t.diff.comparison.columnTypical}
-        </div>
-        <div class="px-5 py-6 md:p-10 text-gold text-[11px] font-mono uppercase tracking-[0.06em]">
-          {t.diff.comparison.columnHiieko}
-        </div>
+
+    <div class="mb-[52px]">
+      <Eyebrow text={c.howWeWorkLabel} small />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-[26px] gap-y-[30px] mt-[22px]">
+        {
+          c.howWeWork.map((item) => (
+            <div class="border-t-2 border-green-mid pt-[18px]">
+              <h3 class="text-[15px] text-white font-semibold mb-2">{item.title}</h3>
+              <p class="text-[13.5px] text-muted">{item.body}</p>
+            </div>
+          ))
+        }
       </div>
-      {
-        t.diff.comparison.rows.map((row) => (
-          <div class="grid grid-cols-2 border-t border-white/10">
-            <div class="px-5 py-6 md:p-10 text-muted text-[13.5px] border-r border-white/10 flex gap-2">
-              <span class="text-muted/60 shrink-0">✕</span>
-              <span>{row.typical}</span>
-            </div>
-            <div class="px-5 py-6 md:p-10 text-white text-[13.5px] flex gap-2">
-              <span class="text-gold shrink-0">✓</span>
-              <span>{row.hiieko}</span>
-            </div>
-          </div>
-        ))
-      }
+    </div>
+
+    <div>
+      <Eyebrow text={c.whatYouGetLabel} small />
+      <ul class="list-none p-0 m-0 mt-[22px] grid grid-cols-1 sm:grid-cols-2 gap-x-[32px] gap-y-3.5">
+        {
+          c.whatYouGet.map((line) => (
+            <li class="flex gap-2.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-[7px] shadow-[0_0_6px_var(--color-gold)]" />
+              <span class="text-white text-[14.5px]">{line}</span>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </div>
 </section>

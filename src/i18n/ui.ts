@@ -64,32 +64,39 @@ const en = {
     callout:
       'We go beyond equipment supply. From engineering and installation to commissioning and long-term maintenance, we manage the complete project lifecycle under one contract, with one team accountable for the result.',
     comparison: {
-      eyebrow: 'The comparison',
+      eyebrow: 'Why Hiieko',
       heading: 'Why Hiieko Romania',
-      lede: "Here's what that one-contract model actually looks like next to how most installers in Romania operate.",
-      columnTypical: 'Typical Installer',
-      columnHiieko: 'Hiieko Romania',
-      rows: [
+      lede: "One contract, our own crews, and a team that's still accountable years after commissioning — here's what working with Hiieko Romania actually looks like.",
+      howWeWorkLabel: 'How we work',
+      howWeWork: [
         {
-          typical: 'Sells equipment and leaves the site',
-          hiieko: 'Design, installation, and maintenance in one contract',
+          title: 'One contract, start to finish',
+          body: 'We design, install, and maintain every system ourselves, not sold and forgotten.',
         },
         {
-          typical: 'Work done via subcontracting',
-          hiieko: 'Own installation crews, no subcontracting',
+          title: 'Our own crews, always',
+          body: 'Every installation is carried out by our own teams, never subcontracted.',
         },
         {
-          typical: 'Limited or no execution warranty',
-          hiieko: 'Minimum 60-month execution warranty',
+          title: 'A guarantee that means something',
+          body: 'Minimum 60-month workmanship guarantee on every system we install.',
         },
         {
-          typical: 'No maintenance plan after handover',
-          hiieko: 'Active maintenance plan from day one',
+          title: 'Maintenance starts on day one',
+          body: 'An active maintenance plan begins the moment your system goes live, not after something breaks.',
         },
         {
-          typical: 'Responsibility fragmented across suppliers',
-          hiieko: 'Single point of responsibility: Hiieko',
+          title: 'One team, fully accountable',
+          body: 'From first site visit to years of operation, one company is responsible for the result.',
         },
+      ],
+      whatYouGetLabel: 'What you get',
+      whatYouGet: [
+        'Minimum 15-year manufacturer warranty on inverters and batteries.',
+        'Intelligent 24/7 monitoring system.',
+        'Competitive pricing, with an average payback period of 2.5 years or less.',
+        'Financing options with special rates through a partner bank.',
+        'Personalized report and quote in under 48 hours.',
       ],
     },
   },
@@ -509,32 +516,39 @@ const ro: Dictionary = {
     callout:
       'Mergem dincolo de simpla furnizare de echipamente. De la inginerie și instalare până la punere în funcțiune și mentenanță pe termen lung, gestionăm întregul ciclu de viață al proiectului printr-un singur contract, cu o singură echipă responsabilă de rezultat.',
     comparison: {
-      eyebrow: 'Comparația',
+      eyebrow: 'De ce Hiieko',
       heading: 'De ce Hiieko România',
-      lede: 'Iată cum arată, în practică, acest model cu un singur contract, comparat cu modul obișnuit de lucru al instalatorilor din România.',
-      columnTypical: 'Instalator obișnuit',
-      columnHiieko: 'Hiieko România',
-      rows: [
+      lede: 'Un singur contract, echipele noastre proprii și o echipă care rămâne responsabilă ani de zile după punerea în funcțiune — iată cum arată, în practică, colaborarea cu Hiieko România.',
+      howWeWorkLabel: 'Cum lucrăm',
+      howWeWork: [
         {
-          typical: 'Vinde echipamente și părăsește șantierul',
-          hiieko: 'Proiectare, instalare și mentenanță printr-un singur contract',
+          title: 'Un singur contract, de la un capăt la altul',
+          body: 'Proiectăm, instalăm și întreținem fiecare sistem noi înșine — nu vândut și uitat.',
         },
         {
-          typical: 'Lucrări realizate prin subcontractare',
-          hiieko: 'Echipe proprii de instalare, fără subcontractare',
+          title: 'Echipele noastre, mereu',
+          body: 'Fiecare instalare este realizată de echipele noastre proprii, fără subcontractare.',
         },
         {
-          typical: 'Garanție de execuție limitată sau inexistentă',
-          hiieko: 'Garanție de execuție de minimum 60 de luni',
+          title: 'O garanție care chiar contează',
+          body: 'Garanție de execuție de minimum 60 de luni la fiecare sistem instalat.',
         },
         {
-          typical: 'Fără plan de mentenanță după predare',
-          hiieko: 'Plan de mentenanță activ din prima zi',
+          title: 'Mentenanța începe din prima zi',
+          body: 'Planul de mentenanță activ începe chiar din momentul punerii în funcțiune, nu după ce apare o problemă.',
         },
         {
-          typical: 'Responsabilitate fragmentată între furnizori',
-          hiieko: 'Un singur punct de responsabilitate: Hiieko',
+          title: 'O singură echipă, pe deplin responsabilă',
+          body: 'De la prima vizită la locație până la ani de funcționare, o singură companie răspunde de rezultat.',
         },
+      ],
+      whatYouGetLabel: 'Ce primești',
+      whatYouGet: [
+        'Garanție de producător de minimum 15 ani pentru invertoare și baterii.',
+        'Sistem inteligent de monitorizare 24/7.',
+        'Prețuri competitive, cu o recuperare a investiției de maximum 2,5 ani în medie.',
+        'Opțiuni de finanțare cu rate speciale, printr-o bancă parteneră.',
+        'Raport și ofertă personalizată în mai puțin de 48 de ore.',
       ],
     },
   },
