@@ -76,6 +76,37 @@ const jsonLd = {
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
+    <script is:inline>
+      // First-visit language auto-detection, run as early and synchronously
+      // as possible (before any content paints) to keep the redirect flash
+      // as close to imperceptible as this static, adapter-less deployment
+      // allows -- there's no server/edge runtime in front of this site to
+      // do the equivalent detection before the response is even sent.
+      // Once a visitor has an explicit choice stored (set by the nav
+      // EN/RO toggle, see Nav.astro), this never runs again: a manual
+      // choice is never second-guessed by auto-detection, no matter what
+      // the browser's language setting says later.
+      (function () {
+        try {
+          if (localStorage.getItem('hiieko_lang')) return;
+          var path = window.location.pathname;
+          if (path === '/ro' || path.indexOf('/ro/') === 0) return;
+          var langs =
+            navigator.languages && navigator.languages.length
+              ? navigator.languages
+              : [navigator.language || ''];
+          var prefersRomanian = langs.some(function (l) {
+            return /^ro\b/i.test(l);
+          });
+          if (prefersRomanian) {
+            window.location.replace('/ro' + path + window.location.search + window.location.hash);
+          }
+        } catch (e) {
+          // localStorage unavailable (privacy mode, disabled storage) --
+          // fail open to English rather than block rendering.
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta property="og:title" content={ogTitle} />

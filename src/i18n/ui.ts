@@ -768,11 +768,11 @@ const ro: Dictionary = {
     sections: [
       {
         heading: 'Ce colectăm',
-        body: 'Prin formularul de contact, colectăm numele, denumirea companiei, adresa de email, numărul de telefon, tipul de proiect și detaliile despre site pe care ni le furnizezi. Nu folosim cookie-uri de urmărire în acest moment; dacă vor fi adăugate ulterior cookie-uri de analiză sau publicitate, această politică și un banner de consimțământ pentru cookie-uri vor fi actualizate corespunzător.',
+        body: 'Prin formularul de contact, colectăm numele, denumirea companiei, adresa de email, numărul de telefon, tipul de proiect și detaliile despre locație pe care ni le furnizezi. Nu folosim cookie-uri de urmărire în acest moment; dacă vor fi adăugate ulterior cookie-uri de analiză sau publicitate, această politică și un banner de consimțământ pentru cookie-uri vor fi actualizate corespunzător.',
       },
       {
         heading: 'De ce le colectăm',
-        body: 'Folosim aceste informații pentru a răspunde solicitării tale și pentru a oferi o ofertă sau o evaluare a site-ului. Temeiul nostru legal este interesul legitim de a răspunde solicitărilor de afaceri și/sau demersurile realizate la cererea ta înainte de încheierea unui contract (Art. 6(1)(b) și (f) GDPR).',
+        body: 'Folosim aceste informații pentru a răspunde solicitării tale și pentru a oferi o ofertă sau o evaluare a locației. Temeiul nostru legal este interesul legitim de a răspunde solicitărilor de afaceri și/sau demersurile realizate la cererea ta înainte de încheierea unui contract (Art. 6(1)(b) și (f) GDPR).',
       },
       {
         heading: 'Cui le transmitem',
