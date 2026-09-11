@@ -24,5 +24,6 @@ work.
 - Installation and commissioning
 - Ongoing maintenance and monitoring after handover
 
-See also [Rooftop Solar](/solutions/rooftop-solar/) and
-[Ground-Mount Solar Parks](/solutions/ground-mount-solar-parks/).
+See also [Rooftop Solar](/solutions/rooftop-solar/),
+[Ground-Mount Solar Parks](/solutions/ground-mount-solar-parks/), and
+[EV Charging Infrastructure](/solutions/ev-charging-infrastructure/).

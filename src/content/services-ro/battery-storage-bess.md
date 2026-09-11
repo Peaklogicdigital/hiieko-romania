@@ -21,4 +21,4 @@ Dimensionăm un sistem de baterii în funcție de profilul de sarcină al facili
 - Instalare și punere în funcțiune
 - Mentenanță și monitorizare continuă după predare
 
-Vezi și [Solar pe Acoperiș](/ro/solutions/rooftop-solar/) și [Parcuri Solare la Sol](/ro/solutions/ground-mount-solar-parks/).
+Vezi și [Solar pe Acoperiș](/ro/solutions/rooftop-solar/), [Parcuri Solare la Sol](/ro/solutions/ground-mount-solar-parks/) și [Infrastructură de Încărcare EV](/ro/solutions/ev-charging-infrastructure/).

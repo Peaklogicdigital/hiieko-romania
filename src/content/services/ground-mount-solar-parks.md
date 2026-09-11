@@ -23,5 +23,6 @@ scheduled maintenance plan.
 - Installation and commissioning to ANRE grid-connection requirements
 - Ongoing maintenance and monitoring after handover
 
-See also [Rooftop Solar](/solutions/rooftop-solar/) and
-[Battery Storage (BESS)](/solutions/battery-storage-bess/).
+See also [Rooftop Solar](/solutions/rooftop-solar/),
+[Battery Storage (BESS)](/solutions/battery-storage-bess/), and
+[EV Charging Infrastructure](/solutions/ev-charging-infrastructure/).
