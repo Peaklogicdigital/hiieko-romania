@@ -95,7 +95,7 @@ const en = {
   },
   solutionsHome: {
     eyebrow: 'What we build',
-    h2: 'Three systems. One team.',
+    h2: 'Four systems. One team.',
     lede: 'For industrial platforms, logistics halls, production facilities, and unused land.',
   },
   performance: {
@@ -149,7 +149,7 @@ const en = {
   },
   solutionsPage: {
     eyebrow: 'What we build',
-    h1: 'Three systems. One team.',
+    h1: 'Four systems. One team.',
     lede: 'For industrial platforms, logistics halls, production facilities, and unused land. Each system is designed, installed, and maintained under one contract.',
   },
   solutionDetail: {
@@ -160,6 +160,7 @@ const en = {
     rooftopVideoAlt: 'Rooftop solar panel array installed on an industrial building',
     groundMountVideoAlt: 'Aerial view of a ground-mount solar park',
     bessImageAlt: 'Battery storage containers installed beside a solar park',
+    evChargingVideoAlt: 'Plugging a charging connector into an electric vehicle',
   },
   projectsHome: {
     eyebrow: 'Projects',
@@ -539,7 +540,7 @@ const ro: Dictionary = {
   },
   solutionsHome: {
     eyebrow: 'Ce construim',
-    h2: 'Trei sisteme. O singură echipă.',
+    h2: 'Patru sisteme. O singură echipă.',
     lede: 'Pentru platforme industriale, hale logistice, unități de producție și terenuri neutilizate.',
   },
   performance: {
@@ -593,7 +594,7 @@ const ro: Dictionary = {
   },
   solutionsPage: {
     eyebrow: 'Ce construim',
-    h1: 'Trei sisteme. O singură echipă.',
+    h1: 'Patru sisteme. O singură echipă.',
     lede: 'Pentru platforme industriale, hale logistice, unități de producție și terenuri neutilizate. Fiecare sistem este proiectat, instalat și întreținut printr-un singur contract.',
   },
   solutionDetail: {
@@ -604,6 +605,7 @@ const ro: Dictionary = {
     rooftopVideoAlt: 'Panouri solare montate pe acoperișul unei clădiri industriale',
     groundMountVideoAlt: 'Vedere aeriană a unui parc fotovoltaic la sol',
     bessImageAlt: 'Containere de stocare cu baterii instalate lângă un parc fotovoltaic',
+    evChargingVideoAlt: 'Conectarea unui conector de încărcare la un vehicul electric',
   },
   projectsHome: {
     eyebrow: 'Proiecte',

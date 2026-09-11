@@ -8,6 +8,7 @@ import { defaultLang, getTranslations } from '../i18n/ui';
 import rooftopPoster from '../assets/video-posters/rooftop.jpg';
 import groundMountPoster from '../assets/video-posters/ground-mount-aerial.jpg';
 import bessPhoto from '../assets/solution-cards/bess-installation.png';
+import evChargingPoster from '../assets/video-posters/ev-charging.jpg';
 
 interface Props {
   lang?: Lang;
@@ -48,10 +49,15 @@ const cardMedia: Record<
     alt: t.solutionDetail.bessImageAlt,
     filter: 'saturate(1.1) sepia(0.15) hue-rotate(-5deg) brightness(0.96)',
   },
+  'ev-charging-infrastructure': {
+    video: '/videos/ev-charging-card.mp4',
+    image: evChargingPoster,
+    alt: t.solutionDetail.evChargingVideoAlt,
+  },
 };
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
   {
     services.map((service) => {
       const media = cardMedia[service.id];

@@ -25,6 +25,7 @@ facility already uses.
   requirements
 - Ongoing maintenance and monitoring after handover
 
-Rooftop solar is one of three systems we deliver end to end: see also
-[Ground-Mount Solar Parks](/solutions/ground-mount-solar-parks/) and
-[Battery Storage (BESS)](/solutions/battery-storage-bess/).
+Rooftop solar is one of four systems we deliver end to end: see also
+[Ground-Mount Solar Parks](/solutions/ground-mount-solar-parks/),
+[Battery Storage (BESS)](/solutions/battery-storage-bess/), and
+[EV Charging Infrastructure](/solutions/ev-charging-infrastructure/).

@@ -8,6 +8,7 @@ import PerformanceSection from '../../../components/PerformanceSection.astro';
 import VideoBackground from '../../../components/VideoBackground.astro';
 import rooftopPoster from '../../../assets/video-posters/rooftop.jpg';
 import groundMountPoster from '../../../assets/video-posters/ground-mount-aerial.jpg';
+import evChargingPoster from '../../../assets/video-posters/ev-charging.jpg';
 import { getTranslations } from '../../../i18n/ui';
 
 export async function getStaticPaths() {
@@ -75,6 +76,16 @@ const showPerformance = service.id === 'rooftop-solar' || service.id === 'ground
             src="/videos/ground-mount-aerial.mp4"
             poster={groundMountPoster}
             alt={t.solutionDetail.groundMountVideoAlt}
+            class="relative aspect-video md:aspect-[21/9] rounded-md mb-10"
+          />
+        )
+      }
+      {
+        service.id === 'ev-charging-infrastructure' && (
+          <VideoBackground
+            src="/videos/ev-charging.mp4"
+            poster={evChargingPoster}
+            alt={t.solutionDetail.evChargingVideoAlt}
             class="relative aspect-video md:aspect-[21/9] rounded-md mb-10"
           />
         )

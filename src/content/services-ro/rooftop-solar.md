@@ -21,4 +21,4 @@ Sisteme fotovoltaice pe acoperiș pentru platforme industriale, hale logistice �
 - Instalare și punere în funcțiune de către echipele noastre proprii, conform cerințelor de racordare ANRE
 - Mentenanță și monitorizare continuă după predare
 
-Solarul pe acoperiș este unul dintre cele trei sisteme pe care le livrăm integral: vezi și [Parcuri Solare la Sol](/ro/solutions/ground-mount-solar-parks/) și [Stocare cu Baterii (BESS)](/ro/solutions/battery-storage-bess/).
+Solarul pe acoperiș este unul dintre cele patru sisteme pe care le livrăm integral: vezi și [Parcuri Solare la Sol](/ro/solutions/ground-mount-solar-parks/), [Stocare cu Baterii (BESS)](/ro/solutions/battery-storage-bess/) și [Infrastructură de Încărcare EV](/ro/solutions/ev-charging-infrastructure/).

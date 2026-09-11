@@ -21,4 +21,4 @@ Evaluăm terenul, capacitatea rețelei și traseul de autorizare, apoi proiectă
 - Instalare și punere în funcțiune conform cerințelor de racordare ANRE
 - Mentenanță și monitorizare continuă după predare
 
-Vezi și [Solar pe Acoperiș](/ro/solutions/rooftop-solar/) și [Stocare cu Baterii (BESS)](/ro/solutions/battery-storage-bess/).
+Vezi și [Solar pe Acoperiș](/ro/solutions/rooftop-solar/), [Stocare cu Baterii (BESS)](/ro/solutions/battery-storage-bess/) și [Infrastructură de Încărcare EV](/ro/solutions/ev-charging-infrastructure/).
