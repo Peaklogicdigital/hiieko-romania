@@ -60,11 +60,19 @@ function localizedLink(href: string): string {
     </div>
     <div class="flex items-center gap-[22px]">
       <div class="hidden lg:flex font-mono text-xs gap-1.5">
-        <a href={enHref} class:list={['no-underline', lang === 'en' ? 'text-gold font-bold' : 'text-muted hover:text-white']}>
+        <a
+          href={enHref}
+          data-lang="en"
+          class:list={['no-underline', lang === 'en' ? 'text-gold font-bold' : 'text-muted hover:text-white']}
+        >
           EN
         </a>
         <span class="text-muted">/</span>
-        <a href={roHref} class:list={['no-underline', lang === 'ro' ? 'text-gold font-bold' : 'text-muted hover:text-white']}>
+        <a
+          href={roHref}
+          data-lang="ro"
+          class:list={['no-underline', lang === 'ro' ? 'text-gold font-bold' : 'text-muted hover:text-white']}
+        >
           RO
         </a>
       </div>
@@ -134,11 +142,19 @@ function localizedLink(href: string): string {
       }
       <div class="flex items-center justify-between pt-4">
         <div class="font-mono text-xs flex gap-1.5">
-          <a href={enHref} class:list={['no-underline', lang === 'en' ? 'text-gold font-bold' : 'text-muted']}>
+          <a
+            href={enHref}
+            data-lang="en"
+            class:list={['no-underline', lang === 'en' ? 'text-gold font-bold' : 'text-muted']}
+          >
             EN
           </a>
           <span class="text-muted">/</span>
-          <a href={roHref} class:list={['no-underline', lang === 'ro' ? 'text-gold font-bold' : 'text-muted']}>
+          <a
+            href={roHref}
+            data-lang="ro"
+            class:list={['no-underline', lang === 'ro' ? 'text-gold font-bold' : 'text-muted']}
+          >
             RO
           </a>
         </div>
@@ -174,5 +190,19 @@ function localizedLink(href: string): string {
   const desktopQuery = window.matchMedia('(min-width: 1024px)');
   desktopQuery.addEventListener('change', (e) => {
     if (e.matches) setOpen(false);
+  });
+
+  // A manual EN/RO choice here is permanent: it's what the BaseLayout
+  // language-detection script checks first, and once set it never runs
+  // auto-detection again for this visitor, regardless of browser language.
+  document.querySelectorAll<HTMLElement>('[data-lang]').forEach((el) => {
+    el.addEventListener('click', () => {
+      try {
+        localStorage.setItem('hiieko_lang', el.dataset.lang!);
+      } catch (e) {
+        // localStorage unavailable -- the click still navigates normally,
+        // it just won't be remembered for next visit.
+      }
+    });
   });
 </script>
