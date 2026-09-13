@@ -5,6 +5,6 @@ location: "Cazănești, Ialomița County, Romania"
 specLabel: "Capacity"
 specValue: "22 MW"
 image: "./cazanesti-project.jpg"
-order: 4
+order: 6
 isPlaceholder: false
 ---

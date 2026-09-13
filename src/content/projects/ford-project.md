@@ -7,6 +7,6 @@ specLabel: "Capacity"
 specValue: "400 kWp"
 image: "./ford-project.jpg"
 imageAlt: "Rooftop solar installation at Showroom Ford Roadhil, Popești-Leordeni"
-order: 2
+order: 1
 isPlaceholder: false
 ---
