@@ -19,6 +19,7 @@ const en = {
     contact: 'Contact',
     cta: 'Get a site assessment',
     toggleMenu: 'Toggle menu',
+    skipToContent: 'Skip to content',
   },
   hero: {
     eyebrow: 'Hiieko Romania · Industrial Solar & Storage',
@@ -262,6 +263,8 @@ const en = {
     statusSending: 'Sending…',
     statusSuccess: 'Request sent. We’ll get back to you shortly.',
     statusError: 'Something went wrong. Please email us directly.',
+    errorRequired: 'This field is required.',
+    errorEmail: 'Enter a valid email address.',
   },
   calculator: {
     h2: 'See what your electricity bill could fund.',
@@ -302,6 +305,10 @@ const en = {
   common: {
     placeholderBadge: 'PLACEHOLDER',
     inProgressBadge: 'In Progress',
+    pauseVideo: 'Pause video',
+    playVideo: 'Play video',
+    pauseMarquee: 'Pause logo scroll',
+    playMarquee: 'Play logo scroll',
   },
   notFound: {
     badge: '404 · Signal lost',
@@ -462,6 +469,7 @@ const ro: Dictionary = {
     contact: 'Contact',
     cta: 'Solicită o evaluare',
     toggleMenu: 'Comută meniul',
+    skipToContent: 'Sari la conținut',
   },
   hero: {
     eyebrow: 'Hiieko România · Solar Industrial & Stocare',
@@ -705,6 +713,8 @@ const ro: Dictionary = {
     statusSending: 'Se trimite…',
     statusSuccess: 'Solicitare trimisă. Te contactăm în curând.',
     statusError: 'Ceva nu a funcționat. Te rugăm să ne scrii direct pe email.',
+    errorRequired: 'Acest câmp este obligatoriu.',
+    errorEmail: 'Introdu o adresă de email validă.',
   },
   calculator: {
     h2: 'Vezi ce ți-ar putea finanța factura la curent.',
@@ -745,6 +755,10 @@ const ro: Dictionary = {
   common: {
     placeholderBadge: 'EXEMPLU',
     inProgressBadge: 'În desfășurare',
+    pauseVideo: 'Pune videoclipul pe pauză',
+    playVideo: 'Redă videoclipul',
+    pauseMarquee: 'Oprește derularea siglelor',
+    playMarquee: 'Reia derularea siglelor',
   },
   notFound: {
     badge: '404 · Semnal pierdut',

@@ -67,6 +67,9 @@ const showPerformance = service.id === 'rooftop-solar' || service.id === 'ground
             alt={t.solutionDetail.rooftopVideoAlt}
             filter="saturate(1.15) sepia(0.18) hue-rotate(-6deg) brightness(1.04)"
             class="relative aspect-video md:aspect-[21/9] rounded-md mb-10"
+            pausable
+            pauseLabel={t.common.pauseVideo}
+            playLabel={t.common.playVideo}
           />
         )
       }
@@ -77,6 +80,9 @@ const showPerformance = service.id === 'rooftop-solar' || service.id === 'ground
             poster={groundMountPoster}
             alt={t.solutionDetail.groundMountVideoAlt}
             class="relative aspect-video md:aspect-[21/9] rounded-md mb-10"
+            pausable
+            pauseLabel={t.common.pauseVideo}
+            playLabel={t.common.playVideo}
           />
         )
       }
@@ -87,6 +93,9 @@ const showPerformance = service.id === 'rooftop-solar' || service.id === 'ground
             poster={evChargingPoster}
             alt={t.solutionDetail.evChargingVideoAlt}
             class="relative aspect-video md:aspect-[21/9] rounded-md mb-10"
+            pausable
+            pauseLabel={t.common.pauseVideo}
+            playLabel={t.common.playVideo}
           />
         )
       }

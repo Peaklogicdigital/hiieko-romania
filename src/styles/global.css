@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  color-scheme: dark;
+}
+
 @import "@fontsource/archivo/600.css";
 @import "@fontsource/archivo/700.css";
 @import "@fontsource/archivo/800.css";
@@ -112,6 +116,14 @@
   .btn:focus-visible {
     outline: 2px solid var(--color-gold);
     outline-offset: 3px;
+  }
+  .form-field:focus {
+    outline: none;
+  }
+  .form-field:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+    border-color: var(--color-gold);
   }
   .btn-primary {
     @apply bg-gold px-6 py-3.5 border-none;

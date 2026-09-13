@@ -149,42 +149,76 @@ const titleTranslations: Record<string, string> =
         });
       }
 
+      function setActive(buttons: NodeListOf<HTMLButtonElement>, dataAttr: string, value: string): void {
+        buttons.forEach((b) => {
+          const match = b.dataset[dataAttr] === value;
+          b.classList.toggle('active', match);
+          b.classList.toggle('border-gold!', match);
+          b.classList.toggle('text-gold!', match);
+        });
+      }
+
+      // Filter/subfilter selections live in the URL (?category=&sub=) so a
+      // reload or a shared link restores the same view instead of always
+      // resetting to "All" -- replaceState (not pushState) so every click
+      // doesn't pile onto browser back-button history.
+      function updateUrl(): void {
+        const params = new URLSearchParams(window.location.search);
+        if (activeCategory === 'all') params.delete('category');
+        else params.set('category', activeCategory);
+        if (activeSubcategory === 'all') params.delete('sub');
+        else params.set('sub', activeSubcategory);
+        const query = params.toString();
+        const newUrl = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+        window.history.replaceState(null, '', newUrl);
+      }
+
+      function applyState(category: string, subcategory: string, updateHistory: boolean): void {
+        activeCategory = category;
+        activeSubcategory = subcategory;
+
+        setActive(filterBtns, 'f', category);
+
+        subRows.forEach((row) => {
+          const show = row.dataset.subrow === category;
+          row.classList.toggle('hidden', !show);
+          row.classList.toggle('flex', show);
+          if (show) {
+            setActive(row.querySelectorAll<HTMLButtonElement>('.subfilter-btn'), 'sf', subcategory);
+          }
+        });
+
+        applyFilter();
+        if (updateHistory) updateUrl();
+      }
+
+      // Restore from the URL on load, falling back to "All" for a missing
+      // or unrecognized category/sub value rather than erroring.
+      const initialParams = new URLSearchParams(window.location.search);
+      const validCategories = Array.from(filterBtns, (b) => b.dataset.f);
+      const requestedCategory = initialParams.get('category');
+      const initialCategory =
+        requestedCategory && validCategories.includes(requestedCategory) ? requestedCategory : 'all';
+
+      let initialSubcategory = 'all';
+      const initialRow = document.querySelector<HTMLElement>(`[data-subrow="${initialCategory}"]`);
+      if (initialRow) {
+        const validSubs = Array.from(initialRow.querySelectorAll<HTMLButtonElement>('.subfilter-btn'), (b) => b.dataset.sf);
+        const requestedSub = initialParams.get('sub');
+        if (requestedSub && validSubs.includes(requestedSub)) initialSubcategory = requestedSub;
+      }
+      applyState(initialCategory, initialSubcategory, false);
+
       filterBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
-          filterBtns.forEach((b) => {
-            b.classList.remove('active', 'border-gold!', 'text-gold!');
-          });
-          btn.classList.add('active', 'border-gold!', 'text-gold!');
-          activeCategory = btn.dataset.f || 'all';
-          activeSubcategory = 'all';
-
-          subRows.forEach((row) => {
-            const show = row.dataset.subrow === activeCategory;
-            row.classList.toggle('hidden', !show);
-            row.classList.toggle('flex', show);
-            if (show) {
-              const rowBtns = row.querySelectorAll<HTMLButtonElement>('.subfilter-btn');
-              rowBtns.forEach((b) => b.classList.remove('active', 'border-gold!', 'text-gold!'));
-              row.querySelector<HTMLButtonElement>('.subfilter-btn[data-sf="all"]')?.classList.add(
-                'active',
-                'border-gold!',
-                'text-gold!',
-              );
-            }
-          });
-
-          applyFilter();
+          applyState(btn.dataset.f || 'all', 'all', true);
         });
       });
 
       subRows.forEach((row) => {
-        const rowBtns = row.querySelectorAll<HTMLButtonElement>('.subfilter-btn');
-        rowBtns.forEach((btn) => {
+        row.querySelectorAll<HTMLButtonElement>('.subfilter-btn').forEach((btn) => {
           btn.addEventListener('click', () => {
-            rowBtns.forEach((b) => b.classList.remove('active', 'border-gold!', 'text-gold!'));
-            btn.classList.add('active', 'border-gold!', 'text-gold!');
-            activeSubcategory = btn.dataset.sf || 'all';
-            applyFilter();
+            applyState(activeCategory, btn.dataset.sf || 'all', true);
           });
         });
       });
