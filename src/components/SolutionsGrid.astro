@@ -63,7 +63,6 @@ const cardMedia: Record<
       const media = cardMedia[service.id];
       return (
         <SolutionCard
-          tagNumber={service.data.tagNumber}
           title={service.data.title}
           summary={service.data.summary}
           href={getRelativeLocaleUrl(lang, `/solutions/${service.id}/`)}
