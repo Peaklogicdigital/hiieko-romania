@@ -30,8 +30,7 @@ const en = {
     videoAlt: 'Solar panels under a clear sky at golden hour',
   },
   trust: {
-    founded: { value: '1994', label: 'Group Founded, Estonia' },
-    capacity: { label: 'MWp Installed' },
+    capacity: { label: 'installed throughout Romania' },
     happyClients: { label: 'Happy Clients in Romania' },
     specialists: { label: 'Specialists in Romania' },
     iso: { value: 'ISO', label: '9001 · 14001 · 27001 · 45001 Certified' },
@@ -480,8 +479,7 @@ const ro: Dictionary = {
     videoAlt: 'Panouri solare sub cer senin, la ora aurie',
   },
   trust: {
-    founded: { value: '1994', label: 'Grup fondat, Estonia' },
-    capacity: { label: 'MWp instalați' },
+    capacity: { label: 'instalați în toată România' },
     happyClients: { label: 'Clienți mulțumiți în România' },
     specialists: { label: 'Specialiști în România' },
     iso: { value: 'ISO', label: '9001 · 14001 · 27001 · 45001 Certificat' },
