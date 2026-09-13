@@ -101,18 +101,6 @@
     padding: 0 28px;
   }
 
-  .reveal {
-    opacity: 0;
-    transform: translateY(18px);
-    transition:
-      opacity 0.6s ease,
-      transform 0.6s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
-  }
-
   .btn {
     @apply font-mono text-[13px] tracking-[0.03em] uppercase font-semibold cursor-pointer rounded-[3px];
     transition:
@@ -175,13 +163,5 @@
   .prose-content a {
     color: var(--color-gold);
     text-decoration: underline;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
   }
 }
