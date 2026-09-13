@@ -27,6 +27,14 @@ interface Props {
   sizes?: string;
   widths?: number[];
   loading?: 'eager' | 'lazy';
+  // Opt-in user-facing pause/play control (Web Interface Guidelines:
+  // autoplay motion over 5s needs a pause/stop control). Left off by
+  // default so small card-sized instances (e.g. SolutionCard's grid
+  // thumbnails) stay exactly as they were -- only full-bleed section/page
+  // banners pass this.
+  pausable?: boolean;
+  pauseLabel?: string;
+  playLabel?: string;
 }
 const {
   src,
@@ -37,6 +45,9 @@ const {
   sizes = '100vw',
   widths = [640, 960, 1280, 1920],
   loading = 'eager',
+  pausable = false,
+  pauseLabel = 'Pause video',
+  playLabel = 'Play video',
 } = Astro.props;
 ---
 
@@ -70,6 +81,27 @@ const {
     class="video-bg-fallback"
   />
 
+  {
+    pausable && (
+      <button
+        type="button"
+        class="video-bg-toggle"
+        data-video-bg-toggle
+        data-pause-label={pauseLabel}
+        data-play-label={playLabel}
+        aria-label={pauseLabel}
+      >
+        <svg data-icon-pause xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+          <rect x="6" y="5" width="4" height="14" rx="1" />
+          <rect x="14" y="5" width="4" height="14" rx="1" />
+        </svg>
+        <svg data-icon-play xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="hidden" aria-hidden="true">
+          <path d="M7 5.5v13l12-6.5-12-6.5Z" />
+        </svg>
+      </button>
+    )
+  }
+
   <slot />
 </div>
 
@@ -80,6 +112,33 @@ const {
     containers.forEach((container) => {
       const video = container.querySelector('[data-video-bg-el]');
       if (!(video instanceof HTMLVideoElement)) return;
+
+      const toggle = container.querySelector<HTMLButtonElement>('[data-video-bg-toggle]');
+      if (toggle) {
+        const iconPause = toggle.querySelector<SVGElement>('[data-icon-pause]');
+        const iconPlay = toggle.querySelector<SVGElement>('[data-icon-play]');
+        const pauseLabel = toggle.dataset.pauseLabel || 'Pause video';
+        const playLabel = toggle.dataset.playLabel || 'Play video';
+
+        const syncToggleUi = () => {
+          const paused = video.paused;
+          iconPause?.classList.toggle('hidden', paused);
+          iconPlay?.classList.toggle('hidden', !paused);
+          toggle.setAttribute('aria-label', paused ? playLabel : pauseLabel);
+        };
+
+        toggle.addEventListener('click', () => {
+          if (video.paused) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+
+        video.addEventListener('play', syncToggleUi);
+        video.addEventListener('pause', syncToggleUi);
+        syncToggleUi();
+      }
 
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         return; // CSS alone already shows the static poster.
@@ -152,12 +211,49 @@ const {
     display: block;
   }
 
+  .video-bg-toggle {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid rgb(250 251 247 / 0.2);
+    background: rgb(30 35 31 / 0.55);
+    backdrop-filter: blur(6px);
+    color: var(--color-white);
+    cursor: pointer;
+    transition:
+      border-color 0.15s ease,
+      color 0.15s ease,
+      background 0.15s ease;
+  }
+  .video-bg-toggle:hover,
+  .video-bg-toggle:focus-visible {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+  }
+  .video-bg-toggle:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+  .video-bg.show-fallback .video-bg-toggle {
+    display: none;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .video-bg-media {
       display: none;
     }
     .video-bg-fallback {
       display: block;
+    }
+    .video-bg-toggle {
+      display: none;
     }
   }
 </style>

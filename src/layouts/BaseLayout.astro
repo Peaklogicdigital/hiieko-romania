@@ -8,7 +8,7 @@ import CookieConsent from '../components/CookieConsent.astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import Analytics from '@vercel/analytics/astro';
 import type { Lang } from '../i18n/ui';
-import { defaultLang } from '../i18n/ui';
+import { defaultLang, getTranslations } from '../i18n/ui';
 
 interface Props {
   title: string;
@@ -26,6 +26,7 @@ const {
   ogType = 'website',
   lang = defaultLang,
 } = Astro.props;
+const t = getTranslations(lang);
 
 // The /ro/ tree is an exact mirror of the default (unprefixed) EN tree, so
 // the canonical path for hreflang purposes is just the current path with
@@ -108,6 +109,7 @@ const jsonLd = {
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#092519" />
     <meta name="description" content={description} />
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
@@ -126,9 +128,15 @@ const jsonLd = {
     <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
   </head>
   <body class="m-0 relative">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-gold focus:text-charcoal focus:px-4 focus:py-2 focus:rounded-[3px] focus:font-mono focus:text-sm focus:font-semibold"
+    >
+      {t.nav.skipToContent}
+    </a>
     <TextureOverlay />
     <Nav lang={lang} />
-    <main class="relative z-10">
+    <main id="main-content" class="relative z-10">
       <slot />
     </main>
     <div class="relative z-10">
@@ -137,10 +145,6 @@ const jsonLd = {
 
     <CookieConsent lang={lang} />
 
-    <script>
-      import { initReveal } from '../scripts/reveal';
-      initReveal();
-    </script>
     <SpeedInsights />
     <Analytics />
   </body>

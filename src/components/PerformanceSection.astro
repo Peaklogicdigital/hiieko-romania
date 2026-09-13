@@ -1,5 +1,4 @@
 ---
-import Eyebrow from './Eyebrow.astro';
 import StatBlock from './StatBlock.astro';
 import type { Lang } from '../i18n/ui';
 import { defaultLang, getTranslations } from '../i18n/ui';
@@ -42,12 +41,11 @@ const yAxisTicks = [85, 90, 95, 100];
 const xAxisTicks = [0, 5, 10, 15, 20, 25, 30];
 ---
 
-<section class="py-[100px] reveal">
+<section class="py-[100px]">
   <div class="wrap">
     <div class="max-w-[640px] mb-[52px]">
-      <Eyebrow text={t.performance.eyebrow} />
-      <h2 class="text-[clamp(26px,3vw,36px)] mt-2.5 mb-3.5">{t.performance.h2}</h2>
-      <p class="text-muted text-[15.5px]">{t.performance.lede}</p>
+      <h2 class="text-[clamp(26px,3vw,36px)] mb-3.5">{t.performance.h2}</h2>
+      <p class="text-muted text-[15.5px] max-w-[60ch]">{t.performance.lede}</p>
     </div>
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-[22px] mb-[52px]">

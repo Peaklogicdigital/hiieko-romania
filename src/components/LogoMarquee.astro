@@ -19,6 +19,14 @@ import bigMan from '../assets/client-logos/big-man.png';
 import selectCosmetics from '../assets/client-logos/select-cosmetics.webp';
 import shoppingCitySibiu from '../assets/client-logos/shopping-city-sibiu.png';
 import oasis from '../assets/client-logos/oasis.png';
+import type { Lang } from '../i18n/ui';
+import { defaultLang, getTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = defaultLang } = Astro.props;
+const t = getTranslations(lang);
 
 const logos = [
   { src: colosseum, alt: 'Colosseum' },
@@ -40,28 +48,71 @@ const logos = [
 const trackLogos = [...logos, ...logos];
 ---
 
-<div class="logo-marquee-wrap overflow-hidden" data-logo-marquee>
-  <div class="logo-marquee-track flex items-center gap-10">
-    {
-      trackLogos.map((logo, i) => (
-        <div
-          class="logo-chip shrink-0 flex items-center justify-center h-[72px] w-[160px] bg-white rounded-md px-5"
-          aria-hidden={i >= logos.length ? 'true' : undefined}
-        >
-          <Image
-            src={logo.src}
-            alt={i >= logos.length ? '' : logo.alt}
-            height={140}
-            loading="lazy"
-            class="max-h-9 max-w-full w-auto h-auto object-contain"
-          />
-        </div>
-      ))
-    }
+<div class="logo-marquee-row flex items-center gap-3">
+  <div class="logo-marquee-wrap overflow-hidden" data-logo-marquee>
+    <div class="logo-marquee-track flex items-center gap-10">
+      {
+        trackLogos.map((logo, i) => (
+          <div
+            class="logo-chip shrink-0 flex items-center justify-center h-[72px] w-[160px] bg-white rounded-md px-5"
+            aria-hidden={i >= logos.length ? 'true' : undefined}
+          >
+            <Image
+              src={logo.src}
+              alt={i >= logos.length ? '' : logo.alt}
+              height={140}
+              loading="lazy"
+              class="max-h-9 max-w-full w-auto h-auto object-contain"
+            />
+          </div>
+        ))
+      }
+    </div>
   </div>
+  <button
+    type="button"
+    class="logo-marquee-toggle"
+    data-logo-marquee-toggle
+    data-pause-label={t.common.pauseMarquee}
+    data-play-label={t.common.playMarquee}
+    aria-label={t.common.pauseMarquee}
+  >
+    <svg data-icon-pause xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+      <rect x="6" y="5" width="4" height="14" rx="1" />
+      <rect x="14" y="5" width="4" height="14" rx="1" />
+    </svg>
+    <svg data-icon-play xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" class="hidden" aria-hidden="true">
+      <path d="M7 5.5v13l12-6.5-12-6.5Z" />
+    </svg>
+  </button>
 </div>
 
+<script>
+  document.querySelectorAll<HTMLElement>('[data-logo-marquee]').forEach((wrap) => {
+    const row = wrap.closest('.logo-marquee-row');
+    const toggle = row?.querySelector<HTMLButtonElement>('[data-logo-marquee-toggle]');
+    if (!toggle) return;
+
+    const iconPause = toggle.querySelector<SVGElement>('[data-icon-pause]');
+    const iconPlay = toggle.querySelector<SVGElement>('[data-icon-play]');
+    const pauseLabel = toggle.dataset.pauseLabel || 'Pause';
+    const playLabel = toggle.dataset.playLabel || 'Play';
+
+    toggle.addEventListener('click', () => {
+      const nowPaused = wrap.classList.toggle('manually-paused');
+      iconPause?.classList.toggle('hidden', nowPaused);
+      iconPlay?.classList.toggle('hidden', !nowPaused);
+      toggle.setAttribute('aria-label', nowPaused ? playLabel : pauseLabel);
+    });
+  });
+</script>
+
 <style>
+  .logo-marquee-wrap {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
   .logo-marquee-track {
     width: max-content;
     animation: logo-marquee-scroll 42s linear infinite;
@@ -78,11 +129,16 @@ const trackLogos = [...logos, ...logos];
 
   /* Pause on hover, non-touch devices only: a touch device has no hover
      state to leave, so pausing on tap would strand the scroll paused
-     until some other interaction -- it should just keep scrolling. */
+     until some other interaction -- it should just keep scrolling. Touch
+     (and keyboard) users get the explicit toggle button instead. */
   @media (hover: hover) {
     .logo-marquee-wrap:hover .logo-marquee-track {
       animation-play-state: paused;
     }
+  }
+
+  .logo-marquee-wrap.manually-paused .logo-marquee-track {
+    animation-play-state: paused !important;
   }
 
   .logo-chip :global(img) {
@@ -95,6 +151,32 @@ const trackLogos = [...logos, ...logos];
     filter: grayscale(0) opacity(1);
   }
 
+  .logo-marquee-toggle {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid rgb(250 251 247 / 0.15);
+    background: transparent;
+    color: var(--color-muted);
+    cursor: pointer;
+    transition:
+      border-color 0.15s ease,
+      color 0.15s ease;
+  }
+  .logo-marquee-toggle:hover,
+  .logo-marquee-toggle:focus-visible {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+  }
+  .logo-marquee-toggle:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .logo-marquee-track {
       width: auto;
@@ -103,6 +185,9 @@ const trackLogos = [...logos, ...logos];
       flex-wrap: wrap;
     }
     .logo-marquee-track > :nth-child(n + 12) {
+      display: none;
+    }
+    .logo-marquee-toggle {
       display: none;
     }
   }

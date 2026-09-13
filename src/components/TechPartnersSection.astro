@@ -1,5 +1,4 @@
 ---
-import Eyebrow from './Eyebrow.astro';
 import TechPartnerGroup from './TechPartnerGroup.astro';
 import type { Lang } from '../i18n/ui';
 import { defaultLang, getTranslations } from '../i18n/ui';
@@ -11,12 +10,11 @@ const { lang = defaultLang } = Astro.props;
 const t = getTranslations(lang);
 ---
 
-<section class="py-[100px] reveal" id="tech-partners">
+<section class="py-[100px]" id="tech-partners">
   <div class="wrap">
     <div class="max-w-[640px] mb-[52px]">
-      <Eyebrow text={t.techPartners.eyebrow} />
-      <h2 class="text-[clamp(26px,3vw,36px)] mt-2.5 mb-3.5">{t.techPartners.h2}</h2>
-      <p class="text-muted text-[15.5px]">{t.techPartners.lede}</p>
+      <h2 class="text-[clamp(26px,3vw,36px)] mb-3.5">{t.techPartners.h2}</h2>
+      <p class="text-muted text-[15.5px] max-w-[60ch]">{t.techPartners.lede}</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[26px]">

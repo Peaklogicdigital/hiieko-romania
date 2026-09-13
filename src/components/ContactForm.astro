@@ -13,35 +13,41 @@ const webhookUrl = import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL ?? '';
 <form
   id="contact-form"
   class="grid gap-3.5"
+  novalidate
   data-webhook-url={webhookUrl}
   data-status-not-configured={t.contactForm.statusNotConfigured}
   data-status-sending={t.contactForm.statusSending}
   data-status-success={t.contactForm.statusSuccess}
   data-status-error={t.contactForm.statusError}
+  data-error-required={t.contactForm.errorRequired}
+  data-error-email={t.contactForm.errorEmail}
 >
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
     <div>
       <label for="nume" class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-1.5">{t.contactForm.nameLabel}</label>
-      <input id="nume" name="name" type="text" required class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] focus:outline-2 focus:outline-gold focus:border-gold" />
+      <input id="nume" name="name" type="text" required autocomplete="name" aria-describedby="nume-error" class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] form-field" />
+      <p id="nume-error" class="text-[12px] text-gold-bright mt-1.5 min-h-[1em]" aria-live="polite"></p>
     </div>
     <div>
       <label for="companie" class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-1.5">{t.contactForm.companyLabel}</label>
-      <input id="companie" name="company" type="text" required class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] focus:outline-2 focus:outline-gold focus:border-gold" />
+      <input id="companie" name="company" type="text" required autocomplete="organization" aria-describedby="companie-error" class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] form-field" />
+      <p id="companie-error" class="text-[12px] text-gold-bright mt-1.5 min-h-[1em]" aria-live="polite"></p>
     </div>
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
     <div>
       <label for="email" class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-1.5">{t.contactForm.emailLabel}</label>
-      <input id="email" name="email" type="email" required class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] focus:outline-2 focus:outline-gold focus:border-gold" />
+      <input id="email" name="email" type="email" required autocomplete="email" inputmode="email" aria-describedby="email-error" class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] form-field" />
+      <p id="email-error" class="text-[12px] text-gold-bright mt-1.5 min-h-[1em]" aria-live="polite"></p>
     </div>
     <div>
       <label for="tel" class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-1.5">{t.contactForm.phoneLabel}</label>
-      <input id="tel" name="phone" type="tel" class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] focus:outline-2 focus:outline-gold focus:border-gold" />
+      <input id="tel" name="phone" type="tel" autocomplete="tel" inputmode="tel" class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] form-field" />
     </div>
   </div>
   <div>
     <label for="tip" class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-1.5">{t.contactForm.projectTypeLabel}</label>
-    <select id="tip" name="projectType" class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] focus:outline-2 focus:outline-gold focus:border-gold">
+    <select id="tip" name="projectType" class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] form-field">
       <option>{t.contactForm.projectTypeOptions.rooftop}</option>
       <option>{t.contactForm.projectTypeOptions.groundMount}</option>
       <option>{t.contactForm.projectTypeOptions.bess}</option>
@@ -50,7 +56,7 @@ const webhookUrl = import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL ?? '';
   </div>
   <div>
     <label for="mesaj" class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-1.5">{t.contactForm.messageLabel}</label>
-    <textarea id="mesaj" name="message" class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] min-h-[90px] resize-y focus:outline-2 focus:outline-gold focus:border-gold"></textarea>
+    <textarea id="mesaj" name="message" class="w-full bg-chip border border-white/10 text-white px-[13px] py-3 text-sm rounded-[3px] min-h-[90px] resize-y form-field"></textarea>
   </div>
   <button type="submit" class="btn btn-primary justify-self-start">{t.contactForm.submitBtn}</button>
   <p id="contact-status" class="font-mono text-[12.5px] text-muted min-h-[1em]" role="status" aria-live="polite"></p>
@@ -66,9 +72,58 @@ const webhookUrl = import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL ?? '';
   const statusSending = form.dataset.statusSending || '';
   const statusSuccess = form.dataset.statusSuccess || '';
   const statusError = form.dataset.statusError || '';
+  const errorRequired = form.dataset.errorRequired || '';
+  const errorEmail = form.dataset.errorEmail || '';
+
+  interface FieldRule {
+    input: HTMLInputElement;
+    error: HTMLParagraphElement;
+  }
+
+  const requiredFields: FieldRule[] = ['nume', 'companie', 'email']
+    .map((id) => ({
+      input: document.getElementById(id) as HTMLInputElement,
+      error: document.getElementById(`${id}-error`) as HTMLParagraphElement,
+    }))
+    .filter((f) => f.input && f.error);
+
+  function fieldMessage(input: HTMLInputElement): string {
+    if (input.validity.valueMissing) return errorRequired;
+    if (input.validity.typeMismatch && input.type === 'email') return errorEmail;
+    return '';
+  }
+
+  function validateField(field: FieldRule): boolean {
+    const message = fieldMessage(field.input);
+    field.error.textContent = message;
+    field.input.setAttribute('aria-invalid', message ? 'true' : 'false');
+    return !message;
+  }
+
+  function clearField(field: FieldRule): void {
+    field.error.textContent = '';
+    field.input.removeAttribute('aria-invalid');
+  }
+
+  requiredFields.forEach((field) => {
+    field.input.addEventListener('input', () => {
+      if (field.error.textContent) validateField(field);
+    });
+  });
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
+
+    let firstInvalid: HTMLInputElement | null = null;
+    requiredFields.forEach((field) => {
+      const valid = validateField(field);
+      if (!valid && !firstInvalid) firstInvalid = field.input;
+    });
+
+    if (firstInvalid) {
+      (firstInvalid as HTMLInputElement).focus();
+      return;
+    }
 
     if (!webhookUrl) {
       status.textContent = statusNotConfigured;
@@ -97,6 +152,7 @@ const webhookUrl = import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL ?? '';
       status.classList.remove('text-muted');
       status.classList.add('text-gold');
       form.reset();
+      requiredFields.forEach(clearField);
       trackEvent('generate_lead', { value: 1, currency: 'EUR' });
     } catch {
       status.textContent = statusError;

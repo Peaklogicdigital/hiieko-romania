@@ -19,13 +19,14 @@ const en = {
     contact: 'Contact',
     cta: 'Get a site assessment',
     toggleMenu: 'Toggle menu',
+    skipToContent: 'Skip to content',
   },
   hero: {
     eyebrow: 'Hiieko Romania · Industrial Solar & Storage',
     h1: 'More than solar panels. Integrated systems, engineered for performance.',
     lede: 'Design, installation, and long-term maintenance of rooftop and ground-mount solar plus battery storage for Romanian industrial and commercial sites: one contractor, one guarantee, backed by international engineering since 1994.',
     ctaPrimary: 'Get a site assessment →',
-    ctaSecondary: 'Estimate your system ↓',
+    ctaSecondary: 'Estimate your system',
     videoAlt: 'Solar panels under a clear sky at golden hour',
   },
   trust: {
@@ -36,7 +37,6 @@ const en = {
     iso: { value: 'ISO', label: '9001 · 14001 · 27001 · 45001 Certified' },
   },
   diff: {
-    eyebrow: 'How we work',
     h2: "We're the contractor who stays after commissioning.",
     lede: 'Most solar installers in Romania sell equipment and move on. Hiieko Romania designs, builds, and maintains every system under one contract, with a workmanship guarantee and a maintenance plan that starts the day the system goes live.',
     steps: [
@@ -64,7 +64,6 @@ const en = {
     callout:
       'We go beyond equipment supply. From engineering and installation to commissioning and long-term maintenance, we manage the complete project lifecycle under one contract, with one team accountable for the result.',
     comparison: {
-      eyebrow: 'Why Hiieko',
       heading: 'Why Hiieko Romania',
       lede: "One contract, our own crews, and a team that's still accountable years after commissioning — here's what working with Hiieko Romania actually looks like.",
       howWeWorkLabel: 'How we work',
@@ -101,12 +100,10 @@ const en = {
     },
   },
   solutionsHome: {
-    eyebrow: 'What we build',
     h2: 'Four systems. One team.',
     lede: 'For industrial platforms, logistics halls, production facilities, and unused land.',
   },
   performance: {
-    eyebrow: 'Performance & yield',
     h2: 'Built to still be earning its keep in year 30.',
     lede: 'Real coefficients from the equipment we install and maintain, not marketing averages.',
     stats: [
@@ -119,7 +116,6 @@ const en = {
     chartYAxisLabel: 'Output vs. Year 0',
   },
   techPartners: {
-    eyebrow: 'Technology partners',
     h2: 'Equipment we trust enough to warranty.',
     lede: 'Every system is built from tier-one components, selected for the specific project, not a single default package.',
     groups: [
@@ -163,17 +159,16 @@ const en = {
     eyebrowPrefix: 'Solution',
     backLink: '← Back to all solutions',
     equipmentHeading: 'Equipment we use for this system',
-    allPartnersLink: 'See all our technology partners →',
+    allPartnersLink: 'See all our technology partners',
     rooftopVideoAlt: 'Rooftop solar panel array installed on an industrial building',
     groundMountVideoAlt: 'Aerial view of a ground-mount solar park',
     bessImageAlt: 'Battery storage containers installed beside a solar park',
     evChargingVideoAlt: 'Plugging a charging connector into an electric vehicle',
   },
   projectsHome: {
-    eyebrow: 'Projects',
     h2: "What we've built.",
     ledePrefix: 'A sample of completed work.',
-    seeAllLink: 'See all projects →',
+    seeAllLink: 'See all projects',
   },
   projectsPage: {
     eyebrow: 'Projects',
@@ -203,8 +198,8 @@ const en = {
       "We're not a panel installer that appeared last year. We're part of a group with three decades of execution on complex sites and a Romanian team that stays accountable after handover.",
     para3Page:
       'Hiieko Romania designs, builds, and maintains every system under one contract, with a workmanship guarantee and a maintenance plan that starts the day the system goes live. Meet the',
-    readMoreLink: 'Read more about Hiieko →',
-    readMoreTeamLink: 'team behind the work →',
+    readMoreLink: 'Read more about Hiieko',
+    readMoreTeamLink: 'team behind the work',
     iso1: 'ISO 9001:2015',
     iso2: 'ISO 14001:2015',
     iso3: 'ISO 27001',
@@ -235,7 +230,6 @@ const en = {
     lede: 'Dedicated engineers and specialists, accountable from start to finish. Every person on our team is directly involved in the projects we deliver. After commissioning, you still have access to the people who know your system. No subcontractors, no call center.',
   },
   contactVideo: {
-    eyebrow: 'How we work',
     heading: 'Real engineers, on real sites',
     body: 'Every system is designed and installed by our own crews — not subcontracted, not outsourced.',
     videoAlt: 'Hiieko engineers working on site',
@@ -269,9 +263,10 @@ const en = {
     statusSending: 'Sending…',
     statusSuccess: 'Request sent. We’ll get back to you shortly.',
     statusError: 'Something went wrong. Please email us directly.',
+    errorRequired: 'This field is required.',
+    errorEmail: 'Enter a valid email address.',
   },
   calculator: {
-    eyebrow: 'Estimate your system',
     h2: 'See what your electricity bill could fund.',
     lede: 'Enter your monthly usage: this estimates system size, payback, and ROI. Not a quote; a real number needs a site assessment.',
     consumptionLabel: 'Current monthly consumption (kWh)',
@@ -310,6 +305,10 @@ const en = {
   common: {
     placeholderBadge: 'PLACEHOLDER',
     inProgressBadge: 'In Progress',
+    pauseVideo: 'Pause video',
+    playVideo: 'Play video',
+    pauseMarquee: 'Pause logo scroll',
+    playMarquee: 'Play logo scroll',
   },
   notFound: {
     badge: '404 · Signal lost',
@@ -407,10 +406,9 @@ const en = {
     ariaLabel: 'Cookie consent',
   },
   industries: {
-    eyebrow: 'Who we serve',
     headline: 'Energy prices keep climbing. These businesses stopped caring.',
     lede: "Over 200 MWp installed across Romania's highest-consumption industries: proof the energy crisis doesn't have to be permanent for yours.",
-    ctaLabel: 'See projects →',
+    ctaLabel: 'See projects',
     items: [
       { name: 'Agriculture' },
       { name: 'Manufacturing' },
@@ -471,13 +469,14 @@ const ro: Dictionary = {
     contact: 'Contact',
     cta: 'Solicită o evaluare',
     toggleMenu: 'Comută meniul',
+    skipToContent: 'Sari la conținut',
   },
   hero: {
     eyebrow: 'Hiieko România · Solar Industrial & Stocare',
     h1: 'Mai mult decât panouri fotovoltaice. Sisteme integrate, proiectate pentru performanță.',
     lede: 'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru locații industriale și comerciale din România: un singur contractor, o singură garanție, susținută de inginerie internațională din 1994.',
     ctaPrimary: 'Solicită o evaluare →',
-    ctaSecondary: 'Estimează sistemul ↓',
+    ctaSecondary: 'Estimează sistemul',
     videoAlt: 'Panouri solare sub cer senin, la ora aurie',
   },
   trust: {
@@ -488,7 +487,6 @@ const ro: Dictionary = {
     iso: { value: 'ISO', label: '9001 · 14001 · 27001 · 45001 Certificat' },
   },
   diff: {
-    eyebrow: 'Cum lucrăm',
     h2: 'Suntem contractorul care rămâne după punerea în funcțiune.',
     lede: 'Majoritatea instalatorilor de solar din România vând echipamente și pleacă mai departe. Hiieko România proiectează, construiește și întreține fiecare sistem printr-un singur contract, cu garanție de execuție și un plan de mentenanță care începe din ziua punerii în funcțiune.',
     steps: [
@@ -516,7 +514,6 @@ const ro: Dictionary = {
     callout:
       'Mergem dincolo de simpla furnizare de echipamente. De la inginerie și instalare până la punere în funcțiune și mentenanță pe termen lung, gestionăm întregul ciclu de viață al proiectului printr-un singur contract, cu o singură echipă responsabilă de rezultat.',
     comparison: {
-      eyebrow: 'De ce Hiieko',
       heading: 'De ce Hiieko România',
       lede: 'Un singur contract, echipele noastre proprii și o echipă care rămâne responsabilă ani de zile după punerea în funcțiune — iată cum arată, în practică, colaborarea cu Hiieko România.',
       howWeWorkLabel: 'Cum lucrăm',
@@ -553,12 +550,10 @@ const ro: Dictionary = {
     },
   },
   solutionsHome: {
-    eyebrow: 'Ce construim',
     h2: 'Patru sisteme. O singură echipă.',
     lede: 'Pentru platforme industriale, hale logistice, unități de producție și terenuri neutilizate.',
   },
   performance: {
-    eyebrow: 'Performanță și randament',
     h2: 'Construit ca să merite investiția și în anul 30.',
     lede: 'Coeficienți reali ai echipamentelor pe care le instalăm și le întreținem, nu medii de marketing.',
     stats: [
@@ -571,7 +566,6 @@ const ro: Dictionary = {
     chartYAxisLabel: 'Producție față de anul 0',
   },
   techPartners: {
-    eyebrow: 'Parteneri tehnologici',
     h2: 'Echipamente în care avem suficientă încredere încât să le garantăm.',
     lede: 'Fiecare sistem este construit din componente de top, alese pentru proiectul specific, nu dintr-un pachet unic implicit.',
     groups: [
@@ -615,17 +609,16 @@ const ro: Dictionary = {
     eyebrowPrefix: 'Soluția',
     backLink: '← Înapoi la toate soluțiile',
     equipmentHeading: 'Echipamente pe care le folosim pentru acest sistem',
-    allPartnersLink: 'Vezi toți partenerii noștri tehnologici →',
+    allPartnersLink: 'Vezi toți partenerii noștri tehnologici',
     rooftopVideoAlt: 'Panouri solare montate pe acoperișul unei clădiri industriale',
     groundMountVideoAlt: 'Vedere aeriană a unui parc fotovoltaic la sol',
     bessImageAlt: 'Containere de stocare cu baterii instalate lângă un parc fotovoltaic',
     evChargingVideoAlt: 'Conectarea unui conector de încărcare la un vehicul electric',
   },
   projectsHome: {
-    eyebrow: 'Proiecte',
     h2: 'Ce am construit.',
     ledePrefix: 'O selecție de proiecte finalizate.',
-    seeAllLink: 'Vezi toate proiectele →',
+    seeAllLink: 'Vezi toate proiectele',
   },
   projectsPage: {
     eyebrow: 'Proiecte',
@@ -655,8 +648,8 @@ const ro: Dictionary = {
       'Nu suntem un instalator de panouri apărut anul trecut. Facem parte dintr-un grup cu trei decenii de execuție pe șantiere complexe și o echipă din România care rămâne responsabilă după predare.',
     para3Page:
       'Hiieko România proiectează, construiește și întreține fiecare sistem printr-un singur contract, cu garanție de execuție și un plan de mentenanță care începe din ziua punerii în funcțiune. Cunoaște',
-    readMoreLink: 'Află mai multe despre Hiieko →',
-    readMoreTeamLink: 'echipa din spatele lucrărilor →',
+    readMoreLink: 'Află mai multe despre Hiieko',
+    readMoreTeamLink: 'echipa din spatele lucrărilor',
     iso1: 'ISO 9001:2015',
     iso2: 'ISO 14001:2015',
     iso3: 'ISO 27001',
@@ -687,7 +680,6 @@ const ro: Dictionary = {
     lede: 'Ingineri și specialiști dedicați, responsabilitate de la început până la final. Fiecare persoană din echipa noastră este implicată direct în proiectele pe care le livrăm. După punerea în funcțiune, ai în continuare acces la oamenii care cunosc sistemul tău. Fără subcontractanți, fără call center.',
   },
   contactVideo: {
-    eyebrow: 'Cum lucrăm',
     heading: 'Ingineri reali, pe șantiere reale',
     body: 'Fiecare sistem este proiectat și instalat de echipele noastre proprii — fără subcontractori, fără externalizare.',
     videoAlt: 'Ingineri Hiieko lucrând pe șantier',
@@ -721,9 +713,10 @@ const ro: Dictionary = {
     statusSending: 'Se trimite…',
     statusSuccess: 'Solicitare trimisă. Te contactăm în curând.',
     statusError: 'Ceva nu a funcționat. Te rugăm să ne scrii direct pe email.',
+    errorRequired: 'Acest câmp este obligatoriu.',
+    errorEmail: 'Introdu o adresă de email validă.',
   },
   calculator: {
-    eyebrow: 'Estimează-ți sistemul',
     h2: 'Vezi ce ți-ar putea finanța factura la curent.',
     lede: 'Introdu consumul tău lunar: acesta estimează dimensiunea sistemului, perioada de amortizare și ROI. Nu este o ofertă fermă; o cifră reală necesită o evaluare la fața locului.',
     consumptionLabel: 'Consum lunar actual (kWh)',
@@ -762,6 +755,10 @@ const ro: Dictionary = {
   common: {
     placeholderBadge: 'EXEMPLU',
     inProgressBadge: 'În desfășurare',
+    pauseVideo: 'Pune videoclipul pe pauză',
+    playVideo: 'Redă videoclipul',
+    pauseMarquee: 'Oprește derularea siglelor',
+    playMarquee: 'Reia derularea siglelor',
   },
   notFound: {
     badge: '404 · Semnal pierdut',
@@ -854,10 +851,9 @@ const ro: Dictionary = {
     ariaLabel: 'Consimțământ cookie-uri',
   },
   industries: {
-    eyebrow: 'Pentru cine lucrăm',
     headline: 'Prețurile la energie continuă să crească. Aceste companii au încetat să le mai pese.',
     lede: 'Peste 200 MWp instalați în cele mai mari industrii consumatoare de energie din România: dovada că criza energetică nu trebuie să fie permanentă și pentru afacerea ta.',
-    ctaLabel: 'Vezi proiectele →',
+    ctaLabel: 'Vezi proiectele',
     items: [
       { name: 'Agricultură' },
       { name: 'Producție' },

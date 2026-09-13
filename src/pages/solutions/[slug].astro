@@ -52,11 +52,11 @@ const showPerformance = service.id === 'rooftop-solar' || service.id === 'ground
   lang={lang}
 >
   <section class="py-[100px]">
-    <div class="wrap reveal">
+    <div class="wrap">
       <div class="max-w-[760px]">
         <Eyebrow text={`${t.solutionDetail.eyebrowPrefix} ${service.data.tagNumber}`} />
         <h1 class="text-[clamp(30px,3.6vw,44px)] mt-2.5 mb-3.5">{service.data.title}</h1>
-        <p class="text-muted text-[15.5px] mb-10">{service.data.summary}</p>
+        <p class="text-muted text-[15.5px] mb-10 max-w-[60ch]">{service.data.summary}</p>
       </div>
 
       {
@@ -67,6 +67,9 @@ const showPerformance = service.id === 'rooftop-solar' || service.id === 'ground
             alt={t.solutionDetail.rooftopVideoAlt}
             filter="saturate(1.15) sepia(0.18) hue-rotate(-6deg) brightness(1.04)"
             class="relative aspect-video md:aspect-[21/9] rounded-md mb-10"
+            pausable
+            pauseLabel={t.common.pauseVideo}
+            playLabel={t.common.playVideo}
           />
         )
       }
@@ -77,6 +80,9 @@ const showPerformance = service.id === 'rooftop-solar' || service.id === 'ground
             poster={groundMountPoster}
             alt={t.solutionDetail.groundMountVideoAlt}
             class="relative aspect-video md:aspect-[21/9] rounded-md mb-10"
+            pausable
+            pauseLabel={t.common.pauseVideo}
+            playLabel={t.common.playVideo}
           />
         )
       }
@@ -87,6 +93,9 @@ const showPerformance = service.id === 'rooftop-solar' || service.id === 'ground
             poster={evChargingPoster}
             alt={t.solutionDetail.evChargingVideoAlt}
             class="relative aspect-video md:aspect-[21/9] rounded-md mb-10"
+            pausable
+            pauseLabel={t.common.pauseVideo}
+            playLabel={t.common.playVideo}
           />
         )
       }
