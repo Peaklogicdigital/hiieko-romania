@@ -6,6 +6,6 @@ location: "Brănești, Ilfov, Romania"
 specLabel: "Capacity"
 specValue: "150 kWp"
 image: "./romind-project.jpg"
-order: 1
+order: 5
 isPlaceholder: false
 ---
