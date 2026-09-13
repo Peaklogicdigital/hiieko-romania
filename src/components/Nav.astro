@@ -123,13 +123,6 @@ function localizedLink(href: string): string {
     class="hidden lg:hidden border-t border-white/10 bg-charcoal"
   >
     <div class="wrap flex flex-col py-4">
-      <a
-        href={lang === 'ro' ? '/ro/' : '/'}
-        class="font-display font-extrabold text-[19px] flex items-center gap-2 no-underline py-3 border-b border-white/10 text-white"
-      >
-        <img src="/logo-icon.png" alt="" width="34" height="34" class="w-[34px] h-[34px]" />
-        HIIEKO<span class="text-gold">·</span>RO
-      </a>
       {
         links.map((link) => (
           <a
