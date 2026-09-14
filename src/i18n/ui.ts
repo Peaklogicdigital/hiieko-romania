@@ -301,6 +301,7 @@ const en = {
     cookiePreferencesLine: 'Cookie preferences',
     copyright: '© {year} Hiieko Romania SRL',
     tagline: 'Part of Hiieko International group, founded 1994',
+    credit: 'Created by PeakLogic Digital. All rights reserved to Hiieko Romania.',
   },
   common: {
     placeholderBadge: 'PLACEHOLDER',
@@ -751,6 +752,7 @@ const ro: Dictionary = {
     cookiePreferencesLine: 'Preferințe cookie-uri',
     copyright: '© {year} Hiieko Romania SRL',
     tagline: 'Parte a grupului Hiieko International, fondat în 1994',
+    credit: 'Creat de PeakLogic Digital. Toate drepturile rezervate Hiieko România.',
   },
   common: {
     placeholderBadge: 'EXEMPLU',

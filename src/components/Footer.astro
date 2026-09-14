@@ -51,7 +51,10 @@ const privacyHref = getRelativeLocaleUrl(lang, '/privacy/');
     </div>
   </div>
   <div class="wrap flex justify-between text-[12.5px] flex-wrap gap-2.5">
-    <span>{fillTemplate(t.footer.copyright, { year })}</span>
+    <div>
+      <div>{fillTemplate(t.footer.copyright, { year })}</div>
+      <div class="text-[11px] text-muted/60 mt-1">{t.footer.credit}</div>
+    </div>
     <span>{t.footer.tagline}</span>
   </div>
 </footer>
