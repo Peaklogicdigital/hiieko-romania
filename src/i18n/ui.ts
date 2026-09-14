@@ -57,7 +57,7 @@ const en = {
       {
         n: '04 / MAINTAIN',
         title: 'Ongoing maintenance',
-        body: 'Scheduled service and monitoring for the same 60-month period after handover. The system stays our responsibility.',
+        body: 'A minimum 15-year manufacturer warranty on your system, honored and serviced directly by us.',
       },
     ],
     callout:
@@ -507,7 +507,7 @@ const ro: Dictionary = {
       {
         n: '04 / ÎNTREȚINERE',
         title: 'Mentenanță continuă',
-        body: 'Service programat și monitorizare pentru aceeași perioadă de 60 de luni după predare. Sistemul rămâne responsabilitatea noastră.',
+        body: 'O garanție de producător de minimum 15 ani pentru sistemul tău, onorată și asigurată direct de noi.',
       },
     ],
     callout:
