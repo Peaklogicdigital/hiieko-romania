@@ -4,6 +4,6 @@ role: "Process and Project Manager"
 phone: "+40 774 673 266"
 email: "razvan.apostol@hiieko.ro"
 photo: "./razvan-apostol.webp"
-order: 3
+order: 4
 isPlaceholder: false
 ---

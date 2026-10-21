@@ -1,9 +1,9 @@
 ---
 name: "Monica Zeciu"
-role: "Marketing and Process Manager"
+role: "Commercial Director & Partner"
 phone: "+40 763 648 212"
 email: "monica.zeciu@hiieko.ro"
 photo: "./monica-zeciu.jpg"
-order: 5
+order: 2
 isPlaceholder: false
 ---
