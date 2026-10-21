@@ -4,6 +4,6 @@ role: "Planning Group Leader"
 phone: "+40 742 922 306"
 email: "horatiu.razorea@hiieko.ro"
 photo: "./horatiu-razorea.jpg"
-order: 6
+order: 7
 isPlaceholder: false
 ---

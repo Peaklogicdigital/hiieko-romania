@@ -4,6 +4,6 @@ role: "Field Leader"
 phone: "+40 774 072 240"
 email: "artem.myshkalenko@hiieko.ro"
 photo: "./artem-myshkalenko.webp"
-order: 12
+order: 13
 isPlaceholder: false
 ---

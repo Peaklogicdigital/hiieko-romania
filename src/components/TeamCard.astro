@@ -4,7 +4,7 @@ import type { ImageMetadata } from 'astro';
 
 interface Props {
   name: string;
-  role: string;
+  role?: string;
   phone?: string;
   email?: string;
   photo?: ImageMetadata;
@@ -23,7 +23,7 @@ const initials = name
   .toUpperCase();
 
 const telHref = phone?.replace(/[\s()-]/g, '');
-const photoAlt = `Photo of ${name}, ${role} at Hiieko Romania`;
+const photoAlt = role ? `Photo of ${name}, ${role} at Hiieko Romania` : `Photo of ${name} at Hiieko Romania`;
 ---
 
 <div
@@ -62,7 +62,9 @@ const photoAlt = `Photo of ${name}, ${role} at Hiieko Romania`;
   </div>
   <div class="px-5 py-5 flex flex-col gap-1.5">
     <h3 class="text-base m-0 text-white">{name}</h3>
-    <div class="font-mono text-[10.5px] text-gold-bright uppercase tracking-[0.06em]">{role}</div>
+    {role && (
+      <div class="font-mono text-[10.5px] text-gold-bright uppercase tracking-[0.06em]">{role}</div>
+    )}
     {phone && (
       <a href={`tel:${telHref}`} class="text-gold underline text-[13px]">
         {phone}
