@@ -286,6 +286,7 @@ const en = {
   },
   footer: {
     companyHeading: 'Hiieko Romania',
+    brandTagline: 'Engineering. Energy. Execution.',
     addressLine1: 'Bd. Theodor Pallady 51N',
     addressLine2: 'Sector 3, Bucharest',
     contactsHeading: 'Contacts',
@@ -737,6 +738,7 @@ const ro: Dictionary = {
   },
   footer: {
     companyHeading: 'Hiieko România',
+    brandTagline: 'Inginerie. Energie. Execuție.',
     addressLine1: 'Bd. Theodor Pallady 51N',
     addressLine2: 'Sector 3, București',
     contactsHeading: 'Contact',
