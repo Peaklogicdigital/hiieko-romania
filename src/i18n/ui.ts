@@ -22,8 +22,8 @@ const en = {
     skipToContent: 'Skip to content',
   },
   hero: {
-    eyebrow: 'Hiieko Romania · Industrial Solar & Storage',
-    h1: 'More than solar panels. Integrated systems, engineered for performance.',
+    eyebrow: 'Hiieko Romania · Engineering. Energy. Execution.',
+    h1: 'Redefining industrial energy. Integrated systems, engineered for performance.',
     lede: 'Design, installation, and long-term maintenance of rooftop and ground-mount solar plus battery storage for Romanian industrial and commercial sites: one contractor, one guarantee, backed by international engineering since 1994.',
     ctaPrimary: 'Get a site assessment →',
     ctaSecondary: 'Estimate your system',
@@ -474,8 +474,8 @@ const ro: Dictionary = {
     skipToContent: 'Sari la conținut',
   },
   hero: {
-    eyebrow: 'Hiieko România · Solar Industrial & Stocare',
-    h1: 'Mai mult decât panouri fotovoltaice. Sisteme integrate, proiectate pentru performanță.',
+    eyebrow: 'Hiieko România · Inginerie. Energie. Execuție.',
+    h1: 'Redefinim energia industrială. Sisteme integrate, proiectate pentru performanță.',
     lede: 'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru locații industriale și comerciale din România: un singur contractor, o singură garanție, susținută de inginerie internațională din 1994.',
     ctaPrimary: 'Solicită o evaluare →',
     ctaSecondary: 'Estimează sistemul',
