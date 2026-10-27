@@ -9,6 +9,12 @@ export const defaultLang: Lang = 'en';
 export const PRIVACY_ADDRESS_MAPS_URL =
   'https://www.google.com/maps/search/?api=1&query=Bulevardul+Theodor+Pallady+51N%2C+032258+Bucharest%2C+Romania';
 
+// Same address as PRIVACY_ADDRESS_MAPS_URL above, in the no-API-key
+// "output=embed" format Google documents for iframe embeds (as opposed to
+// the search-link format used for the Privacy page's "open in Maps" link).
+export const CONTACT_MAP_EMBED_URL =
+  'https://www.google.com/maps?q=Bulevardul+Theodor+Pallady+51N%2C+032258+Bucharest%2C+Romania&output=embed';
+
 const en = {
   nav: {
     solutions: 'Solutions',
@@ -243,6 +249,11 @@ const en = {
     email2: 'laurentiu.oprea@hiieko.ro',
     phone: '+40 774 074 418',
     phone2: '+40 077 563 9026',
+  },
+  contactMap: {
+    prompt: 'This map is provided by Google and sets cookies once loaded.',
+    button: 'View map',
+    title: "Map showing Hiieko Romania's office location",
   },
   contactForm: {
     nameLabel: 'Name',
@@ -695,6 +706,11 @@ const ro: Dictionary = {
     email2: 'laurentiu.oprea@hiieko.ro',
     phone: '+40 774 074 418',
     phone2: '+40 077 563 9026',
+  },
+  contactMap: {
+    prompt: 'Această hartă este furnizată de Google și setează cookie-uri odată încărcată.',
+    button: 'Vezi harta',
+    title: 'Hartă cu locația biroului Hiieko România',
   },
   contactForm: {
     nameLabel: 'Nume',

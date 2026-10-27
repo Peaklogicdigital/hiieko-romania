@@ -1,0 +1,48 @@
+---
+import type { Lang } from '../i18n/ui';
+import { CONTACT_MAP_EMBED_URL, defaultLang, getTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = defaultLang } = Astro.props;
+const t = getTranslations(lang);
+---
+
+<div class="mt-6 rounded-md border border-white/10 bg-chip overflow-hidden">
+  <div id="contact-map-placeholder" class="aspect-video flex flex-col items-center justify-center gap-3 p-6 text-center">
+    <p class="text-[13px] text-muted max-w-[34ch]">{t.contactMap.prompt}</p>
+    <button id="contact-map-enable" type="button" class="btn btn-ghost btn-compact">
+      {t.contactMap.button}
+    </button>
+  </div>
+  <div id="contact-map-frame" class="hidden aspect-video">
+    <iframe
+      data-src={CONTACT_MAP_EMBED_URL}
+      width="100%"
+      height="100%"
+      style="border:0;display:block;"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title={t.contactMap.title}
+    ></iframe>
+  </div>
+</div>
+
+<script>
+  const placeholder = document.getElementById('contact-map-placeholder');
+  const frame = document.getElementById('contact-map-frame');
+  const enableBtn = document.getElementById('contact-map-enable') as HTMLButtonElement | null;
+  const iframe = frame?.querySelector('iframe') as HTMLIFrameElement | null;
+
+  enableBtn?.addEventListener('click', () => {
+    // The iframe's real src is only set here, on explicit click -- nothing
+    // is requested from google.com (and no cookie set) until the visitor
+    // asks for the map.
+    if (iframe && !iframe.src) {
+      iframe.src = iframe.dataset.src ?? '';
+    }
+    placeholder?.classList.add('hidden');
+    frame?.classList.remove('hidden');
+  });
+</script>
