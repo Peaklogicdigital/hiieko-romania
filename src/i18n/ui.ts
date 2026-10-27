@@ -2,18 +2,17 @@ export const languages = { en: 'English', ro: 'Română' } as const;
 export type Lang = keyof typeof languages;
 export const defaultLang: Lang = 'en';
 
-// No specific Google Maps place URL was provided for the registered address —
-// this is a generated search-query link (Google's documented maps/search
-// pattern), not a fabricated place ID. Swap for an exact Maps URL if one
-// exists.
+// Exact registered Google Business Profile listing ("Hiieko Romania S.R.L"),
+// not a generic address pin -- confirmed against the live Google Maps
+// listing (name, rating, "Solar energy company" category).
 export const PRIVACY_ADDRESS_MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=Bulevardul+Theodor+Pallady+51N%2C+032258+Bucharest%2C+Romania';
+  'https://www.google.com/maps/search/?api=1&query=Hiieko+Romania+S.R.L%2C+Bulevardul+Theodor+Pallady+51N%2C+Bucharest';
 
-// Same address as PRIVACY_ADDRESS_MAPS_URL above, in the no-API-key
+// Same listing as PRIVACY_ADDRESS_MAPS_URL above, in the no-API-key
 // "output=embed" format Google documents for iframe embeds (as opposed to
 // the search-link format used for the Privacy page's "open in Maps" link).
 export const CONTACT_MAP_EMBED_URL =
-  'https://www.google.com/maps?q=Bulevardul+Theodor+Pallady+51N%2C+032258+Bucharest%2C+Romania&output=embed';
+  'https://www.google.com/maps?q=Hiieko+Romania+S.R.L%2C+Bulevardul+Theodor+Pallady+51N%2C+Bucharest&output=embed';
 
 const en = {
   nav: {
@@ -251,8 +250,6 @@ const en = {
     phone2: '+40 077 563 9026',
   },
   contactMap: {
-    prompt: 'This map is provided by Google and sets cookies once loaded.',
-    button: 'View map',
     title: "Map showing Hiieko Romania's office location",
   },
   contactForm: {
@@ -708,8 +705,6 @@ const ro: Dictionary = {
     phone2: '+40 077 563 9026',
   },
   contactMap: {
-    prompt: 'Această hartă este furnizată de Google și setează cookie-uri odată încărcată.',
-    button: 'Vezi harta',
     title: 'Hartă cu locația biroului Hiieko România',
   },
   contactForm: {
