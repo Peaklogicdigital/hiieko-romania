@@ -1,7 +1,7 @@
 ---
 name: "Irina Razorea"
 role: "Engineer & Budgeting and Pricing Analyst"
-phone: "+40 775 639 069"
+phone: "+40 775 639 026"
 email: "irina.razorea@hiieko.ro"
 photo: "./irina-razorea.webp"
 order: 10
