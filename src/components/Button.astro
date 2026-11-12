@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: 'primary' | 'ghost';
+  variant?: 'primary' | 'ghost' | 'brand';
   href?: string;
   type?: 'button' | 'submit';
   class?: string;
@@ -13,7 +13,8 @@ const {
   class: className = '',
   id,
 } = Astro.props;
-const classes = ['btn', variant === 'primary' ? 'btn-primary' : 'btn-ghost', className].join(' ');
+const variantClass = { primary: 'btn-primary', ghost: 'btn-ghost', brand: 'btn-brand' }[variant];
+const classes = ['btn', variantClass, className].join(' ');
 const Tag = href ? 'a' : 'button';
 ---
 
