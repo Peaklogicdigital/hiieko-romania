@@ -51,8 +51,8 @@ const t = getTranslations(lang);
           {t.hero.lede}
         </p>
         <div class="flex gap-3.5 flex-wrap">
-          <Button variant="primary" href="/ro/contact/">{t.hero.ctaPrimary}</Button>
-          <Button variant="ghost" href="/ro/#calculator">{t.hero.ctaSecondary}</Button>
+          <Button variant="primary" href="/ro/#contact">{t.hero.ctaPrimary}</Button>
+          <Button variant="brand" href="/ro/#calculator">{t.hero.ctaSecondary}</Button>
         </div>
       </div>
     </div>
@@ -79,8 +79,6 @@ const t = getTranslations(lang);
   <div class="wrap py-10">
     <LogoMarquee lang={lang} />
   </div>
-
-  <Calculator lang={lang} />
 
   <section id="projects" class="py-[100px]">
     <div class="wrap">
@@ -135,6 +133,8 @@ const t = getTranslations(lang);
       </div>
     </div>
   </section>
+
+  <Calculator lang={lang} />
 
   <section class="py-[100px]" id="contact">
     <div class="wrap grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-14">

@@ -31,6 +31,8 @@ html {
   --color-green-deep: #102e20;
   --color-gold-glow: rgb(224 168 62 / 0.35);
   --color-white-faint: rgb(250 251 247 / 0.05);
+  --color-brand-green: #1c473d;
+  --color-brand-green-glow: rgb(28 71 61 / 0.45);
 
   --font-display: "Archivo", "IBM Plex Sans", sans-serif;
   --font-sans: "IBM Plex Sans", system-ui, sans-serif;
@@ -138,6 +140,13 @@ html {
   }
   .btn-ghost:hover {
     @apply border-gold text-gold;
+  }
+  .btn-brand {
+    @apply bg-brand-green text-white px-6 py-3.5 border-none;
+  }
+  .btn-brand:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 22px var(--color-brand-green-glow);
   }
   .btn-compact {
     @apply px-[18px] py-[10px];
