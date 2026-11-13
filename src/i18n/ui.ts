@@ -416,7 +416,7 @@ const en = {
     ariaLabel: 'Cookie consent',
   },
   industries: {
-    headline: 'Energy prices keep climbing. These businesses stopped caring.',
+    headline: 'Take control of your industrial energy costs.',
     lede: "Over 200 MWp installed across Romania's highest-consumption industries: proof the energy crisis doesn't have to be permanent for yours.",
     ctaLabel: 'See projects',
     items: [
@@ -866,7 +866,7 @@ const ro: Dictionary = {
     ariaLabel: 'Consimțământ cookie-uri',
   },
   industries: {
-    headline: 'Prețurile la energie continuă să crească. Aceste companii au încetat să le mai pese.',
+    headline: 'Preia controlul asupra costurilor energetice industriale.',
     lede: 'Peste 200 MWp instalați în cele mai mari industrii consumatoare de energie din România: dovada că criza energetică nu trebuie să fie permanentă și pentru afacerea ta.',
     ctaLabel: 'Vezi proiectele',
     items: [
