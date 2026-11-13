@@ -474,16 +474,16 @@ const ro: Dictionary = {
     about: 'Despre noi',
     team: 'Echipă',
     contact: 'Contact',
-    cta: 'Solicită o evaluare',
-    toggleMenu: 'Comută meniul',
-    skipToContent: 'Sari la conținut',
+    cta: 'Solicitați o evaluare',
+    toggleMenu: 'Comutați meniul',
+    skipToContent: 'Săriți la conținut',
   },
   hero: {
     eyebrow: 'Hiieko România · Inginerie. Energie. Execuție.',
     h1: 'Redefinim energia industrială. Sisteme integrate, proiectate pentru performanță.',
     lede: 'Proiectare, instalare și mentenanță pe termen lung a sistemelor solare pe acoperiș și la sol, plus stocare cu baterii, pentru locații industriale și comerciale din România: un singur contractor, o singură garanție, susținută de inginerie internațională din 1994.',
-    ctaPrimary: 'Solicită o evaluare →',
-    ctaSecondary: 'Estimează sistemul',
+    ctaPrimary: 'Solicitați o evaluare →',
+    ctaSecondary: 'Estimați sistemul',
     videoAlt: 'Panouri solare sub cer senin, la ora aurie',
   },
   trust: {
@@ -514,7 +514,7 @@ const ro: Dictionary = {
       {
         n: '04 / ÎNTREȚINERE',
         title: 'Mentenanță continuă',
-        body: 'O garanție de producător de minimum 15 ani pentru sistemul tău, onorată și asigurată direct de noi.',
+        body: 'O garanție de producător de minimum 15 ani pentru sistemul dumneavoastră, onorată și asigurată direct de noi.',
       },
     ],
     callout:
@@ -545,7 +545,7 @@ const ro: Dictionary = {
           body: 'De la prima vizită la locație până la ani de funcționare, o singură companie răspunde de rezultat.',
         },
       ],
-      whatYouGetLabel: 'Ce primești',
+      whatYouGetLabel: 'Ce primiți',
       whatYouGet: [
         'Garanție de producător de minimum 15 ani pentru invertoare și baterii.',
         'Sistem inteligent de monitorizare 24/7.',
@@ -615,7 +615,7 @@ const ro: Dictionary = {
     eyebrowPrefix: 'Soluția',
     backLink: '← Înapoi la toate soluțiile',
     equipmentHeading: 'Echipamente pe care le folosim pentru acest sistem',
-    allPartnersLink: 'Vezi toți partenerii noștri tehnologici',
+    allPartnersLink: 'Vedeți toți partenerii noștri tehnologici',
     rooftopVideoAlt: 'Panouri solare montate pe acoperișul unei clădiri industriale',
     groundMountVideoAlt: 'Vedere aeriană a unui parc fotovoltaic la sol',
     bessImageAlt: 'Containere de stocare cu baterii instalate lângă un parc fotovoltaic',
@@ -624,7 +624,7 @@ const ro: Dictionary = {
   projectsHome: {
     h2: 'Ce am construit.',
     ledePrefix: 'O selecție de proiecte finalizate.',
-    seeAllLink: 'Vezi toate proiectele',
+    seeAllLink: 'Vedeți toate proiectele',
   },
   projectsPage: {
     eyebrow: 'Proiecte',
@@ -653,8 +653,8 @@ const ro: Dictionary = {
     para2:
       'Nu suntem un instalator de panouri apărut anul trecut. Facem parte dintr-un grup cu trei decenii de execuție pe șantiere complexe și o echipă din România care rămâne responsabilă după predare.',
     para3Page:
-      'Hiieko România proiectează, construiește și întreține fiecare sistem printr-un singur contract, cu garanție de execuție și un plan de mentenanță care începe din ziua punerii în funcțiune. Cunoaște',
-    readMoreLink: 'Află mai multe despre Hiieko',
+      'Hiieko România proiectează, construiește și întreține fiecare sistem printr-un singur contract, cu garanție de execuție și un plan de mentenanță care începe din ziua punerii în funcțiune. Cunoașteți',
+    readMoreLink: 'Aflați mai multe despre Hiieko',
     readMoreTeamLink: 'echipa din spatele lucrărilor',
     iso1: 'ISO 9001:2015',
     iso2: 'ISO 14001:2015',
@@ -683,7 +683,7 @@ const ro: Dictionary = {
   team: {
     eyebrow: 'Echipa noastră',
     h1: 'Peste 40 de specialiști, o singură echipă responsabilă.',
-    lede: 'Ingineri și specialiști dedicați, responsabilitate de la început până la final. Fiecare persoană din echipa noastră este implicată direct în proiectele pe care le livrăm. După punerea în funcțiune, ai în continuare acces la oamenii care cunosc sistemul tău. Fără subcontractanți, fără call center.',
+    lede: 'Ingineri și specialiști dedicați, responsabilitate de la început până la final. Fiecare persoană din echipa noastră este implicată direct în proiectele pe care le livrăm. După punerea în funcțiune, aveți în continuare acces la oamenii care cunosc sistemul dumneavoastră. Fără subcontractanți, fără call center.',
   },
   contactVideo: {
     heading: 'Ingineri reali, pe șantiere reale',
@@ -692,8 +692,8 @@ const ro: Dictionary = {
   },
   contact: {
     eyebrow: 'Următorul pas',
-    heading: 'Solicită o evaluare a locației.',
-    lede: 'Trimite-ne câteva detalii despre locație și consum. Vei primi în schimb o estimare de dimensionare și un calcul cu amortizarea investiției.',
+    heading: 'Solicitați o evaluare a locației.',
+    lede: 'Trimiteți-ne câteva detalii despre locație și consum. Veți primi în schimb o estimare de dimensionare și un calcul cu amortizarea investiției.',
     companyName: 'Hiieko Romania SRL',
     addressLine: 'Bd. Theodor Pallady 51N, Sector 3, București',
     email: 'bogdan.otelea@hiieko.ro',
@@ -717,29 +717,29 @@ const ro: Dictionary = {
       notSure: 'Nu sunt sigur încă',
     },
     messageLabel: 'Detalii locație (suprafață, consum lunar aproximativ)',
-    submitBtn: 'Trimite solicitarea →',
-    statusNotConfigured: 'Endpoint-ul de contact nu este încă configurat. Te rugăm să ne scrii direct pe email.',
+    submitBtn: 'Trimiteți solicitarea →',
+    statusNotConfigured: 'Endpoint-ul de contact nu este încă configurat. Vă rugăm să ne scrieți direct pe email.',
     statusSending: 'Se trimite…',
-    statusSuccess: 'Solicitare trimisă. Te contactăm în curând.',
-    statusError: 'Ceva nu a funcționat. Te rugăm să ne scrii direct pe email.',
+    statusSuccess: 'Solicitare trimisă. Vă contactăm în curând.',
+    statusError: 'Ceva nu a funcționat. Vă rugăm să ne scrieți direct pe email.',
     errorRequired: 'Acest câmp este obligatoriu.',
-    errorEmail: 'Introdu o adresă de email validă.',
+    errorEmail: 'Introduceți o adresă de email validă.',
   },
   calculator: {
-    h2: 'Vezi ce ți-ar putea finanța factura la curent.',
-    lede: 'Introdu consumul tău lunar: acesta estimează dimensiunea sistemului, perioada de amortizare și ROI. Nu este o ofertă fermă; o cifră reală necesită o evaluare la fața locului.',
+    h2: 'Vedeți ce v-ar putea finanța factura la curent.',
+    lede: 'Introduceți consumul dumneavoastră lunar: acesta estimează dimensiunea sistemului, perioada de amortizare și ROI. Nu este o ofertă fermă; o cifră reală necesită o evaluare la fața locului.',
     consumptionLabel: 'Consum lunar actual (kWh)',
-    calculateBtn: 'Calculează →',
+    calculateBtn: 'Calculați →',
     statCapacity: 'Capacitate sistem (kWp)',
     statGen: 'Producție anuală estimată (MWh/an)',
-    statMinArea: 'Suprafață minimă pentru consumul tău (m²)',
+    statMinArea: 'Suprafață minimă pentru consumul dumneavoastră (m²)',
     statPayback: 'Perioadă de amortizare estimată (ani)',
     statRoi: 'ROI (%)',
     disclaimer:
-      'Această estimare reflectă costurile tipice ale proiectelor noastre finalizate, însă niciun acoperiș, nicio conexiune la rețea și nicio locație nu au același preț. Consideră acest calcul un punct de plecare, nu o ofertă fermă. Cifra reală se stabilește doar după ce vedem efectiv locația ta.',
-    toastMessage: 'Discută cu echipa de vânzări pentru o evaluare la fața locului și cifre reale.',
-    toastCta: 'Contactează echipa de vânzări →',
-    toastDismissLabel: 'Închide',
+      'Această estimare reflectă costurile tipice ale proiectelor noastre finalizate, însă niciun acoperiș, nicio conexiune la rețea și nicio locație nu au același preț. Considerați acest calcul un punct de plecare, nu o ofertă fermă. Cifra reală se stabilește doar după ce vedem efectiv locația dumneavoastră.',
+    toastMessage: 'Discutați cu echipa de vânzări pentru o evaluare la fața locului și cifre reale.',
+    toastCta: 'Contactați echipa de vânzări →',
+    toastDismissLabel: 'Închideți',
   },
   footer: {
     companyHeading: 'Hiieko România',
@@ -764,15 +764,15 @@ const ro: Dictionary = {
   common: {
     placeholderBadge: 'EXEMPLU',
     inProgressBadge: 'În desfășurare',
-    pauseVideo: 'Pune videoclipul pe pauză',
-    playVideo: 'Redă videoclipul',
-    pauseMarquee: 'Oprește derularea siglelor',
-    playMarquee: 'Reia derularea siglelor',
+    pauseVideo: 'Puneți videoclipul pe pauză',
+    playVideo: 'Redați videoclipul',
+    pauseMarquee: 'Opriți derularea siglelor',
+    playMarquee: 'Reluați derularea siglelor',
   },
   notFound: {
     badge: '404 · Semnal pierdut',
     headline: 'Semnal pierdut: această pagină nu există în sistem.',
-    lede: 'Pagina pe care o cauți nu există sau linkul nu mai este valid.',
+    lede: 'Pagina pe care o căutați nu există sau linkul nu mai este valid.',
     ctaHome: 'Înapoi acasă →',
     linkSolutions: 'Soluții',
     linkProjects: 'Proiecte',
@@ -788,15 +788,15 @@ const ro: Dictionary = {
     sections: [
       {
         heading: 'Ce colectăm',
-        body: 'Prin formularul de contact, colectăm numele, denumirea companiei, adresa de email, numărul de telefon, tipul de proiect și detaliile despre locație pe care ni le furnizezi. Nu folosim cookie-uri de urmărire în acest moment; dacă vor fi adăugate ulterior cookie-uri de analiză sau publicitate, această politică și un banner de consimțământ pentru cookie-uri vor fi actualizate corespunzător.',
+        body: 'Prin formularul de contact, colectăm numele, denumirea companiei, adresa de email, numărul de telefon, tipul de proiect și detaliile despre locație pe care ni le furnizați. Nu folosim cookie-uri de urmărire în acest moment; dacă vor fi adăugate ulterior cookie-uri de analiză sau publicitate, această politică și un banner de consimțământ pentru cookie-uri vor fi actualizate corespunzător.',
       },
       {
         heading: 'De ce le colectăm',
-        body: 'Folosim aceste informații pentru a răspunde solicitării tale și pentru a oferi o ofertă sau o evaluare a locației. Temeiul nostru legal este interesul legitim de a răspunde solicitărilor de afaceri și/sau demersurile realizate la cererea ta înainte de încheierea unui contract (Art. 6(1)(b) și (f) GDPR).',
+        body: 'Folosim aceste informații pentru a răspunde solicitării dumneavoastră și pentru a oferi o ofertă sau o evaluare a locației. Temeiul nostru legal este interesul legitim de a răspunde solicitărilor de afaceri și/sau demersurile realizate la cererea dumneavoastră înainte de încheierea unui contract (Art. 6(1)(b) și (f) GDPR).',
       },
       {
         heading: 'Cui le transmitem',
-        body: 'Solicitarea ta este procesată de Formspree, un serviciu terț care o livrează pe email-ul nostru. Nu vindem datele tale către terți.',
+        body: 'Solicitarea dumneavoastră este procesată de Formspree, un serviciu terț care o livrează pe email-ul nostru. Nu vindem datele dumneavoastră către terți.',
       },
       {
         heading: 'Păstrarea datelor',
@@ -805,12 +805,12 @@ const ro: Dictionary = {
     ],
     transfersHeading: 'Transferuri internaționale',
     transfersBody: 'Unii dintre procesatorii de mai sus pot fi localizați în afara UE/SEE.',
-    rightsHeading: 'Drepturile tale',
+    rightsHeading: 'Drepturile dumneavoastră',
     rightsIntro:
-      'Conform GDPR, ai dreptul de a accesa, corecta, șterge sau restricționa utilizarea datelor tale, de a primi o copie a acestora (portabilitatea datelor) și de a te opune prelucrării. Pentru a-ți exercita aceste drepturi, contactează-ne la',
+      'Conform GDPR, aveți dreptul de a accesa, corecta, șterge sau restricționa utilizarea datelor dumneavoastră, de a primi o copie a acestora (portabilitatea datelor) și de a vă opune prelucrării. Pentru a vă exercita aceste drepturi, contactați-ne la',
     rightsEmail: 'alexander.zeciu@hiieko.ee',
     rightsMiddle:
-      '. De asemenea, poți depune o plângere la ANSPDCP, Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal, la',
+      '. De asemenea, puteți depune o plângere la ANSPDCP, Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal, la',
     rightsLinkLabel: 'www.dataprotection.ro',
     changesHeading: 'Modificări',
     changesBody: 'Această politică poate fi actualizată periodic. Ultima actualizare: 1 august 2026.',
@@ -819,31 +819,31 @@ const ro: Dictionary = {
       sections: [
         {
           heading: 'Ce sunt cookie-urile',
-          body: 'Cookie-urile sunt fișiere text mici plasate pe dispozitivul tău atunci când vizitezi un site web, folosite pentru a face site-ul să funcționeze, a reține preferințele sau a colecta statistici de utilizare.',
+          body: 'Cookie-urile sunt fișiere text mici plasate pe dispozitivul dumneavoastră atunci când vizitați un site web, folosite pentru a face site-ul să funcționeze, a reține preferințele sau a colecta statistici de utilizare.',
         },
         {
           heading: 'Cookie-uri pe acest site în prezent',
-          body: 'Acest site folosește Google Analytics (GA4), un cookie de analiză, pentru a înțelege cum utilizează vizitatorii site-ul. Acest cookie este setat doar după ce îl accepți prin bannerul de consimțământ; dacă refuzi, niciun cookie de analiză nu este setat. Nu folosim în prezent cookie-uri publicitare.',
+          body: 'Acest site folosește Google Analytics (GA4), un cookie de analiză, pentru a înțelege cum utilizează vizitatorii site-ul. Acest cookie este setat doar după ce îl acceptați prin bannerul de consimțământ; dacă refuzați, niciun cookie de analiză nu este setat. Nu folosim în prezent cookie-uri publicitare.',
         },
         {
           heading: 'Tipuri de cookie-uri pe care le folosim',
-          body: 'Cookie-uri strict necesare (necesare pentru funcționarea site-ului, fără a necesita consimțământ) și cookie-uri de analiză (Google Analytics, folosite pentru a înțelege cum utilizează vizitatorii site-ul), singurele două categorii folosite în prezent. Cookie-urile publicitare nu sunt folosite în prezent; dacă acest lucru se va schimba în viitor, această secțiune va fi actualizată și consimțământul tău va fi solicitat mai întâi.',
+          body: 'Cookie-uri strict necesare (necesare pentru funcționarea site-ului, fără a necesita consimțământ) și cookie-uri de analiză (Google Analytics, folosite pentru a înțelege cum utilizează vizitatorii site-ul), singurele două categorii folosite în prezent. Cookie-urile publicitare nu sunt folosite în prezent; dacă acest lucru se va schimba în viitor, această secțiune va fi actualizată și consimțământul dumneavoastră va fi solicitat mai întâi.',
         },
         {
           heading: 'Cum gestionăm consimțământul',
-          body: 'Înainte de setarea cookie-ului Google Analytics, ți se afișează un banner de consimțământ care îți permite să accepți sau să refuzi. Îți poți schimba alegerea în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului.',
+          body: 'Înainte de setarea cookie-ului Google Analytics, vi se afișează un banner de consimțământ care vă permite să acceptați sau să refuzați. Vă puteți schimba alegerea în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului.',
         },
         {
           heading: 'Ce date colectează Google Analytics',
-          body: 'Google Analytics colectează date de utilizare anonimizate: paginile vizitate, durata sesiunii și locația generală și tipul de dispozitiv. Nu colectează numele tău, adresa de email sau alte informații direct identificabile.',
+          body: 'Google Analytics colectează date de utilizare anonimizate: paginile vizitate, durata sesiunii și locația generală și tipul de dispozitiv. Nu colectează numele dumneavoastră, adresa de email sau alte informații direct identificabile.',
         },
         {
-          heading: 'Drepturile tale privind cookie-urile',
-          body: 'Poți accepta sau refuza cookie-ul de analiză și îți poți retrage consimțământul în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului. Refuzul nu îți va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
+          heading: 'Drepturile dumneavoastră privind cookie-urile',
+          body: 'Puteți accepta sau refuza cookie-ul de analiză și vă puteți retrage consimțământul în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului. Refuzul nu vă va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
         },
         {
           heading: 'Cum controlezi cookie-urile',
-          body: 'Îți poți schimba alegerea privind cookie-ul de analiză în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului. De asemenea, poți controla sau șterge cookie-urile din setările browserului tău în orice moment.',
+          body: 'Vă puteți schimba alegerea privind cookie-ul de analiză în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului. De asemenea, puteți controla sau șterge cookie-urile din setările browserului dumneavoastră în orice moment.',
         },
         {
           heading: 'Actualizări ale acestei secțiuni',
@@ -854,15 +854,15 @@ const ro: Dictionary = {
   },
   cookieConsent: {
     message:
-      'Folosim Google Analytics pentru a înțelege cum utilizează vizitatorii acest site. Acesta rulează doar dacă accepți; refuzul nu îți va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
+      'Folosim Google Analytics pentru a înțelege cum utilizează vizitatorii acest site. Acesta rulează doar dacă acceptați; refuzul nu vă va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
     accept: 'Accept',
     decline: 'Refuz',
     ariaLabel: 'Consimțământ cookie-uri',
   },
   industries: {
-    headline: 'Preia controlul asupra costurilor energetice industriale.',
-    lede: 'Peste 200 MWp instalați în cele mai mari industrii consumatoare de energie din România: dovada că criza energetică nu trebuie să fie permanentă și pentru afacerea ta.',
-    ctaLabel: 'Vezi proiectele',
+    headline: 'Preluați controlul asupra costurilor energetice industriale.',
+    lede: 'Peste 200 MWp instalați în cele mai mari industrii consumatoare de energie din România: dovada că criza energetică nu trebuie să fie permanentă și pentru afacerea dumneavoastră.',
+    ctaLabel: 'Vedeți proiectele',
     items: [
       { name: 'Agricultură' },
       { name: 'Producție' },
@@ -900,7 +900,7 @@ const ro: Dictionary = {
     contact: {
       title: 'Contact · Hiieko România',
       description:
-        'Solicită o evaluare de la Hiieko România: solar pe acoperiș, parcuri solare la sol și stocare cu baterii.',
+        'Solicitați o evaluare de la Hiieko România: solar pe acoperiș, parcuri solare la sol și stocare cu baterii.',
     },
     privacy: {
       title: 'Politica de confidențialitate · Hiieko România',
