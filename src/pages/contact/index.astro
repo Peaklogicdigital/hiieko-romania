@@ -5,7 +5,7 @@ import ContactForm from '../../components/ContactForm.astro';
 import ContactMap from '../../components/ContactMap.astro';
 import VideoBackground from '../../components/VideoBackground.astro';
 import engineersPoster from '../../assets/video-posters/engineers.jpg';
-import { getTranslations } from '../../i18n/ui';
+import { getTranslations, telHref } from '../../i18n/ui';
 
 const lang = 'en' as const;
 const t = getTranslations(lang);
@@ -52,10 +52,10 @@ const t = getTranslations(lang);
         <div class="mt-7 text-sm text-muted">
           <div class="mb-2"><b class="text-white">{t.contact.companyName}</b></div>
           <div class="mb-2">{t.contact.addressLine}</div>
-          <div class="mb-2">{t.contact.email}</div>
-          <div class="mb-2">{t.contact.email2}</div>
-          <div class="mb-2">{t.contact.phone}</div>
-          <div class="mb-2">{t.contact.phone2}</div>
+          <div class="mb-2"><a href={`mailto:${t.contact.email}`} class="hover:text-white">{t.contact.email}</a></div>
+          <div class="mb-2"><a href={`mailto:${t.contact.email2}`} class="hover:text-white">{t.contact.email2}</a></div>
+          <div class="mb-2"><a href={telHref(t.contact.phone)} class="hover:text-white">{t.contact.phone}</a></div>
+          <div class="mb-2"><a href={telHref(t.contact.phone2)} class="hover:text-white">{t.contact.phone2}</a></div>
         </div>
       </div>
       <div>

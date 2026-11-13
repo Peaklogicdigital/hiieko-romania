@@ -920,6 +920,10 @@ export function getTranslations(lang: Lang): Dictionary {
   return ui[lang] ?? ui[defaultLang];
 }
 
+export function telHref(phone: string): string {
+  return `tel:${phone.replace(/\s+/g, '')}`;
+}
+
 export function fillTemplate(template: string, vars: Record<string, string | number>): string {
   return template.replace(/\{(\w+)\}/g, (_match, key: string) => String(vars[key] ?? ''));
 }
