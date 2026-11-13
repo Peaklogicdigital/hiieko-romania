@@ -25,6 +25,7 @@ const en = {
     cta: 'Get a site assessment',
     toggleMenu: 'Toggle menu',
     skipToContent: 'Skip to content',
+    logoAlt: 'Hiieko Romania logo',
   },
   hero: {
     eyebrow: 'Hiieko Romania · Engineering. Energy. Execution.',
@@ -39,6 +40,7 @@ const en = {
     happyClients: { label: 'Happy Clients in Romania' },
     specialists: { label: 'Specialists in Romania' },
     iso: { value: 'ISO', label: '9001 · 14001 · 27001 · 45001 Certified' },
+    projectPhotoAlt: 'Completed solar project: {title}',
   },
   diff: {
     h2: "We're the contractor who stays after commissioning.",
@@ -477,6 +479,7 @@ const ro: Dictionary = {
     cta: 'Solicitați o evaluare',
     toggleMenu: 'Comutați meniul',
     skipToContent: 'Săriți la conținut',
+    logoAlt: 'Sigla Hiieko România',
   },
   hero: {
     eyebrow: 'Hiieko România · Inginerie. Energie. Execuție.',
@@ -491,6 +494,7 @@ const ro: Dictionary = {
     happyClients: { label: 'Clienți mulțumiți în România' },
     specialists: { label: 'Specialiști în România' },
     iso: { value: 'ISO', label: '9001 · 14001 · 27001 · 45001 Certificat' },
+    projectPhotoAlt: 'Proiect solar finalizat: {title}',
   },
   diff: {
     h2: 'Suntem contractorul care rămâne după punerea în funcțiune.',
