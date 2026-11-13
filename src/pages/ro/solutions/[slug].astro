@@ -46,8 +46,8 @@ const showPerformance = service.id === 'rooftop-solar' || service.id === 'ground
 ---
 
 <BaseLayout
-  title={`${service.data.title} · Hiieko Romania`}
-  description={service.data.summary}
+  title={service.data.seoTitle ?? `${service.data.title} · Hiieko Romania`}
+  description={service.data.seoDescription ?? service.data.summary}
   ogType="website"
   lang={lang}
 >
