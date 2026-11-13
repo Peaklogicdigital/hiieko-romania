@@ -1,5 +1,5 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
@@ -35,8 +35,11 @@ const t = getTranslations(lang);
 // any leading /ro/ stripped.
 const currentPath = Astro.url.pathname;
 const canonicalPath = currentPath.startsWith('/ro/') ? currentPath.slice(3) : currentPath;
-const enHref = getRelativeLocaleUrl('en', canonicalPath);
-const roHref = getRelativeLocaleUrl('ro', canonicalPath);
+// Absolute, not relative: hreflang should name the host explicitly (the
+// www host from `site` in astro.config.mjs), not rely on the browser
+// resolving a bare path against whatever host served the page.
+const enHref = getAbsoluteLocaleUrl('en', canonicalPath);
+const roHref = getAbsoluteLocaleUrl('ro', canonicalPath);
 
 // Self-referencing canonical: each language's own URL, not the EN original.
 const canonicalUrl = new URL(currentPath, Astro.site).toString();
@@ -53,8 +56,8 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Hiieko Romania SRL',
-  url: 'https://hiiekoromania.com',
-  logo: 'https://hiiekoromania.com/logo-icon.png',
+  url: new URL('/', Astro.site).toString(),
+  logo: new URL('/logo-icon.png', Astro.site).toString(),
   email: t.contact.email,
   telephone: t.contact.phone,
   taxID: '42849908',
