@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://hiiekoromania.com',
+  site: 'https://www.hiiekoromania.com',
   trailingSlash: 'always',
   i18n: {
     defaultLocale: 'en',
