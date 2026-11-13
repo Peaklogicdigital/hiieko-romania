@@ -4,6 +4,7 @@
 // ../scripts/cookieConsent.ts, and only once analytics consent is true.
 // This component just renders the banner and hands the GA measurement ID
 // to that script via a data attribute.
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import type { Lang } from '../i18n/ui';
 import { defaultLang, getTranslations } from '../i18n/ui';
 
@@ -14,17 +15,21 @@ const { lang = defaultLang } = Astro.props;
 const t = getTranslations(lang);
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? '';
 const adsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? '';
+const privacyHref = getRelativeLocaleUrl(lang, '/privacy/');
 ---
 
 <div
   id="cookie-consent-banner"
-  class="hidden fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-[400px] z-50 bg-chip border border-gold/30 border-l-[3px] border-l-gold rounded-[2px] p-5 shadow-lg"
+  class="hidden fixed bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-[400px] z-50 bg-[rgb(10_16_12)] border border-gold/30 border-l-[3px] border-l-gold rounded-[2px] p-5 shadow-lg"
   role="dialog"
   aria-label={t.cookieConsent.ariaLabel}
   data-ga-id={gaId}
   data-ads-id={adsId}
 >
-  <p class="text-sm text-white mb-4">{t.cookieConsent.message}</p>
+  <p class="text-sm text-white mb-4">
+    {t.cookieConsent.message}{' '}
+    <a href={privacyHref} class="text-gold underline">{t.cookieConsent.privacyLinkLabel}</a>
+  </p>
   <div class="flex gap-3">
     <button id="cookie-consent-decline" type="button" class="btn btn-ghost flex-1 text-center">
       {t.cookieConsent.decline}

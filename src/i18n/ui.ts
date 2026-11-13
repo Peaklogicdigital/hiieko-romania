@@ -341,7 +341,7 @@ const en = {
     sections: [
       {
         heading: 'What we collect',
-        body: 'Through the contact form, we collect the name, company name, email address, phone number, project type, and site details you provide. We do not use tracking cookies at this time; if analytics or advertising cookies are added later, this policy and a cookie consent banner will be updated accordingly.',
+        body: 'Through the contact form, we collect the name, company name, email address, phone number, project type, and site details you provide. If you accept cookies, we also collect site usage and ad measurement data, described in the Cookies section below.',
       },
       {
         heading: 'Why we collect it',
@@ -349,7 +349,7 @@ const en = {
       },
       {
         heading: 'Who we share it with',
-        body: 'Your submission is processed by Formspree, a third-party service that delivers it to our email. We do not sell your data to third parties.',
+        body: 'Your submission is processed by Formspree, a third-party service that delivers it to our email. If you accept cookies, site usage and ad measurement data is processed by Google (Google Analytics and Google Ads). We do not sell your data to third parties.',
       },
       {
         heading: 'Retention',
@@ -357,7 +357,7 @@ const en = {
       },
     ],
     transfersHeading: 'International transfers',
-    transfersBody: 'Some of the processors above may be based outside the EU/EEA.',
+    transfersBody: 'Some of the processors above, including Google, may process data outside the EU/EEA.',
     rightsHeading: 'Your rights',
     rightsIntro:
       'Under GDPR, you have the right to access, correct, delete, or restrict the use of your data, to receive a copy of it (data portability), and to object to processing. To exercise these rights, contact us at',
@@ -366,7 +366,7 @@ const en = {
       ". You may also lodge a complaint with ANSPDCP, Romania's National Supervisory Authority for Personal Data Processing, at",
     rightsLinkLabel: 'www.dataprotection.ro',
     changesHeading: 'Changes',
-    changesBody: 'This policy may be updated periodically. Last updated: 1 August 2026.',
+    changesBody: 'This policy may be updated periodically. Last updated: 13 November 2026.',
     // Cookie section is new content, drafted separately from the lawyer-approved
     // Privacy Policy text above — pending legal review before launch.
     cookies: {
@@ -378,27 +378,27 @@ const en = {
         },
         {
           heading: 'Cookies on this site today',
-          body: 'This website uses Google Analytics (GA4), an analytics cookie, to understand how visitors use the site. This cookie is only set after you accept it via the consent banner; if you decline, no analytics cookie is set. We do not currently use advertising cookies.',
+          body: 'This website uses Google Analytics (GA4) to understand how visitors use the site, and Google Ads to measure whether our ads led to an inquiry. These cookies are only set after you accept them via the consent banner; if you decline, no analytics or advertising cookie is set.',
         },
         {
           heading: 'Types of cookies we use',
-          body: 'Strictly necessary cookies (required for the site to function, no consent needed) and analytics cookies (Google Analytics, used to understand how visitors use the site), the only two categories currently in use. Advertising cookies are not currently used; if that changes in the future, this section will be updated and your consent requested first.',
+          body: 'Strictly necessary cookies (required for the site to function, no consent needed), analytics cookies (Google Analytics) and advertising cookies (Google Ads, used to measure the performance of our ads). We do not currently run remarketing campaigns. If that changes, this section will be updated and your consent requested first.',
         },
         {
           heading: 'How we handle consent',
-          body: 'Before the Google Analytics cookie is set, you are shown a consent banner letting you accept or decline. You may change your choice at any time using the "Cookie preferences" link in the site footer.',
+          body: 'Before the Google Analytics and Google Ads cookies are set, you are shown a consent banner letting you accept or decline. Your choice applies to both categories. You may change it at any time using the "Cookie preferences" link in the site footer.',
         },
         {
-          heading: 'What data Google Analytics collects',
-          body: 'Google Analytics collects anonymized usage data: pages visited, session duration, and general location and device type. It does not collect your name, email address, or other directly identifying information.',
+          heading: 'What data Google Analytics and Google Ads collect',
+          body: 'Google Analytics collects usage data: pages visited, session duration, and general location and device type. When you arrive from a Google ad, Google Ads stores a click identifier in a cookie so we can see whether the visit led to an inquiry. We receive reports, not your identity. Through these cookies we do not collect your name, email address, or other directly identifying information.',
         },
         {
           heading: 'Your rights regarding cookies',
-          body: 'You may accept or decline the analytics cookie, and withdraw consent at any time using the "Cookie preferences" link in the site footer. Declining does not affect your ability to browse the site or use the contact form.',
+          body: 'You may accept or decline analytics and advertising cookies, and withdraw consent at any time using the "Cookie preferences" link in the site footer. Declining does not affect your ability to browse the site or use the contact form.',
         },
         {
           heading: 'How to control cookies',
-          body: 'You can change your analytics cookie choice at any time using the "Cookie preferences" link in the site footer. You can also control or delete cookies through your browser\'s settings at any time.',
+          body: 'You can change your analytics and advertising cookie choice at any time using the "Cookie preferences" link in the site footer. You can also control or delete cookies through your browser\'s settings at any time. For ads, you can also manage your Google account settings at adssettings.google.com.',
         },
         {
           heading: 'Updates to this section',
@@ -409,7 +409,8 @@ const en = {
   },
   cookieConsent: {
     message:
-      "We use Google Analytics and Google Ads to understand how visitors use this site and to measure how our ads perform. Both only run if you accept; declining won't affect your ability to browse the site or use the contact form.",
+      'We use Google Analytics for usage statistics and Google Ads to measure whether our ads lead to inquiries. They only run if you accept; declining does not affect your ability to browse the site or use the contact form.',
+    privacyLinkLabel: 'Privacy Policy',
     accept: 'Accept',
     decline: 'Decline',
     ariaLabel: 'Cookie consent',
@@ -792,7 +793,7 @@ const ro: Dictionary = {
     sections: [
       {
         heading: 'Ce colectăm',
-        body: 'Prin formularul de contact, colectăm numele, denumirea companiei, adresa de email, numărul de telefon, tipul de proiect și detaliile despre locație pe care ni le furnizați. Nu folosim cookie-uri de urmărire în acest moment; dacă vor fi adăugate ulterior cookie-uri de analiză sau publicitate, această politică și un banner de consimțământ pentru cookie-uri vor fi actualizate corespunzător.',
+        body: 'Prin formularul de contact, colectăm numele, denumirea companiei, adresa de email, numărul de telefon, tipul de proiect și detaliile despre locație pe care ni le furnizați. Dacă acceptați cookie-urile, colectăm și date de utilizare a site-ului și de măsurare a reclamelor, descrise în secțiunea Cookie-uri de mai jos.',
       },
       {
         heading: 'De ce le colectăm',
@@ -800,7 +801,7 @@ const ro: Dictionary = {
       },
       {
         heading: 'Cui le transmitem',
-        body: 'Solicitarea dumneavoastră este procesată de Formspree, un serviciu terț care o livrează pe email-ul nostru. Nu vindem datele dumneavoastră către terți.',
+        body: 'Solicitarea dumneavoastră este procesată de Formspree, un serviciu terț care o livrează pe email-ul nostru. Dacă acceptați cookie-urile, datele de utilizare a site-ului și de măsurare a reclamelor sunt procesate de Google (Google Analytics și Google Ads). Nu vindem datele dumneavoastră către terți.',
       },
       {
         heading: 'Păstrarea datelor',
@@ -808,7 +809,7 @@ const ro: Dictionary = {
       },
     ],
     transfersHeading: 'Transferuri internaționale',
-    transfersBody: 'Unii dintre procesatorii de mai sus pot fi localizați în afara UE/SEE.',
+    transfersBody: 'Unii dintre procesatorii de mai sus, inclusiv Google, pot prelucra date în afara UE/SEE.',
     rightsHeading: 'Drepturile dumneavoastră',
     rightsIntro:
       'Conform GDPR, aveți dreptul de a accesa, corecta, șterge sau restricționa utilizarea datelor dumneavoastră, de a primi o copie a acestora (portabilitatea datelor) și de a vă opune prelucrării. Pentru a vă exercita aceste drepturi, contactați-ne la',
@@ -817,7 +818,7 @@ const ro: Dictionary = {
       '. De asemenea, puteți depune o plângere la ANSPDCP, Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal, la',
     rightsLinkLabel: 'www.dataprotection.ro',
     changesHeading: 'Modificări',
-    changesBody: 'Această politică poate fi actualizată periodic. Ultima actualizare: 1 august 2026.',
+    changesBody: 'Această politică poate fi actualizată periodic. Ultima actualizare: 13 noiembrie 2026.',
     cookies: {
       heading: 'Cookie-uri',
       sections: [
@@ -827,27 +828,27 @@ const ro: Dictionary = {
         },
         {
           heading: 'Cookie-uri pe acest site în prezent',
-          body: 'Acest site folosește Google Analytics (GA4), un cookie de analiză, pentru a înțelege cum utilizează vizitatorii site-ul. Acest cookie este setat doar după ce îl acceptați prin bannerul de consimțământ; dacă refuzați, niciun cookie de analiză nu este setat. Nu folosim în prezent cookie-uri publicitare.',
+          body: 'Acest site folosește Google Analytics (GA4), pentru a înțelege cum utilizează vizitatorii site-ul, și Google Ads, pentru a măsura dacă reclamele noastre au dus la o solicitare. Aceste cookie-uri sunt setate doar după ce le acceptați prin bannerul de consimțământ; dacă refuzați, niciun cookie de analiză sau de publicitate nu este setat.',
         },
         {
           heading: 'Tipuri de cookie-uri pe care le folosim',
-          body: 'Cookie-uri strict necesare (necesare pentru funcționarea site-ului, fără a necesita consimțământ) și cookie-uri de analiză (Google Analytics, folosite pentru a înțelege cum utilizează vizitatorii site-ul), singurele două categorii folosite în prezent. Cookie-urile publicitare nu sunt folosite în prezent; dacă acest lucru se va schimba în viitor, această secțiune va fi actualizată și consimțământul dumneavoastră va fi solicitat mai întâi.',
+          body: 'Cookie-uri strict necesare (necesare pentru funcționarea site-ului, fără a necesita consimțământ), cookie-uri de analiză (Google Analytics) și cookie-uri de publicitate (Google Ads, folosite pentru măsurarea performanței reclamelor noastre). Nu folosim în prezent reclame de remarketing. Dacă acest lucru se va schimba, această secțiune va fi actualizată și consimțământul dumneavoastră va fi solicitat mai întâi.',
         },
         {
           heading: 'Cum gestionăm consimțământul',
-          body: 'Înainte de setarea cookie-ului Google Analytics, vi se afișează un banner de consimțământ care vă permite să acceptați sau să refuzați. Vă puteți schimba alegerea în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului.',
+          body: 'Înainte de setarea cookie-urilor Google Analytics și Google Ads, vi se afișează un banner de consimțământ care vă permite să acceptați sau să refuzați. Alegerea dumneavoastră se aplică ambelor categorii. O puteți schimba în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului.',
         },
         {
-          heading: 'Ce date colectează Google Analytics',
-          body: 'Google Analytics colectează date de utilizare anonimizate: paginile vizitate, durata sesiunii și locația generală și tipul de dispozitiv. Nu colectează numele dumneavoastră, adresa de email sau alte informații direct identificabile.',
+          heading: 'Ce date colectează Google Analytics și Google Ads',
+          body: 'Google Analytics colectează date de utilizare: paginile vizitate, durata sesiunii, locația generală și tipul de dispozitiv. Când ajungeți pe site dintr-o reclamă Google, Google Ads reține un identificator al clicului într-un cookie, pentru a ne arăta dacă vizita a dus la o solicitare. Primim rapoarte, nu identitatea dumneavoastră. Prin aceste cookie-uri nu colectăm numele, adresa de email sau alte informații direct identificabile.',
         },
         {
           heading: 'Drepturile dumneavoastră privind cookie-urile',
-          body: 'Puteți accepta sau refuza cookie-ul de analiză și vă puteți retrage consimțământul în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului. Refuzul nu vă va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
+          body: 'Puteți accepta sau refuza cookie-urile de analiză și de publicitate și vă puteți retrage consimțământul în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului. Refuzul nu vă va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
         },
         {
-          heading: 'Cum controlezi cookie-urile',
-          body: 'Vă puteți schimba alegerea privind cookie-ul de analiză în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului. De asemenea, puteți controla sau șterge cookie-urile din setările browserului dumneavoastră în orice moment.',
+          heading: 'Cum controlați cookie-urile',
+          body: 'Vă puteți schimba alegerea privind cookie-urile de analiză și de publicitate în orice moment folosind linkul „Preferințe cookie-uri" din subsolul site-ului. De asemenea, puteți controla sau șterge cookie-urile din setările browserului dumneavoastră în orice moment. Pentru reclame, puteți gestiona și setările contului dumneavoastră Google la adssettings.google.com.',
         },
         {
           heading: 'Actualizări ale acestei secțiuni',
@@ -858,7 +859,8 @@ const ro: Dictionary = {
   },
   cookieConsent: {
     message:
-      'Folosim Google Analytics și Google Ads pentru a înțelege cum utilizează vizitatorii acest site și pentru a măsura performanța reclamelor noastre. Acestea rulează doar dacă acceptați; refuzul nu vă va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
+      'Folosim Google Analytics pentru statistici de utilizare și Google Ads pentru a măsura dacă reclamele noastre duc la solicitări. Acestea rulează doar dacă acceptați; refuzul nu vă afectează navigarea pe site sau folosirea formularului de contact.',
+    privacyLinkLabel: 'Politica de confidențialitate',
     accept: 'Accept',
     decline: 'Refuz',
     ariaLabel: 'Consimțământ cookie-uri',

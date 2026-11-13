@@ -2,8 +2,10 @@ const STORAGE_KEY = 'hiieko-cookie-consent';
 
 interface ConsentState {
   // Single accept/decline covers both GA4 and, when configured, the Google
-  // Ads tag — there's one banner and one consent decision, not separate
-  // categories, so this one flag gates both.
+  // Ads tag: there's one banner and one consent decision, not separate
+  // categories, so this one flag gates both. Accept grants ad_storage,
+  // ad_user_data and analytics_storage (measurement and conversions) but not
+  // ad_personalization: we run no remarketing, so that signal stays denied.
   analytics: boolean;
   timestamp: number;
 }
@@ -47,7 +49,7 @@ function loadGoogleTag(measurementId: string, adsId: string): void {
     gtag('consent', 'update', {
       ad_storage: 'granted',
       ad_user_data: 'granted',
-      ad_personalization: 'granted',
+      ad_personalization: 'denied',
       analytics_storage: 'granted'
     });
     gtag('js', new Date());
