@@ -181,6 +181,25 @@ html {
     margin-bottom: 1rem;
     list-style: disc;
   }
+  .prose-content ol {
+    color: var(--color-muted);
+    font-size: 15.5px;
+    line-height: 1.7;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    list-style: decimal;
+  }
+  .prose-content ol li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.25rem;
+  }
+  .prose-content ol li::marker {
+    color: var(--color-gold-bright);
+    font-weight: 600;
+  }
+  .prose-content ol strong {
+    color: var(--color-white);
+  }
   .prose-content a {
     color: var(--color-gold);
     text-decoration: underline;
