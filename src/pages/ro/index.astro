@@ -12,7 +12,6 @@ import IndustriesSection from '../../components/IndustriesSection.astro';
 import Calculator from '../../components/Calculator.astro';
 import ProjectsGallery from '../../components/ProjectsGallery.astro';
 import ContactForm from '../../components/ContactForm.astro';
-import Certifications from '../../components/Certifications.astro';
 import { getTranslations } from '../../i18n/ui';
 
 const lang = 'ro' as const;
@@ -105,9 +104,6 @@ const t = getTranslations(lang);
           {t.about.para2}
         </p>
         <a href="/ro/about/" class="text-gold underline text-sm">{t.about.readMoreLink}</a>
-        <div class="mt-[26px]">
-          <Certifications lang={lang} />
-        </div>
       </div>
       <div class="bg-chip border border-white/10 rounded-md">
         <div class="p-5 px-[22px] border-b border-white/10 flex justify-between items-baseline">

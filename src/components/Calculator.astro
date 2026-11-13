@@ -9,11 +9,7 @@ const { lang = defaultLang } = Astro.props;
 const t = getTranslations(lang);
 ---
 
-<section
-  id="calculator"
-  class="py-[100px]"
-  data-warning-template={t.calculator.warningTemplate}
->
+<section id="calculator" class="py-[100px]">
   <div class="wrap">
     <div class="max-w-[640px] mb-[52px]">
       <h2 class="text-[clamp(26px,3vw,36px)] mb-3.5">
@@ -43,21 +39,6 @@ const t = getTranslations(lang);
           step="100"
           class="w-full bg-charcoal border border-white/10 text-white px-4 py-3.5 font-mono text-[22px] rounded-[3px] mb-[22px] form-field"
         />
-        <label
-          for="area"
-          class="block font-mono text-[11px] text-muted tracking-[0.05em] uppercase mb-2.5"
-        >
-          {t.calculator.areaLabel}
-        </label>
-        <input
-          type="number"
-          id="area"
-          inputmode="numeric"
-          value="350"
-          min="50"
-          step="50"
-          class="w-full bg-charcoal border border-white/10 text-white px-4 py-3.5 font-mono text-[22px] rounded-[3px] mb-[22px] form-field"
-        />
         <button id="calc-run" type="button" class="btn btn-primary w-full">{t.calculator.calculateBtn}</button>
       </div>
 
@@ -84,12 +65,6 @@ const t = getTranslations(lang);
         </div>
 
         <div
-          id="area-warning"
-          class="hidden col-span-2 md:col-span-3 bg-chip border border-gold/30 border-l-[3px] border-l-gold rounded-[2px] p-4 text-[13.5px] text-muted"
-        >
-        </div>
-
-        <div
           class="col-span-2 md:col-span-3 font-mono text-[11.5px] text-muted border-t border-white/10 pt-[18px] mt-1.5 leading-[1.6]"
         >
           {t.calculator.disclaimer}
@@ -102,20 +77,20 @@ const t = getTranslations(lang);
     id="calc-toast"
     role="status"
     aria-live="polite"
-    class="hidden fixed bottom-4 right-4 left-4 sm:left-auto sm:w-[360px] z-50 bg-chip border border-gold/30 border-l-[3px] border-l-gold rounded-[2px] p-4 shadow-lg opacity-0 translate-y-2 transition-all duration-300 ease-out motion-reduce:transition-none"
+    class="hidden fixed bottom-4 right-4 left-4 sm:left-auto sm:w-[420px] z-50 bg-charcoal border-2 border-gold rounded-[3px] p-5 shadow-[0_0_30px_var(--color-gold-glow)] opacity-0 scale-95 translate-y-2 transition-all duration-300 ease-out motion-reduce:transition-none motion-reduce:scale-100"
   >
     <div class="flex items-start justify-between gap-3">
-      <p class="text-sm text-white pr-2 m-0">{t.calculator.toastMessage}</p>
+      <p class="text-[15.5px] font-medium text-white pr-2 m-0 leading-snug">{t.calculator.toastMessage}</p>
       <button
         id="calc-toast-close"
         type="button"
         aria-label={t.calculator.toastDismissLabel}
-        class="text-muted hover:text-white text-lg leading-none bg-transparent border-none cursor-pointer p-0"
+        class="text-muted hover:text-white text-xl leading-none bg-transparent border-none cursor-pointer p-0 shrink-0"
       >
         ×
       </button>
     </div>
-    <a href="#contact" class="btn btn-primary btn-compact mt-3 inline-block text-center w-full">
+    <a href="#contact" class="btn btn-primary mt-4 inline-block text-center w-full">
       {t.calculator.toastCta}
     </a>
   </div>
@@ -133,18 +108,14 @@ const t = getTranslations(lang);
     return 390;
   }
 
-  function fillTemplate(template: string, vars: Record<string, string | number>): string {
-    return template.replace(/\{(\w+)\}/g, (_match, key: string) => String(vars[key] ?? ''));
-  }
-
   function showToast(): void {
     const toast = document.getElementById('calc-toast') as HTMLElement;
     toast.classList.remove('hidden');
-    toast.classList.add('opacity-0', 'translate-y-2');
+    toast.classList.add('opacity-0', 'scale-95', 'translate-y-2');
     // force a reflow so the entrance transition restarts on every click
     void toast.offsetWidth;
     requestAnimationFrame(() => {
-      toast.classList.remove('opacity-0', 'translate-y-2');
+      toast.classList.remove('opacity-0', 'scale-95', 'translate-y-2');
     });
   }
 
@@ -153,49 +124,28 @@ const t = getTranslations(lang);
   });
 
   function runCalc(): void {
-    const section = document.getElementById('calculator') as HTMLElement;
-    const warningTemplate = section.dataset.warningTemplate || '';
     const consumptionEl = document.getElementById('consumption') as HTMLInputElement;
-    const areaEl = document.getElementById('area') as HTMLInputElement;
     const consumption = parseFloat(consumptionEl.value) || 0; // kWh/month
-    const area = parseFloat(areaEl.value) || 0; // m²
 
-    const capacity = area / 4.3; // 4.3 m² per kWp
+    const yieldPerKwp = 1200; // kWh/kWp/yr
+    const annualConsumption = consumption * 12;
+    // System is sized to fully cover consumption -- capacity is derived
+    // from usage, not from a user-provided area.
+    const capacity = annualConsumption / yieldPerKwp;
+    const minAreaNeeded = capacity * 4.3; // 4.3 m² per kWp
     const costPerKwp = tieredCostPerKwp(capacity);
     const investment = capacity * costPerKwp;
-    const yieldPerKwp = 1200; // kWh/kWp/yr
     const annualGeneration = capacity * yieldPerKwp;
-    const annualConsumption = consumption * 12;
     const price = 0.18; // EUR/kWh
-    const usefulGeneration = Math.min(annualGeneration, annualConsumption);
-    const annualSavings = usefulGeneration * 0.9 * price;
+    const annualSavings = annualGeneration * 0.9 * price;
     const payback = annualSavings > 0 ? investment / annualSavings : 0;
     const roi = investment > 0 ? (annualSavings / investment) * 100 : 0;
-
-    // Independent benchmark — how much area would be needed to fully cover
-    // consumption. Never feeds back into capacity/investment above; it's a
-    // sanity-check comparison against the user's actual area input only.
-    const capacityNeededForFullCoverage = annualConsumption / yieldPerKwp;
-    const minAreaNeeded = capacityNeededForFullCoverage * 4.3;
 
     countUp(document.getElementById('out-capacity')!, Math.round(capacity), 700);
     countUp(document.getElementById('out-gen')!, Math.round(annualGeneration / 1000), 700);
     countUp(document.getElementById('out-minarea')!, Math.round(minAreaNeeded), 700);
     document.getElementById('out-payback')!.textContent = payback.toFixed(1);
     document.getElementById('out-roi')!.textContent = roi.toFixed(1);
-
-    const warning = document.getElementById('area-warning') as HTMLElement;
-    if (area < minAreaNeeded && minAreaNeeded > 0) {
-      const coveragePct = Math.round((area / minAreaNeeded) * 100);
-      warning.textContent = fillTemplate(warningTemplate, {
-        area: Math.round(area),
-        pct: coveragePct,
-        minArea: Math.round(minAreaNeeded),
-      });
-      warning.classList.remove('hidden');
-    } else {
-      warning.classList.add('hidden');
-    }
   }
 
   document.getElementById('calc-run')?.addEventListener('click', () => {

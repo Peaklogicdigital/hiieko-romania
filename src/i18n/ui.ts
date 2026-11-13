@@ -277,7 +277,6 @@ const en = {
     h2: 'See what your electricity bill could fund.',
     lede: 'Enter your monthly usage: this estimates system size, payback, and ROI. Not a quote; a real number needs a site assessment.',
     consumptionLabel: 'Current monthly consumption (kWh)',
-    areaLabel: 'Available area (m²)',
     calculateBtn: 'Calculate →',
     statCapacity: 'System capacity (kWp)',
     statGen: 'Est. annual generation (MWh/yr)',
@@ -286,8 +285,6 @@ const en = {
     statRoi: 'ROI (%)',
     disclaimer:
       "This estimate reflects typical project economics across our completed installations — but no two roofs, no two grid connections, and no two sites price the same. Treat this as a starting point, not a quote. The real number only comes after we've actually seen your site.",
-    warningTemplate:
-      'Your available space ({area} m²) covers only {pct}% of your usage. {minArea} m² would fully offset your consumption.',
     toastMessage: 'Talk with sales for a site assessment and real values.',
     toastCta: 'Contact sales →',
     toastDismissLabel: 'Dismiss',
@@ -732,7 +729,6 @@ const ro: Dictionary = {
     h2: 'Vezi ce ți-ar putea finanța factura la curent.',
     lede: 'Introdu consumul tău lunar: acesta estimează dimensiunea sistemului, perioada de amortizare și ROI. Nu este o ofertă fermă; o cifră reală necesită o evaluare la fața locului.',
     consumptionLabel: 'Consum lunar actual (kWh)',
-    areaLabel: 'Suprafață disponibilă (m²)',
     calculateBtn: 'Calculează →',
     statCapacity: 'Capacitate sistem (kWp)',
     statGen: 'Producție anuală estimată (MWh/an)',
@@ -741,8 +737,6 @@ const ro: Dictionary = {
     statRoi: 'ROI (%)',
     disclaimer:
       'Această estimare reflectă costurile tipice ale proiectelor noastre finalizate, însă niciun acoperiș, nicio conexiune la rețea și nicio locație nu au același preț. Consideră acest calcul un punct de plecare, nu o ofertă fermă. Cifra reală se stabilește doar după ce vedem efectiv locația ta.',
-    warningTemplate:
-      'Spațiul tău disponibil ({area} m²) acoperă doar {pct}% din consumul tău. {minArea} m² ar acoperi integral consumul.',
     toastMessage: 'Discută cu echipa de vânzări pentru o evaluare la fața locului și cifre reale.',
     toastCta: 'Contactează echipa de vânzări →',
     toastDismissLabel: 'Închide',
