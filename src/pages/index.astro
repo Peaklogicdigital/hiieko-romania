@@ -50,7 +50,7 @@ const t = getTranslations(lang);
           {t.hero.lede}
         </p>
         <div class="flex gap-3.5 flex-wrap">
-          <Button variant="primary" href="/#contact">{t.hero.ctaPrimary}</Button>
+          <Button variant="primary" href="/#contact" id="hero-cta">{t.hero.ctaPrimary}</Button>
           <Button variant="brand" href="/#calculator">{t.hero.ctaSecondary}</Button>
         </div>
       </div>
@@ -142,7 +142,7 @@ const t = getTranslations(lang);
         <div class="mt-7 text-sm text-muted">
           <div class="mb-2"><b class="text-white">{t.contact.companyName}</b></div>
           <div class="mb-2">{t.contact.addressLine}</div>
-          <div class="mb-2">{t.contact.email}</div>
+          <div class="mb-2"><a href={`mailto:${t.contact.email}`} class="hover:text-white">{t.contact.email}</a></div>
         </div>
       </div>
       <ContactForm lang={lang} />

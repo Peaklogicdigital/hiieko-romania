@@ -5,6 +5,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import TextureOverlay from '../components/TextureOverlay.astro';
 import CookieConsent from '../components/CookieConsent.astro';
+import MobileCta from '../components/MobileCta.astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import Analytics from '@vercel/analytics/astro';
 import type { Lang } from '../i18n/ui';
@@ -111,23 +112,28 @@ const jsonLd = {
   <head>
     <meta charset="UTF-8" />
     <script is:inline>
-      // First-visit language auto-detection, run as early and synchronously
-      // as possible (before any content paints) to keep the redirect flash
-      // as close to imperceptible as this static, adapter-less deployment
-      // allows -- there's no server/edge runtime in front of this site to
-      // do the equivalent detection before the response is even sent.
-      // Once a visitor has an explicit choice stored (set by the nav
-      // EN/RO toggle, see Nav.astro), this never runs again: a manual
-      // choice is never second-guessed by auto-detection, no matter what
-      // the browser's language setting says later.
+      // Language auto-detection for the bare entry case only: a Romanian-
+      // language browser that opens the root URL "/" directly (typed,
+      // bookmarked, no referring page, no campaign parameters) is sent to
+      // /ro/ once. Every explicit landing is respected as-is: any /ro/ URL,
+      // any other English URL (e.g. /solutions/), and anything arriving via
+      // a link or ad, so the page a visitor was pointed at is the page they
+      // get, whatever the browser language. This never redirects to English.
+      // Runs as early and synchronously as possible (before any content
+      // paints) to keep the redirect flash close to imperceptible; there's
+      // no server/edge runtime in front of this static site to do it before
+      // the response is sent. Once a visitor has an explicit choice stored
+      // (set by the nav EN/RO toggle, see Nav.astro), this never runs again.
       (function () {
         try {
           if (localStorage.getItem('hiieko_lang')) return;
           var path = window.location.pathname;
-          if (path === '/ro' || path.indexOf('/ro/') === 0) return;
+          if (path !== '/') return;
+          // Arrived from a link, search result or another page of this site:
+          // the visitor (or the ad) chose this URL, so keep it.
+          if (document.referrer) return;
           // Paid traffic (Google Ads click IDs or any utm_ campaign param)
-          // must land exactly where the ad points, not get bounced to /ro/
-          // on top of it.
+          // must land exactly where the ad points.
           if (/[?&](gclid|gbraid|wbraid|utm_[a-z_]+)=/i.test(window.location.search)) return;
           var langs =
             navigator.languages && navigator.languages.length
@@ -188,9 +194,11 @@ const jsonLd = {
     <main id="main-content" class="relative z-10">
       <slot />
     </main>
-    <div class="relative z-10">
+    <div class="relative z-10 max-lg:pb-[calc(5rem+env(safe-area-inset-bottom))]">
       <Footer lang={lang} />
     </div>
+
+    <MobileCta lang={lang} />
 
     <CookieConsent lang={lang} />
 

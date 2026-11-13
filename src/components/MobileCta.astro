@@ -1,0 +1,81 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import type { Lang } from '../i18n/ui';
+import { defaultLang, getTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = defaultLang } = Astro.props;
+const t = getTranslations(lang);
+
+// Same call to action as the desktop nav button (Nav.astro), which is hidden
+// below the lg breakpoint. On the homepage it jumps to the form section; on
+// every other page it goes where the nav button goes, the contact page.
+const homePath = getRelativeLocaleUrl(lang, '/');
+const isHome = Astro.url.pathname === homePath;
+const href = isHome ? `${homePath}#contact` : getRelativeLocaleUrl(lang, '/contact/');
+---
+
+<!--
+  Fixed to the viewport, so it takes no space in the layout and cannot shift
+  it. Starts hidden (invisible, so it is also out of the tab order) and is
+  shown by the script below once nothing else makes it redundant. The wrapper
+  ignores pointer events so its padding never blocks taps on content beneath.
+-->
+<div
+  id="mobile-cta"
+  data-visible="false"
+  class="lg:hidden fixed inset-x-0 bottom-0 z-40 px-4 pb-[calc(1rem+env(safe-area-inset-bottom))] pointer-events-none invisible opacity-0 translate-y-4 transition-[opacity,transform,visibility] duration-200 ease-out motion-reduce:transition-none data-[visible=true]:visible data-[visible=true]:opacity-100 data-[visible=true]:translate-y-0"
+>
+  <a
+    href={href}
+    class="btn btn-primary pointer-events-auto flex items-center justify-center w-full min-h-[48px] text-center no-underline shadow-[0_0_22px_var(--color-gold-glow)]"
+  >
+    {t.nav.cta}
+  </a>
+</div>
+
+<script>
+  const bar = document.getElementById('mobile-cta') as HTMLElement | null;
+
+  if (bar) {
+    // Redundant while the hero's own button or the form section is on screen.
+    const watched = [
+      document.getElementById('hero-cta'),
+      document.getElementById('contact') ?? document.getElementById('contact-form'),
+    ].filter((el): el is HTMLElement => el !== null);
+
+    // Never sit on top of the cookie banner (and its Accept/Decline buttons)
+    // or the calculator's result toast: both are fixed to the same corner.
+    const overlays = [
+      document.getElementById('cookie-consent-banner'),
+      document.getElementById('calc-toast'),
+    ].filter((el): el is HTMLElement => el !== null);
+
+    const inView = new Set<Element>();
+
+    function update(): void {
+      const overlayOpen = overlays.some((el) => !el.classList.contains('hidden'));
+      bar!.dataset.visible = String(inView.size === 0 && !overlayOpen);
+    }
+
+    if (watched.length > 0) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) inView.add(entry.target);
+          else inView.delete(entry.target);
+        });
+        update();
+      });
+      watched.forEach((el) => observer.observe(el));
+    }
+
+    const mutations = new MutationObserver(update);
+    overlays.forEach((el) => mutations.observe(el, { attributes: true, attributeFilter: ['class'] }));
+
+    // With watched targets, wait for the observer's first callback instead,
+    // so the bar never flashes in while the hero button is already visible.
+    if (watched.length === 0) update();
+  }
+</script>

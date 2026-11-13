@@ -1,7 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import type { Lang } from '../i18n/ui';
-import { defaultLang, fillTemplate, getTranslations } from '../i18n/ui';
+import { defaultLang, fillTemplate, getTranslations, telHref } from '../i18n/ui';
 
 interface Props {
   lang?: Lang;
@@ -26,10 +26,10 @@ const privacyHref = getRelativeLocaleUrl(lang, '/privacy/');
       <h4 class="font-mono text-[11px] text-white uppercase tracking-[0.08em] mb-3">
         {t.footer.contactsHeading}
       </h4>
-      <div class="text-[13.5px] mb-1.5">{t.footer.email}</div>
-      <div class="text-[13.5px] mb-1.5">{t.footer.phone}</div>
-      <div class="text-[13.5px] mb-1.5 mt-2.5">{t.footer.email2}</div>
-      <div class="text-[13.5px] mb-1.5">{t.footer.phone2}</div>
+      <div class="text-[13.5px] mb-1.5"><a href={`mailto:${t.footer.email}`} class="hover:text-white">{t.footer.email}</a></div>
+      <div class="text-[13.5px] mb-1.5"><a href={telHref(t.footer.phone)} class="hover:text-white">{t.footer.phone}</a></div>
+      <div class="text-[13.5px] mb-1.5 mt-2.5"><a href={`mailto:${t.footer.email2}`} class="hover:text-white">{t.footer.email2}</a></div>
+      <div class="text-[13.5px] mb-1.5"><a href={telHref(t.footer.phone2)} class="hover:text-white">{t.footer.phone2}</a></div>
     </div>
     <div>
       <h4 class="font-mono text-[11px] text-white uppercase tracking-[0.08em] mb-3">{t.footer.groupHeading}</h4>
