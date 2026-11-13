@@ -13,6 +13,7 @@ interface Props {
 const { lang = defaultLang } = Astro.props;
 const t = getTranslations(lang);
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? '';
+const adsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? '';
 ---
 
 <div
@@ -21,6 +22,7 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? '';
   role="dialog"
   aria-label={t.cookieConsent.ariaLabel}
   data-ga-id={gaId}
+  data-ads-id={adsId}
 >
   <p class="text-sm text-white mb-4">{t.cookieConsent.message}</p>
   <div class="flex gap-3">
@@ -34,6 +36,7 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? '';
 </div>
 
 <script>
-  import { initCookieConsent } from '../scripts/cookieConsent';
+  import { initCookieConsent, initClickTracking } from '../scripts/cookieConsent';
   initCookieConsent();
+  initClickTracking();
 </script>

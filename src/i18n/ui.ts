@@ -25,6 +25,7 @@ const en = {
     cta: 'Get a site assessment',
     toggleMenu: 'Toggle menu',
     skipToContent: 'Skip to content',
+    logoAlt: 'Hiieko Romania logo',
   },
   hero: {
     eyebrow: 'Hiieko Romania · Engineering. Energy. Execution.',
@@ -39,6 +40,7 @@ const en = {
     happyClients: { label: 'Happy Clients in Romania' },
     specialists: { label: 'Specialists in Romania' },
     iso: { value: 'ISO', label: '9001 · 14001 · 27001 · 45001 Certified' },
+    projectPhotoAlt: 'Completed solar project: {title}',
   },
   diff: {
     h2: "We're the contractor who stays after commissioning.",
@@ -407,7 +409,7 @@ const en = {
   },
   cookieConsent: {
     message:
-      'We use Google Analytics to understand how visitors use this site. This only runs if you accept; declining won’t affect your ability to browse the site or use the contact form.',
+      "We use Google Analytics and Google Ads to understand how visitors use this site and to measure how our ads perform. Both only run if you accept; declining won't affect your ability to browse the site or use the contact form.",
     accept: 'Accept',
     decline: 'Decline',
     ariaLabel: 'Cookie consent',
@@ -477,6 +479,7 @@ const ro: Dictionary = {
     cta: 'Solicitați o evaluare',
     toggleMenu: 'Comutați meniul',
     skipToContent: 'Săriți la conținut',
+    logoAlt: 'Sigla Hiieko România',
   },
   hero: {
     eyebrow: 'Hiieko România · Inginerie. Energie. Execuție.',
@@ -491,6 +494,7 @@ const ro: Dictionary = {
     happyClients: { label: 'Clienți mulțumiți în România' },
     specialists: { label: 'Specialiști în România' },
     iso: { value: 'ISO', label: '9001 · 14001 · 27001 · 45001 Certificat' },
+    projectPhotoAlt: 'Proiect solar finalizat: {title}',
   },
   diff: {
     h2: 'Suntem contractorul care rămâne după punerea în funcțiune.',
@@ -854,7 +858,7 @@ const ro: Dictionary = {
   },
   cookieConsent: {
     message:
-      'Folosim Google Analytics pentru a înțelege cum utilizează vizitatorii acest site. Acesta rulează doar dacă acceptați; refuzul nu vă va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
+      'Folosim Google Analytics și Google Ads pentru a înțelege cum utilizează vizitatorii acest site și pentru a măsura performanța reclamelor noastre. Acestea rulează doar dacă acceptați; refuzul nu vă va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
     accept: 'Accept',
     decline: 'Refuz',
     ariaLabel: 'Consimțământ cookie-uri',

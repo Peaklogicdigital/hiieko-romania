@@ -8,6 +8,8 @@ interface Props {
 const { lang = defaultLang } = Astro.props;
 const t = getTranslations(lang);
 const webhookUrl = import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL ?? '';
+const adsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID ?? '';
+const adsLeadLabel = import.meta.env.PUBLIC_GOOGLE_ADS_LEAD_LABEL ?? '';
 ---
 
 <form
@@ -15,6 +17,8 @@ const webhookUrl = import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL ?? '';
   class="grid gap-3.5"
   novalidate
   data-webhook-url={webhookUrl}
+  data-ads-id={adsId}
+  data-ads-lead-label={adsLeadLabel}
   data-status-not-configured={t.contactForm.statusNotConfigured}
   data-status-sending={t.contactForm.statusSending}
   data-status-success={t.contactForm.statusSuccess}
@@ -68,6 +72,8 @@ const webhookUrl = import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL ?? '';
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const status = document.getElementById('contact-status') as HTMLParagraphElement;
   const webhookUrl = form.dataset.webhookUrl || '';
+  const adsId = form.dataset.adsId || '';
+  const adsLeadLabel = form.dataset.adsLeadLabel || '';
   const statusNotConfigured = form.dataset.statusNotConfigured || '';
   const statusSending = form.dataset.statusSending || '';
   const statusSuccess = form.dataset.statusSuccess || '';
@@ -154,6 +160,9 @@ const webhookUrl = import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL ?? '';
       form.reset();
       requiredFields.forEach(clearField);
       trackEvent('generate_lead', { value: 1, currency: 'EUR' });
+      if (adsId && adsLeadLabel) {
+        trackEvent('conversion', { send_to: `${adsId}/${adsLeadLabel}` });
+      }
     } catch {
       status.textContent = statusError;
       status.classList.remove('text-gold');
