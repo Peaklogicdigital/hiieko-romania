@@ -64,6 +64,20 @@ function loadGoogleTag(measurementId: string, adsId: string): void {
 }
 
 function disableGoogleTag(measurementId: string, adsId: string): void {
+  // A visitor can accept and then decline within the same page load, with
+  // gtag already defined and still able to queue hits right up until this
+  // runs — revoke the Consent Mode signals first, before anything else, so
+  // any call still in flight is told to stop.
+  const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+  if (typeof gtag === 'function') {
+    gtag('consent', 'update', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+    });
+  }
+
   // gtag.js itself can't be unloaded client-side once it's run — this is
   // Google's documented opt-out flag, checked before every hit, so it's
   // the closest equivalent to "turn tracking off" available in-browser.
@@ -75,6 +89,15 @@ function disableGoogleTag(measurementId: string, adsId: string): void {
   });
   document.getElementById('ga4-script')?.remove();
   document.getElementById('ga4-inline-config')?.remove();
+
+  // Clear gtag itself so trackEvent()'s existence check goes back to
+  // false — without this, events fired after Decline (phone/email clicks,
+  // a lead submitted in the same session) would still queue into
+  // dataLayer and ship on whatever next page load re-adds the script.
+  // `window.gtag` was set by a function declaration inside the injected
+  // inline script, which makes it non-configurable — `delete` on it
+  // silently fails, so it has to be cleared by reassignment instead.
+  (window as unknown as Record<string, unknown>).gtag = undefined;
 }
 
 // Shared by any component that wants to fire a GA4 event (ContactForm,

@@ -409,7 +409,7 @@ const en = {
   },
   cookieConsent: {
     message:
-      'We use Google Analytics to understand how visitors use this site. This only runs if you accept; declining won’t affect your ability to browse the site or use the contact form.',
+      "We use Google Analytics and Google Ads to understand how visitors use this site and to measure how our ads perform. Both only run if you accept; declining won't affect your ability to browse the site or use the contact form.",
     accept: 'Accept',
     decline: 'Decline',
     ariaLabel: 'Cookie consent',
@@ -858,7 +858,7 @@ const ro: Dictionary = {
   },
   cookieConsent: {
     message:
-      'Folosim Google Analytics pentru a înțelege cum utilizează vizitatorii acest site. Acesta rulează doar dacă acceptați; refuzul nu vă va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
+      'Folosim Google Analytics și Google Ads pentru a înțelege cum utilizează vizitatorii acest site și pentru a măsura performanța reclamelor noastre. Acestea rulează doar dacă acceptați; refuzul nu vă va afecta posibilitatea de a naviga pe site sau de a folosi formularul de contact.',
     accept: 'Accept',
     decline: 'Refuz',
     ariaLabel: 'Consimțământ cookie-uri',
